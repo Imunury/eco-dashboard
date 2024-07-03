@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from 'react';
-// import KakaoMap from './component/Kakaomap';
 
 interface Location {
   robot_id: string;
@@ -36,7 +35,6 @@ const Home: React.FC = () => {
         <div className='h-full w-2/5 p-24 bg-red-500'>
         </div>
         <div className='h-full w-3/5'>
-          {/* <KakaoMap /> */}
         </div>
       </section>
       <h1>Location</h1>
