@@ -32,16 +32,14 @@ const Main1: React.FC = () => {
     }, []);
 
     return (
-        <div>
-            <section className='flex flex-row h-full w-full'>
-                <div className='h-full w-1/5 p-3'>
-                    <RobotData robotStatus={robotStatus} />
-                </div>
-                <div className='h-screen w-4/5'>
-                    <NaverMap locations={locations} />
-                </div>
-            </section>
-        </div>
+        <section className='flex flex-row h-full w-full'>
+            <div className='h-screen w-1/5 p-3 overflow-y-auto'>
+                <RobotData robotStatus={robotStatus} />
+            </div>
+            <div className='h-full w-4/5'>
+                <NaverMap locations={locations} />
+            </div>
+        </section>
     )
 }
 
