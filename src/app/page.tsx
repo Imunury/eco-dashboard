@@ -1,6 +1,9 @@
 "use client"
 
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const NaverMap = dynamic(() => import('./component/NaverMap'), { ssr: false });
 
 interface Location {
   robot_id: string;
@@ -30,11 +33,12 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <main className='h-screen w-screen'>
+    <main className='h-screen w-screen overflow-x-hidden'>
       <section className='flex flex-row h-full w-full'>
         <div className='h-full w-2/5 p-24 bg-red-500'>
         </div>
         <div className='h-full w-3/5'>
+          <NaverMap />
         </div>
       </section>
       <h1>Location</h1>
