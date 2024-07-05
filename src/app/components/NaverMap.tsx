@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface Location {
     robot_id: string;
@@ -15,6 +15,10 @@ interface NaverMapProps {
 }
 
 const NaverMap: React.FC<NaverMapProps> = ({ locations, onMarkerClick }) => {
+
+    const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+
+
     useEffect(() => {
         const initializeMap = () => {
             if (window.naver && window.naver.maps) {
@@ -33,6 +37,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ locations, onMarkerClick }) => {
 
                     window.naver.maps.Event.addListener(marker, 'click', () => {
                         onMarkerClick(location);
+                        setSelectedLocation(location);
                     });
                 });
             }
@@ -50,7 +55,22 @@ const NaverMap: React.FC<NaverMapProps> = ({ locations, onMarkerClick }) => {
         }
     }, [locations, onMarkerClick]);
 
-    return <div id="map" className='w-full h-full'></div>;
+    return (
+        <div className="w-full h-full relative">
+            <div id="map" className="w-full h-full"></div>
+            {selectedLocation && (
+                <div className="absolute top-0 left-0 bg-white p-4 border border-gray-300 z-10">
+                    <h1>Location</h1>
+                    <ul>
+                        <li>설치위치: {selectedLocation.robot_id}</li>
+                        <li>Latitude: {selectedLocation.latitude.toFixed(4)}</li>
+                        <li>Longitude: {selectedLocation.longitude.toFixed(4)}</li>
+                        <li>Timestamp: {new Date(selectedLocation.timestamp).toLocaleString()}</li>
+                    </ul>
+                </div>
+            )}
+        </div>
+    )
 };
 
 export default NaverMap;

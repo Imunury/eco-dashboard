@@ -8,16 +8,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'GET') {
     try {
       const result = await prisma.$queryRaw`
-        SELECT
-          *
-        FROM
-          ecobot_status
-        GROUP BY
-          robot_id, timestamp 
-        ORDER BY
-          timestamp desc
-        LIMIT 14
-          ;
+        SELECT DISTINCT ON (robot_id) *
+        FROM ecobot_status
+        ORDER BY robot_id, timestamp DESC;
       `;
 
       res.status(200).json(result);

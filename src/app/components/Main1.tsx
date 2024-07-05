@@ -40,10 +40,10 @@ const Main1: React.FC = () => {
     return (
         <div>
             <section className='flex flex-row h-full w-full'>
-                <div className='h-full w-2/5 p-24'>
+                {/* <div className='h-full w-2/5 p-48'>
                     <RobotData locations={selectedLocation ? [selectedLocation] : []} />
-                </div>
-                <div className='h-screen w-3/5'>
+                </div> */}
+                <div className='h-screen w-full'>
                     <NaverMap locations={locations} onMarkerClick={handleMarkerClick} />
                 </div>
             </section>
