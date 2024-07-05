@@ -1,13 +1,13 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import { Location } from '../index';
+import { Location } from '../../index';
 
 interface NaverMapProps {
     locations: Location[];
 }
 
-const NaverMap: React.FC<NaverMapProps> = ({ locations }) => {
+const TrackingMap: React.FC<NaverMapProps> = ({ locations }) => {
 
     const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
 
@@ -64,4 +64,4 @@ const NaverMap: React.FC<NaverMapProps> = ({ locations }) => {
     )
 };
 
-export default NaverMap;
+export default TrackingMap;

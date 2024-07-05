@@ -19,7 +19,7 @@ const RobotData: React.FC<RobotDataProps> = ({ robotStatus }) => {
 
                         return (
                             <li key={index} className='p-3'>
-                                <p>설치위치 : {data.robot_id}</p>
+                                <p>로봇 아이디 : {data.robot_id}</p>
                                 <p>ON / OFF : {firstValue !== null ? (isMotorOn ? "ON" : "OFF") : "NO DATA"}</p>
                                 <p>배터리(%) : {data.ctr_bat_soc !== null ? data.ctr_bat_soc : "NO DATA"}</p>
                             </li>

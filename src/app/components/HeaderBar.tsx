@@ -10,11 +10,11 @@ const HeaderBar = () => {
                     ECOBOT dashboard
                 </Link>
             </div>
-            <nav className="flex space-x-4">
+            {/* <nav className="flex space-x-4">
                 <Link href="/">
                     Home
                 </Link>
-            </nav>
+            </nav> */}
         </header>
     );
 };
