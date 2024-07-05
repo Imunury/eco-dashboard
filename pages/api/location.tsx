@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           robot_id, timestamp 
         ORDER BY
           timestamp desc
-        LIMIT 10
+        LIMIT 14
           ;
       `;
 
