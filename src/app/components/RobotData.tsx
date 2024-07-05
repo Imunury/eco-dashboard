@@ -1,31 +1,30 @@
 import React from 'react';
 
-interface Location {
-    robot_id: string;
-    latitude: number;
-    longitude: number;
-    timestamp: string;
-}
+import { Location } from '../index';
+import { RobotStatus } from '../index';
 
 interface RobotDataProps {
-    locations: Location[];
+    robotStatus: RobotStatus[];
 }
 
-const RobotData: React.FC<RobotDataProps> = ({ locations }) => {
+const RobotData: React.FC<RobotDataProps> = ({ robotStatus }) => {
 
     return (
         <div>
-            <h1>Location</h1>
-            {locations.length > 0 ? (
-                <ul>
-                    {locations.map((location, index) => (
-                        <li key={index}>
-                            <p>설치위치: {location.robot_id}</p>
-                            <p>Latitude: {location.latitude.toFixed(4)}</p>
-                            <p>Longitude: {location.longitude.toFixed(4)}</p>
-                            <p>Timestamp: {new Date(location.timestamp).toLocaleString()}</p>
-                        </li>
-                    ))}
+            {robotStatus.length > 0 ? (
+                <ul >
+                    {robotStatus.map((data, index) => {
+                        const firstValue = data.motor_values && data.motor_values.length > 0 ? data.motor_values[0] : null;
+                        const isMotorOn = firstValue === 1;
+
+                        return (
+                            <li key={index} className='p-3'>
+                                <p>설치위치 : {data.robot_id}</p>
+                                <p>ON / OFF : {firstValue !== null ? (isMotorOn ? "ON" : "OFF") : "NO DATA"}</p>
+                                <p>배터리(%) : {data.ctr_bat_soc !== null ? data.ctr_bat_soc : "NO DATA"}</p>
+                            </li>
+                        );
+                    })}
                 </ul>
             ) : (
                 <p>Loading...</p>

@@ -5,26 +5,20 @@ import dynamic from 'next/dynamic';
 const NaverMap = dynamic(() => import('./NaverMap'), { ssr: false });
 const RobotData = dynamic(() => import('../components/RobotData'), { ssr: false });
 
-interface Location {
-    robot_id: string;
-    latitude: number;
-    longitude: number;
-    timestamp: string;
-}
+import { Location } from '../index';
+import { RobotStatus } from '../index';
 
 const Main1: React.FC = () => {
 
     const [locations, setLocations] = useState<Location[]>([]);
-    const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+
+    const [robotStatus, setRobotStatus] = useState<RobotStatus[]>([]);
 
     const fetchData = async () => {
-        const response = await fetch('/api/location');
+        const response = await fetch('/api/ecobot_status');
         const data = await response.json();
+        setRobotStatus(data);
         setLocations(data);
-    };
-
-    const handleMarkerClick = (location: Location) => {
-        setSelectedLocation(location);
     };
 
     useEffect(() => {
@@ -32,7 +26,7 @@ const Main1: React.FC = () => {
 
         const interval = setInterval(() => {
             fetchData();
-        }, 1000);
+        }, 10000);
 
         return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 정리
     }, []);
@@ -40,11 +34,11 @@ const Main1: React.FC = () => {
     return (
         <div>
             <section className='flex flex-row h-full w-full'>
-                {/* <div className='h-full w-2/5 p-48'>
-                    <RobotData locations={selectedLocation ? [selectedLocation] : []} />
-                </div> */}
-                <div className='h-screen w-full'>
-                    <NaverMap locations={locations} onMarkerClick={handleMarkerClick} />
+                <div className='h-full w-1/5 p-3'>
+                    <RobotData robotStatus={robotStatus} />
+                </div>
+                <div className='h-screen w-4/5'>
+                    <NaverMap locations={locations} />
                 </div>
             </section>
         </div>

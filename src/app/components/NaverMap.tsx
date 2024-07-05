@@ -1,20 +1,13 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-
-interface Location {
-    robot_id: string;
-    latitude: number;
-    longitude: number;
-    timestamp: string;
-}
+import { Location } from '../index';
 
 interface NaverMapProps {
     locations: Location[];
-    onMarkerClick: (location: Location) => void;
 }
 
-const NaverMap: React.FC<NaverMapProps> = ({ locations, onMarkerClick }) => {
+const NaverMap: React.FC<NaverMapProps> = ({ locations }) => {
 
     const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
 
@@ -36,7 +29,6 @@ const NaverMap: React.FC<NaverMapProps> = ({ locations, onMarkerClick }) => {
                     });
 
                     window.naver.maps.Event.addListener(marker, 'click', () => {
-                        onMarkerClick(location);
                         setSelectedLocation(location);
                     });
                 });
@@ -51,15 +43,15 @@ const NaverMap: React.FC<NaverMapProps> = ({ locations, onMarkerClick }) => {
                     clearInterval(checkNaverMap);
                     initializeMap();
                 }
-            }, 100);
+            }, 10000);
         }
-    }, [locations, onMarkerClick]);
+    }, [locations]);
 
     return (
         <div className="w-full h-full relative">
             <div id="map" className="w-full h-full"></div>
             {selectedLocation && (
-                <div className="absolute top-0 left-0 bg-white p-4 border border-gray-300 z-10">
+                <div className="absolute top-0 left-0 bg-white p-4 border z-10 text-red-500">
                     <h1>Location</h1>
                     <ul>
                         <li>설치위치: {selectedLocation.robot_id}</li>

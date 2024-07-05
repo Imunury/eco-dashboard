@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "pages/api/location.tsx"
+    "pages/api/ecobot_status.tsx"
   ],
   "exclude": ["node_modules"]
 }

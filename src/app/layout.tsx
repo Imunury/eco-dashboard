@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import './globals.css'
 
 import Sidebar from './components/Sidebar';
+import HeaderBar from './components/HeaderBar';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -33,9 +34,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <HeaderBar />
         <div className="flex overflow-x-hidden">
           <Sidebar />
-          <main className="flex-1">{children}</main>
+          <main>{children}</main>
         </div>
       </body>
     </html>

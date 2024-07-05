@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const result = await prisma.$queryRaw`
         SELECT DISTINCT ON (robot_id) *
-        FROM ecobot_status
+        FROM ecobot_status_temp
         ORDER BY robot_id, timestamp DESC;
       `;
 
