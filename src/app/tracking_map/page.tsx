@@ -26,9 +26,9 @@ const Home: React.FC = () => {
     }, []);
 
     return (
-        <main className='h-screen w-screen'>
+        <section className='h-full w-full'>
             <TrackingMap locations={locations} />
-        </main>
+        </section>
     );
 };
 

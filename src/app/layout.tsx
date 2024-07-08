@@ -2,11 +2,13 @@
 
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './globals.css'
 
 import Sidebar from './components/Sidebar';
 import HeaderBar from './components/HeaderBar';
+import type { RobotStatus } from '.';
+import RobotData from './components/RobotData';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,13 +33,32 @@ export default function RootLayout({
     document.head.appendChild(naverMapScript);
   }, []);
 
+  const [robotStatus, setRobotStatus] = useState<RobotStatus[]>([]);
+
+  const fetchData = async () => {
+    const response = await fetch('/api/ecobot_status');
+    const data = await response.json();
+    setRobotStatus(data);
+  };
+
+  useEffect(() => {
+    fetchData(); // 처음 로딩 시 데이터 가져오기
+
+    const interval = setInterval(() => {
+      fetchData();
+    }, 10000);
+
+    return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 정리
+  }, []);
+
   return (
     <html lang="en">
       <body>
         <HeaderBar />
         <div className="flex overflow-x-hidden">
           <Sidebar />
-          <main>{children}</main>
+          <RobotData robotStatus={robotStatus} />
+          <main className='h-screen w-4/6'>{children}</main>
         </div>
       </body>
     </html>

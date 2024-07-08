@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Location } from '../index';
 import { RobotStatus } from '../index';
 
 interface RobotDataProps {
@@ -10,7 +9,7 @@ interface RobotDataProps {
 const RobotData: React.FC<RobotDataProps> = ({ robotStatus }) => {
 
     return (
-        <div>
+        <section className='h-screen w-1/6 overflow-y-auto'>
             {robotStatus.length > 0 ? (
                 <ul >
                     {robotStatus.map((data, index) => {
@@ -29,7 +28,7 @@ const RobotData: React.FC<RobotDataProps> = ({ robotStatus }) => {
             ) : (
                 <p>Loading...</p>
             )}
-        </div>
+        </section>
     )
 }
 
