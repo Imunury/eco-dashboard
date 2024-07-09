@@ -53,9 +53,9 @@ const Control: React.FC = () => {
                 </div>
             </div>
 
-            <div className='flex flex-row w-full h-48 my-3'>
+            <div className='flex flex-row w-full h-96 my-3'>
                 <div className='w-1/2 h-full bg-yellow-200 mx-3'>
-                    <CCTV robotData={robotData} />
+                    <CCTV />
                 </div>
             </div>
 
