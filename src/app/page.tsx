@@ -6,10 +6,9 @@ const NaverMap = dynamic(() => import('./components/NaverMap'), { ssr: false });
 
 import { Location } from './index';
 
-const Main1: React.FC = () => {
+const RobotMap: React.FC = () => {
 
   const [locations, setLocations] = useState<Location[]>([]);
-
 
   const fetchData = async () => {
     const response = await fetch('/api/ecobot_status');
@@ -34,4 +33,4 @@ const Main1: React.FC = () => {
   )
 }
 
-export default Main1
+export default RobotMap

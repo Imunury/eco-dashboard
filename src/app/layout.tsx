@@ -7,9 +7,7 @@ import './globals.css'
 
 import Sidebar from './components/Sidebar';
 import HeaderBar from './components/HeaderBar';
-import type { RobotStatus } from '.';
 import RobotList from './components/RobotList';
-import { useRouter } from 'next/router';
 import { ecobot_status_temp } from '@prisma/client';
 
 
@@ -53,10 +51,10 @@ export default function RootLayout({
       <body className='h-screen w-screen overflow-x-hidden'>
         {/* <body> */}
         <HeaderBar />
-        <div className="flex h-dvh">
+        <div className="flex h-full">
           <Sidebar />
           <RobotList robotStatus={robotStatus} />
-          <main className='w-4/6'>{children}</main>
+          <main className='w-4/6 h-full'>{children}</main>
         </div>
       </body>
     </html >
