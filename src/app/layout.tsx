@@ -8,7 +8,10 @@ import './globals.css'
 import Sidebar from './components/Sidebar';
 import HeaderBar from './components/HeaderBar';
 import type { RobotStatus } from '.';
-import RobotData from './components/RobotData';
+import RobotList from './components/RobotList';
+import { useRouter } from 'next/router';
+import { ecobot_status_temp } from '@prisma/client';
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +25,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  const [robotStatus, setRobotStatus] = useState<ecobot_status_temp[]>([]);
+
   useEffect(() => {
+
+    const fetchData = async () => {
+      const response = await fetch('/api/ecobot_status');
+      const data = await response.json();
+      setRobotStatus(data);
+    };
+
+    fetchData();
+
     const naverMapScript = document.createElement('script');
     naverMapScript.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_API_KEY}`;
     naverMapScript.onload = () => {
@@ -33,34 +48,17 @@ export default function RootLayout({
     document.head.appendChild(naverMapScript);
   }, []);
 
-  const [robotStatus, setRobotStatus] = useState<RobotStatus[]>([]);
-
-  const fetchData = async () => {
-    const response = await fetch('/api/ecobot_status');
-    const data = await response.json();
-    setRobotStatus(data);
-  };
-
-  useEffect(() => {
-    fetchData(); // 처음 로딩 시 데이터 가져오기
-
-    const interval = setInterval(() => {
-      fetchData();
-    }, 10000);
-
-    return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 정리
-  }, []);
-
   return (
     <html lang="en">
-      <body>
+      <body className='h-screen w-screen overflow-x-hidden'>
+        {/* <body> */}
         <HeaderBar />
-        <div className="flex overflow-x-hidden">
+        <div className="flex h-dvh">
           <Sidebar />
-          <RobotData robotStatus={robotStatus} />
-          <main className='h-screen w-4/6'>{children}</main>
+          <RobotList robotStatus={robotStatus} />
+          <main className='w-4/6'>{children}</main>
         </div>
       </body>
-    </html>
+    </html >
   );
 }

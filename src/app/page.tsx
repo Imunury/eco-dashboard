@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 const NaverMap = dynamic(() => import('./components/NaverMap'), { ssr: false });
-const RobotData = dynamic(() => import('./components/RobotData'), { ssr: false });
 
 import { Location } from './index';
 
@@ -29,10 +28,8 @@ const Main1: React.FC = () => {
   }, []);
 
   return (
-    <section className='flex flex-row h-full w-full'>
-      <div className='h-full w-full'>
-        <NaverMap locations={locations} />
-      </div>
+    <section className='h-full w-full'>
+      <NaverMap locations={locations} />
     </section>
   )
 }

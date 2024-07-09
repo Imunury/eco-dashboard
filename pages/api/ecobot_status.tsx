@@ -1,22 +1,22 @@
-// pages/api/location.ts
-import { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import type { NextApiRequest, NextApiResponse } from 'next';
+import prisma from '../../lib/prisma';
+import { ecobot_status_temp } from '@prisma/client';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     try {
-      const result = await prisma.$queryRaw`
-        SELECT DISTINCT ON (robot_id) *
-        FROM ecobot_status_temp
-        ORDER BY robot_id, timestamp DESC;
+      const latestStatusByRobot = await prisma.$queryRaw<ecobot_status_temp[]>`
+        SELECT * FROM ecobot_status_temp
+        WHERE (robot_id, timestamp) IN (
+          SELECT robot_id, MAX(timestamp)
+          FROM ecobot_status_temp
+          GROUP BY robot_id
+        )
+        ORDER BY robot_id
       `;
-
-      res.status(200).json(result);
+      res.status(200).json(latestStatusByRobot);
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Failed to fetch data' });
+      res.status(500).json({ error: 'Failed to fetch ecobot status' });
     }
   } else {
     res.status(405).json({ message: 'Method not allowed' });
