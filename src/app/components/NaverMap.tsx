@@ -42,7 +42,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ locations }) => {
                     clearInterval(checkNaverMap);
                     initializeMap();
                 }
-            }, 10000);
+            }, 60000);
         }
     }, [locations]);
 

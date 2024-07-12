@@ -45,3 +45,19 @@ p {
 a {
   font-size: calc(1vw);
 }
+
+button {
+  @apply bg-blue-300 rounded-lg p-2 m-2;
+}
+
+.control {
+  @apply flex flex-col;
+}
+
+.control > div {
+  @apply flex flex-row w-full my-3;
+}
+
+.control > div > div {
+  @apply h-full bg-yellow-200 mx-3;
+}
