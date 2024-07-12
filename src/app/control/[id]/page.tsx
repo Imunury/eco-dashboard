@@ -10,7 +10,7 @@ import CCTV from '../components/CCTV'
 import ModeControl from '../components/ModeControl'
 import SolarCharge from '../components/SolarCharge';
 import ModeInfo from '../components/ModeInfo';
-import Motor from '../components/Motor';
+import Pump from '../components/Pump';
 
 const Control: React.FC = () => {
 
@@ -72,9 +72,9 @@ const Control: React.FC = () => {
                 </div>
             </div>
 
-            <div className='h-60'>
+            <div className='h-64'>
                 <div className='w-1/3'>
-                    <Motor robotData={robotData} />
+                    <Pump robotData={robotData} />
                 </div>
                 <div>
 
