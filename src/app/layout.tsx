@@ -29,13 +29,23 @@ export default function RootLayout({
   useEffect(() => {
 
     const fetchData = async () => {
-      const response = await fetch('/api/ecobot_status');
-      const data = await response.json();
-      setRobotStatus(data);
+      try {
+        const response = await fetch('/api/ecobot_status');
+        const data = await response.json();
+        setRobotStatus(data);
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+      }
     };
 
     fetchData();
 
+    const intervalId = setInterval(fetchData, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
     const naverMapScript = document.createElement('script');
     naverMapScript.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_API_KEY}`;
     naverMapScript.onload = () => {
@@ -44,7 +54,8 @@ export default function RootLayout({
       }
     };
     document.head.appendChild(naverMapScript);
-  }, []);
+  })
+
 
   return (
     <html lang="en">

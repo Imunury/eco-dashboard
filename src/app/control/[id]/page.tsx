@@ -9,6 +9,8 @@ import RobotInfo from '../components/RobotInfo'
 import CCTV from '../components/CCTV'
 import ModeControl from '../components/ModeControl'
 import SolarCharge from '../components/SolarCharge';
+import ModeInfo from '../components/ModeInfo';
+import Motor from '../components/Motor';
 
 const Control: React.FC = () => {
 
@@ -19,13 +21,21 @@ const Control: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             if (id) {
-                const response = await fetch(`/api/robot_status/${id}`);
-                const data = await response.json();
-                setRobotData(data);
+                try {
+                    const response = await fetch(`/api/robot_status/${id}`);
+                    const data = await response.json();
+                    setRobotData(data);
+                } catch (error) {
+                    console.error("Failed to fetch data:", error);
+                }
             }
         };
 
         fetchData();
+
+        const intervalId = setInterval(fetchData, 5000);
+
+        return () => clearInterval(intervalId);
     }, [id]);
 
     if (!robotData) {
@@ -53,9 +63,21 @@ const Control: React.FC = () => {
                 </div>
             </div>
 
-            <div className='flex flex-row w-full h-96 my-3'>
-                <div className='w-1/2 h-full bg-yellow-200 mx-3'>
-                    <CCTV />
+            <div className='flex flex-row w-full h-64 my-3'>
+                <div className='w-1/3 h-full bg-yellow-200 mx-3'>
+                    <CCTV robotData={robotData} />
+                </div>
+                <div className='w-2/3 h-full bg-yellow-200 mx-3'>
+                    <ModeInfo robotData={robotData} />
+                </div>
+            </div>
+
+            <div className='flex flex-row w-full h-60 my-3'>
+                <div className='w-1/3 h-full bg-yellow-200 mx-3'>
+                    <Motor robotData={robotData} />
+                </div>
+                <div>
+
                 </div>
             </div>
 

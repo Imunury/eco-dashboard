@@ -25,3 +25,23 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+h1 {
+  font-size: calc(1.2vw);
+}
+
+h2 {
+  font-size: calc(1vw);
+}
+
+h3 {
+  font-size: calc(0.9vw);
+}
+
+p {
+  font-size: calc(1vw);
+}
+
+a {
+  font-size: calc(1vw);
+}

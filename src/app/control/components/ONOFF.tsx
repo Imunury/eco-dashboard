@@ -6,9 +6,13 @@ interface RobotInfoProps {
 }
 
 const ONOFF: React.FC<RobotInfoProps> = ({ robotData }) => {
+
+    const formattedTimestamp = new Date(robotData.timestamp).toLocaleString();
+
     return (
         <div className='text-center'>
             <h1>ON / OFF</h1>
+            <h3>{formattedTimestamp}</h3>
         </div>
     )
 }
