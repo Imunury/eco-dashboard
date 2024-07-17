@@ -2,6 +2,9 @@
 
 import React, { useEffect, useState } from 'react';
 import { ecobot_status_temp } from '@prisma/client';
+import ModeManual from './ModeManual';
+import ModeCourse from './ModeCourse';
+import ModePosition from './ModePosition';
 
 interface RobotInfoProps {
     robotData: ecobot_status_temp;
@@ -27,8 +30,16 @@ const ModeInfo: React.FC<RobotInfoProps> = ({ robotData }) => {
 
     return (
         <div className='text-center'>
-            <h1>Mode Info</h1>
-            <h2>{mode}</h2>
+            <h1>Mode Info : {mode}</h1>
+            {mode === "수동" && (
+                <ModeManual robotData={robotData} />
+            )}
+            {mode === "코스주행" && (
+                <ModeCourse />
+            )}
+            {mode === "위치사수" && (
+                <ModePosition />
+            )}
         </div>
     )
 }

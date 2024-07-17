@@ -63,7 +63,7 @@ const Control: React.FC = () => {
                 </div>
             </div>
 
-            <div className='h-64'>
+            <div className='h-72'>
                 <div className='w-1/3'>
                     <CCTV robotData={robotData} />
                 </div>

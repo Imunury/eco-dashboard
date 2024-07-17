@@ -10,13 +10,15 @@ export default function handler(req, res) {
     return;
   }
 
+  const target = `http://${baseIp}`;
+  console.log(target);
   const proxy = createProxyMiddleware({
-    target: `http://${baseIp}`,
+    target,
     changeOrigin: true,
+    selfHandleResponse: false,
     pathRewrite: {
       [`^/api/proxy`]: "", // API 경로 재작성
     },
-    selfHandleResponse: false,
     onProxyReq: (proxyReq, req, res) => {
       proxyReq.path = `/${fullUrl}`;
       proxyReq.setHeader(

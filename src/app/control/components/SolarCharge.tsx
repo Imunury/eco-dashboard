@@ -11,12 +11,12 @@ const SolarCharge: React.FC<RobotInfoProps> = ({ robotData }) => {
             <h1>Solar Charge</h1>
             <div className='flex justify-evenly'>
                 <div>
-                    <h2>배터리 전압</h2>
+                    <h2>충전전압</h2>
                     <h3>{robotData.ctr_bat_v}</h3>
                 </div>
                 <div>
-                    <h2>배터리 전류</h2>
-                    <h3>{robotData.ctr_bat_c}</h3>
+                    <h2>태양광 전압</h2>
+                    <h3>{robotData.ctr_pv_v}</h3>
                 </div>
                 <div>
                     <h2>태양광 전류</h2>
