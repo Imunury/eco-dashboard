@@ -59,7 +59,7 @@ button {
 }
 
 .control > div > div {
-  @apply h-full bg-yellow-200 mx-3;
+  @apply h-full bg-yellow-200 mx-3 rounded-lg;
 }
 
 .pump {

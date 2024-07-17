@@ -1,28 +1,27 @@
-"use client"
+"use client";
 
 import { useEffect, useRef } from "react";
 
 interface CCTVProps {
-    baseIp: string
+    baseIp: string;
 }
 
 const CCTVSeg: React.FC<CCTVProps> = ({ baseIp }) => {
 
-    const loginuser = "admin"; // 사용자 이름 설정
-    const loginpass = "ecopeace123"; // 비밀번호 설정
     const imgRef = useRef<HTMLDivElement>(null);
 
-    const getHttpHost = (cgiUrl: string) => {
-        return `${baseIp}/${cgiUrl}?loginuse=${loginuser}&loginpas=${encodeURIComponent(loginpass)}`;
+    const getProxiedUrl = (cgiUrl: string) => {
+        const timestamp = `${new Date().getTime()}${Math.random()}`;
+        return `/api/proxy?baseIp=${baseIp}&fullUrl=${cgiUrl}&${timestamp}`;
     };
 
     const ptz_control = (command: string | number, onestep: string | number) => {
-        const url = getHttpHost("decoder_control.cgi");
-        fetch(`${url}&command=${command}&onestep=${onestep}&${new Date().getTime()}${Math.random()}`);
+        const url = getProxiedUrl(`decoder_control.cgi?command=${command}&onestep=${onestep}`);
+        fetch(url);
     };
 
     const loadVideoStream = () => {
-        const imgsrc = getHttpHost("snapshot.cgi");
+        const imgsrc = getProxiedUrl('snapshot.cgi?loginuse=admin&loginpas=ecopeace123');
         PlayImg(imgsrc);
     };
 
@@ -46,11 +45,10 @@ const CCTVSeg: React.FC<CCTVProps> = ({ baseIp }) => {
 
     useEffect(() => {
         loadVideoStream();
-    }, []);
+    }, [baseIp]);
 
     return (
         <div>
-            <input type="hidden" value={baseIp} />
             <div>
                 <button onClick={() => ptz_control(2, 1)} onMouseUp={() => ptz_control(0, 1)}>상</button>
                 <button onClick={() => ptz_control(4, 1)} onMouseUp={() => ptz_control(0, 1)}>좌</button>
@@ -62,4 +60,4 @@ const CCTVSeg: React.FC<CCTVProps> = ({ baseIp }) => {
     )
 }
 
-export default CCTVSeg
+export default CCTVSeg;
