@@ -16,44 +16,43 @@ const ONOFF: React.FC<RobotInfoProps> = ({ robotData }) => {
         setIsOn(robotData.motor_values[0] !== 0);
     }, [robotData.motor_values]);
 
-    const clickSwitch = (isOn: boolean) => {
+    const clickSwitch = async (isOn: boolean) => {
         const mode = isOn ? '1' : '0';
-        const dataSend = {
-            topics: [
-                {
-                    topic: 'cmd_plc',
-                    payload: mode,
-                },
-                {
-                    topic: "mtr_ctrl",
-                    payload: "stop"
-                },
-                {
-                    topic: "drv_mode",
-                    palyload: "00"
-                }
-            ],
-        };
 
-        fetch(`http://112.164.105.160:4001/send-mqtt/${robotId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(dataSend),
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error sending data:', error);
+        try {
+            const response = await fetch('/api/send-mqtt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: robotId,
+                    topics: [
+                        {
+                            topic: "cmd_plc",
+                            payload: mode
+                        },
+                        {
+                            topic: "mtr_ctrl",
+                            payload: "stop"
+                        }
+                        , {
+                            topic: "drv_mode",
+                            palyload: "00"
+                        }
+                    ]
+                }),
             });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log('Success:', data);
+        } catch (error) {
+            console.error('Error sending data:', error);
+        }
+
     };
 
     return (
