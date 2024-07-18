@@ -29,16 +29,16 @@ const ModeInfo: React.FC<RobotInfoProps> = ({ robotData }) => {
     }, [robotData.current_state])
 
     return (
-        <div className='text-center'>
+        <div className='text-center h-full'>
             <h1>Mode Info : {mode}</h1>
             {mode === "수동" && (
                 <ModeManual robotData={robotData} />
             )}
             {mode === "코스주행" && (
-                <ModeCourse />
+                <ModeCourse robotData={robotData} />
             )}
             {mode === "위치사수" && (
-                <ModePosition />
+                <ModePosition robotData={robotData} />
             )}
         </div>
     )
