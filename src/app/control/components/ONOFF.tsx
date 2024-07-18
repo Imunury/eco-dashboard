@@ -24,14 +24,14 @@ const ONOFF: React.FC<RobotInfoProps> = ({ robotData }) => {
                     topic: 'cmd_plc',
                     payload: mode,
                 },
-                // {
-                //     topic: "mtr_ctrl",
-                //     payload: "stop"
-                // },
-                // {
-                //     topic: "drv_mode",
-                //     palyload: "00"
-                // }
+                {
+                    topic: "mtr_ctrl",
+                    payload: "stop"
+                },
+                {
+                    topic: "drv_mode",
+                    palyload: "00"
+                }
             ],
         };
 

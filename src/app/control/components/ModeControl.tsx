@@ -45,10 +45,10 @@ const ModeControl: React.FC<RobotInfoProps> = ({ robotData }) => {
         <div className='text-center'>
             <h1>Mode Control</h1>
             <div className='flex justify-evenly'>
-                <button onClick={() => clickMode("00")}>정지</button>
-                <button onClick={() => clickMode("01")}>수동</button>
-                <button onClick={() => clickMode("02")}>코스주행</button>
-                <button onClick={() => clickMode("03")}>위치사수</button>
+                <button className="bg-red-400" onClick={() => clickMode("00")}>정지</button>
+                <button className="bg-green-400" onClick={() => clickMode("01")}>수동</button>
+                <button className="bg-orange-400" onClick={() => clickMode("02")}>코스주행</button>
+                <button className="bg-cyan-400" onClick={() => clickMode("03")}>위치사수</button>
             </div>
         </div>
 
