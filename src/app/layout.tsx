@@ -45,20 +45,9 @@ export default function RootLayout({
     return () => clearInterval(intervalId);
   }, []);
 
-  useEffect(() => {
-    const naverMapScript = document.createElement('script');
-    naverMapScript.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_API_KEY}`;
-    naverMapScript.onload = () => {
-      if (window.naver && window.naver.maps) {
-        console.log('Naver Map API loaded');
-      }
-    };
-    document.head.appendChild(naverMapScript);
-  })
-
   return (
     <html lang="en">
-      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+      {/* <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> */}
       <body className='h-screen w-screen overflow-x-hidden'>
         {/* <body> */}
         <HeaderBar />

@@ -9,7 +9,7 @@ const Sidebar = () => {
                 <Link href="/">
                     Robot Map
                 </Link>
-                <Link href="/tracking_map">
+                <Link href="/tracking_map/ecobot00001">
                     Tracking Map
                 </Link>
                 <Link href="/control/ecobot00001">
