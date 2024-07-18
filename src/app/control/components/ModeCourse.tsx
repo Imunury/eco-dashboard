@@ -11,66 +11,47 @@ const ModeCourse: React.FC<RobotInfoProps> = ({ robotData }) => {
     const courseMinVelocity = robotData.course_min_velocity !== null ? robotData.course_min_velocity * 100 : 'N/A';
     const courseMinAngVelocity = robotData.course_min_ang_velocity !== null ? robotData.course_min_ang_velocity * 100 : 'N/A';
 
-    const clickSpeed = (speed: string, hold: string) => {
-        const dataSend = {
-            topics: [
-                {
-                    topic: 'param',
-                    payload: `course_min_velocity=${speed},holding_min_velocity=${hold}`,
-                }
-            ]
+    const clickSpeed = async (speed: string, hold: string) => {
+
+        try {
+            const response = await fetch('/api/send-mqtt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: robotId, topic: "param", payload: `course_min_velocity=${speed},holding_min_velocity=${hold}` }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log('Success:', data);
+        } catch (error) {
+            console.error('Error sending data:', error);
         }
 
-        fetch(`http://112.164.105.160:4001/send-mqtt/${robotId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(dataSend),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch(error => {
-                console.error('Error sending data:', error);
-            });
     }
 
-    const clickRotate = (rotate: string, hold: string) => {
-        const dataSend = {
-            topics: [
-                {
-                    topic: 'param',
-                    payload: `course_min_ang_velocity=${rotate},holding_min_ang_velocity=${hold}`,
-                }
-            ]
-        }
+    const clickRotate = async (rotate: string, hold: string) => {
 
-        fetch(`http://112.164.105.160:4001/send-mqtt/${robotId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(dataSend),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch(error => {
-                console.error('Error sending data:', error);
+        try {
+            const response = await fetch('/api/send-mqtt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: robotId, topic: "param", payload: `course_min_ang_velocity=${rotate},holding_min_ang_velocity=${hold}` }),
             });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log('Success:', data);
+        } catch (error) {
+            console.error('Error sending data:', error);
+        }
     }
 
     return (

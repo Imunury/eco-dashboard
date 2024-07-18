@@ -8,35 +8,24 @@ const ModeManual: React.FC<RobotInfoProps> = ({ robotData }) => {
 
     const robotId = robotData.robot_id;
 
-    const clickControl = (control: string) => {
-        const dataSend = {
-            topics: [
-                {
-                    topic: 'mtr_ctrl',
-                    payload: control,
-                }
-            ]
-        }
-
-        fetch(`http://112.164.105.160:4001/send-mqtt/${robotId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(dataSend),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch(error => {
-                console.error('Error sending data:', error);
+    const clickControl = async (payload: string) => {
+        try {
+            const response = await fetch('/api/send-mqtt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: robotId, topic: "mtr_ctrl", payload }),
             });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log('Success:', data);
+        } catch (error) {
+            console.error('Error sending data:', error);
+        }
     };
 
     const clickSpeed = async (payload: string) => {
