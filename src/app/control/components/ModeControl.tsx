@@ -8,7 +8,7 @@ interface RobotInfoProps {
 const SendMQTT: React.FC<RobotInfoProps> = ({ robotData }) => {
 
     const robotId = robotData.robot_id
-    const clickSwitch = async (mode: string) => {
+    const clickMode = async (mode: string) => {
         try {
             const response = await fetch('/api/send-mqtt', {
                 method: 'POST',
@@ -30,10 +30,10 @@ const SendMQTT: React.FC<RobotInfoProps> = ({ robotData }) => {
 
     return (
         <div>
-            <button onClick={() => clickSwitch('00')}>수동</button>
-            <button onClick={() => clickSwitch('01')}>코스주행</button>
-            <button onClick={() => clickSwitch('02')}>위치사수</button>
-            <button onClick={() => clickSwitch('03')}>정지</button>
+            <button className="bg-red-400" onClick={() => clickMode("00")}>정지</button>
+            <button className="bg-green-400" onClick={() => clickMode("01")}>수동</button>
+            <button className="bg-orange-400" onClick={() => clickMode("02")}>코스주행</button>
+            <button className="bg-cyan-400" onClick={() => clickMode("03")}>위치사수</button>
         </div>
     );
 };
