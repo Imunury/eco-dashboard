@@ -58,17 +58,16 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-        <body className='h-screen w-screen overflow-x-hidden'>
-          {/* <body> */}
-          <HeaderBar />
-          <div className="flex h-full">
-            <Sidebar />
-            <RobotList robotStatus={robotStatus} />
-            <main className='w-4/6 h-full'>{children}</main>
-          </div>
-        </body>
-      </meta>
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+      <body className='h-screen w-screen overflow-x-hidden'>
+        {/* <body> */}
+        <HeaderBar />
+        <div className="flex h-full">
+          <Sidebar />
+          <RobotList robotStatus={robotStatus} />
+          <main className='w-4/6 h-full'>{children}</main>
+        </div>
+      </body>
     </html >
   );
 }
