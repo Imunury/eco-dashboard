@@ -19,7 +19,7 @@ const ModeCourse: React.FC<RobotInfoProps> = ({ robotData }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: robotId, topic: "param", payload: `course_min_velocity=${speed},holding_min_velocity=${hold}` }),
+                body: JSON.stringify({ id: robotId, topics: [{ topic: "param", payload: `course_min_velocity=${speed},holding_min_velocity=${hold}` }] }),
             });
 
             if (!response.ok) {
@@ -41,7 +41,7 @@ const ModeCourse: React.FC<RobotInfoProps> = ({ robotData }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: robotId, topic: "param", payload: `course_min_ang_velocity=${rotate},holding_min_ang_velocity=${hold}` }),
+                body: JSON.stringify({ id: robotId, topics: [{ topic: "param", payload: `course_min_ang_velocity=${rotate},holding_min_ang_velocity=${hold}` }] }),
             });
 
             if (!response.ok) {

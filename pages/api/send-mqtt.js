@@ -3,15 +3,10 @@ export default async function handler(
   res = NextApiResponse
 ) {
   if (req.method === "POST") {
-    const { id, topic, payload } = req.body;
+    const { id, topics } = req.body;
 
     const dataSend = {
-      topics: [
-        {
-          topic: topic,
-          payload: payload,
-        },
-      ],
+      topics: topics,
     };
 
     try {

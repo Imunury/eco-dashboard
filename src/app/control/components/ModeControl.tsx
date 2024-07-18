@@ -16,7 +16,7 @@ const ModeControl: React.FC<RobotInfoProps> = ({ robotData }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: robotId, topic: "drv_mode", payload }),
+                body: JSON.stringify({ id: robotId, topics: [{ topic: "drv_mode", payload: payload }] }),
             });
 
             if (!response.ok) {

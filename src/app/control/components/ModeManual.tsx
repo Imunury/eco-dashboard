@@ -15,7 +15,7 @@ const ModeManual: React.FC<RobotInfoProps> = ({ robotData }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: robotId, topic: "mtr_ctrl", payload }),
+                body: JSON.stringify({ id: robotId, topics: [{ topic: "mtr_ctrl", payload: payload }] }),
             });
 
             if (!response.ok) {
@@ -35,7 +35,7 @@ const ModeManual: React.FC<RobotInfoProps> = ({ robotData }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: robotId, topic: "set_twist", payload }),
+                body: JSON.stringify({ id: robotId, topics: [{ topic: "set_twist", payload: payload }] }),
             });
 
             if (!response.ok) {

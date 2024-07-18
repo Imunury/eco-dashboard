@@ -19,7 +19,7 @@ const ModePosition: React.FC<RobotInfoProps> = ({ robotData }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: robotId, topic: "param", payload: `holding_goal_distance_threshold=${position}` }),
+                body: JSON.stringify({ id: robotId, topics: [{ topic: "param", payload: `holding_goal_distance_threshold=${position}` }] }),
             });
 
             if (!response.ok) {
