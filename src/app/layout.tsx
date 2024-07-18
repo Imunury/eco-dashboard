@@ -57,7 +57,7 @@ export default function RootLayout({
   })
 
   return (
-    <html lang="en">
+    <html lang="en" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
       <body className='h-screen w-screen overflow-x-hidden'>
         {/* <body> */}
         <HeaderBar />
