@@ -3,13 +3,13 @@ export default async function handler(
   res = NextApiResponse
 ) {
   if (req.method === "POST") {
-    const { id, mode } = req.body;
+    const { id, topic, payload } = req.body;
 
     const dataSend = {
       topics: [
         {
-          topic: "drv_mode",
-          payload: mode,
+          topic: topic,
+          payload: payload,
         },
       ],
     };

@@ -34,7 +34,9 @@ const RobotList: React.FC<RobotListProps> = ({ robotStatus }) => {
                     })}
                 </ul>
             ) : (
-                <p>Loading...</p>
+                <p>Loading...
+                    n der o
+                </p>
             )}
 
         </section>

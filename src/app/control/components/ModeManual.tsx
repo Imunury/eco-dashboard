@@ -39,35 +39,24 @@ const ModeManual: React.FC<RobotInfoProps> = ({ robotData }) => {
             });
     };
 
-    const clickSpeed = (speed: string) => {
-        const dataSend = {
-            topics: [
-                {
-                    topic: 'set_twist',
-                    payload: speed,
-                }
-            ]
-        }
-
-        fetch(`http://112.164.105.160:4001/send-mqtt/${robotId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(dataSend),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch(error => {
-                console.error('Error sending data:', error);
+    const clickSpeed = async (payload: string) => {
+        try {
+            const response = await fetch('/api/send-mqtt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: robotId, topic: "set_twist", payload }),
             });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log('Success:', data);
+        } catch (error) {
+            console.error('Error sending data:', error);
+        }
     }
 
     return (

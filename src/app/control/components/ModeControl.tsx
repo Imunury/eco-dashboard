@@ -5,17 +5,18 @@ interface RobotInfoProps {
     robotData: ecobot_status_temp;
 }
 
-const SendMQTT: React.FC<RobotInfoProps> = ({ robotData }) => {
+const ModeControl: React.FC<RobotInfoProps> = ({ robotData }) => {
 
     const robotId = robotData.robot_id
-    const clickMode = async (mode: string) => {
+
+    const clickMode = async (payload: string) => {
         try {
             const response = await fetch('/api/send-mqtt', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: robotId, mode }),
+                body: JSON.stringify({ id: robotId, topic: "drv_mode", payload }),
             });
 
             if (!response.ok) {
@@ -38,4 +39,4 @@ const SendMQTT: React.FC<RobotInfoProps> = ({ robotData }) => {
     );
 };
 
-export default SendMQTT;
+export default ModeControl;
