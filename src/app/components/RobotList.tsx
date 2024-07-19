@@ -1,22 +1,25 @@
+"use client";
+
 import { ecobot_status_temp } from '@prisma/client';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 interface RobotListProps {
     robotStatus: ecobot_status_temp[];
 }
 
-
 const RobotList: React.FC<RobotListProps> = ({ robotStatus }) => {
-
     const router = useRouter();
+    const pathname = usePathname() || '';
 
     const handleRobotClick = (robotId: string) => {
-        router.push(`/control/${robotId}`);
+        if (pathname.startsWith('/control')) {
+            router.push(`/control/${robotId}`);
+        } else if (pathname.startsWith('/tracking_map')) {
+            router.push(`/tracking_map/${robotId}`);
+        }
     };
 
     return (
-
-
         <section className='w-1/6 overflow-y-auto'>
             {robotStatus.length > 0 ? (
                 <ul>
@@ -34,13 +37,10 @@ const RobotList: React.FC<RobotListProps> = ({ robotStatus }) => {
                     })}
                 </ul>
             ) : (
-                <p>Loading...
-                    n der o
-                </p>
+                <p>Loading...</p>
             )}
-
         </section>
-    )
-}
+    );
+};
 
 export default RobotList;

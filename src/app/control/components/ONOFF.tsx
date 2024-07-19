@@ -38,7 +38,7 @@ const ONOFF: React.FC<RobotInfoProps> = ({ robotData }) => {
                         }
                         , {
                             topic: "drv_mode",
-                            palyload: "00"
+                            payload: "00"
                         }
                     ]
                 }),
