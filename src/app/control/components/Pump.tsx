@@ -9,39 +9,31 @@ interface RobotInfoProps {
 const Pump: React.FC<RobotInfoProps> = ({ robotData }) => {
 
     const robotId = robotData.robot_id;
-    const [pumpStatus, setPumpStatus] = useState([false, false, false, false]);
+    const [isOn, setIsOn] = useState(false);
+    const [pumpStatus, setPumpStatus] = useState([0, 0, 0, 0]);
 
     useEffect(() => {
         setPumpStatus([
-            robotData.pump_values[0] !== 0,
-            robotData.pump_values[1] !== 0,
-            robotData.pump_values[2] !== 0,
-            robotData.pump_values[3] !== 0
+            robotData.pump_values[0] !== 0 ? 1 : 0,
+            robotData.pump_values[1] !== 0 ? 1 : 0,
+            robotData.pump_values[2] !== 0 ? 1 : 0,
+            robotData.pump_values[3] !== 0 ? 1 : 0
         ]);
     }, [robotData.pump_values]);
 
-    const clickSwitch = async (index: number, isOn: boolean) => {
-        const newPumpStatus = [...pumpStatus];
-        newPumpStatus[index] = isOn;
+    const clickSwitch = async (index: number) => {
 
-        const pump = isOn ? '1' : '0'; // Set the payload based on the new state
+        pumpStatus[index] = pumpStatus[index] ? 0 : 1;
 
-        const dataSend = {
-            topics: [
-                {
-                    topic: `pmp_ctrl`,
-                    payload: pump
-                }
-            ]
-        }
+        const newPumpStatus = pumpStatus.join(',')
 
         try {
-            const response = await fetch(`http://112.164.105.160:4001/send-mqtt/${robotId}`, {
+            const response = await fetch('/api/send-mqtt', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(dataSend)
+                body: JSON.stringify({ id: robotId, topics: [{ topic: "pmp_ctrl", payload: newPumpStatus }] }),
             });
 
             if (!response.ok) {
@@ -49,10 +41,6 @@ const Pump: React.FC<RobotInfoProps> = ({ robotData }) => {
             }
             const data = await response.json();
             console.log('Success:', data);
-
-            // Only update state if the request was successful
-            setPumpStatus(newPumpStatus);
-
         } catch (error) {
             console.error('Error sending data:', error);
         }
@@ -78,14 +66,16 @@ const Pump: React.FC<RobotInfoProps> = ({ robotData }) => {
                     {pumpStatus.map((isOn, index) => (
                         <ToggleSwitch
                             key={index}
-                            isOn={isOn}
-                            onChange={(newIsOn) => clickSwitch(index, newIsOn)}
+                            isOn={pumpStatus[index] === 1 ? true : false}
+                            onChange={() => clickSwitch(index)}
                         />
                     ))}
                 </div>
                 <div>
-                    <h3>스케쥴</h3>
-                    <ToggleSwitch isOn={scheduleOn} onChange={clickSchedule} />
+                    <div>
+                        <h3>스케쥴</h3>
+                        <ToggleSwitch isOn={scheduleOn} onChange={clickSchedule} />
+                    </div>
                     <h3>간격(초)</h3>
                     <input type='number' />
                     <h3>시퀀스</h3>
