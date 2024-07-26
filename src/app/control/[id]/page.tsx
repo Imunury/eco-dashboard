@@ -72,7 +72,7 @@ const Control: React.FC = () => {
                 </div>
             </div>
 
-            <div className='h-72'>
+            <div className='h-64'>
                 <div className='w-2/3'>
                     <Pump robotData={robotData} />
                 </div>

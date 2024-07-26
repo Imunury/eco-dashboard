@@ -4,16 +4,26 @@ import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 const NaverMap = dynamic(() => import('./components/NaverMap'), { ssr: false });
 
-import { Location } from './index';
+import type { RobotAll } from './index';
 
 const RobotMap: React.FC = () => {
 
-  const [locations, setLocations] = useState<Location[]>([]);
+  const [robotAll, setRobotall] = useState<RobotAll[]>([]);
 
   const fetchData = async () => {
-    const response = await fetch('/api/ecobot_status');
-    const data = await response.json();
-    setLocations(data);
+    try {
+      const [robotResponse, waterResponse, allResponse] = await Promise.all([
+        fetch('/api/ecobot_status'),
+        fetch('/api/water_quality'),
+        fetch('/api/robot_all')
+      ]);
+      const robot_status = await robotResponse.json();
+      const water_quality = await waterResponse.json();
+      const robot_all = await allResponse.json();
+      setRobotall(robot_all);
+    } catch (error) {
+      console.error('Failed to fetch data', error);
+    }
   };
 
   useEffect(() => {
@@ -21,7 +31,7 @@ const RobotMap: React.FC = () => {
 
     const interval = setInterval(() => {
       fetchData();
-    }, 10000);
+    }, 60000);
 
     return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 정리
   }, []);
@@ -35,11 +45,11 @@ const RobotMap: React.FC = () => {
       }
     };
     document.head.appendChild(naverMapScript);
-  })
+  }, [])
 
   return (
     <section className='h-full w-full'>
-      <NaverMap locations={locations} />
+      <NaverMap robotAll={robotAll} />
     </section>
   )
 }

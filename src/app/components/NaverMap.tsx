@@ -1,15 +1,14 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import { Location } from '../index';
+import type { RobotAll } from '..';
 
 interface NaverMapProps {
-    locations: Location[];
+    robotAll: RobotAll[];
 }
 
-const NaverMap: React.FC<NaverMapProps> = ({ locations }) => {
-
-    const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
+    const [selectedRobot, setSelectedRobot] = useState<RobotAll | null>(null);
 
     useEffect(() => {
         const initializeMap = () => {
@@ -18,18 +17,40 @@ const NaverMap: React.FC<NaverMapProps> = ({ locations }) => {
                 const options = {
                     center: new window.naver.maps.LatLng(36.5324, 127.6120),
                     zoom: 8,
+                    mapTypeId: 'satellite'
                 };
                 const map = new window.naver.maps.Map(container, options);
 
-                locations.forEach(location => {
-                    const marker = new window.naver.maps.Marker({
-                        position: new window.naver.maps.LatLng(location.latitude, location.longitude),
+                robotAll.forEach(data => {
+
+                    let textClass = 'text-white'
+                    if (data.chl_ug_l > 60) {
+                        textClass = 'textRed'
+                    } else if (data.chl_ug_l > 30) {
+                        textClass = 'textOrange'
+                    }
+
+                    const marker1 = new window.naver.maps.Marker({
+                        position: new window.naver.maps.LatLng(data.latitude, data.longitude),
+                        map: map,
+                        icon: {
+                            content: `<div class="markerInfo">
+                                <p>${data.robot_id}</p>
+                                <p><span>클로로필 : </span><span class="${textClass}">${data.chl_ug_l}</span></p>
+                                <p><span>남조류 : </span><span class="${textClass}">${data.bg_ppb}</span></p>
+                            </div>`
+                        },
+
+                    });
+
+                    const marker2 = new window.naver.maps.Marker({
+                        position: new window.naver.maps.LatLng(data.latitude, data.longitude),
                         map: map,
                     });
 
-                    window.naver.maps.Event.addListener(marker, 'click', () => {
-                        setSelectedLocation(location);
-                    });
+                    // marker.addListener('click', () => {
+                    //     setSelectedRobot(data);
+                    // });
                 });
             }
         };
@@ -42,26 +63,23 @@ const NaverMap: React.FC<NaverMapProps> = ({ locations }) => {
                     clearInterval(checkNaverMap);
                     initializeMap();
                 }
-            }, 60000);
+            }, 100);
         }
-    }, [locations]);
+    }, [robotAll]);
 
     return (
         <div className="w-full h-full relative">
             <div id="map" className="w-full h-full"></div>
-            {selectedLocation && (
+            {selectedRobot && (
                 <div className="absolute top-0 left-0 bg-white p-4 border z-10 text-red-500">
-                    <h1>Location</h1>
                     <ul>
-                        <li>로봇 아이디: {selectedLocation.robot_id}</li>
-                        <li>Latitude: {selectedLocation.latitude.toFixed(4)}</li>
-                        <li>Longitude: {selectedLocation.longitude.toFixed(4)}</li>
-                        <li>Timestamp: {new Date(selectedLocation.timestamp).toLocaleString()}</li>
+                        <li>로봇 아이디: {selectedRobot.robot_id}</li>
+                        <li>Timestamp: {new Date(selectedRobot.timestamp).toLocaleString()}</li>
                     </ul>
                 </div>
             )}
         </div>
-    )
+    );
 };
 
 export default NaverMap;

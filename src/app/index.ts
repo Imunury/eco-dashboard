@@ -1,13 +1,8 @@
-export interface Location {
+export interface RobotAll {
   robot_id: string;
+  timestamp: string;
+  chl_ug_l: number;
+  bg_ppb: number;
   latitude: number;
   longitude: number;
-  timestamp: string;
-}
-
-export interface RobotStatus {
-  robot_id: string;
-  timestamp: string;
-  motor_values: number[];
-  ctr_bat_soc: number;
 }

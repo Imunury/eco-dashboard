@@ -2,49 +2,15 @@
 
 import React, { useEffect, useState } from 'react';
 import { Location } from '../../index';
+import type { ecobot_status_temp } from '@prisma/client';
 
-interface NaverMapProps {
-    locations: Location[];
+interface RobotInfoProps {
+    robotData: ecobot_status_temp;
 }
 
-const TrackingMap: React.FC<NaverMapProps> = ({ locations }) => {
+const TrackingMap: React.FC<RobotInfoProps> = ({ robotData }) => {
 
     const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
-
-    useEffect(() => {
-        const initializeMap = () => {
-            if (window.naver && window.naver.maps) {
-                const container = document.getElementById('map');
-                const options = {
-                    center: new window.naver.maps.LatLng(36.5324, 127.6120),
-                    zoom: 8,
-                };
-                const map = new window.naver.maps.Map(container, options);
-
-                locations.forEach(location => {
-                    const marker = new window.naver.maps.Marker({
-                        position: new window.naver.maps.LatLng(location.latitude, location.longitude),
-                        map: map,
-                    });
-
-                    window.naver.maps.Event.addListener(marker, 'click', () => {
-                        setSelectedLocation(location);
-                    });
-                });
-            }
-        };
-
-        if (window.naver && window.naver.maps) {
-            initializeMap();
-        } else {
-            const checkNaverMap = setInterval(() => {
-                if (window.naver && window.naver.maps) {
-                    clearInterval(checkNaverMap);
-                    initializeMap();
-                }
-            }, 10000);
-        }
-    }, [locations]);
 
     return (
         <div className="w-full h-full relative">

@@ -67,10 +67,14 @@ button:hover {
 }
 
 .pump {
-  @apply flex h-full justify-evenly;
+  @apply flex h-56 justify-evenly w-full;
 }
 
 .pump > div {
+  @apply flex flex-row w-1/2 justify-evenly;
+}
+
+.pump > div > div {
   @apply flex flex-col justify-evenly;
 }
 
@@ -101,4 +105,20 @@ button:hover {
   to {
     transform: rotate(360deg);
   }
+}
+
+.markerInfo {
+  @apply w-32 h-16;
+}
+
+.markerInfo {
+  @apply text-sm text-black bg-white;
+}
+
+.textRed {
+  @apply text-sm text-red-500;
+}
+
+.textOrange {
+  @apply text-sm text-orange-500;
 }

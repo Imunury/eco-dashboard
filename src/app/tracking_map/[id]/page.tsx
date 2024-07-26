@@ -9,42 +9,37 @@ import type { ecobot_status_temp } from '@prisma/client';
 
 const Home: React.FC = () => {
 
-    const [locations, setLocations] = useState<Location[]>([]);
-
     const params = useParams();
     const id = params?.id as string | undefined
     const [robotData, setRobotData] = useState<ecobot_status_temp | null>(null);
 
-    const fetchData = async () => {
-        const response = await fetch('/api/ecobot_status');
-        const data = await response.json();
-        setLocations(data);
-    };
-
     useEffect(() => {
-        fetchData(); // 처음 로딩 시 데이터 가져오기
-
-        const interval = setInterval(() => {
-            fetchData();
-        }, 10000);
-
-        return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 정리
-    }, []);
-
-    useEffect(() => {
-        const naverMapScript = document.createElement('script');
-        naverMapScript.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_API_KEY}`;
-        naverMapScript.onload = () => {
-            if (window.naver && window.naver.maps) {
-                console.log('Naver Map API loaded');
+        const fetchData = async () => {
+            if (id) {
+                try {
+                    const response = await fetch(`/api/robot_status/${id}`);
+                    const data = await response.json();
+                    setRobotData(data);
+                } catch (error) {
+                    console.error("Failed to fetch data:", error);
+                }
             }
         };
-        document.head.appendChild(naverMapScript);
-    })
+
+        fetchData();
+
+        const intervalId = setInterval(fetchData, 1000);
+
+        return () => clearInterval(intervalId);
+    }, [id]);
+
+    if (!robotData) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <section className='h-full w-full'>
-            <TrackingMap locations={locations} />
+            <TrackingMap robotData={robotData} />
         </section>
     );
 };

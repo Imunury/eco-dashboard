@@ -13,7 +13,9 @@ const ONOFF: React.FC<RobotInfoProps> = ({ robotData }) => {
     const [isOn, setIsOn] = useState(false);
 
     useEffect(() => {
-        setIsOn(robotData.motor_values[0] !== 0);
+        if (robotData.motor_values && robotData.motor_values.length > 0) {
+            setIsOn(robotData.motor_values[0] !== 0);
+        }
     }, [robotData.motor_values]);
 
     const clickSwitch = async (isOn: boolean) => {
