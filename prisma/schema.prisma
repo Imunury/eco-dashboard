@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output = "../generated/client"
 }
 
 datasource db {
@@ -89,6 +90,7 @@ model ecobot_status_temp {
   region_id                       Int?
   schedule_status                 Boolean?
   pump_status                     Int?
+  mtr_schedule_status             Boolean?
 
   @@id([robot_id, timestamp])
   @@index([timestamp(sort: Desc)])

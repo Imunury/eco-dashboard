@@ -11,7 +11,7 @@ const CCTVSegWithLoading: React.FC<CCTVSegProps> = ({ baseIp }) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 10000); // Simulate loading time
+        const timer = setTimeout(() => setIsLoading(false), 5000); // Simulate loading time
         return () => clearTimeout(timer);
     }, []);
 

@@ -10,12 +10,11 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^5.16.1",
+    "@prisma/client": "^5.17.0",
     "http-proxy-middleware": "^3.0.0",
     "next": "^14.2.4",
     "pg": "^8.12.0",
     "pg-pool": "^3.6.2",
-    "prisma": "^5.16.1",
     "react": "^18",
     "react-dom": "^18"
   },
@@ -27,6 +26,7 @@
     "eslint": "^8",
     "eslint-config-next": "13.5.6",
     "postcss": "^8.4.39",
+    "prisma": "^5.17.0",
     "tailwindcss": "^3.4.4",
     "typescript": "^5"
   }

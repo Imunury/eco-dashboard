@@ -108,7 +108,7 @@ button:hover {
 }
 
 .markerInfo {
-  @apply w-32 h-20;
+  @apply w-32 h-20 px-1;
 }
 
 .markerInfo {

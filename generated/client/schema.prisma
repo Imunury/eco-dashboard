@@ -1,0 +1,235 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ecobot_status {
+  timestamp            DateTime @db.Timestamptz(6)
+  latitude             Float
+  longitude            Float
+  depth_data           Float?
+  velocity             Float?
+  current_state        Int?
+  plc_status           Int?
+  pump_values          Int[]
+  ctr_pv_v             Float?
+  ctr_pv_c             Float?
+  ctr_bat_temp         Float?
+  ctr_device_temp      Float?
+  ctr_bat_soc          Float?
+  ctr_bat_max_v_today  Float?
+  ctr_bat_min_v_today  Float?
+  ctr_gen_energy_today Float?
+  ctr_gen_energy_month Float?
+  ctr_gen_energy_year  Float?
+  ctr_gen_energy_total Float?
+  ctr_bat_v            Float?
+  ctr_bat_c            Float?
+  ctr_device_status    Int?
+  ctr_bat_status       Int?
+  ctr_bat_temp_status  Int?
+  ctr_solar_status     Int?
+  ctr_charging_status  Int?
+  robot_id             String
+  region_id            Int?
+  pump_status          Int?
+
+  @@id([robot_id, timestamp])
+}
+
+/// This table has subclasses and requires additional setup for migrations. Visit https://pris.ly/d/table-inheritance for more info.
+model ecobot_status_temp {
+  timestamp                       DateTime @db.Timestamptz(6)
+  latitude                        Float
+  longitude                       Float
+  yaw                             Float?
+  current_angular_vel             Float?
+  bearing                         Float?
+  distance                        Float?
+  course_goal_distance_threshold  Float?
+  holding_goal_distance_threshold Float?
+  course_min_velocity             Float?
+  holding_min_velocity            Float?
+  course_min_ang_velocity         Float?
+  holding_min_ang_velocity        Float?
+  bearing_diff                    Float?
+  depth_data                      Float?
+  velocity                        Float?
+  velocity_direction              Float?
+  current_state                   Int?
+  current_course_state            Int?
+  plc_status                      Int?
+  motor_values                    Int[]
+  pump_values                     Int[]
+  ctr_pv_v                        Float?
+  ctr_pv_c                        Float?
+  ctr_bat_temp                    Float?
+  ctr_device_temp                 Float?
+  ctr_bat_soc                     Float?
+  ctr_bat_max_v_today             Float?
+  ctr_bat_min_v_today             Float?
+  ctr_gen_energy_today            Float?
+  ctr_gen_energy_month            Float?
+  ctr_gen_energy_year             Float?
+  ctr_gen_energy_total            Float?
+  ctr_bat_v                       Float?
+  ctr_bat_c                       Float?
+  ctr_device_status               Int?
+  ctr_bat_status                  Int?
+  ctr_bat_temp_status             Int?
+  ctr_solar_status                Int?
+  ctr_charging_status             Int?
+  other_values                    Int[]
+  current_speeds                  Int[]
+  robot_id                        String
+  region_id                       Int?
+  schedule_status                 Boolean?
+  pump_status                     Int?
+  mtr_schedule_status             Boolean?
+
+  @@id([robot_id, timestamp])
+  @@index([timestamp(sort: Desc)])
+}
+
+model ecobot_ts_info {
+  timestamp            DateTime @db.Timestamptz(6)
+  latitude             Float
+  longitude            Float
+  plc_status           Int?
+  ctr_pv_v             Float?
+  ctr_pv_c             Float?
+  ctr_bat_soc          Float?
+  ctr_bat_max_v_today  Float?
+  ctr_bat_min_v_today  Float?
+  ctr_gen_energy_today Float?
+  ctr_gen_energy_month Float?
+  ctr_gen_energy_year  Float?
+  ctr_gen_energy_total Float?
+  ctr_bat_v            Float?
+  ctr_bat_c            Float?
+  ctr_device_status    Int?
+  ctr_bat_status       Int?
+  ctr_bat_temp_status  Int?
+  ctr_solar_status     Int?
+  ctr_charging_status  Int?
+  robot_id             String
+  region_id            Int?
+
+  @@id([robot_id, timestamp])
+}
+
+model ecobot_ts_info_temp {
+  timestamp            DateTime @db.Timestamptz(6)
+  latitude             Float
+  longitude            Float
+  plc_status           Int?
+  ctr_pv_v             Float?
+  ctr_pv_c             Float?
+  ctr_bat_soc          Float?
+  ctr_bat_max_v_today  Float?
+  ctr_bat_min_v_today  Float?
+  ctr_gen_energy_today Float?
+  ctr_gen_energy_month Float?
+  ctr_gen_energy_year  Float?
+  ctr_gen_energy_total Float?
+  ctr_bat_v            Float?
+  ctr_bat_c            Float?
+  ctr_device_status    Int?
+  ctr_bat_status       Int?
+  ctr_bat_temp_status  Int?
+  ctr_solar_status     Int?
+  ctr_charging_status  Int?
+  robot_id             String
+  region_id            Int?
+
+  @@id([robot_id, timestamp])
+  @@index([timestamp(sort: Desc)])
+}
+
+model odn_water_quality {
+  timestamp    DateTime @db.Timestamptz(6)
+  temp_deg_c   Float?
+  ph_units     Float?
+  cod          Float?
+  hdo_mg_l     Float?
+  chl_ug_l     Float?
+  bg_ppb       Float?
+  salinity_psu Float?
+  latitude     Float?
+  longitude    Float?
+  robot_id     String
+  region_id    Int?
+
+  @@id([robot_id, timestamp])
+}
+
+model regions {
+  region_id          Int     @id @default(autoincrement())
+  region_name        String  @db.VarChar(255)
+  robot_id           String
+  latitude           Float
+  longitude          Float
+  description        String?
+  region_year        String? @db.VarChar(10)
+  region_name_kwater String?
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model spatial_ref_sys {
+  srid      Int     @id
+  auth_name String? @db.VarChar(256)
+  auth_srid Int?
+  srtext    String? @db.VarChar(2048)
+  proj4text String? @db.VarChar(2048)
+}
+
+model water_quality {
+  timestamp    DateTime @db.Timestamptz(6)
+  temp_deg_c   Float?
+  ph_units     Float?
+  depth_m      Float?
+  spcond_us_cm Float?
+  turb_ntu     Float?
+  hdo_sat      Float?
+  hdo_mg_l     Float?
+  chl_ug_l     Float?
+  bg_ppb       Float?
+  ph_mv        Float?
+  salinity_psu Float?
+  cablepower_v Float?
+  latitude     Float?
+  longitude    Float?
+  robot_id     String
+  region_id    Int?
+
+  @@id([robot_id, timestamp])
+}
+
+/// This table has subclasses and requires additional setup for migrations. Visit https://pris.ly/d/table-inheritance for more info.
+model water_quality_temp {
+  timestamp    DateTime @db.Timestamptz(6)
+  temp_deg_c   Float?
+  ph_units     Float?
+  depth_m      Float?
+  spcond_us_cm Float?
+  turb_ntu     Float?
+  hdo_sat      Float?
+  hdo_mg_l     Float?
+  chl_ug_l     Float?
+  bg_ppb       Float?
+  ph_mv        Float?
+  salinity_psu Float?
+  cablepower_v Float?
+  latitude     Float?
+  longitude    Float?
+  robot_id     String
+  region_id    Int?
+
+  @@id([robot_id, timestamp])
+  @@index([timestamp(sort: Desc)])
+}
