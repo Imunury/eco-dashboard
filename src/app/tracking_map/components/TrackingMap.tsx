@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import { Location } from '../../index';
 import type { ecobot_status_temp } from '@prisma/client';
 
 interface RobotInfoProps {
@@ -14,7 +13,7 @@ const TrackingMap: React.FC<RobotInfoProps> = ({ robotData }) => {
 
     return (
         <div className="w-full h-full relative">
-            <div id="map" className="w-full h-full"></div>
+            {/* <div id="map" className="w-full h-full"></div>
             {selectedLocation && (
                 <div className="absolute top-0 left-0 bg-white p-4 border z-10 text-red-500">
                     <h1>Location</h1>
@@ -25,7 +24,7 @@ const TrackingMap: React.FC<RobotInfoProps> = ({ robotData }) => {
                         <li>Timestamp: {new Date(selectedLocation.timestamp).toLocaleString()}</li>
                     </ul>
                 </div>
-            )}
+            )} */}
         </div>
     )
 };
