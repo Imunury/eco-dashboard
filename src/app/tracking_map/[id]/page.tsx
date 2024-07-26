@@ -3,7 +3,6 @@
 import dynamic from 'next/dynamic';
 import TrackingMap from '../components/TrackingMap';
 import { useEffect, useState } from 'react';
-import { Location } from '../../index';
 import { useParams } from 'next/navigation';
 import type { ecobot_status_temp } from '@prisma/client';
 

@@ -5,4 +5,5 @@ export interface RobotAll {
   bg_ppb: number;
   latitude: number;
   longitude: number;
+  current_state: number;
 }

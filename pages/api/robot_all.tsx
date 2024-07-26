@@ -11,7 +11,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     wq.chl_ug_l,
                     wq.bg_ppb,
                     es.latitude,
-                    es.longitude
+                    es.longitude,
+                    es.current_state
                 FROM 
                     (SELECT * 
                     FROM water_quality_temp
