@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/iframe/(.*)",
+            "destination": "http://ecobotdashboard1.co.kr:3200/$1"
+        }
+    ]
+}
