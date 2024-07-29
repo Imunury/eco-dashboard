@@ -17,8 +17,6 @@ const RobotList: React.FC<RobotListProps> = ({ robotList }) => {
         }
     };
 
-    console.log(robotList)
-
     return (
         <section className='w-1/6 overflow-y-auto'>
             {robotList.length > 0 ? (
