@@ -15,7 +15,7 @@ const Pump: React.FC<RobotInfoProps> = ({ robotData }) => {
             <h1>PUMP</h1>
             <div className='pump'>
                 <PumpONOFF robotData={robotData} />
-                <PumpSchedule robotData={robotData} />
+                {/* <PumpSchedule robotData={robotData} /> */}
             </div>
         </div>
     )
