@@ -1,5 +1,3 @@
-"use client";
-
 import { ecobot_status_temp } from '@prisma/client';
 import { useRouter, usePathname } from 'next/navigation';
 
@@ -18,6 +16,8 @@ const RobotList: React.FC<RobotListProps> = ({ robotList }) => {
             router.push(`/tracking_map/${robotId}`);
         }
     };
+
+    console.log(robotList)
 
     return (
         <section className='w-1/6 overflow-y-auto'>
