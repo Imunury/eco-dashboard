@@ -13,10 +13,13 @@ const Sidebar = () => {
                     Tracking Map
                 </Link>
                 <Link href="/control/ecobot00001">
-                    ECOBOT control
+                    Robot Control
                 </Link>
                 <Link href="/cctv">
                     CCTV
+                </Link>
+                <Link href="/water_quality">
+                    Water Quality
                 </Link>
             </nav>
         </nav>

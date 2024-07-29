@@ -4,10 +4,10 @@ import { ecobot_status_temp } from '@prisma/client';
 import { useRouter, usePathname } from 'next/navigation';
 
 interface RobotListProps {
-    robotStatus: ecobot_status_temp[];
+    robotList: ecobot_status_temp[];
 }
 
-const RobotList: React.FC<RobotListProps> = ({ robotStatus }) => {
+const RobotList: React.FC<RobotListProps> = ({ robotList }) => {
     const router = useRouter();
     const pathname = usePathname() || '';
 
@@ -21,9 +21,9 @@ const RobotList: React.FC<RobotListProps> = ({ robotStatus }) => {
 
     return (
         <section className='w-1/6 overflow-y-auto'>
-            {robotStatus.length > 0 ? (
+            {robotList.length > 0 ? (
                 <ul>
-                    {robotStatus.map((data, index) => {
+                    {robotList.map((data, index) => {
                         const firstValue = data.motor_values && data.motor_values.length > 0 ? data.motor_values[0] : null;
                         const isMotorOn = firstValue === 1;
 

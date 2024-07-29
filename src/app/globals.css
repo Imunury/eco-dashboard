@@ -108,7 +108,7 @@ button:hover {
 }
 
 .markerInfo {
-  @apply w-32 h-20 px-1;
+  @apply w-28 h-16 px-1;
 }
 
 .markerInfo {
@@ -116,7 +116,7 @@ button:hover {
 }
 
 .markerInfo > p {
-  @apply text-sm font-semibold;
+  @apply text-xs font-semibold;
 }
 
 .textRed {
@@ -127,6 +127,6 @@ button:hover {
   @apply text-orange-500;
 }
 
-.textBlack {
-  @apply text-black;
+.textBlue {
+  @apply text-blue-500;
 }

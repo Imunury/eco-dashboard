@@ -24,15 +24,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-  const [robotStatus, setRobotStatus] = useState<ecobot_status_temp[]>([]);
+  const [robotList, setRobotList] = useState<ecobot_status_temp[]>([]);
 
   useEffect(() => {
 
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/ecobot_status');
+        const response = await fetch('/api/ecobot_list');
         const data = await response.json();
-        setRobotStatus(data);
+        setRobotList(data);
       } catch (error) {
         console.error("Failed to fetch data:", error);
       }
@@ -53,7 +53,7 @@ export default function RootLayout({
         <HeaderBar />
         <div className="flex h-full">
           <Sidebar />
-          <RobotList robotStatus={robotStatus} />
+          <RobotList robotList={robotList} />
           <main className='w-4/6 h-full'>{children}</main>
         </div>
       </body>

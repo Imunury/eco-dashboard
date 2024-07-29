@@ -16,10 +16,10 @@ const PumpONOFF: React.FC<RobotInfoProps> = ({ robotData }) => {
     useEffect(() => {
         if (robotData.pump_values && robotData.pump_values.length > 0) {
             setPumpStatus([
-                robotData.pump_values[0] !== 0 ? 1 : 0,
-                robotData.pump_values[1] !== 0 ? 1 : 0,
-                robotData.pump_values[2] !== 0 ? 1 : 0,
-                robotData.pump_values[3] !== 0 ? 1 : 0
+                robotData.pump_values[0] !== 1 ? 0 : 1,
+                robotData.pump_values[1] !== 1 ? 0 : 1,
+                robotData.pump_values[2] !== 1 ? 0 : 1,
+                robotData.pump_values[3] !== 1 ? 0 : 1
             ]);
         }
     }, [robotData.pump_values]);
@@ -36,7 +36,12 @@ const PumpONOFF: React.FC<RobotInfoProps> = ({ robotData }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: robotId, topics: [{ topic: "pmp_ctrl", payload: pumpStatusBind }] }),
+                body: JSON.stringify({
+                    id: robotId,
+                    topics: [
+                        { topic: "pmp_ctrl", payload: pumpStatusBind }
+                    ]
+                }),
             });
 
             if (!response.ok) {

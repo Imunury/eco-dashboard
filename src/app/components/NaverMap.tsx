@@ -36,14 +36,14 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                             break;
                     }
 
-                    let textChl = 'textBlack'
+                    let textChl = 'textBlue'
                     if (data.chl_ug_l > 60) {
                         textChl = 'textRed'
                     } else if (data.chl_ug_l > 30) {
                         textChl = 'textOrange'
                     }
 
-                    let textBg = 'textBlack'
+                    let textBg = 'textBlue'
                     if (data.bg_ppb > 60) {
                         textBg = 'textRed'
                     } else if (data.bg_ppb > 30) {
@@ -54,7 +54,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                     let longitude = data.longitude
 
                     if (data.robot_id === 'ecobot00003' || data.robot_id === 'ecobot00008' || data.robot_id === 'ecobot00012') {
-                        latitude = data.latitude + 0.4
+                        latitude = data.latitude + 0.3
                     }
 
                     let marker1 = new window.naver.maps.Marker({
@@ -78,7 +78,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                             for (let i = 0; i < zoom; i++) {
                                 zoomMulti = zoomMulti * 2
                             }
-                            latitude = data.latitude + 3.2 / zoomMulti
+                            latitude = data.latitude + 2.4 / zoomMulti
 
                             marker1 = new window.naver.maps.Marker({
                                 position: new window.naver.maps.LatLng(latitude, longitude),

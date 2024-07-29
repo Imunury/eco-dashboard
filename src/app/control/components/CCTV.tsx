@@ -10,7 +10,7 @@ const CCTV: React.FC<RobotInfoProps> = ({ robotData }) => {
 
     const getBaseIp = () => {
         const myValue = robotData.robot_id;
-        let baseIp = "http://223.171.146.46:28080";
+        let baseIp = "";
 
         switch (myValue) {
             case "ecobot00001":
@@ -36,6 +36,12 @@ const CCTV: React.FC<RobotInfoProps> = ({ robotData }) => {
                 break;
             case "ecobot00008":
                 baseIp = "http://223.171.81.138:28080";
+                break;
+            case "ecobot00012":
+                baseIp = "http://223.171.146.134:28080";
+                break;
+            case "ecobot00013":
+                baseIp = "http://223.171.56.246:28080";
                 break;
             case "ecobot00014":
                 baseIp = "http://223.171.157.68:28080";

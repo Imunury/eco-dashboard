@@ -75,7 +75,7 @@ const PumpSchedule: React.FC<RobotInfoProps> = ({ robotData }) => {
                     id: robotId,
                     topics: [
                         { topic: "pmp_ctrl", payload: pumpOptionsBind },
-                        { topic: "schedule_ctrl", payload: `interval: ${scheduleInterval}, sequence : ${pumpOptionsBind}` }
+                        { topic: "schedule_ctrl", payload: `interval: ${scheduleInterval}, sequence : ${pumpOptions}` }
                     ]
                 }),
             });

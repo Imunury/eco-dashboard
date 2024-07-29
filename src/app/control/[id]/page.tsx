@@ -24,7 +24,7 @@ const Control: React.FC = () => {
                 try {
                     const response = await fetch(`/api/robot_status/${id}`);
                     const data = await response.json();
-                    setRobotData(data);
+                    setRobotData(data[0]);
                 } catch (error) {
                     console.error("Failed to fetch data:", error);
                 }
