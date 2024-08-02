@@ -9,16 +9,11 @@ import type { RobotAll } from '../../index';
 const RobotMap: React.FC = () => {
 
     const [robotAll, setRobotall] = useState<RobotAll[]>([]);
+    const [isNaverMapLoaded, setIsNaverMapLoaded] = useState(false);
 
     const fetchData = async () => {
         try {
-            const [allResponse] = await Promise.all([
-                // fetch('/api/ecobot_list'),
-                // fetch('/api/water_quality'),
-                fetch('/api/robot_all')
-            ]);
-            // const robot_status = await robotResponse.json();
-            // const water_quality = await waterResponse.json();
+            const allResponse = await fetch('/api/robot_all');
             const robot_all = await allResponse.json();
             setRobotall(robot_all);
         } catch (error) {
@@ -37,19 +32,22 @@ const RobotMap: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        const naverMapScript = document.createElement('script');
-        naverMapScript.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_API_KEY}`;
-        naverMapScript.onload = () => {
-            if (window.naver && window.naver.maps) {
-                console.log('Naver Map API loaded');
-            }
-        };
-        document.head.appendChild(naverMapScript);
-    }, [])
+        if (!isNaverMapLoaded) {
+            const naverMapScript = document.createElement('script');
+            naverMapScript.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_API_KEY}`;
+            naverMapScript.onload = () => {
+                if (window.naver && window.naver.maps) {
+                    console.log('Naver Map API loaded');
+                    setIsNaverMapLoaded(true);
+                }
+            };
+            document.head.appendChild(naverMapScript);
+        }
+    }, [isNaverMapLoaded]);
 
     return (
         <section className='h-full w-full'>
-            <TrackingMap robotAll={robotAll} />
+            {isNaverMapLoaded && <TrackingMap />}
         </section>
     )
 }
