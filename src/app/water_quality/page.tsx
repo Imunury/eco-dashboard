@@ -1,10 +1,8 @@
 const WaterQuality: React.FC = () => {
     return (
-        <div className="w-full h-full">
-            <iframe className="w-full h-1/2" src="https://ecobotdashboard1.co.kr:3200/d/homepage_dashboard_wq/dashboard-wq?orgId=1&">
+        <iframe className="w-full h-full" src="https://ecobotdashboard1.co.kr:3200/d/homepage_dashboard_wq/dashboard-wq?orgId=1&">
 
-            </iframe>
-        </div>
+        </iframe>
     )
 }
 
