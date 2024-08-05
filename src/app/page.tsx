@@ -38,7 +38,7 @@ const RobotMap: React.FC = () => {
 
   useEffect(() => {
     const naverMapScript = document.createElement('script');
-    naverMapScript.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_API_KEY}`;
+    naverMapScript.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_NAVER_MAP_API_KEY}`;
     naverMapScript.onload = () => {
       if (window.naver && window.naver.maps) {
         console.log('Naver Map API loaded');
