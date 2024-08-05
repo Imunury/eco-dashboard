@@ -26,7 +26,7 @@ const RobotList: React.FC<RobotListProps> = ({ robotList }) => {
                         const isMotorOn = firstValue === 1;
 
                         return (
-                            <li key={index} onClick={() => handleRobotClick(data.robot_id)} className='p-3'>
+                            <li key={index} onClick={() => handleRobotClick(data.robot_id)} className='p-3 cursor-pointer border-solid border-black border-b'>
                                 <p>로봇 아이디 : {data.robot_id}</p>
                                 <p>ON / OFF : {firstValue !== null ? (isMotorOn ? "ON" : "OFF") : "NO DATA"}</p>
                                 <p>배터리(%) : {data.ctr_bat_soc !== null ? data.ctr_bat_soc : "NO DATA"}</p>

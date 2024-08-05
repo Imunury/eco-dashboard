@@ -20,7 +20,12 @@ const RobotInfo: React.FC<RobotInfoProps> = ({ robotData }) => {
                 </div>
                 <div>
                     <h2>속도</h2>
-                    <h3>{robotData.current_speeds}</h3>
+                    <div className='flex'>
+                        <h3 className='px-1'>{robotData.current_speeds[0]}</h3>
+                        <h3 className='px-1'>{robotData.current_speeds[1]}</h3>
+                        <h3 className='px-1'>{robotData.current_speeds[2]}</h3>
+                        <h3 className='px-1'>{robotData.current_speeds[3]}</h3>
+                    </div>
                 </div>
                 <div>
                     <h2>각속도</h2>
