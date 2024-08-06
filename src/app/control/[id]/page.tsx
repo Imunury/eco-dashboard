@@ -7,10 +7,9 @@ import { ecobot_status_temp } from '@prisma/client';
 import ONOFF from '../components/ONOFF'
 import RobotInfo from '../components/RobotInfo'
 import CCTV from '../components/CCTV'
-import ModeControl from '../components/ModeControl'
 import SolarCharge from '../components/SolarCharge';
-import ModeInfo from '../components/ModeInfo';
 import Pump from '../components/Pump';
+import ModeComponent from '../components/ModeComponent';
 
 const Control: React.FC = () => {
 
@@ -45,7 +44,7 @@ const Control: React.FC = () => {
     return (
         <section className='control'>
 
-            <div className='h-24'>
+            <div className='h-28'>
                 <div className='w-1/6 '>
                     <ONOFF robotData={robotData} />
                 </div>
@@ -54,10 +53,11 @@ const Control: React.FC = () => {
                 </div>
             </div>
 
-            <div className='h-24'>
-                <div className='w-2/6 flex justify-center items-center'>
-                    <ModeControl robotData={robotData} />
+            <div className='h-28'>
+                <div className='w-1/3'>
+                    <Pump robotData={robotData} />
                 </div>
+
                 <div className='w-4/6'>
                     <SolarCharge robotData={robotData} />
                 </div>
@@ -67,11 +67,8 @@ const Control: React.FC = () => {
                 {/* <div className='w-1/3'>
                     <CCTV robotData={robotData} />
                 </div> */}
-                <div className='w-2/3'>
-                    <ModeInfo robotData={robotData} />
-                </div>
-                <div className='w-1/3'>
-                    <Pump robotData={robotData} />
+                <div className='h-full w-full'>
+                    <ModeComponent robotData={robotData} />
                 </div>
             </div>
 

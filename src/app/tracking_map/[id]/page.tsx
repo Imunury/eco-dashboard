@@ -47,7 +47,7 @@ const RobotMap: React.FC = () => {
 
     return (
         <section className='h-full w-full'>
-            {isNaverMapLoaded && <TrackingMap />}
+            {/* {isNaverMapLoaded && <TrackingMap />} */}
         </section>
     )
 }

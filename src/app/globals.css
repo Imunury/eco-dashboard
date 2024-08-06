@@ -71,11 +71,11 @@ button:hover {
 }
 
 .pump > div {
-  @apply flex flex-row w-1/2 justify-evenly;
+  @apply flex flex-col;
 }
 
 .pump > div > div {
-  @apply flex flex-col justify-evenly;
+  @apply flex justify-evenly;
 }
 
 .CCTV {

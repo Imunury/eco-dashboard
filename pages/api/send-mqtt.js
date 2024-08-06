@@ -16,6 +16,8 @@ export default async function handler(
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Connection: "keep-alive",
+            "Content-Length": JSON.stringify(dataSend).length.toString(),
           },
           body: JSON.stringify(dataSend),
         }

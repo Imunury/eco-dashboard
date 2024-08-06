@@ -49,7 +49,7 @@ const ModeManual: React.FC<RobotInfoProps> = ({ robotData }) => {
     }
 
     return (
-        <div className="flex justify-evenly">
+        <div className="flex justify-evenly h-full">
             <div>
                 <h2>수동조작</h2>
                 <div>
