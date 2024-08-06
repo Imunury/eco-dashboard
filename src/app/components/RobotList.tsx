@@ -1,13 +1,33 @@
+'use client'
+
 import { ecobot_status_temp } from '@prisma/client';
 import { useRouter, usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-interface RobotListProps {
-    robotList: ecobot_status_temp[];
-}
-
-const RobotList: React.FC<RobotListProps> = ({ robotList }) => {
+const RobotList: React.FC = () => {
     const router = useRouter();
     const pathname = usePathname() || '';
+
+    const [robotList, setRobotList] = useState<ecobot_status_temp[]>([]);
+
+    useEffect(() => {
+
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/api/ecobot_list');
+                const data = await response.json();
+                setRobotList(data);
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            }
+        };
+
+        fetchData();
+
+        const intervalId = setInterval(fetchData, 5000);
+
+        return () => clearInterval(intervalId);
+    }, []);
 
     const handleRobotClick = (robotId: string) => {
         if (pathname.startsWith('/control')) {

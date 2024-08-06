@@ -2,34 +2,41 @@
 
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import { useParams } from 'next/navigation';
+import type { ecobot_status_temp } from '../../../../generated/client';
 const TrackingMap = dynamic(() => import('../components/TrackingMap'), { ssr: false });
-
-import type { RobotAll } from '../../index';
 
 const RobotMap: React.FC = () => {
 
-    const [robotAll, setRobotall] = useState<RobotAll[]>([]);
     const [isNaverMapLoaded, setIsNaverMapLoaded] = useState(false);
 
-    const fetchData = async () => {
-        try {
-            const allResponse = await fetch('/api/robot_all');
-            const robot_all = await allResponse.json();
-            setRobotall(robot_all);
-        } catch (error) {
-            console.error('Failed to fetch data', error);
-        }
-    };
+    const params = useParams();
+    const id = params?.id as string | undefined
+    const [robotData, setRobotData] = useState<ecobot_status_temp | null>(null);
 
     useEffect(() => {
-        fetchData(); // 처음 로딩 시 데이터 가져오기
+        const fetchData = async () => {
+            if (id) {
+                try {
+                    const response = await fetch(`/api/robot_status/${id}`);
+                    const data = await response.json();
+                    setRobotData(data[0]);
+                } catch (error) {
+                    console.error("Failed to fetch data:", error);
+                }
+            }
+        };
 
-        const interval = setInterval(() => {
-            fetchData();
-        }, 60000);
+        fetchData();
 
-        return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 정리
-    }, []);
+        const intervalId = setInterval(fetchData, 1000);
+
+        return () => clearInterval(intervalId);
+    }, [id]);
+
+    if (!robotData) {
+        return <p>Loading...</p>;
+    }
 
     useEffect(() => {
         if (!isNaverMapLoaded) {
@@ -47,9 +54,9 @@ const RobotMap: React.FC = () => {
 
     return (
         <section className='h-full w-full'>
-            {isNaverMapLoaded && <TrackingMap />}
+            {isNaverMapLoaded && <TrackingMap robotData={robotData} />}
         </section>
     )
 }
 
-export default RobotMap
+export default RobotMap;

@@ -1,47 +1,29 @@
 "use client"
 
 import React, { useEffect, useState, useRef } from 'react';
-import type { RobotAll } from '../../index';
 import { useParams } from 'next/navigation';
 import type { ecobot_status_temp } from '@prisma/client';
+import type { RobotAll } from '../../../../pages/api/robot_all';
 
+interface RobotTreackPorps {
+    robotData: ecobot_status_temp;
+}
 
-const TrackingMap: React.FC = () => {
+const TrackingMap: React.FC<RobotTreackPorps> = ({ robotData }) => {
     const params = useParams();
     const ROBOT_ID = params?.id as string | undefined;
-    const [robotData, setRobotData] = useState<ecobot_status_temp | null>(null);
+    const [trackData, setTrackData] = useState(robotData);
     const mapRef = useRef<any>(null);
     const markerRef = useRef<any>(null);
 
     useEffect(() => {
-        const ws = new WebSocket(`ws://112.164.105.160:4101`);
+        setTrackData(robotData);
 
-        ws.onopen = function () {
-            console.log('Connected to the server');
-            // 서버에 특정 로봇 ID 구독 요청 보내기
-            ws.send(JSON.stringify({ type: 'subscribe', robotId: ROBOT_ID }));
-        };
+        const interval = setInterval(() => {
+            setTrackData(robotData);;
+        }, 10000); // 10초마다 데이터 가져오기
 
-        ws.onmessage = function (event) {
-            const data = JSON.parse(event.data);
-            // 서버로부터 받은 데이터가 로봇 ID와 일치하는 경우에만 처리
-            if (data.robot_id === ROBOT_ID) {
-                setRobotData(data);
-            }
-        };
-
-        ws.onerror = function (error) {
-            console.error('WebSocket Error:', error);
-        };
-
-        ws.onclose = function (event) {
-            console.log('WebSocket closed:', event);
-        };
-
-        // Clean up WebSocket connection on component unmount
-        return () => {
-            ws.close();
-        };
+        return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 정리
     }, [ROBOT_ID]);
 
     useEffect(() => {
