@@ -4,15 +4,15 @@ import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useParams } from 'next/navigation';
 import type { ecobot_status_temp } from '../../../../generated/client';
+
 const TrackingMap = dynamic(() => import('../components/TrackingMap'), { ssr: false });
 
 const RobotMap: React.FC = () => {
-
     const [isNaverMapLoaded, setIsNaverMapLoaded] = useState(false);
+    const [robotData, setRobotData] = useState<ecobot_status_temp | null>(null);
 
     const params = useParams();
-    const id = params?.id as string | undefined
-    const [robotData, setRobotData] = useState<ecobot_status_temp | null>(null);
+    const id = params?.id as string | undefined;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,10 +34,6 @@ const RobotMap: React.FC = () => {
         return () => clearInterval(intervalId);
     }, [id]);
 
-    if (!robotData) {
-        return <p>Loading...</p>;
-    }
-
     useEffect(() => {
         if (!isNaverMapLoaded) {
             const naverMapScript = document.createElement('script');
@@ -54,9 +50,9 @@ const RobotMap: React.FC = () => {
 
     return (
         <section className='h-full w-full'>
-            {isNaverMapLoaded && <TrackingMap robotData={robotData} />}
+            {isNaverMapLoaded && robotData && <TrackingMap robotData={robotData} />}
         </section>
-    )
+    );
 }
 
 export default RobotMap;
