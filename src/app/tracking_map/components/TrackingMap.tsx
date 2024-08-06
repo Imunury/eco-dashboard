@@ -1,8 +1,10 @@
 "use client"
 
 import React, { useEffect, useState, useRef } from 'react';
+import type { RobotAll } from '../../index';
 import { useParams } from 'next/navigation';
 import type { ecobot_status_temp } from '@prisma/client';
+
 
 const TrackingMap: React.FC = () => {
     const params = useParams();
@@ -30,6 +32,10 @@ const TrackingMap: React.FC = () => {
 
         ws.onerror = function (error) {
             console.error('WebSocket Error:', error);
+        };
+
+        ws.onclose = function (event) {
+            console.log('WebSocket closed:', event);
         };
 
         // Clean up WebSocket connection on component unmount
@@ -60,12 +66,9 @@ const TrackingMap: React.FC = () => {
                     strokeWeight: 1
                 });
             }
-        }
-    }, []);
-
-    useEffect(() => {
-        if (mapRef.current && robotData) {
+        } else if (mapRef.current && robotData) {
             const newCenter = new window.naver.maps.LatLng(robotData.latitude, robotData.longitude);
+            mapRef.current.setCenter(newCenter);
             if (markerRef.current) {
                 markerRef.current.setCenter(newCenter);
             } else {
