@@ -7,9 +7,9 @@ interface RobotInfoProps {
 
 const SolarCharge: React.FC<RobotInfoProps> = ({ robotData }) => {
     return (
-        <div className='text-center'>
+        <div className='control_container'>
             <h1>Solar Charge</h1>
-            <div className='flex justify-evenly'>
+            <div className="control_items">
                 <div>
                     <h2>충전전압</h2>
                     <h3>{robotData.ctr_bat_v}</h3>

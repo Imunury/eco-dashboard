@@ -11,7 +11,7 @@ interface RobotInfoProps {
 const Pump: React.FC<RobotInfoProps> = ({ robotData }) => {
 
     return (
-        <div className='text-center h-full'>
+        <div className='control_container'>
             <h1>PUMP</h1>
             <div className='pump'>
                 <PumpONOFF robotData={robotData} />

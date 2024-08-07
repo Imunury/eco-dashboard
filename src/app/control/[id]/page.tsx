@@ -63,18 +63,12 @@ const Control: React.FC = () => {
                 </div>
             </div>
 
-            <div className='h-72'>
+            <div className='h-80'>
                 {/* <div className='w-1/3'>
                     <CCTV robotData={robotData} />
                 </div> */}
-                <div className='h-full w-full'>
+                <div className='w-full'>
                     <ModeComponent robotData={robotData} />
-                </div>
-            </div>
-
-            <div className='h-64'>
-                <div>
-
                 </div>
             </div>
 

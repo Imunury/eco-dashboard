@@ -7,9 +7,9 @@ interface RobotInfoProps {
 
 const RobotInfo: React.FC<RobotInfoProps> = ({ robotData }) => {
     return (
-        <div className='text-center'>
+        <div className='control_container'>
             <h1>Robot Status</h1>
-            <div className='flex justify-evenly'>
+            <div className='control_items'>
                 <div>
                     <h2>경도</h2>
                     <h3>{robotData.latitude}</h3>

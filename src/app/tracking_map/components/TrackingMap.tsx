@@ -31,8 +31,7 @@ const TrackingMap: React.FC<TrackingMapProps> = ({ robotData }) => {
                 strokeColor: '#ffff00',
                 strokeWeight: 1
             });
-        }
-        else if (mapRef.current) {
+        } else if (mapRef.current) {
             const newCenter = new window.naver.maps.LatLng(robotData.latitude, robotData.longitude);
             mapRef.current.setCenter(newCenter);
             if (markerRef.current) {
