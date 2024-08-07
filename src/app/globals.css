@@ -75,11 +75,11 @@ button:hover {
 }
 
 .pump {
-  @apply flex h-56 justify-evenly w-full;
+  @apply flex h-2/3 justify-evenly w-full;
 }
 
 .pump > div {
-  @apply flex flex-col;
+  @apply flex flex-col w-full;
 }
 
 .pump > div > div {
