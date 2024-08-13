@@ -32,29 +32,29 @@ const CCTV: React.FC = () => {
             <div>
                 <div>
                     <h2>소양강댐</h2>
-                    <CCTVSegWithLoading baseIp="http://223.171.80.116:28080" />
+                    {/* <CCTVSegWithLoading baseIp="http://223.171.80.116:28080" /> */}
                 </div>
                 <div>
                     <h2>광교저수지</h2>
-                    <CCTVSegWithLoading baseIp="http://223.171.81.142:28080" />
+                    {/* <CCTVSegWithLoading baseIp="http://223.171.81.142:28080" /> */}
                 </div>
                 <div>
                     <h2>문의취수장</h2>
-                    <CCTVSegWithLoading baseIp="http://223.171.67.203:28080" />
+                    {/* <CCTVSegWithLoading baseIp="http://223.171.67.203:28080" /> */}
                 </div>
             </div>
             <div>
                 <div>
                     <h2>강정고령보</h2>
-                    <CCTVSegWithLoading baseIp="http://223.171.146.46:28080" />
+                    {/* <CCTVSegWithLoading baseIp="http://223.171.146.46:28080" /> */}
                 </div>
                 <div>
                     <h2>안동댐</h2>
-                    <CCTVSegWithLoading baseIp="http://223.171.157.70:28080" />
+                    {/* <CCTVSegWithLoading baseIp="http://223.171.157.70:28080" /> */}
                 </div>
                 <div>
                     <h2>추소리</h2>
-                    <CCTVSegWithLoading baseIp="http://223.171.158.175:28080" />
+                    {/* <CCTVSegWithLoading baseIp="http://223.171.158.175:28080" /> */}
                 </div>
             </div>
             <div>
@@ -64,11 +64,11 @@ const CCTV: React.FC = () => {
                 </div>
                 <div>
                     <h2>서낙동강2</h2>
-                    <CCTVSegWithLoading baseIp="http://223.171.81.138:28080" />
+                    {/* <CCTVSegWithLoading baseIp="http://223.171.81.138:28080" /> */}
                 </div>
                 <div>
                     <h2>신창지</h2>
-                    <CCTVSegWithLoading baseIp="http://223.171.157.68:28080" />
+                    {/* <CCTVSegWithLoading baseIp="http://223.171.157.68:28080" /> */}
                 </div>
             </div>
         </section>
