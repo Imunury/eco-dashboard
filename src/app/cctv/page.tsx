@@ -60,7 +60,7 @@ const CCTV: React.FC = () => {
             <div>
                 <div>
                     <h2>서낙동강1</h2>
-                    <CCTVSegWithLoading baseIp="http://223.171.81.151:28080" />
+                    <iframe className='w-full h-full' src="https://ecobotdashboard1.co.kr/cctv/" />
                 </div>
                 <div>
                     <h2>서낙동강2</h2>
