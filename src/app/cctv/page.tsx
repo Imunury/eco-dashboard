@@ -32,43 +32,43 @@ const CCTV: React.FC = () => {
             <div>
                 <div>
                     <h2>소양강댐</h2>
-                    {/* <CCTVSegWithLoading baseIp="http://223.171.80.116:28080" /> */}
+                    <iframe src="https://ecobotdashboard1.co.kr/cctv1/" />
                 </div>
                 <div>
                     <h2>광교저수지</h2>
-                    {/* <CCTVSegWithLoading baseIp="http://223.171.81.142:28080" /> */}
+                    <iframe src="https://ecobotdashboard1.co.kr/cctv2/" />
                 </div>
                 <div>
                     <h2>문의취수장</h2>
-                    {/* <CCTVSegWithLoading baseIp="http://223.171.67.203:28080" /> */}
+                    {/* <iframe src="https://ecobotdashboard1.co.kr/cctv3/" /> */}
                 </div>
             </div>
             <div>
                 <div>
                     <h2>강정고령보</h2>
-                    {/* <CCTVSegWithLoading baseIp="http://223.171.146.46:28080" /> */}
+                    {/* <iframe  src="https://ecobotdashboard1.co.kr/cctv4/" /> */}
                 </div>
                 <div>
                     <h2>안동댐</h2>
-                    {/* <CCTVSegWithLoading baseIp="http://223.171.157.70:28080" /> */}
+                    {/* <iframe  src="https://ecobotdashboard1.co.kr/cctv5/" /> */}
                 </div>
                 <div>
                     <h2>추소리</h2>
-                    {/* <CCTVSegWithLoading baseIp="http://223.171.158.175:28080" /> */}
+                    <iframe src="https://ecobotdashboard1.co.kr/cctv6/" />
                 </div>
             </div>
             <div>
                 <div>
                     <h2>서낙동강1</h2>
-                    <iframe className='w-full h-full' src="https://ecobotdashboard1.co.kr/cctv1/" />
+                    <iframe src="https://ecobotdashboard1.co.kr/cctv7/" />
                 </div>
                 <div>
                     <h2>서낙동강2</h2>
-                    <iframe className='w-full h-full' src="https://ecobotdashboard1.co.kr/cctv2/" />
+                    <iframe src="https://ecobotdashboard1.co.kr/cctv8/" />
                 </div>
                 <div>
-                    <h2>신창지</h2>
-                    {/* <CCTVSegWithLoading baseIp="http://223.171.157.68:28080" /> */}
+                    <h2>물금매리</h2>
+                    {/* <iframe  src="https://ecobotdashboard1.co.kr/cctv14/" /> */}
                 </div>
             </div>
         </section>
