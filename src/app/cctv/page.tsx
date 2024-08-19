@@ -32,43 +32,43 @@ const CCTV: React.FC = () => {
             <div>
                 <div>
                     <h2>소양강댐</h2>
-                    <iframe src="https://ecobotdashboard1.co.kr/cctv1/" />
+                    <iframe src="https://ecobotdashboard1.co.kr/ecobot00001/" />
                 </div>
                 <div>
                     <h2>광교저수지</h2>
-                    <iframe src="https://ecobotdashboard1.co.kr/cctv2/" />
+                    <iframe src="https://ecobotdashboard1.co.kr/ecobot00002/" />
                 </div>
                 <div>
                     <h2>문의취수장</h2>
-                    {/* <iframe src="https://ecobotdashboard1.co.kr/cctv3/" /> */}
+                    {/* <iframe src="https://ecobotdashboard1.co.kr/ecobot00003/" /> */}
                 </div>
             </div>
             <div>
                 <div>
                     <h2>강정고령보</h2>
-                    {/* <iframe  src="https://ecobotdashboard1.co.kr/cctv4/" /> */}
+                    {/* <iframe  src="https://ecobotdashboard1.co.kr/ecobot00004/" /> */}
                 </div>
                 <div>
                     <h2>안동댐</h2>
-                    {/* <iframe  src="https://ecobotdashboard1.co.kr/cctv5/" /> */}
+                    {/* <iframe  src="https://ecobotdashboard1.co.kr/ecobot00005/" /> */}
                 </div>
                 <div>
                     <h2>추소리</h2>
-                    <iframe src="https://ecobotdashboard1.co.kr/cctv6/" />
+                    <iframe src="https://ecobotdashboard1.co.kr/ecobot00006/" />
                 </div>
             </div>
             <div>
                 <div>
                     <h2>서낙동강1</h2>
-                    <iframe src="https://ecobotdashboard1.co.kr/cctv7/" />
+                    <iframe src="https://ecobotdashboard1.co.kr/ecobot00007/" />
                 </div>
                 <div>
                     <h2>서낙동강2</h2>
-                    <iframe src="https://ecobotdashboard1.co.kr/cctv8/" />
+                    <iframe src="https://ecobotdashboard1.co.kr/ecobot00008/" />
                 </div>
                 <div>
                     <h2>물금매리</h2>
-                    {/* <iframe  src="https://ecobotdashboard1.co.kr/cctv14/" /> */}
+                    {/* <iframe  src="https://ecobotdashboard1.co.kr/ecobot00014/" /> */}
                 </div>
             </div>
         </section>

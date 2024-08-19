@@ -34,6 +34,8 @@ const RobotList: React.FC = () => {
             router.push(`/control/${robotId}`);
         } else if (pathname.startsWith('/tracking_map')) {
             router.push(`/tracking_map/${robotId}`);
+        } else if (pathname.startsWith('/cctv')) {
+            router.push(`/cctv/${robotId}`);
         }
     };
 
