@@ -67,10 +67,25 @@ const CCTV: React.FC = () => {
                     <iframe src="https://ecobotdashboard1.co.kr/ecobot00008/" />
                 </div>
                 <div>
-                    <h2>물금매리</h2>
-                    {/* <iframe  src="https://ecobotdashboard1.co.kr/ecobot00014/" /> */}
+                    <h2>힐링보트</h2>
+                    {/* <iframe  src="https://ecobotdashboard1.co.kr/ecobot00011/" /> */}
                 </div>
             </div>
+            <div>
+                <div>
+                    <h2>진천1</h2>
+                    <iframe src="https://ecobotdashboard1.co.kr/ecobot00012/" />
+                </div>
+                <div>
+                    <h2>진천2</h2>
+                    <iframe src="https://ecobotdashboard1.co.kr/ecobot00013/" />
+                </div>
+                <div>
+                    <h2>에코봇</h2>
+                    {/* <iframe  src="https://ecobotdashboard1.co.kr/ecobot00011/" /> */}
+                </div>
+            </div>
+
         </section>
     );
 };

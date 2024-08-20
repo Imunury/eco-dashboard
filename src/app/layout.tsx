@@ -31,7 +31,7 @@ export default function RootLayout({
         <div className="flex h-full">
           <Sidebar />
           <RobotList />
-          <main className='w-4/6 h-full'>{children}</main>
+          <main className='w-4/6 h-full overflow-x-hidden'>{children}</main>
         </div>
       </body>
     </html >
