@@ -27,27 +27,27 @@ const Sidebar: React.FC<SidebarProps> = ({ toggleTheme, theme }) => {
                 <Link href="/water_quality">
                     Water Quality
                 </Link>
-                <button
-                    onClick={toggleTheme}
-                    className='w-1/4 border-none bg-white rounded-md'
-                >
-                    {theme === 'light' ? (
-                        <img
-                            src="/dark-mode.png"
-                            alt="Dark Mode"
-                            width={40}
-                            height={40}
-                        />
-                    ) : (
-                        <img
-                            src="/light-mode.png"
-                            alt="Light Mode"
-                            width={40}
-                            height={40}
-                        />
-                    )}
-                </button>
             </nav>
+            <button
+                onClick={toggleTheme}
+                className='w-1/5 border-none bg-white rounded-md self-center'
+            >
+                {theme === 'light' ? (
+                    <img
+                        src="/dark-mode.png"
+                        alt="Dark Mode"
+                        width={40}
+                        height={40}
+                    />
+                ) : (
+                    <img
+                        src="/light-mode.png"
+                        alt="Light Mode"
+                        width={40}
+                        height={40}
+                    />
+                )}
+            </button>
         </nav>
     );
 };
