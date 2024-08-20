@@ -16,7 +16,22 @@
   }
 }
 
+html.light {
+  --bg-color: white;
+  --text-color: black;
+}
+
+html.dark {
+  --bg-color: black;
+  --text-color: white;
+}
+
 body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,7 +39,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
 
 h1 {
   font-size: calc(1.2vw);
