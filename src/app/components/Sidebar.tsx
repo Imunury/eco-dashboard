@@ -2,12 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-interface SidebarProps {
-    toggleTheme: () => void;
-    theme: 'light' | 'dark';
-}
-
-const Sidebar: React.FC<SidebarProps> = ({ toggleTheme, theme }) => {
+const Sidebar: React.FC = () => {
     return (
         <nav className="w-1/6 bg-gray-800 text-white flex flex-col">
             <nav className="m-10 flex flex-col space-y-2">
@@ -28,26 +23,6 @@ const Sidebar: React.FC<SidebarProps> = ({ toggleTheme, theme }) => {
                     Water Quality
                 </Link>
             </nav>
-            <button
-                onClick={toggleTheme}
-                className='w-1/5 border-none bg-white rounded-md self-center'
-            >
-                {theme === 'light' ? (
-                    <img
-                        src="/dark-mode.png"
-                        alt="Dark Mode"
-                        width={40}
-                        height={40}
-                    />
-                ) : (
-                    <img
-                        src="/light-mode.png"
-                        alt="Light Mode"
-                        width={40}
-                        height={40}
-                    />
-                )}
-            </button>
         </nav>
     );
 };

@@ -16,14 +16,10 @@
   }
 }
 
+/* globals.css */
 html.light {
   --bg-color: white;
   --text-color: black;
-}
-
-html.dark {
-  --bg-color: black;
-  --text-color: white;
 }
 
 body {
