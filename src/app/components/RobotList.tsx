@@ -47,7 +47,7 @@ const RobotList: React.FC = () => {
     };
 
     return (
-        <section className='w-1/6 overflow-y-auto'>
+        <section className='w-1/6 overflow-y-auto bg-emerald-50'>
             {robotList.length > 0 ? (
                 <ul>
                     {robotList.map((data, index) => {
@@ -58,7 +58,7 @@ const RobotList: React.FC = () => {
                             <li
                                 key={data.robot_id}
                                 onClick={() => handleRobotClick(data.robot_id)}
-                                className={`p-3 cursor-pointer border-solid border-black border-b transition-colors duration-500 ${selectedRobotId === data.robot_id ? 'bg-yellow-300' : ''}`}>
+                                className={`p-3 cursor-pointer border-solid border-slate-500 border-b transition-colors duration-500 ${selectedRobotId === data.robot_id ? 'bg-emerald-200' : ''}`}>
                                 <p>로봇 아이디 : {data.robot_id}</p>
                                 <p>ON / OFF : {firstValue !== null ? (isMotorOn ? "ON" : "OFF") : "NO DATA"}</p>
                                 <p>배터리(%) : {data.ctr_bat_soc !== null ? data.ctr_bat_soc : "NO DATA"}</p>

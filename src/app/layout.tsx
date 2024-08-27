@@ -20,7 +20,7 @@ export default function RootLayout({
         <div className="flex h-full">
           <Sidebar />
           <RobotList />
-          <main className='w-4/6 h-full overflow-x-hidden'>
+          <main className='w-4/6 h-full overflow-x-hidden bg-green-200'>
             {children}
           </main>
         </div>

@@ -12,11 +12,11 @@ const RobotInfo: React.FC<RobotInfoProps> = ({ robotData }) => {
             <div className='control_items'>
                 <div>
                     <h2>경도</h2>
-                    <h3>{robotData.latitude}</h3>
+                    <h3>{robotData.latitude.toFixed(6)}</h3>
                 </div>
                 <div>
                     <h2>위도</h2>
-                    <h3>{robotData.longitude}</h3>
+                    <h3>{robotData.longitude.toFixed(6)}</h3>
                 </div>
                 <div>
                     <h2>속도</h2>

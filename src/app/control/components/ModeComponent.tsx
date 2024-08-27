@@ -29,7 +29,7 @@ const ModeComponent: React.FC<RobotInfoProps> = ({ robotData }) => {
         // 로봇 데이터의 상태가 변경될 때마다 모드 업데이트
         switch (robotData.current_state) {
             case 0: setMode("정지"), setBg("bg-red-400"); break;
-            case 1: setMode("수동"), setBg("bg-green-400"); break;
+            case 1: setMode("수동"), setBg("bg-purple-300"); break;
             case 2: setMode("코스주행"), setBg("bg-orange-400"); break;
             case 3: setMode("위치사수"), setBg("bg-cyan-400"); break;
         }
@@ -39,7 +39,7 @@ const ModeComponent: React.FC<RobotInfoProps> = ({ robotData }) => {
 
         switch (parseInt(newMode)) {
             case 0: setMode("정지"), setBg("bg-red-400"); break;
-            case 1: setMode("수동"), setBg("bg-green-400"); break;
+            case 1: setMode("수동"), setBg("bg-purple-300"); break;
             case 2: setMode("코스주행"), setBg("bg-orange-400"); break;
             case 3: setMode("위치사수"), setBg("bg-cyan-400"); break;
             default: setMode("");
@@ -75,12 +75,12 @@ const ModeComponent: React.FC<RobotInfoProps> = ({ robotData }) => {
         <div className="h-full">
             <div className="h-1/6">
                 <button className="bg-red-400" onClick={() => changeMode("00")}>정지</button>
-                <button className="bg-green-400" onClick={() => changeMode("01")}>수동</button>
+                <button className="bg-purple-300" onClick={() => changeMode("01")}>수동</button>
                 <button className="bg-orange-400" onClick={() => changeMode("02")}>코스주행</button>
                 <button className="bg-cyan-400" onClick={() => changeMode("03")}>위치사수</button>
-                <span>실제 모드 : {changedMode}</span>
+                <span className="font-medium">실제 모드 : {changedMode}</span>
             </div>
-            <div className={`text-center ${bg} h-5/6 transition-colors duration-300 ease-in-out rounded-sm`}>
+            <div className={`text-center ${bg} h-5/6 transition-colors duration-400 ease-in-out rounded-sm`}>
                 <h1>Panel Mode : {mode}</h1>
                 {mode === "정지" && (
                     <div className='h-full'></div>

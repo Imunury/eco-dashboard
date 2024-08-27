@@ -18,7 +18,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ isOn, onChange }) => {
                 checked={isOn}
                 onChange={handleToggle}
             />
-            <div className={`w-16 h-8 flex items-center rounded-full transition-colors duration-300 ease-in-out ${isOn ? 'bg-blue-500' : 'bg-gray-300'}`}>
+            <div className={`w-16 h-8 flex items-center rounded-full transition-colors duration-300 ease-in-out ${isOn ? 'bg-emerald-800' : 'bg-gray-300'}`}>
                 <span className={`w-8 h-8 bg-white rounded-full transition-transform duration-300 ease-in-out ${isOn ? 'translate-x-8' : ''}`}></span>
                 <span className={`absolute right-2 text-xs text-white transition-opacity duration-300 ease-in-out ${isOn ? 'opacity-0' : 'opacity-100'}`}>
                     OFF
