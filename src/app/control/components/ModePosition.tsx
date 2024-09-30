@@ -34,7 +34,7 @@ const ModePosition: React.FC<RobotInfoProps> = ({ robotData }) => {
     }
 
     return (
-        <div className="flex justify-evenly h-full items-center">
+        <div className="flex justify-evenly h-full items-center ">
             <div className="flex justify-evenly w-1/2">
                 <div>
                     <h2>속도</h2>

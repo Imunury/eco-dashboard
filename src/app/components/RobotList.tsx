@@ -53,6 +53,7 @@ const RobotList: React.FC = () => {
                     {robotList.map((data, index) => {
                         const firstValue = data.motor_values && data.motor_values.length > 0 ? data.motor_values[0] : null;
                         const isMotorOn = firstValue === 1;
+                        const batteryPercentage = data.ctr_bat_soc;
 
                         return (
                             <li
@@ -60,8 +61,12 @@ const RobotList: React.FC = () => {
                                 onClick={() => handleRobotClick(data.robot_id)}
                                 className={`p-3 cursor-pointer border-solid border-slate-500 border-b transition-colors duration-500 ${selectedRobotId === data.robot_id ? 'bg-emerald-200' : ''}`}>
                                 <p>로봇 아이디 : {data.robot_id}</p>
-                                <p>ON / OFF : {firstValue !== null ? (isMotorOn ? "ON" : "OFF") : "NO DATA"}</p>
-                                <p>배터리(%) : {data.ctr_bat_soc !== null ? data.ctr_bat_soc : "NO DATA"}</p>
+                                <p className={`${isMotorOn ? "text-blue-500" : "text-red-500"}`}>
+                                    ON / OFF : {firstValue !== null ? (isMotorOn ? "ON" : "OFF") : "NO DATA"}
+                                </p>
+                                <p className={`${batteryPercentage !== null && batteryPercentage > 80 ? "text-blue-500" : batteryPercentage !== null ? "text-red-500" : "text-gray-500"}`}>
+                                    배터리(%) : {batteryPercentage !== null ? batteryPercentage : "NO DATA"}
+                                </p>
                             </li>
                         );
                     })}

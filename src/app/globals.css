@@ -156,3 +156,15 @@ button:hover {
 .textBlue {
   @apply text-blue-500;
 }
+
+.sidebar {
+  @apply m-10 flex flex-col space-y-2;
+}
+
+.sidebar h1 {
+  @apply mb-5;
+}
+
+.sidebar h2 {
+  @apply py-2;
+}

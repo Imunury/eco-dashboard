@@ -80,7 +80,7 @@ const ModeComponent: React.FC<RobotInfoProps> = ({ robotData }) => {
                 <button className="bg-cyan-400" onClick={() => changeMode("03")}>위치사수</button>
                 <span className="font-medium">실제 모드 : {changedMode}</span>
             </div>
-            <div className={`text-center ${bg} h-5/6 transition-colors duration-400 ease-in-out rounded-sm`}>
+            <div className={`text-center ${bg} h-5/6 transition-colors duration-400 ease-in-out rounded-lg`}>
                 <h1>Panel Mode : {mode}</h1>
                 {mode === "정지" && (
                     <div className='h-full'></div>

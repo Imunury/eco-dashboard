@@ -53,7 +53,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                     let latitude = data.latitude
                     let longitude = data.longitude
 
-                    if (data.robot_id === 'ecobot00003' || data.robot_id === 'ecobot00008' || data.robot_id === 'ecobot00012') {
+                    if (data.robot_id === 'ecobot00008' || data.robot_id === 'ecobot00012') {
                         latitude = data.latitude + 0.3
                     }
 
@@ -71,7 +71,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                     });
 
                     window.naver.maps.Event.addListener(map, 'zoom_changed', () => {
-                        if (data.robot_id === 'ecobot00003' || data.robot_id === 'ecobot00008' || data.robot_id === 'ecobot00012') {
+                        if (data.robot_id === 'ecobot00008' || data.robot_id === 'ecobot00012') {
                             marker1.setMap(null)
                             let zoomMulti = 1;
                             let zoom = (map.getZoom() - 5)
