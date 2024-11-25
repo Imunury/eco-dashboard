@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../lib/prisma';
 import prisma_jincheon1 from '../../lib/prisma_jincheon1'
 import prisma_jincheon2 from '../../lib/prisma_jincheon2'
-import type { ecobot_status_temp } from '@prisma/client';
+import type { ecobot_status_temp } from '../../generated/client';
 
 interface RobotAll {
   robotData: ecobot_status_temp;
