@@ -331,7 +331,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\USER\\Desktop\\eco-dashboard\\generated\\client",
+      "value": "C:\\Users\\eco-k\\Desktop\\eco-dashboard\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -345,11 +345,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\USER\\Desktop\\eco-dashboard\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\eco-k\\Desktop\\eco-dashboard\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../.env"
   },
   "relativePath": "../../prisma",

@@ -39,7 +39,7 @@ const CCTV: React.FC = () => {
                     <iframe src="https://ecobotdashboard1.co.kr/ecobot00002/" />
                 </div>
                 <div>
-                    <h2>문의취수장</h2>
+                    <h2>죽산보</h2>
                     {/* <iframe src="https://ecobotdashboard1.co.kr/ecobot00003/" /> */}
                 </div>
             </div>
@@ -67,8 +67,8 @@ const CCTV: React.FC = () => {
                     <iframe src="https://ecobotdashboard1.co.kr/ecobot00008/" />
                 </div>
                 <div>
-                    <h2>힐링보트</h2>
-                    {/* <iframe  src="https://ecobotdashboard1.co.kr/ecobot00011/" /> */}
+                    <h2>EDC</h2>
+                    <iframe  src="https://ecobotdashboard1.co.kr/ecobot00016/" />
                 </div>
             </div>
             <div>
@@ -81,8 +81,22 @@ const CCTV: React.FC = () => {
                     <iframe src="https://ecobotdashboard1.co.kr/ecobot00013/" />
                 </div>
                 <div>
-                    <h2>에코봇</h2>
-                    {/* <iframe  src="https://ecobotdashboard1.co.kr/ecobot00011/" /> */}
+                    <h2>죽산보</h2>
+                    <iframe  src="https://ecobotdashboard1.co.kr/ecobot00017/" />
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h2>창녕보</h2>
+                    <iframe src="https://ecobotdashboard1.co.kr/ecobot00018/" />
+                </div>
+                <div>
+                    <h2>거품제거봇</h2>
+                    <iframe src="https://ecobotdashboard1.co.kr/ecobot00020/" />
+                </div>
+                <div>
+                    <h2></h2>
+                    {/* <iframe  src="https://ecobotdashboard1.co.kr/ecobot00017/" /> */}
                 </div>
             </div>
 
