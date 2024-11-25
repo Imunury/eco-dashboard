@@ -1,30 +1,6 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import CCTVSeg from "./CCTVSeg";
-
-interface CCTVSegProps {
-    baseIp: string;
-}
-
-const CCTVSegWithLoading: React.FC<CCTVSegProps> = ({ baseIp }) => {
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 5000); // Simulate loading time
-        return () => clearTimeout(timer);
-    }, []);
-
-    return (
-        <div>
-            {isLoading ? (
-                <div className="spinner"></div>
-            ) : (
-                <CCTVSeg baseIp={baseIp} />
-            )}
-        </div>
-    );
-};
 
 const CCTV: React.FC = () => {
     return (

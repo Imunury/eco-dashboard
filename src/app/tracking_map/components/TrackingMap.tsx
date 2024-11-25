@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef } from 'react';
-import type { ecobot_status_temp } from '../../../../generated/client';
+import { ecobot_status_temp } from '@prisma/client';
 
 interface TrackingMapProps {
     robotData: ecobot_status_temp;

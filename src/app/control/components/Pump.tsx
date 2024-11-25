@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ecobot_status_temp } from '../../../../generated/client';
+import { ecobot_status_temp } from '@prisma/client';
 import ToggleSwitch from '@/app/components/ToggleSwitch';
 import PumpONOFF from './PumpONOFF';
 import PumpSchedule from './PumpSchedule';

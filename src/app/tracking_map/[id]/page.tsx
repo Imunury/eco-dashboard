@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useParams } from 'next/navigation';
-import type { ecobot_status_temp } from '../../../../generated/client';
+import { ecobot_status_temp } from '@prisma/client';
 
 const TrackingMap = dynamic(() => import('../components/TrackingMap'), { ssr: false });
 

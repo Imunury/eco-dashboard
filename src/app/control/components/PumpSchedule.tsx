@@ -1,6 +1,6 @@
 "use client"
 
-import type { ecobot_status_temp } from '../../../../generated/client';
+import { ecobot_status_temp } from '@prisma/client';
 import { useState, type SetStateAction } from "react";
 
 interface RobotInfoProps {

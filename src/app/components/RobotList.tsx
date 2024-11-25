@@ -1,6 +1,6 @@
 'use client'
 
-import { ecobot_status_temp } from '../../../generated/client';
+import { ecobot_status_temp } from '@prisma/client';
 import { useRouter, usePathname, useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
