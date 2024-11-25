@@ -1,4 +1,4 @@
-import type { ecobot_status_temp } from "@prisma/client";
+import type { ecobot_status_temp } from '../../../../generated/client';
 
 interface RobotInfoProps {
     robotData: ecobot_status_temp;

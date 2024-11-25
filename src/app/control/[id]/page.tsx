@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
-import { ecobot_status_temp } from '@prisma/client';
+import { ecobot_status_temp } from '../../../../generated/client';
 
 import ONOFF from '../components/ONOFF'
 import RobotInfo from '../components/RobotInfo'
