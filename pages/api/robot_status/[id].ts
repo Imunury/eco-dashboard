@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
 import prisma_jincheon1 from "../../../lib/prisma_jincheon1";
 import prisma_jincheon2 from "../../../lib/prisma_jincheon2";
-import type { ecobot_status_temp } from "@prisma/client";
 
 export default async function handler(
   req: NextApiRequest,
