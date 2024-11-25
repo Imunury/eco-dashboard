@@ -285,7 +285,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\USER\\Desktop\\eco-dashboard\\generated\\client_jincheon1",
+      "value": "C:\\Users\\eco-k\\Desktop\\eco-dashboard\\generated\\client_jincheon1",
       "fromEnvVar": null
     },
     "config": {
@@ -303,7 +303,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\USER\\Desktop\\eco-dashboard\\prisma\\schema_jincheon1.prisma",
+    "sourceFilePath": "C:\\Users\\eco-k\\Desktop\\eco-dashboard\\prisma\\schema_jincheon1.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
