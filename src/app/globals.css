@@ -27,16 +27,6 @@ body {
   color: var(--text-color);
 }
 
-/* body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
-
 h1 {
   font-size: calc(1.2vw);
   @apply font-bold;
@@ -86,6 +76,10 @@ button:hover {
 
 .control_items {
   @apply flex justify-evenly items-center h-2/3;
+}
+
+.control_items h3{
+  @apply text-slate-800 
 }
 
 .pump {

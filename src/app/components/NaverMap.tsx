@@ -100,6 +100,14 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                     const marker2 = new window.naver.maps.Marker({
                         position: new window.naver.maps.LatLng(data.latitude, data.longitude),
                         map: map,
+                        icon: {
+                            content: `
+                              <svg width="12" height="12" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" fill="green" stroke="yellowgreen" stroke-width="2" />
+                              </svg>
+                            `,
+                            anchor: new window.naver.maps.Point(12, 12) // 마커 중심 위치 조정
+                          }
                     });
 
 
