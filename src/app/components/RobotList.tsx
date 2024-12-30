@@ -43,6 +43,8 @@ const RobotList: React.FC = () => {
             router.push(`/tracking_map/${robotId}`);
         } else if (pathname.startsWith('/cctv')) {
             router.push(`/cctv/${robotId}`);
+        } else if (pathname.startsWith('/weather')) {
+            router.push(`/weather/${robotId}`);
         }
     };
 
@@ -60,7 +62,7 @@ const RobotList: React.FC = () => {
                                 key={data.robot_id}
                                 onClick={() => handleRobotClick(data.robot_id)}
                                 className={`p-3 cursor-pointer border-solid border-slate-500 border-b transition-colors duration-500 ${selectedRobotId === data.robot_id ? 'bg-emerald-200' : ''}`}>
-                                <p>로봇 아이디 : {data.robot_id}</p>
+                                <h2 className='text-slate-800'>로봇 아이디 : {data.robot_id}</h2>
                                 <p className={`${isMotorOn ? "text-blue-500" : "text-red-500"}`}>
                                     ON / OFF : {firstValue !== null ? (isMotorOn ? "ON" : "OFF") : "NO DATA"}
                                 </p>

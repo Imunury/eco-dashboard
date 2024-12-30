@@ -198,7 +198,11 @@ exports.Prisma.Ecobot_status_tempScalarFieldEnum = {
   region_id: 'region_id',
   schedule_status: 'schedule_status',
   pump_status: 'pump_status',
-  mtr_schedule_status: 'mtr_schedule_status'
+  mtr_schedule_status: 'mtr_schedule_status',
+  register_values: 'register_values',
+  sample_depth: 'sample_depth',
+  sub_register_values: 'sub_register_values',
+  ngrok_url: 'ngrok_url'
 };
 
 exports.Prisma.Ecobot_ts_infoScalarFieldEnum = {
@@ -302,7 +306,8 @@ exports.Prisma.Water_qualityScalarFieldEnum = {
   latitude: 'latitude',
   longitude: 'longitude',
   robot_id: 'robot_id',
-  region_id: 'region_id'
+  region_id: 'region_id',
+  sample_depth: 'sample_depth'
 };
 
 exports.Prisma.Water_quality_tempScalarFieldEnum = {
@@ -322,7 +327,105 @@ exports.Prisma.Water_quality_tempScalarFieldEnum = {
   latitude: 'latitude',
   longitude: 'longitude',
   robot_id: 'robot_id',
+  region_id: 'region_id',
+  sample_depth: 'sample_depth'
+};
+
+exports.Prisma.Cfs_statusScalarFieldEnum = {
+  timestamp: 'timestamp',
+  remote_sts: 'remote_sts',
+  high_pump_sts: 'high_pump_sts',
+  sub_pump_sts: 'sub_pump_sts',
+  red_motor_sts: 'red_motor_sts',
+  sol_relay_sts: 'sol_relay_sts',
+  high_pump_alm: 'high_pump_alm',
+  sub_pump_alm: 'sub_pump_alm',
+  red_motor_alm: 'red_motor_alm',
+  eocr_alm_1: 'eocr_alm_1',
+  eocr_alm_2: 'eocr_alm_2',
+  eocr_alm_3: 'eocr_alm_3',
+  emg_alm: 'emg_alm',
+  sec_clk: 'sec_clk',
+  high_pump_freq: 'high_pump_freq',
+  sub_pump_freq: 'sub_pump_freq',
+  red_motor_freq: 'red_motor_freq',
+  current_pressure: 'current_pressure',
+  current_flow: 'current_flow',
+  robot_id: 'robot_id',
   region_id: 'region_id'
+};
+
+exports.Prisma.Cfs_status_tempScalarFieldEnum = {
+  timestamp: 'timestamp',
+  remote_sts: 'remote_sts',
+  high_pump_sts: 'high_pump_sts',
+  sub_pump_sts: 'sub_pump_sts',
+  red_motor_sts: 'red_motor_sts',
+  sol_relay_sts: 'sol_relay_sts',
+  high_pump_alm: 'high_pump_alm',
+  sub_pump_alm: 'sub_pump_alm',
+  red_motor_alm: 'red_motor_alm',
+  eocr_alm_1: 'eocr_alm_1',
+  eocr_alm_2: 'eocr_alm_2',
+  eocr_alm_3: 'eocr_alm_3',
+  emg_alm: 'emg_alm',
+  sec_clk: 'sec_clk',
+  high_pump_freq: 'high_pump_freq',
+  sub_pump_freq: 'sub_pump_freq',
+  red_motor_freq: 'red_motor_freq',
+  current_pressure: 'current_pressure',
+  current_flow: 'current_flow',
+  robot_id: 'robot_id',
+  region_id: 'region_id'
+};
+
+exports.Prisma.Weather_dataScalarFieldEnum = {
+  TM: 'TM',
+  STN: 'STN',
+  WD: 'WD',
+  WS: 'WS',
+  GST_WD: 'GST_WD',
+  GST_WS: 'GST_WS',
+  GST_TM: 'GST_TM',
+  PA: 'PA',
+  PS: 'PS',
+  PT: 'PT',
+  PR: 'PR',
+  TA: 'TA',
+  TD: 'TD',
+  HM: 'HM',
+  PV: 'PV',
+  RN: 'RN',
+  RN_DAY: 'RN_DAY',
+  RN_JUN: 'RN_JUN',
+  RN_INT: 'RN_INT',
+  SD_HR3: 'SD_HR3',
+  SD_DAY: 'SD_DAY',
+  SD_TOT: 'SD_TOT',
+  WC: 'WC',
+  WP: 'WP',
+  WW: 'WW',
+  CA_TOT: 'CA_TOT',
+  CA_MID: 'CA_MID',
+  CH_MIN: 'CH_MIN',
+  CT: 'CT',
+  CT_TOP: 'CT_TOP',
+  CT_MID: 'CT_MID',
+  CT_LOW: 'CT_LOW',
+  VS: 'VS',
+  SS: 'SS',
+  SI: 'SI',
+  ST_GD: 'ST_GD',
+  TS: 'TS',
+  TE_005: 'TE_005',
+  TE_01: 'TE_01',
+  TE_02: 'TE_02',
+  TE_03: 'TE_03',
+  ST_SEA: 'ST_SEA',
+  WH: 'WH',
+  BF: 'BF',
+  IR: 'IR',
+  IX: 'IX'
 };
 
 exports.Prisma.SortOrder = {
@@ -350,7 +453,10 @@ exports.Prisma.ModelName = {
   regions: 'regions',
   spatial_ref_sys: 'spatial_ref_sys',
   water_quality: 'water_quality',
-  water_quality_temp: 'water_quality_temp'
+  water_quality_temp: 'water_quality_temp',
+  cfs_status: 'cfs_status',
+  cfs_status_temp: 'cfs_status_temp',
+  weather_data: 'weather_data'
 };
 
 /**

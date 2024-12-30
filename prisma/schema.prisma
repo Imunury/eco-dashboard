@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output = "../generated/client"
+  output   = "../generated/client"
 }
 
 datasource db {
@@ -91,6 +91,10 @@ model ecobot_status_temp {
   schedule_status                 Boolean?
   pump_status                     Int?
   mtr_schedule_status             Boolean?
+  register_values                 Int[]
+  sample_depth                    Int?
+  sub_register_values             Int[]
+  ngrok_url                       String?
 
   @@id([robot_id, timestamp])
   @@index([timestamp(sort: Desc)])
@@ -206,6 +210,7 @@ model water_quality {
   longitude    Float?
   robot_id     String
   region_id    Int?
+  sample_depth Int?
 
   @@id([robot_id, timestamp])
 }
@@ -229,7 +234,114 @@ model water_quality_temp {
   longitude    Float?
   robot_id     String
   region_id    Int?
+  sample_depth Int?
 
   @@id([robot_id, timestamp])
   @@index([timestamp(sort: Desc)])
+}
+
+model cfs_status {
+  timestamp        DateTime @db.Timestamptz(6)
+  remote_sts       Int?
+  high_pump_sts    Int?
+  sub_pump_sts     Int?
+  red_motor_sts    Int?
+  sol_relay_sts    Int?
+  high_pump_alm    Int?
+  sub_pump_alm     Int?
+  red_motor_alm    Int?
+  eocr_alm_1       Int?
+  eocr_alm_2       Int?
+  eocr_alm_3       Int?
+  emg_alm          Int?
+  sec_clk          Int?
+  high_pump_freq   Int?
+  sub_pump_freq    Int?
+  red_motor_freq   Int?
+  current_pressure Int?
+  current_flow     Int?
+  robot_id         String
+  region_id        Int?
+
+  @@id([robot_id, timestamp])
+}
+
+/// This table has subclasses and requires additional setup for migrations. Visit https://pris.ly/d/table-inheritance for more info.
+model cfs_status_temp {
+  timestamp        DateTime @db.Timestamptz(6)
+  remote_sts       Int?
+  high_pump_sts    Int?
+  sub_pump_sts     Int?
+  red_motor_sts    Int?
+  sol_relay_sts    Int?
+  high_pump_alm    Int?
+  sub_pump_alm     Int?
+  red_motor_alm    Int?
+  eocr_alm_1       Int?
+  eocr_alm_2       Int?
+  eocr_alm_3       Int?
+  emg_alm          Int?
+  sec_clk          Int?
+  high_pump_freq   Int?
+  sub_pump_freq    Int?
+  red_motor_freq   Int?
+  current_pressure Int?
+  current_flow     Int?
+  robot_id         String
+  region_id        Int?
+
+  @@id([robot_id, timestamp])
+  @@index([timestamp(sort: Desc)])
+}
+
+
+model weather_data {
+  TM          DateTime @db.Timestamptz(6)
+  STN         Int
+  WD          Float?
+  WS          Float?
+  GST_WD      Float?
+  GST_WS      Float?
+  GST_TM      Float?
+  PA          Float?
+  PS          Float?
+  PT          Float?
+  PR          Float?
+  TA          Float?
+  TD          Float?
+  HM          Float?
+  PV          Float?
+  RN          Float?
+  RN_DAY      Float?
+  RN_JUN      Float?
+  RN_INT      Float?
+  SD_HR3      Float?
+  SD_DAY      Float?
+  SD_TOT      Float?
+  WC          Float?
+  WP          Float?
+  WW          Float?
+  CA_TOT      Float?
+  CA_MID      Float?
+  CH_MIN      Float?
+  CT          Float?
+  CT_TOP      Float?
+  CT_MID      Float?
+  CT_LOW      Float?
+  VS          Float?
+  SS          Float?
+  SI          Float?
+  ST_GD       Float?
+  TS          Float?
+  TE_005      Float?
+  TE_01       Float?
+  TE_02       Float?
+  TE_03       Float?
+  ST_SEA      Float?
+  WH          Float?
+  BF          Float?
+  IR          Float?
+  IX          Float?
+
+  @@id([STN, TM])
 }

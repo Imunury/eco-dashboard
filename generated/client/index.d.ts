@@ -58,6 +58,21 @@ export type water_quality = $Result.DefaultSelection<Prisma.$water_qualityPayloa
  * This table has subclasses and requires additional setup for migrations. Visit https://pris.ly/d/table-inheritance for more info.
  */
 export type water_quality_temp = $Result.DefaultSelection<Prisma.$water_quality_tempPayload>
+/**
+ * Model cfs_status
+ * 
+ */
+export type cfs_status = $Result.DefaultSelection<Prisma.$cfs_statusPayload>
+/**
+ * Model cfs_status_temp
+ * This table has subclasses and requires additional setup for migrations. Visit https://pris.ly/d/table-inheritance for more info.
+ */
+export type cfs_status_temp = $Result.DefaultSelection<Prisma.$cfs_status_tempPayload>
+/**
+ * Model weather_data
+ * 
+ */
+export type weather_data = $Result.DefaultSelection<Prisma.$weather_dataPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -270,6 +285,36 @@ export class PrismaClient<
     * ```
     */
   get water_quality_temp(): Prisma.water_quality_tempDelegate<ExtArgs>;
+
+  /**
+   * `prisma.cfs_status`: Exposes CRUD operations for the **cfs_status** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Cfs_statuses
+    * const cfs_statuses = await prisma.cfs_status.findMany()
+    * ```
+    */
+  get cfs_status(): Prisma.cfs_statusDelegate<ExtArgs>;
+
+  /**
+   * `prisma.cfs_status_temp`: Exposes CRUD operations for the **cfs_status_temp** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Cfs_status_temps
+    * const cfs_status_temps = await prisma.cfs_status_temp.findMany()
+    * ```
+    */
+  get cfs_status_temp(): Prisma.cfs_status_tempDelegate<ExtArgs>;
+
+  /**
+   * `prisma.weather_data`: Exposes CRUD operations for the **weather_data** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Weather_data
+    * const weather_data = await prisma.weather_data.findMany()
+    * ```
+    */
+  get weather_data(): Prisma.weather_dataDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -755,7 +800,10 @@ export namespace Prisma {
     regions: 'regions',
     spatial_ref_sys: 'spatial_ref_sys',
     water_quality: 'water_quality',
-    water_quality_temp: 'water_quality_temp'
+    water_quality_temp: 'water_quality_temp',
+    cfs_status: 'cfs_status',
+    cfs_status_temp: 'cfs_status_temp',
+    weather_data: 'weather_data'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -771,7 +819,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "ecobot_status" | "ecobot_status_temp" | "ecobot_ts_info" | "ecobot_ts_info_temp" | "odn_water_quality" | "regions" | "spatial_ref_sys" | "water_quality" | "water_quality_temp"
+      modelProps: "ecobot_status" | "ecobot_status_temp" | "ecobot_ts_info" | "ecobot_ts_info_temp" | "odn_water_quality" | "regions" | "spatial_ref_sys" | "water_quality" | "water_quality_temp" | "cfs_status" | "cfs_status_temp" | "weather_data"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1402,6 +1450,216 @@ export namespace Prisma {
           count: {
             args: Prisma.water_quality_tempCountArgs<ExtArgs>
             result: $Utils.Optional<Water_quality_tempCountAggregateOutputType> | number
+          }
+        }
+      }
+      cfs_status: {
+        payload: Prisma.$cfs_statusPayload<ExtArgs>
+        fields: Prisma.cfs_statusFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.cfs_statusFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_statusPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.cfs_statusFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_statusPayload>
+          }
+          findFirst: {
+            args: Prisma.cfs_statusFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_statusPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.cfs_statusFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_statusPayload>
+          }
+          findMany: {
+            args: Prisma.cfs_statusFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_statusPayload>[]
+          }
+          create: {
+            args: Prisma.cfs_statusCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_statusPayload>
+          }
+          createMany: {
+            args: Prisma.cfs_statusCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.cfs_statusCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_statusPayload>[]
+          }
+          delete: {
+            args: Prisma.cfs_statusDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_statusPayload>
+          }
+          update: {
+            args: Prisma.cfs_statusUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_statusPayload>
+          }
+          deleteMany: {
+            args: Prisma.cfs_statusDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.cfs_statusUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.cfs_statusUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_statusPayload>
+          }
+          aggregate: {
+            args: Prisma.Cfs_statusAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCfs_status>
+          }
+          groupBy: {
+            args: Prisma.cfs_statusGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Cfs_statusGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.cfs_statusCountArgs<ExtArgs>
+            result: $Utils.Optional<Cfs_statusCountAggregateOutputType> | number
+          }
+        }
+      }
+      cfs_status_temp: {
+        payload: Prisma.$cfs_status_tempPayload<ExtArgs>
+        fields: Prisma.cfs_status_tempFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.cfs_status_tempFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_status_tempPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.cfs_status_tempFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_status_tempPayload>
+          }
+          findFirst: {
+            args: Prisma.cfs_status_tempFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_status_tempPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.cfs_status_tempFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_status_tempPayload>
+          }
+          findMany: {
+            args: Prisma.cfs_status_tempFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_status_tempPayload>[]
+          }
+          create: {
+            args: Prisma.cfs_status_tempCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_status_tempPayload>
+          }
+          createMany: {
+            args: Prisma.cfs_status_tempCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.cfs_status_tempCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_status_tempPayload>[]
+          }
+          delete: {
+            args: Prisma.cfs_status_tempDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_status_tempPayload>
+          }
+          update: {
+            args: Prisma.cfs_status_tempUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_status_tempPayload>
+          }
+          deleteMany: {
+            args: Prisma.cfs_status_tempDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.cfs_status_tempUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.cfs_status_tempUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$cfs_status_tempPayload>
+          }
+          aggregate: {
+            args: Prisma.Cfs_status_tempAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCfs_status_temp>
+          }
+          groupBy: {
+            args: Prisma.cfs_status_tempGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Cfs_status_tempGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.cfs_status_tempCountArgs<ExtArgs>
+            result: $Utils.Optional<Cfs_status_tempCountAggregateOutputType> | number
+          }
+        }
+      }
+      weather_data: {
+        payload: Prisma.$weather_dataPayload<ExtArgs>
+        fields: Prisma.weather_dataFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.weather_dataFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weather_dataPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.weather_dataFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weather_dataPayload>
+          }
+          findFirst: {
+            args: Prisma.weather_dataFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weather_dataPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.weather_dataFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weather_dataPayload>
+          }
+          findMany: {
+            args: Prisma.weather_dataFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weather_dataPayload>[]
+          }
+          create: {
+            args: Prisma.weather_dataCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weather_dataPayload>
+          }
+          createMany: {
+            args: Prisma.weather_dataCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.weather_dataCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weather_dataPayload>[]
+          }
+          delete: {
+            args: Prisma.weather_dataDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weather_dataPayload>
+          }
+          update: {
+            args: Prisma.weather_dataUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weather_dataPayload>
+          }
+          deleteMany: {
+            args: Prisma.weather_dataDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.weather_dataUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.weather_dataUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weather_dataPayload>
+          }
+          aggregate: {
+            args: Prisma.Weather_dataAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWeather_data>
+          }
+          groupBy: {
+            args: Prisma.weather_dataGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Weather_dataGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.weather_dataCountArgs<ExtArgs>
+            result: $Utils.Optional<Weather_dataCountAggregateOutputType> | number
           }
         }
       }
@@ -2922,6 +3180,9 @@ export namespace Prisma {
     current_speeds: number | null
     region_id: number | null
     pump_status: number | null
+    register_values: number | null
+    sample_depth: number | null
+    sub_register_values: number | null
   }
 
   export type Ecobot_status_tempSumAggregateOutputType = {
@@ -2968,6 +3229,9 @@ export namespace Prisma {
     current_speeds: number[]
     region_id: number | null
     pump_status: number | null
+    register_values: number[]
+    sample_depth: number | null
+    sub_register_values: number[]
   }
 
   export type Ecobot_status_tempMinAggregateOutputType = {
@@ -3014,6 +3278,8 @@ export namespace Prisma {
     schedule_status: boolean | null
     pump_status: number | null
     mtr_schedule_status: boolean | null
+    sample_depth: number | null
+    ngrok_url: string | null
   }
 
   export type Ecobot_status_tempMaxAggregateOutputType = {
@@ -3060,6 +3326,8 @@ export namespace Prisma {
     schedule_status: boolean | null
     pump_status: number | null
     mtr_schedule_status: boolean | null
+    sample_depth: number | null
+    ngrok_url: string | null
   }
 
   export type Ecobot_status_tempCountAggregateOutputType = {
@@ -3110,6 +3378,10 @@ export namespace Prisma {
     schedule_status: number
     pump_status: number
     mtr_schedule_status: number
+    register_values: number
+    sample_depth: number
+    sub_register_values: number
+    ngrok_url: number
     _all: number
   }
 
@@ -3158,6 +3430,9 @@ export namespace Prisma {
     current_speeds?: true
     region_id?: true
     pump_status?: true
+    register_values?: true
+    sample_depth?: true
+    sub_register_values?: true
   }
 
   export type Ecobot_status_tempSumAggregateInputType = {
@@ -3204,6 +3479,9 @@ export namespace Prisma {
     current_speeds?: true
     region_id?: true
     pump_status?: true
+    register_values?: true
+    sample_depth?: true
+    sub_register_values?: true
   }
 
   export type Ecobot_status_tempMinAggregateInputType = {
@@ -3250,6 +3528,8 @@ export namespace Prisma {
     schedule_status?: true
     pump_status?: true
     mtr_schedule_status?: true
+    sample_depth?: true
+    ngrok_url?: true
   }
 
   export type Ecobot_status_tempMaxAggregateInputType = {
@@ -3296,6 +3576,8 @@ export namespace Prisma {
     schedule_status?: true
     pump_status?: true
     mtr_schedule_status?: true
+    sample_depth?: true
+    ngrok_url?: true
   }
 
   export type Ecobot_status_tempCountAggregateInputType = {
@@ -3346,6 +3628,10 @@ export namespace Prisma {
     schedule_status?: true
     pump_status?: true
     mtr_schedule_status?: true
+    register_values?: true
+    sample_depth?: true
+    sub_register_values?: true
+    ngrok_url?: true
     _all?: true
   }
 
@@ -3483,6 +3769,10 @@ export namespace Prisma {
     schedule_status: boolean | null
     pump_status: number | null
     mtr_schedule_status: boolean | null
+    register_values: number[]
+    sample_depth: number | null
+    sub_register_values: number[]
+    ngrok_url: string | null
     _count: Ecobot_status_tempCountAggregateOutputType | null
     _avg: Ecobot_status_tempAvgAggregateOutputType | null
     _sum: Ecobot_status_tempSumAggregateOutputType | null
@@ -3552,6 +3842,10 @@ export namespace Prisma {
     schedule_status?: boolean
     pump_status?: boolean
     mtr_schedule_status?: boolean
+    register_values?: boolean
+    sample_depth?: boolean
+    sub_register_values?: boolean
+    ngrok_url?: boolean
   }, ExtArgs["result"]["ecobot_status_temp"]>
 
   export type ecobot_status_tempSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3602,6 +3896,10 @@ export namespace Prisma {
     schedule_status?: boolean
     pump_status?: boolean
     mtr_schedule_status?: boolean
+    register_values?: boolean
+    sample_depth?: boolean
+    sub_register_values?: boolean
+    ngrok_url?: boolean
   }, ExtArgs["result"]["ecobot_status_temp"]>
 
   export type ecobot_status_tempSelectScalar = {
@@ -3652,6 +3950,10 @@ export namespace Prisma {
     schedule_status?: boolean
     pump_status?: boolean
     mtr_schedule_status?: boolean
+    register_values?: boolean
+    sample_depth?: boolean
+    sub_register_values?: boolean
+    ngrok_url?: boolean
   }
 
 
@@ -3706,6 +4008,10 @@ export namespace Prisma {
       schedule_status: boolean | null
       pump_status: number | null
       mtr_schedule_status: boolean | null
+      register_values: number[]
+      sample_depth: number | null
+      sub_register_values: number[]
+      ngrok_url: string | null
     }, ExtArgs["result"]["ecobot_status_temp"]>
     composites: {}
   }
@@ -4146,6 +4452,10 @@ export namespace Prisma {
     readonly schedule_status: FieldRef<"ecobot_status_temp", 'Boolean'>
     readonly pump_status: FieldRef<"ecobot_status_temp", 'Int'>
     readonly mtr_schedule_status: FieldRef<"ecobot_status_temp", 'Boolean'>
+    readonly register_values: FieldRef<"ecobot_status_temp", 'Int[]'>
+    readonly sample_depth: FieldRef<"ecobot_status_temp", 'Int'>
+    readonly sub_register_values: FieldRef<"ecobot_status_temp", 'Int[]'>
+    readonly ngrok_url: FieldRef<"ecobot_status_temp", 'String'>
   }
     
 
@@ -9750,6 +10060,7 @@ export namespace Prisma {
     latitude: number | null
     longitude: number | null
     region_id: number | null
+    sample_depth: number | null
   }
 
   export type Water_qualitySumAggregateOutputType = {
@@ -9768,6 +10079,7 @@ export namespace Prisma {
     latitude: number | null
     longitude: number | null
     region_id: number | null
+    sample_depth: number | null
   }
 
   export type Water_qualityMinAggregateOutputType = {
@@ -9788,6 +10100,7 @@ export namespace Prisma {
     longitude: number | null
     robot_id: string | null
     region_id: number | null
+    sample_depth: number | null
   }
 
   export type Water_qualityMaxAggregateOutputType = {
@@ -9808,6 +10121,7 @@ export namespace Prisma {
     longitude: number | null
     robot_id: string | null
     region_id: number | null
+    sample_depth: number | null
   }
 
   export type Water_qualityCountAggregateOutputType = {
@@ -9828,6 +10142,7 @@ export namespace Prisma {
     longitude: number
     robot_id: number
     region_id: number
+    sample_depth: number
     _all: number
   }
 
@@ -9848,6 +10163,7 @@ export namespace Prisma {
     latitude?: true
     longitude?: true
     region_id?: true
+    sample_depth?: true
   }
 
   export type Water_qualitySumAggregateInputType = {
@@ -9866,6 +10182,7 @@ export namespace Prisma {
     latitude?: true
     longitude?: true
     region_id?: true
+    sample_depth?: true
   }
 
   export type Water_qualityMinAggregateInputType = {
@@ -9886,6 +10203,7 @@ export namespace Prisma {
     longitude?: true
     robot_id?: true
     region_id?: true
+    sample_depth?: true
   }
 
   export type Water_qualityMaxAggregateInputType = {
@@ -9906,6 +10224,7 @@ export namespace Prisma {
     longitude?: true
     robot_id?: true
     region_id?: true
+    sample_depth?: true
   }
 
   export type Water_qualityCountAggregateInputType = {
@@ -9926,6 +10245,7 @@ export namespace Prisma {
     longitude?: true
     robot_id?: true
     region_id?: true
+    sample_depth?: true
     _all?: true
   }
 
@@ -10033,6 +10353,7 @@ export namespace Prisma {
     longitude: number | null
     robot_id: string
     region_id: number | null
+    sample_depth: number | null
     _count: Water_qualityCountAggregateOutputType | null
     _avg: Water_qualityAvgAggregateOutputType | null
     _sum: Water_qualitySumAggregateOutputType | null
@@ -10072,6 +10393,7 @@ export namespace Prisma {
     longitude?: boolean
     robot_id?: boolean
     region_id?: boolean
+    sample_depth?: boolean
   }, ExtArgs["result"]["water_quality"]>
 
   export type water_qualitySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10092,6 +10414,7 @@ export namespace Prisma {
     longitude?: boolean
     robot_id?: boolean
     region_id?: boolean
+    sample_depth?: boolean
   }, ExtArgs["result"]["water_quality"]>
 
   export type water_qualitySelectScalar = {
@@ -10112,6 +10435,7 @@ export namespace Prisma {
     longitude?: boolean
     robot_id?: boolean
     region_id?: boolean
+    sample_depth?: boolean
   }
 
 
@@ -10136,6 +10460,7 @@ export namespace Prisma {
       longitude: number | null
       robot_id: string
       region_id: number | null
+      sample_depth: number | null
     }, ExtArgs["result"]["water_quality"]>
     composites: {}
   }
@@ -10546,6 +10871,7 @@ export namespace Prisma {
     readonly longitude: FieldRef<"water_quality", 'Float'>
     readonly robot_id: FieldRef<"water_quality", 'String'>
     readonly region_id: FieldRef<"water_quality", 'Int'>
+    readonly sample_depth: FieldRef<"water_quality", 'Int'>
   }
     
 
@@ -10862,6 +11188,7 @@ export namespace Prisma {
     latitude: number | null
     longitude: number | null
     region_id: number | null
+    sample_depth: number | null
   }
 
   export type Water_quality_tempSumAggregateOutputType = {
@@ -10880,6 +11207,7 @@ export namespace Prisma {
     latitude: number | null
     longitude: number | null
     region_id: number | null
+    sample_depth: number | null
   }
 
   export type Water_quality_tempMinAggregateOutputType = {
@@ -10900,6 +11228,7 @@ export namespace Prisma {
     longitude: number | null
     robot_id: string | null
     region_id: number | null
+    sample_depth: number | null
   }
 
   export type Water_quality_tempMaxAggregateOutputType = {
@@ -10920,6 +11249,7 @@ export namespace Prisma {
     longitude: number | null
     robot_id: string | null
     region_id: number | null
+    sample_depth: number | null
   }
 
   export type Water_quality_tempCountAggregateOutputType = {
@@ -10940,6 +11270,7 @@ export namespace Prisma {
     longitude: number
     robot_id: number
     region_id: number
+    sample_depth: number
     _all: number
   }
 
@@ -10960,6 +11291,7 @@ export namespace Prisma {
     latitude?: true
     longitude?: true
     region_id?: true
+    sample_depth?: true
   }
 
   export type Water_quality_tempSumAggregateInputType = {
@@ -10978,6 +11310,7 @@ export namespace Prisma {
     latitude?: true
     longitude?: true
     region_id?: true
+    sample_depth?: true
   }
 
   export type Water_quality_tempMinAggregateInputType = {
@@ -10998,6 +11331,7 @@ export namespace Prisma {
     longitude?: true
     robot_id?: true
     region_id?: true
+    sample_depth?: true
   }
 
   export type Water_quality_tempMaxAggregateInputType = {
@@ -11018,6 +11352,7 @@ export namespace Prisma {
     longitude?: true
     robot_id?: true
     region_id?: true
+    sample_depth?: true
   }
 
   export type Water_quality_tempCountAggregateInputType = {
@@ -11038,6 +11373,7 @@ export namespace Prisma {
     longitude?: true
     robot_id?: true
     region_id?: true
+    sample_depth?: true
     _all?: true
   }
 
@@ -11145,6 +11481,7 @@ export namespace Prisma {
     longitude: number | null
     robot_id: string
     region_id: number | null
+    sample_depth: number | null
     _count: Water_quality_tempCountAggregateOutputType | null
     _avg: Water_quality_tempAvgAggregateOutputType | null
     _sum: Water_quality_tempSumAggregateOutputType | null
@@ -11184,6 +11521,7 @@ export namespace Prisma {
     longitude?: boolean
     robot_id?: boolean
     region_id?: boolean
+    sample_depth?: boolean
   }, ExtArgs["result"]["water_quality_temp"]>
 
   export type water_quality_tempSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11204,6 +11542,7 @@ export namespace Prisma {
     longitude?: boolean
     robot_id?: boolean
     region_id?: boolean
+    sample_depth?: boolean
   }, ExtArgs["result"]["water_quality_temp"]>
 
   export type water_quality_tempSelectScalar = {
@@ -11224,6 +11563,7 @@ export namespace Prisma {
     longitude?: boolean
     robot_id?: boolean
     region_id?: boolean
+    sample_depth?: boolean
   }
 
 
@@ -11248,6 +11588,7 @@ export namespace Prisma {
       longitude: number | null
       robot_id: string
       region_id: number | null
+      sample_depth: number | null
     }, ExtArgs["result"]["water_quality_temp"]>
     composites: {}
   }
@@ -11658,6 +11999,7 @@ export namespace Prisma {
     readonly longitude: FieldRef<"water_quality_temp", 'Float'>
     readonly robot_id: FieldRef<"water_quality_temp", 'String'>
     readonly region_id: FieldRef<"water_quality_temp", 'Int'>
+    readonly sample_depth: FieldRef<"water_quality_temp", 'Int'>
   }
     
 
@@ -11947,6 +12289,3938 @@ export namespace Prisma {
 
 
   /**
+   * Model cfs_status
+   */
+
+  export type AggregateCfs_status = {
+    _count: Cfs_statusCountAggregateOutputType | null
+    _avg: Cfs_statusAvgAggregateOutputType | null
+    _sum: Cfs_statusSumAggregateOutputType | null
+    _min: Cfs_statusMinAggregateOutputType | null
+    _max: Cfs_statusMaxAggregateOutputType | null
+  }
+
+  export type Cfs_statusAvgAggregateOutputType = {
+    remote_sts: number | null
+    high_pump_sts: number | null
+    sub_pump_sts: number | null
+    red_motor_sts: number | null
+    sol_relay_sts: number | null
+    high_pump_alm: number | null
+    sub_pump_alm: number | null
+    red_motor_alm: number | null
+    eocr_alm_1: number | null
+    eocr_alm_2: number | null
+    eocr_alm_3: number | null
+    emg_alm: number | null
+    sec_clk: number | null
+    high_pump_freq: number | null
+    sub_pump_freq: number | null
+    red_motor_freq: number | null
+    current_pressure: number | null
+    current_flow: number | null
+    region_id: number | null
+  }
+
+  export type Cfs_statusSumAggregateOutputType = {
+    remote_sts: number | null
+    high_pump_sts: number | null
+    sub_pump_sts: number | null
+    red_motor_sts: number | null
+    sol_relay_sts: number | null
+    high_pump_alm: number | null
+    sub_pump_alm: number | null
+    red_motor_alm: number | null
+    eocr_alm_1: number | null
+    eocr_alm_2: number | null
+    eocr_alm_3: number | null
+    emg_alm: number | null
+    sec_clk: number | null
+    high_pump_freq: number | null
+    sub_pump_freq: number | null
+    red_motor_freq: number | null
+    current_pressure: number | null
+    current_flow: number | null
+    region_id: number | null
+  }
+
+  export type Cfs_statusMinAggregateOutputType = {
+    timestamp: Date | null
+    remote_sts: number | null
+    high_pump_sts: number | null
+    sub_pump_sts: number | null
+    red_motor_sts: number | null
+    sol_relay_sts: number | null
+    high_pump_alm: number | null
+    sub_pump_alm: number | null
+    red_motor_alm: number | null
+    eocr_alm_1: number | null
+    eocr_alm_2: number | null
+    eocr_alm_3: number | null
+    emg_alm: number | null
+    sec_clk: number | null
+    high_pump_freq: number | null
+    sub_pump_freq: number | null
+    red_motor_freq: number | null
+    current_pressure: number | null
+    current_flow: number | null
+    robot_id: string | null
+    region_id: number | null
+  }
+
+  export type Cfs_statusMaxAggregateOutputType = {
+    timestamp: Date | null
+    remote_sts: number | null
+    high_pump_sts: number | null
+    sub_pump_sts: number | null
+    red_motor_sts: number | null
+    sol_relay_sts: number | null
+    high_pump_alm: number | null
+    sub_pump_alm: number | null
+    red_motor_alm: number | null
+    eocr_alm_1: number | null
+    eocr_alm_2: number | null
+    eocr_alm_3: number | null
+    emg_alm: number | null
+    sec_clk: number | null
+    high_pump_freq: number | null
+    sub_pump_freq: number | null
+    red_motor_freq: number | null
+    current_pressure: number | null
+    current_flow: number | null
+    robot_id: string | null
+    region_id: number | null
+  }
+
+  export type Cfs_statusCountAggregateOutputType = {
+    timestamp: number
+    remote_sts: number
+    high_pump_sts: number
+    sub_pump_sts: number
+    red_motor_sts: number
+    sol_relay_sts: number
+    high_pump_alm: number
+    sub_pump_alm: number
+    red_motor_alm: number
+    eocr_alm_1: number
+    eocr_alm_2: number
+    eocr_alm_3: number
+    emg_alm: number
+    sec_clk: number
+    high_pump_freq: number
+    sub_pump_freq: number
+    red_motor_freq: number
+    current_pressure: number
+    current_flow: number
+    robot_id: number
+    region_id: number
+    _all: number
+  }
+
+
+  export type Cfs_statusAvgAggregateInputType = {
+    remote_sts?: true
+    high_pump_sts?: true
+    sub_pump_sts?: true
+    red_motor_sts?: true
+    sol_relay_sts?: true
+    high_pump_alm?: true
+    sub_pump_alm?: true
+    red_motor_alm?: true
+    eocr_alm_1?: true
+    eocr_alm_2?: true
+    eocr_alm_3?: true
+    emg_alm?: true
+    sec_clk?: true
+    high_pump_freq?: true
+    sub_pump_freq?: true
+    red_motor_freq?: true
+    current_pressure?: true
+    current_flow?: true
+    region_id?: true
+  }
+
+  export type Cfs_statusSumAggregateInputType = {
+    remote_sts?: true
+    high_pump_sts?: true
+    sub_pump_sts?: true
+    red_motor_sts?: true
+    sol_relay_sts?: true
+    high_pump_alm?: true
+    sub_pump_alm?: true
+    red_motor_alm?: true
+    eocr_alm_1?: true
+    eocr_alm_2?: true
+    eocr_alm_3?: true
+    emg_alm?: true
+    sec_clk?: true
+    high_pump_freq?: true
+    sub_pump_freq?: true
+    red_motor_freq?: true
+    current_pressure?: true
+    current_flow?: true
+    region_id?: true
+  }
+
+  export type Cfs_statusMinAggregateInputType = {
+    timestamp?: true
+    remote_sts?: true
+    high_pump_sts?: true
+    sub_pump_sts?: true
+    red_motor_sts?: true
+    sol_relay_sts?: true
+    high_pump_alm?: true
+    sub_pump_alm?: true
+    red_motor_alm?: true
+    eocr_alm_1?: true
+    eocr_alm_2?: true
+    eocr_alm_3?: true
+    emg_alm?: true
+    sec_clk?: true
+    high_pump_freq?: true
+    sub_pump_freq?: true
+    red_motor_freq?: true
+    current_pressure?: true
+    current_flow?: true
+    robot_id?: true
+    region_id?: true
+  }
+
+  export type Cfs_statusMaxAggregateInputType = {
+    timestamp?: true
+    remote_sts?: true
+    high_pump_sts?: true
+    sub_pump_sts?: true
+    red_motor_sts?: true
+    sol_relay_sts?: true
+    high_pump_alm?: true
+    sub_pump_alm?: true
+    red_motor_alm?: true
+    eocr_alm_1?: true
+    eocr_alm_2?: true
+    eocr_alm_3?: true
+    emg_alm?: true
+    sec_clk?: true
+    high_pump_freq?: true
+    sub_pump_freq?: true
+    red_motor_freq?: true
+    current_pressure?: true
+    current_flow?: true
+    robot_id?: true
+    region_id?: true
+  }
+
+  export type Cfs_statusCountAggregateInputType = {
+    timestamp?: true
+    remote_sts?: true
+    high_pump_sts?: true
+    sub_pump_sts?: true
+    red_motor_sts?: true
+    sol_relay_sts?: true
+    high_pump_alm?: true
+    sub_pump_alm?: true
+    red_motor_alm?: true
+    eocr_alm_1?: true
+    eocr_alm_2?: true
+    eocr_alm_3?: true
+    emg_alm?: true
+    sec_clk?: true
+    high_pump_freq?: true
+    sub_pump_freq?: true
+    red_motor_freq?: true
+    current_pressure?: true
+    current_flow?: true
+    robot_id?: true
+    region_id?: true
+    _all?: true
+  }
+
+  export type Cfs_statusAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which cfs_status to aggregate.
+     */
+    where?: cfs_statusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cfs_statuses to fetch.
+     */
+    orderBy?: cfs_statusOrderByWithRelationInput | cfs_statusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: cfs_statusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cfs_statuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cfs_statuses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned cfs_statuses
+    **/
+    _count?: true | Cfs_statusCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Cfs_statusAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Cfs_statusSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Cfs_statusMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Cfs_statusMaxAggregateInputType
+  }
+
+  export type GetCfs_statusAggregateType<T extends Cfs_statusAggregateArgs> = {
+        [P in keyof T & keyof AggregateCfs_status]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCfs_status[P]>
+      : GetScalarType<T[P], AggregateCfs_status[P]>
+  }
+
+
+
+
+  export type cfs_statusGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: cfs_statusWhereInput
+    orderBy?: cfs_statusOrderByWithAggregationInput | cfs_statusOrderByWithAggregationInput[]
+    by: Cfs_statusScalarFieldEnum[] | Cfs_statusScalarFieldEnum
+    having?: cfs_statusScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Cfs_statusCountAggregateInputType | true
+    _avg?: Cfs_statusAvgAggregateInputType
+    _sum?: Cfs_statusSumAggregateInputType
+    _min?: Cfs_statusMinAggregateInputType
+    _max?: Cfs_statusMaxAggregateInputType
+  }
+
+  export type Cfs_statusGroupByOutputType = {
+    timestamp: Date
+    remote_sts: number | null
+    high_pump_sts: number | null
+    sub_pump_sts: number | null
+    red_motor_sts: number | null
+    sol_relay_sts: number | null
+    high_pump_alm: number | null
+    sub_pump_alm: number | null
+    red_motor_alm: number | null
+    eocr_alm_1: number | null
+    eocr_alm_2: number | null
+    eocr_alm_3: number | null
+    emg_alm: number | null
+    sec_clk: number | null
+    high_pump_freq: number | null
+    sub_pump_freq: number | null
+    red_motor_freq: number | null
+    current_pressure: number | null
+    current_flow: number | null
+    robot_id: string
+    region_id: number | null
+    _count: Cfs_statusCountAggregateOutputType | null
+    _avg: Cfs_statusAvgAggregateOutputType | null
+    _sum: Cfs_statusSumAggregateOutputType | null
+    _min: Cfs_statusMinAggregateOutputType | null
+    _max: Cfs_statusMaxAggregateOutputType | null
+  }
+
+  type GetCfs_statusGroupByPayload<T extends cfs_statusGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Cfs_statusGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Cfs_statusGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Cfs_statusGroupByOutputType[P]>
+            : GetScalarType<T[P], Cfs_statusGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type cfs_statusSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    timestamp?: boolean
+    remote_sts?: boolean
+    high_pump_sts?: boolean
+    sub_pump_sts?: boolean
+    red_motor_sts?: boolean
+    sol_relay_sts?: boolean
+    high_pump_alm?: boolean
+    sub_pump_alm?: boolean
+    red_motor_alm?: boolean
+    eocr_alm_1?: boolean
+    eocr_alm_2?: boolean
+    eocr_alm_3?: boolean
+    emg_alm?: boolean
+    sec_clk?: boolean
+    high_pump_freq?: boolean
+    sub_pump_freq?: boolean
+    red_motor_freq?: boolean
+    current_pressure?: boolean
+    current_flow?: boolean
+    robot_id?: boolean
+    region_id?: boolean
+  }, ExtArgs["result"]["cfs_status"]>
+
+  export type cfs_statusSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    timestamp?: boolean
+    remote_sts?: boolean
+    high_pump_sts?: boolean
+    sub_pump_sts?: boolean
+    red_motor_sts?: boolean
+    sol_relay_sts?: boolean
+    high_pump_alm?: boolean
+    sub_pump_alm?: boolean
+    red_motor_alm?: boolean
+    eocr_alm_1?: boolean
+    eocr_alm_2?: boolean
+    eocr_alm_3?: boolean
+    emg_alm?: boolean
+    sec_clk?: boolean
+    high_pump_freq?: boolean
+    sub_pump_freq?: boolean
+    red_motor_freq?: boolean
+    current_pressure?: boolean
+    current_flow?: boolean
+    robot_id?: boolean
+    region_id?: boolean
+  }, ExtArgs["result"]["cfs_status"]>
+
+  export type cfs_statusSelectScalar = {
+    timestamp?: boolean
+    remote_sts?: boolean
+    high_pump_sts?: boolean
+    sub_pump_sts?: boolean
+    red_motor_sts?: boolean
+    sol_relay_sts?: boolean
+    high_pump_alm?: boolean
+    sub_pump_alm?: boolean
+    red_motor_alm?: boolean
+    eocr_alm_1?: boolean
+    eocr_alm_2?: boolean
+    eocr_alm_3?: boolean
+    emg_alm?: boolean
+    sec_clk?: boolean
+    high_pump_freq?: boolean
+    sub_pump_freq?: boolean
+    red_motor_freq?: boolean
+    current_pressure?: boolean
+    current_flow?: boolean
+    robot_id?: boolean
+    region_id?: boolean
+  }
+
+
+  export type $cfs_statusPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "cfs_status"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      timestamp: Date
+      remote_sts: number | null
+      high_pump_sts: number | null
+      sub_pump_sts: number | null
+      red_motor_sts: number | null
+      sol_relay_sts: number | null
+      high_pump_alm: number | null
+      sub_pump_alm: number | null
+      red_motor_alm: number | null
+      eocr_alm_1: number | null
+      eocr_alm_2: number | null
+      eocr_alm_3: number | null
+      emg_alm: number | null
+      sec_clk: number | null
+      high_pump_freq: number | null
+      sub_pump_freq: number | null
+      red_motor_freq: number | null
+      current_pressure: number | null
+      current_flow: number | null
+      robot_id: string
+      region_id: number | null
+    }, ExtArgs["result"]["cfs_status"]>
+    composites: {}
+  }
+
+  type cfs_statusGetPayload<S extends boolean | null | undefined | cfs_statusDefaultArgs> = $Result.GetResult<Prisma.$cfs_statusPayload, S>
+
+  type cfs_statusCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<cfs_statusFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Cfs_statusCountAggregateInputType | true
+    }
+
+  export interface cfs_statusDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['cfs_status'], meta: { name: 'cfs_status' } }
+    /**
+     * Find zero or one Cfs_status that matches the filter.
+     * @param {cfs_statusFindUniqueArgs} args - Arguments to find a Cfs_status
+     * @example
+     * // Get one Cfs_status
+     * const cfs_status = await prisma.cfs_status.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends cfs_statusFindUniqueArgs>(args: SelectSubset<T, cfs_statusFindUniqueArgs<ExtArgs>>): Prisma__cfs_statusClient<$Result.GetResult<Prisma.$cfs_statusPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Cfs_status that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {cfs_statusFindUniqueOrThrowArgs} args - Arguments to find a Cfs_status
+     * @example
+     * // Get one Cfs_status
+     * const cfs_status = await prisma.cfs_status.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends cfs_statusFindUniqueOrThrowArgs>(args: SelectSubset<T, cfs_statusFindUniqueOrThrowArgs<ExtArgs>>): Prisma__cfs_statusClient<$Result.GetResult<Prisma.$cfs_statusPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Cfs_status that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cfs_statusFindFirstArgs} args - Arguments to find a Cfs_status
+     * @example
+     * // Get one Cfs_status
+     * const cfs_status = await prisma.cfs_status.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends cfs_statusFindFirstArgs>(args?: SelectSubset<T, cfs_statusFindFirstArgs<ExtArgs>>): Prisma__cfs_statusClient<$Result.GetResult<Prisma.$cfs_statusPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Cfs_status that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cfs_statusFindFirstOrThrowArgs} args - Arguments to find a Cfs_status
+     * @example
+     * // Get one Cfs_status
+     * const cfs_status = await prisma.cfs_status.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends cfs_statusFindFirstOrThrowArgs>(args?: SelectSubset<T, cfs_statusFindFirstOrThrowArgs<ExtArgs>>): Prisma__cfs_statusClient<$Result.GetResult<Prisma.$cfs_statusPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Cfs_statuses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cfs_statusFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Cfs_statuses
+     * const cfs_statuses = await prisma.cfs_status.findMany()
+     * 
+     * // Get first 10 Cfs_statuses
+     * const cfs_statuses = await prisma.cfs_status.findMany({ take: 10 })
+     * 
+     * // Only select the `timestamp`
+     * const cfs_statusWithTimestampOnly = await prisma.cfs_status.findMany({ select: { timestamp: true } })
+     * 
+     */
+    findMany<T extends cfs_statusFindManyArgs>(args?: SelectSubset<T, cfs_statusFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$cfs_statusPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Cfs_status.
+     * @param {cfs_statusCreateArgs} args - Arguments to create a Cfs_status.
+     * @example
+     * // Create one Cfs_status
+     * const Cfs_status = await prisma.cfs_status.create({
+     *   data: {
+     *     // ... data to create a Cfs_status
+     *   }
+     * })
+     * 
+     */
+    create<T extends cfs_statusCreateArgs>(args: SelectSubset<T, cfs_statusCreateArgs<ExtArgs>>): Prisma__cfs_statusClient<$Result.GetResult<Prisma.$cfs_statusPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Cfs_statuses.
+     * @param {cfs_statusCreateManyArgs} args - Arguments to create many Cfs_statuses.
+     * @example
+     * // Create many Cfs_statuses
+     * const cfs_status = await prisma.cfs_status.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends cfs_statusCreateManyArgs>(args?: SelectSubset<T, cfs_statusCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Cfs_statuses and returns the data saved in the database.
+     * @param {cfs_statusCreateManyAndReturnArgs} args - Arguments to create many Cfs_statuses.
+     * @example
+     * // Create many Cfs_statuses
+     * const cfs_status = await prisma.cfs_status.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Cfs_statuses and only return the `timestamp`
+     * const cfs_statusWithTimestampOnly = await prisma.cfs_status.createManyAndReturn({ 
+     *   select: { timestamp: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends cfs_statusCreateManyAndReturnArgs>(args?: SelectSubset<T, cfs_statusCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$cfs_statusPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Cfs_status.
+     * @param {cfs_statusDeleteArgs} args - Arguments to delete one Cfs_status.
+     * @example
+     * // Delete one Cfs_status
+     * const Cfs_status = await prisma.cfs_status.delete({
+     *   where: {
+     *     // ... filter to delete one Cfs_status
+     *   }
+     * })
+     * 
+     */
+    delete<T extends cfs_statusDeleteArgs>(args: SelectSubset<T, cfs_statusDeleteArgs<ExtArgs>>): Prisma__cfs_statusClient<$Result.GetResult<Prisma.$cfs_statusPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Cfs_status.
+     * @param {cfs_statusUpdateArgs} args - Arguments to update one Cfs_status.
+     * @example
+     * // Update one Cfs_status
+     * const cfs_status = await prisma.cfs_status.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends cfs_statusUpdateArgs>(args: SelectSubset<T, cfs_statusUpdateArgs<ExtArgs>>): Prisma__cfs_statusClient<$Result.GetResult<Prisma.$cfs_statusPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Cfs_statuses.
+     * @param {cfs_statusDeleteManyArgs} args - Arguments to filter Cfs_statuses to delete.
+     * @example
+     * // Delete a few Cfs_statuses
+     * const { count } = await prisma.cfs_status.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends cfs_statusDeleteManyArgs>(args?: SelectSubset<T, cfs_statusDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Cfs_statuses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cfs_statusUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Cfs_statuses
+     * const cfs_status = await prisma.cfs_status.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends cfs_statusUpdateManyArgs>(args: SelectSubset<T, cfs_statusUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Cfs_status.
+     * @param {cfs_statusUpsertArgs} args - Arguments to update or create a Cfs_status.
+     * @example
+     * // Update or create a Cfs_status
+     * const cfs_status = await prisma.cfs_status.upsert({
+     *   create: {
+     *     // ... data to create a Cfs_status
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Cfs_status we want to update
+     *   }
+     * })
+     */
+    upsert<T extends cfs_statusUpsertArgs>(args: SelectSubset<T, cfs_statusUpsertArgs<ExtArgs>>): Prisma__cfs_statusClient<$Result.GetResult<Prisma.$cfs_statusPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Cfs_statuses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cfs_statusCountArgs} args - Arguments to filter Cfs_statuses to count.
+     * @example
+     * // Count the number of Cfs_statuses
+     * const count = await prisma.cfs_status.count({
+     *   where: {
+     *     // ... the filter for the Cfs_statuses we want to count
+     *   }
+     * })
+    **/
+    count<T extends cfs_statusCountArgs>(
+      args?: Subset<T, cfs_statusCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Cfs_statusCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Cfs_status.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Cfs_statusAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Cfs_statusAggregateArgs>(args: Subset<T, Cfs_statusAggregateArgs>): Prisma.PrismaPromise<GetCfs_statusAggregateType<T>>
+
+    /**
+     * Group by Cfs_status.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cfs_statusGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends cfs_statusGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: cfs_statusGroupByArgs['orderBy'] }
+        : { orderBy?: cfs_statusGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, cfs_statusGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCfs_statusGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the cfs_status model
+   */
+  readonly fields: cfs_statusFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for cfs_status.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__cfs_statusClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the cfs_status model
+   */ 
+  interface cfs_statusFieldRefs {
+    readonly timestamp: FieldRef<"cfs_status", 'DateTime'>
+    readonly remote_sts: FieldRef<"cfs_status", 'Int'>
+    readonly high_pump_sts: FieldRef<"cfs_status", 'Int'>
+    readonly sub_pump_sts: FieldRef<"cfs_status", 'Int'>
+    readonly red_motor_sts: FieldRef<"cfs_status", 'Int'>
+    readonly sol_relay_sts: FieldRef<"cfs_status", 'Int'>
+    readonly high_pump_alm: FieldRef<"cfs_status", 'Int'>
+    readonly sub_pump_alm: FieldRef<"cfs_status", 'Int'>
+    readonly red_motor_alm: FieldRef<"cfs_status", 'Int'>
+    readonly eocr_alm_1: FieldRef<"cfs_status", 'Int'>
+    readonly eocr_alm_2: FieldRef<"cfs_status", 'Int'>
+    readonly eocr_alm_3: FieldRef<"cfs_status", 'Int'>
+    readonly emg_alm: FieldRef<"cfs_status", 'Int'>
+    readonly sec_clk: FieldRef<"cfs_status", 'Int'>
+    readonly high_pump_freq: FieldRef<"cfs_status", 'Int'>
+    readonly sub_pump_freq: FieldRef<"cfs_status", 'Int'>
+    readonly red_motor_freq: FieldRef<"cfs_status", 'Int'>
+    readonly current_pressure: FieldRef<"cfs_status", 'Int'>
+    readonly current_flow: FieldRef<"cfs_status", 'Int'>
+    readonly robot_id: FieldRef<"cfs_status", 'String'>
+    readonly region_id: FieldRef<"cfs_status", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * cfs_status findUnique
+   */
+  export type cfs_statusFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status
+     */
+    select?: cfs_statusSelect<ExtArgs> | null
+    /**
+     * Filter, which cfs_status to fetch.
+     */
+    where: cfs_statusWhereUniqueInput
+  }
+
+  /**
+   * cfs_status findUniqueOrThrow
+   */
+  export type cfs_statusFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status
+     */
+    select?: cfs_statusSelect<ExtArgs> | null
+    /**
+     * Filter, which cfs_status to fetch.
+     */
+    where: cfs_statusWhereUniqueInput
+  }
+
+  /**
+   * cfs_status findFirst
+   */
+  export type cfs_statusFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status
+     */
+    select?: cfs_statusSelect<ExtArgs> | null
+    /**
+     * Filter, which cfs_status to fetch.
+     */
+    where?: cfs_statusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cfs_statuses to fetch.
+     */
+    orderBy?: cfs_statusOrderByWithRelationInput | cfs_statusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for cfs_statuses.
+     */
+    cursor?: cfs_statusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cfs_statuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cfs_statuses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of cfs_statuses.
+     */
+    distinct?: Cfs_statusScalarFieldEnum | Cfs_statusScalarFieldEnum[]
+  }
+
+  /**
+   * cfs_status findFirstOrThrow
+   */
+  export type cfs_statusFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status
+     */
+    select?: cfs_statusSelect<ExtArgs> | null
+    /**
+     * Filter, which cfs_status to fetch.
+     */
+    where?: cfs_statusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cfs_statuses to fetch.
+     */
+    orderBy?: cfs_statusOrderByWithRelationInput | cfs_statusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for cfs_statuses.
+     */
+    cursor?: cfs_statusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cfs_statuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cfs_statuses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of cfs_statuses.
+     */
+    distinct?: Cfs_statusScalarFieldEnum | Cfs_statusScalarFieldEnum[]
+  }
+
+  /**
+   * cfs_status findMany
+   */
+  export type cfs_statusFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status
+     */
+    select?: cfs_statusSelect<ExtArgs> | null
+    /**
+     * Filter, which cfs_statuses to fetch.
+     */
+    where?: cfs_statusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cfs_statuses to fetch.
+     */
+    orderBy?: cfs_statusOrderByWithRelationInput | cfs_statusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing cfs_statuses.
+     */
+    cursor?: cfs_statusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cfs_statuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cfs_statuses.
+     */
+    skip?: number
+    distinct?: Cfs_statusScalarFieldEnum | Cfs_statusScalarFieldEnum[]
+  }
+
+  /**
+   * cfs_status create
+   */
+  export type cfs_statusCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status
+     */
+    select?: cfs_statusSelect<ExtArgs> | null
+    /**
+     * The data needed to create a cfs_status.
+     */
+    data: XOR<cfs_statusCreateInput, cfs_statusUncheckedCreateInput>
+  }
+
+  /**
+   * cfs_status createMany
+   */
+  export type cfs_statusCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many cfs_statuses.
+     */
+    data: cfs_statusCreateManyInput | cfs_statusCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * cfs_status createManyAndReturn
+   */
+  export type cfs_statusCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status
+     */
+    select?: cfs_statusSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many cfs_statuses.
+     */
+    data: cfs_statusCreateManyInput | cfs_statusCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * cfs_status update
+   */
+  export type cfs_statusUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status
+     */
+    select?: cfs_statusSelect<ExtArgs> | null
+    /**
+     * The data needed to update a cfs_status.
+     */
+    data: XOR<cfs_statusUpdateInput, cfs_statusUncheckedUpdateInput>
+    /**
+     * Choose, which cfs_status to update.
+     */
+    where: cfs_statusWhereUniqueInput
+  }
+
+  /**
+   * cfs_status updateMany
+   */
+  export type cfs_statusUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update cfs_statuses.
+     */
+    data: XOR<cfs_statusUpdateManyMutationInput, cfs_statusUncheckedUpdateManyInput>
+    /**
+     * Filter which cfs_statuses to update
+     */
+    where?: cfs_statusWhereInput
+  }
+
+  /**
+   * cfs_status upsert
+   */
+  export type cfs_statusUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status
+     */
+    select?: cfs_statusSelect<ExtArgs> | null
+    /**
+     * The filter to search for the cfs_status to update in case it exists.
+     */
+    where: cfs_statusWhereUniqueInput
+    /**
+     * In case the cfs_status found by the `where` argument doesn't exist, create a new cfs_status with this data.
+     */
+    create: XOR<cfs_statusCreateInput, cfs_statusUncheckedCreateInput>
+    /**
+     * In case the cfs_status was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<cfs_statusUpdateInput, cfs_statusUncheckedUpdateInput>
+  }
+
+  /**
+   * cfs_status delete
+   */
+  export type cfs_statusDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status
+     */
+    select?: cfs_statusSelect<ExtArgs> | null
+    /**
+     * Filter which cfs_status to delete.
+     */
+    where: cfs_statusWhereUniqueInput
+  }
+
+  /**
+   * cfs_status deleteMany
+   */
+  export type cfs_statusDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which cfs_statuses to delete
+     */
+    where?: cfs_statusWhereInput
+  }
+
+  /**
+   * cfs_status without action
+   */
+  export type cfs_statusDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status
+     */
+    select?: cfs_statusSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Model cfs_status_temp
+   */
+
+  export type AggregateCfs_status_temp = {
+    _count: Cfs_status_tempCountAggregateOutputType | null
+    _avg: Cfs_status_tempAvgAggregateOutputType | null
+    _sum: Cfs_status_tempSumAggregateOutputType | null
+    _min: Cfs_status_tempMinAggregateOutputType | null
+    _max: Cfs_status_tempMaxAggregateOutputType | null
+  }
+
+  export type Cfs_status_tempAvgAggregateOutputType = {
+    remote_sts: number | null
+    high_pump_sts: number | null
+    sub_pump_sts: number | null
+    red_motor_sts: number | null
+    sol_relay_sts: number | null
+    high_pump_alm: number | null
+    sub_pump_alm: number | null
+    red_motor_alm: number | null
+    eocr_alm_1: number | null
+    eocr_alm_2: number | null
+    eocr_alm_3: number | null
+    emg_alm: number | null
+    sec_clk: number | null
+    high_pump_freq: number | null
+    sub_pump_freq: number | null
+    red_motor_freq: number | null
+    current_pressure: number | null
+    current_flow: number | null
+    region_id: number | null
+  }
+
+  export type Cfs_status_tempSumAggregateOutputType = {
+    remote_sts: number | null
+    high_pump_sts: number | null
+    sub_pump_sts: number | null
+    red_motor_sts: number | null
+    sol_relay_sts: number | null
+    high_pump_alm: number | null
+    sub_pump_alm: number | null
+    red_motor_alm: number | null
+    eocr_alm_1: number | null
+    eocr_alm_2: number | null
+    eocr_alm_3: number | null
+    emg_alm: number | null
+    sec_clk: number | null
+    high_pump_freq: number | null
+    sub_pump_freq: number | null
+    red_motor_freq: number | null
+    current_pressure: number | null
+    current_flow: number | null
+    region_id: number | null
+  }
+
+  export type Cfs_status_tempMinAggregateOutputType = {
+    timestamp: Date | null
+    remote_sts: number | null
+    high_pump_sts: number | null
+    sub_pump_sts: number | null
+    red_motor_sts: number | null
+    sol_relay_sts: number | null
+    high_pump_alm: number | null
+    sub_pump_alm: number | null
+    red_motor_alm: number | null
+    eocr_alm_1: number | null
+    eocr_alm_2: number | null
+    eocr_alm_3: number | null
+    emg_alm: number | null
+    sec_clk: number | null
+    high_pump_freq: number | null
+    sub_pump_freq: number | null
+    red_motor_freq: number | null
+    current_pressure: number | null
+    current_flow: number | null
+    robot_id: string | null
+    region_id: number | null
+  }
+
+  export type Cfs_status_tempMaxAggregateOutputType = {
+    timestamp: Date | null
+    remote_sts: number | null
+    high_pump_sts: number | null
+    sub_pump_sts: number | null
+    red_motor_sts: number | null
+    sol_relay_sts: number | null
+    high_pump_alm: number | null
+    sub_pump_alm: number | null
+    red_motor_alm: number | null
+    eocr_alm_1: number | null
+    eocr_alm_2: number | null
+    eocr_alm_3: number | null
+    emg_alm: number | null
+    sec_clk: number | null
+    high_pump_freq: number | null
+    sub_pump_freq: number | null
+    red_motor_freq: number | null
+    current_pressure: number | null
+    current_flow: number | null
+    robot_id: string | null
+    region_id: number | null
+  }
+
+  export type Cfs_status_tempCountAggregateOutputType = {
+    timestamp: number
+    remote_sts: number
+    high_pump_sts: number
+    sub_pump_sts: number
+    red_motor_sts: number
+    sol_relay_sts: number
+    high_pump_alm: number
+    sub_pump_alm: number
+    red_motor_alm: number
+    eocr_alm_1: number
+    eocr_alm_2: number
+    eocr_alm_3: number
+    emg_alm: number
+    sec_clk: number
+    high_pump_freq: number
+    sub_pump_freq: number
+    red_motor_freq: number
+    current_pressure: number
+    current_flow: number
+    robot_id: number
+    region_id: number
+    _all: number
+  }
+
+
+  export type Cfs_status_tempAvgAggregateInputType = {
+    remote_sts?: true
+    high_pump_sts?: true
+    sub_pump_sts?: true
+    red_motor_sts?: true
+    sol_relay_sts?: true
+    high_pump_alm?: true
+    sub_pump_alm?: true
+    red_motor_alm?: true
+    eocr_alm_1?: true
+    eocr_alm_2?: true
+    eocr_alm_3?: true
+    emg_alm?: true
+    sec_clk?: true
+    high_pump_freq?: true
+    sub_pump_freq?: true
+    red_motor_freq?: true
+    current_pressure?: true
+    current_flow?: true
+    region_id?: true
+  }
+
+  export type Cfs_status_tempSumAggregateInputType = {
+    remote_sts?: true
+    high_pump_sts?: true
+    sub_pump_sts?: true
+    red_motor_sts?: true
+    sol_relay_sts?: true
+    high_pump_alm?: true
+    sub_pump_alm?: true
+    red_motor_alm?: true
+    eocr_alm_1?: true
+    eocr_alm_2?: true
+    eocr_alm_3?: true
+    emg_alm?: true
+    sec_clk?: true
+    high_pump_freq?: true
+    sub_pump_freq?: true
+    red_motor_freq?: true
+    current_pressure?: true
+    current_flow?: true
+    region_id?: true
+  }
+
+  export type Cfs_status_tempMinAggregateInputType = {
+    timestamp?: true
+    remote_sts?: true
+    high_pump_sts?: true
+    sub_pump_sts?: true
+    red_motor_sts?: true
+    sol_relay_sts?: true
+    high_pump_alm?: true
+    sub_pump_alm?: true
+    red_motor_alm?: true
+    eocr_alm_1?: true
+    eocr_alm_2?: true
+    eocr_alm_3?: true
+    emg_alm?: true
+    sec_clk?: true
+    high_pump_freq?: true
+    sub_pump_freq?: true
+    red_motor_freq?: true
+    current_pressure?: true
+    current_flow?: true
+    robot_id?: true
+    region_id?: true
+  }
+
+  export type Cfs_status_tempMaxAggregateInputType = {
+    timestamp?: true
+    remote_sts?: true
+    high_pump_sts?: true
+    sub_pump_sts?: true
+    red_motor_sts?: true
+    sol_relay_sts?: true
+    high_pump_alm?: true
+    sub_pump_alm?: true
+    red_motor_alm?: true
+    eocr_alm_1?: true
+    eocr_alm_2?: true
+    eocr_alm_3?: true
+    emg_alm?: true
+    sec_clk?: true
+    high_pump_freq?: true
+    sub_pump_freq?: true
+    red_motor_freq?: true
+    current_pressure?: true
+    current_flow?: true
+    robot_id?: true
+    region_id?: true
+  }
+
+  export type Cfs_status_tempCountAggregateInputType = {
+    timestamp?: true
+    remote_sts?: true
+    high_pump_sts?: true
+    sub_pump_sts?: true
+    red_motor_sts?: true
+    sol_relay_sts?: true
+    high_pump_alm?: true
+    sub_pump_alm?: true
+    red_motor_alm?: true
+    eocr_alm_1?: true
+    eocr_alm_2?: true
+    eocr_alm_3?: true
+    emg_alm?: true
+    sec_clk?: true
+    high_pump_freq?: true
+    sub_pump_freq?: true
+    red_motor_freq?: true
+    current_pressure?: true
+    current_flow?: true
+    robot_id?: true
+    region_id?: true
+    _all?: true
+  }
+
+  export type Cfs_status_tempAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which cfs_status_temp to aggregate.
+     */
+    where?: cfs_status_tempWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cfs_status_temps to fetch.
+     */
+    orderBy?: cfs_status_tempOrderByWithRelationInput | cfs_status_tempOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: cfs_status_tempWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cfs_status_temps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cfs_status_temps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned cfs_status_temps
+    **/
+    _count?: true | Cfs_status_tempCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Cfs_status_tempAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Cfs_status_tempSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Cfs_status_tempMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Cfs_status_tempMaxAggregateInputType
+  }
+
+  export type GetCfs_status_tempAggregateType<T extends Cfs_status_tempAggregateArgs> = {
+        [P in keyof T & keyof AggregateCfs_status_temp]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCfs_status_temp[P]>
+      : GetScalarType<T[P], AggregateCfs_status_temp[P]>
+  }
+
+
+
+
+  export type cfs_status_tempGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: cfs_status_tempWhereInput
+    orderBy?: cfs_status_tempOrderByWithAggregationInput | cfs_status_tempOrderByWithAggregationInput[]
+    by: Cfs_status_tempScalarFieldEnum[] | Cfs_status_tempScalarFieldEnum
+    having?: cfs_status_tempScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Cfs_status_tempCountAggregateInputType | true
+    _avg?: Cfs_status_tempAvgAggregateInputType
+    _sum?: Cfs_status_tempSumAggregateInputType
+    _min?: Cfs_status_tempMinAggregateInputType
+    _max?: Cfs_status_tempMaxAggregateInputType
+  }
+
+  export type Cfs_status_tempGroupByOutputType = {
+    timestamp: Date
+    remote_sts: number | null
+    high_pump_sts: number | null
+    sub_pump_sts: number | null
+    red_motor_sts: number | null
+    sol_relay_sts: number | null
+    high_pump_alm: number | null
+    sub_pump_alm: number | null
+    red_motor_alm: number | null
+    eocr_alm_1: number | null
+    eocr_alm_2: number | null
+    eocr_alm_3: number | null
+    emg_alm: number | null
+    sec_clk: number | null
+    high_pump_freq: number | null
+    sub_pump_freq: number | null
+    red_motor_freq: number | null
+    current_pressure: number | null
+    current_flow: number | null
+    robot_id: string
+    region_id: number | null
+    _count: Cfs_status_tempCountAggregateOutputType | null
+    _avg: Cfs_status_tempAvgAggregateOutputType | null
+    _sum: Cfs_status_tempSumAggregateOutputType | null
+    _min: Cfs_status_tempMinAggregateOutputType | null
+    _max: Cfs_status_tempMaxAggregateOutputType | null
+  }
+
+  type GetCfs_status_tempGroupByPayload<T extends cfs_status_tempGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Cfs_status_tempGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Cfs_status_tempGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Cfs_status_tempGroupByOutputType[P]>
+            : GetScalarType<T[P], Cfs_status_tempGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type cfs_status_tempSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    timestamp?: boolean
+    remote_sts?: boolean
+    high_pump_sts?: boolean
+    sub_pump_sts?: boolean
+    red_motor_sts?: boolean
+    sol_relay_sts?: boolean
+    high_pump_alm?: boolean
+    sub_pump_alm?: boolean
+    red_motor_alm?: boolean
+    eocr_alm_1?: boolean
+    eocr_alm_2?: boolean
+    eocr_alm_3?: boolean
+    emg_alm?: boolean
+    sec_clk?: boolean
+    high_pump_freq?: boolean
+    sub_pump_freq?: boolean
+    red_motor_freq?: boolean
+    current_pressure?: boolean
+    current_flow?: boolean
+    robot_id?: boolean
+    region_id?: boolean
+  }, ExtArgs["result"]["cfs_status_temp"]>
+
+  export type cfs_status_tempSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    timestamp?: boolean
+    remote_sts?: boolean
+    high_pump_sts?: boolean
+    sub_pump_sts?: boolean
+    red_motor_sts?: boolean
+    sol_relay_sts?: boolean
+    high_pump_alm?: boolean
+    sub_pump_alm?: boolean
+    red_motor_alm?: boolean
+    eocr_alm_1?: boolean
+    eocr_alm_2?: boolean
+    eocr_alm_3?: boolean
+    emg_alm?: boolean
+    sec_clk?: boolean
+    high_pump_freq?: boolean
+    sub_pump_freq?: boolean
+    red_motor_freq?: boolean
+    current_pressure?: boolean
+    current_flow?: boolean
+    robot_id?: boolean
+    region_id?: boolean
+  }, ExtArgs["result"]["cfs_status_temp"]>
+
+  export type cfs_status_tempSelectScalar = {
+    timestamp?: boolean
+    remote_sts?: boolean
+    high_pump_sts?: boolean
+    sub_pump_sts?: boolean
+    red_motor_sts?: boolean
+    sol_relay_sts?: boolean
+    high_pump_alm?: boolean
+    sub_pump_alm?: boolean
+    red_motor_alm?: boolean
+    eocr_alm_1?: boolean
+    eocr_alm_2?: boolean
+    eocr_alm_3?: boolean
+    emg_alm?: boolean
+    sec_clk?: boolean
+    high_pump_freq?: boolean
+    sub_pump_freq?: boolean
+    red_motor_freq?: boolean
+    current_pressure?: boolean
+    current_flow?: boolean
+    robot_id?: boolean
+    region_id?: boolean
+  }
+
+
+  export type $cfs_status_tempPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "cfs_status_temp"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      timestamp: Date
+      remote_sts: number | null
+      high_pump_sts: number | null
+      sub_pump_sts: number | null
+      red_motor_sts: number | null
+      sol_relay_sts: number | null
+      high_pump_alm: number | null
+      sub_pump_alm: number | null
+      red_motor_alm: number | null
+      eocr_alm_1: number | null
+      eocr_alm_2: number | null
+      eocr_alm_3: number | null
+      emg_alm: number | null
+      sec_clk: number | null
+      high_pump_freq: number | null
+      sub_pump_freq: number | null
+      red_motor_freq: number | null
+      current_pressure: number | null
+      current_flow: number | null
+      robot_id: string
+      region_id: number | null
+    }, ExtArgs["result"]["cfs_status_temp"]>
+    composites: {}
+  }
+
+  type cfs_status_tempGetPayload<S extends boolean | null | undefined | cfs_status_tempDefaultArgs> = $Result.GetResult<Prisma.$cfs_status_tempPayload, S>
+
+  type cfs_status_tempCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<cfs_status_tempFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Cfs_status_tempCountAggregateInputType | true
+    }
+
+  export interface cfs_status_tempDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['cfs_status_temp'], meta: { name: 'cfs_status_temp' } }
+    /**
+     * Find zero or one Cfs_status_temp that matches the filter.
+     * @param {cfs_status_tempFindUniqueArgs} args - Arguments to find a Cfs_status_temp
+     * @example
+     * // Get one Cfs_status_temp
+     * const cfs_status_temp = await prisma.cfs_status_temp.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends cfs_status_tempFindUniqueArgs>(args: SelectSubset<T, cfs_status_tempFindUniqueArgs<ExtArgs>>): Prisma__cfs_status_tempClient<$Result.GetResult<Prisma.$cfs_status_tempPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Cfs_status_temp that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {cfs_status_tempFindUniqueOrThrowArgs} args - Arguments to find a Cfs_status_temp
+     * @example
+     * // Get one Cfs_status_temp
+     * const cfs_status_temp = await prisma.cfs_status_temp.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends cfs_status_tempFindUniqueOrThrowArgs>(args: SelectSubset<T, cfs_status_tempFindUniqueOrThrowArgs<ExtArgs>>): Prisma__cfs_status_tempClient<$Result.GetResult<Prisma.$cfs_status_tempPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Cfs_status_temp that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cfs_status_tempFindFirstArgs} args - Arguments to find a Cfs_status_temp
+     * @example
+     * // Get one Cfs_status_temp
+     * const cfs_status_temp = await prisma.cfs_status_temp.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends cfs_status_tempFindFirstArgs>(args?: SelectSubset<T, cfs_status_tempFindFirstArgs<ExtArgs>>): Prisma__cfs_status_tempClient<$Result.GetResult<Prisma.$cfs_status_tempPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Cfs_status_temp that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cfs_status_tempFindFirstOrThrowArgs} args - Arguments to find a Cfs_status_temp
+     * @example
+     * // Get one Cfs_status_temp
+     * const cfs_status_temp = await prisma.cfs_status_temp.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends cfs_status_tempFindFirstOrThrowArgs>(args?: SelectSubset<T, cfs_status_tempFindFirstOrThrowArgs<ExtArgs>>): Prisma__cfs_status_tempClient<$Result.GetResult<Prisma.$cfs_status_tempPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Cfs_status_temps that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cfs_status_tempFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Cfs_status_temps
+     * const cfs_status_temps = await prisma.cfs_status_temp.findMany()
+     * 
+     * // Get first 10 Cfs_status_temps
+     * const cfs_status_temps = await prisma.cfs_status_temp.findMany({ take: 10 })
+     * 
+     * // Only select the `timestamp`
+     * const cfs_status_tempWithTimestampOnly = await prisma.cfs_status_temp.findMany({ select: { timestamp: true } })
+     * 
+     */
+    findMany<T extends cfs_status_tempFindManyArgs>(args?: SelectSubset<T, cfs_status_tempFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$cfs_status_tempPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Cfs_status_temp.
+     * @param {cfs_status_tempCreateArgs} args - Arguments to create a Cfs_status_temp.
+     * @example
+     * // Create one Cfs_status_temp
+     * const Cfs_status_temp = await prisma.cfs_status_temp.create({
+     *   data: {
+     *     // ... data to create a Cfs_status_temp
+     *   }
+     * })
+     * 
+     */
+    create<T extends cfs_status_tempCreateArgs>(args: SelectSubset<T, cfs_status_tempCreateArgs<ExtArgs>>): Prisma__cfs_status_tempClient<$Result.GetResult<Prisma.$cfs_status_tempPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Cfs_status_temps.
+     * @param {cfs_status_tempCreateManyArgs} args - Arguments to create many Cfs_status_temps.
+     * @example
+     * // Create many Cfs_status_temps
+     * const cfs_status_temp = await prisma.cfs_status_temp.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends cfs_status_tempCreateManyArgs>(args?: SelectSubset<T, cfs_status_tempCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Cfs_status_temps and returns the data saved in the database.
+     * @param {cfs_status_tempCreateManyAndReturnArgs} args - Arguments to create many Cfs_status_temps.
+     * @example
+     * // Create many Cfs_status_temps
+     * const cfs_status_temp = await prisma.cfs_status_temp.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Cfs_status_temps and only return the `timestamp`
+     * const cfs_status_tempWithTimestampOnly = await prisma.cfs_status_temp.createManyAndReturn({ 
+     *   select: { timestamp: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends cfs_status_tempCreateManyAndReturnArgs>(args?: SelectSubset<T, cfs_status_tempCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$cfs_status_tempPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Cfs_status_temp.
+     * @param {cfs_status_tempDeleteArgs} args - Arguments to delete one Cfs_status_temp.
+     * @example
+     * // Delete one Cfs_status_temp
+     * const Cfs_status_temp = await prisma.cfs_status_temp.delete({
+     *   where: {
+     *     // ... filter to delete one Cfs_status_temp
+     *   }
+     * })
+     * 
+     */
+    delete<T extends cfs_status_tempDeleteArgs>(args: SelectSubset<T, cfs_status_tempDeleteArgs<ExtArgs>>): Prisma__cfs_status_tempClient<$Result.GetResult<Prisma.$cfs_status_tempPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Cfs_status_temp.
+     * @param {cfs_status_tempUpdateArgs} args - Arguments to update one Cfs_status_temp.
+     * @example
+     * // Update one Cfs_status_temp
+     * const cfs_status_temp = await prisma.cfs_status_temp.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends cfs_status_tempUpdateArgs>(args: SelectSubset<T, cfs_status_tempUpdateArgs<ExtArgs>>): Prisma__cfs_status_tempClient<$Result.GetResult<Prisma.$cfs_status_tempPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Cfs_status_temps.
+     * @param {cfs_status_tempDeleteManyArgs} args - Arguments to filter Cfs_status_temps to delete.
+     * @example
+     * // Delete a few Cfs_status_temps
+     * const { count } = await prisma.cfs_status_temp.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends cfs_status_tempDeleteManyArgs>(args?: SelectSubset<T, cfs_status_tempDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Cfs_status_temps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cfs_status_tempUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Cfs_status_temps
+     * const cfs_status_temp = await prisma.cfs_status_temp.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends cfs_status_tempUpdateManyArgs>(args: SelectSubset<T, cfs_status_tempUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Cfs_status_temp.
+     * @param {cfs_status_tempUpsertArgs} args - Arguments to update or create a Cfs_status_temp.
+     * @example
+     * // Update or create a Cfs_status_temp
+     * const cfs_status_temp = await prisma.cfs_status_temp.upsert({
+     *   create: {
+     *     // ... data to create a Cfs_status_temp
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Cfs_status_temp we want to update
+     *   }
+     * })
+     */
+    upsert<T extends cfs_status_tempUpsertArgs>(args: SelectSubset<T, cfs_status_tempUpsertArgs<ExtArgs>>): Prisma__cfs_status_tempClient<$Result.GetResult<Prisma.$cfs_status_tempPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Cfs_status_temps.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cfs_status_tempCountArgs} args - Arguments to filter Cfs_status_temps to count.
+     * @example
+     * // Count the number of Cfs_status_temps
+     * const count = await prisma.cfs_status_temp.count({
+     *   where: {
+     *     // ... the filter for the Cfs_status_temps we want to count
+     *   }
+     * })
+    **/
+    count<T extends cfs_status_tempCountArgs>(
+      args?: Subset<T, cfs_status_tempCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Cfs_status_tempCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Cfs_status_temp.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Cfs_status_tempAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Cfs_status_tempAggregateArgs>(args: Subset<T, Cfs_status_tempAggregateArgs>): Prisma.PrismaPromise<GetCfs_status_tempAggregateType<T>>
+
+    /**
+     * Group by Cfs_status_temp.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {cfs_status_tempGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends cfs_status_tempGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: cfs_status_tempGroupByArgs['orderBy'] }
+        : { orderBy?: cfs_status_tempGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, cfs_status_tempGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCfs_status_tempGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the cfs_status_temp model
+   */
+  readonly fields: cfs_status_tempFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for cfs_status_temp.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__cfs_status_tempClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the cfs_status_temp model
+   */ 
+  interface cfs_status_tempFieldRefs {
+    readonly timestamp: FieldRef<"cfs_status_temp", 'DateTime'>
+    readonly remote_sts: FieldRef<"cfs_status_temp", 'Int'>
+    readonly high_pump_sts: FieldRef<"cfs_status_temp", 'Int'>
+    readonly sub_pump_sts: FieldRef<"cfs_status_temp", 'Int'>
+    readonly red_motor_sts: FieldRef<"cfs_status_temp", 'Int'>
+    readonly sol_relay_sts: FieldRef<"cfs_status_temp", 'Int'>
+    readonly high_pump_alm: FieldRef<"cfs_status_temp", 'Int'>
+    readonly sub_pump_alm: FieldRef<"cfs_status_temp", 'Int'>
+    readonly red_motor_alm: FieldRef<"cfs_status_temp", 'Int'>
+    readonly eocr_alm_1: FieldRef<"cfs_status_temp", 'Int'>
+    readonly eocr_alm_2: FieldRef<"cfs_status_temp", 'Int'>
+    readonly eocr_alm_3: FieldRef<"cfs_status_temp", 'Int'>
+    readonly emg_alm: FieldRef<"cfs_status_temp", 'Int'>
+    readonly sec_clk: FieldRef<"cfs_status_temp", 'Int'>
+    readonly high_pump_freq: FieldRef<"cfs_status_temp", 'Int'>
+    readonly sub_pump_freq: FieldRef<"cfs_status_temp", 'Int'>
+    readonly red_motor_freq: FieldRef<"cfs_status_temp", 'Int'>
+    readonly current_pressure: FieldRef<"cfs_status_temp", 'Int'>
+    readonly current_flow: FieldRef<"cfs_status_temp", 'Int'>
+    readonly robot_id: FieldRef<"cfs_status_temp", 'String'>
+    readonly region_id: FieldRef<"cfs_status_temp", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * cfs_status_temp findUnique
+   */
+  export type cfs_status_tempFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status_temp
+     */
+    select?: cfs_status_tempSelect<ExtArgs> | null
+    /**
+     * Filter, which cfs_status_temp to fetch.
+     */
+    where: cfs_status_tempWhereUniqueInput
+  }
+
+  /**
+   * cfs_status_temp findUniqueOrThrow
+   */
+  export type cfs_status_tempFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status_temp
+     */
+    select?: cfs_status_tempSelect<ExtArgs> | null
+    /**
+     * Filter, which cfs_status_temp to fetch.
+     */
+    where: cfs_status_tempWhereUniqueInput
+  }
+
+  /**
+   * cfs_status_temp findFirst
+   */
+  export type cfs_status_tempFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status_temp
+     */
+    select?: cfs_status_tempSelect<ExtArgs> | null
+    /**
+     * Filter, which cfs_status_temp to fetch.
+     */
+    where?: cfs_status_tempWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cfs_status_temps to fetch.
+     */
+    orderBy?: cfs_status_tempOrderByWithRelationInput | cfs_status_tempOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for cfs_status_temps.
+     */
+    cursor?: cfs_status_tempWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cfs_status_temps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cfs_status_temps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of cfs_status_temps.
+     */
+    distinct?: Cfs_status_tempScalarFieldEnum | Cfs_status_tempScalarFieldEnum[]
+  }
+
+  /**
+   * cfs_status_temp findFirstOrThrow
+   */
+  export type cfs_status_tempFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status_temp
+     */
+    select?: cfs_status_tempSelect<ExtArgs> | null
+    /**
+     * Filter, which cfs_status_temp to fetch.
+     */
+    where?: cfs_status_tempWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cfs_status_temps to fetch.
+     */
+    orderBy?: cfs_status_tempOrderByWithRelationInput | cfs_status_tempOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for cfs_status_temps.
+     */
+    cursor?: cfs_status_tempWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cfs_status_temps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cfs_status_temps.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of cfs_status_temps.
+     */
+    distinct?: Cfs_status_tempScalarFieldEnum | Cfs_status_tempScalarFieldEnum[]
+  }
+
+  /**
+   * cfs_status_temp findMany
+   */
+  export type cfs_status_tempFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status_temp
+     */
+    select?: cfs_status_tempSelect<ExtArgs> | null
+    /**
+     * Filter, which cfs_status_temps to fetch.
+     */
+    where?: cfs_status_tempWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of cfs_status_temps to fetch.
+     */
+    orderBy?: cfs_status_tempOrderByWithRelationInput | cfs_status_tempOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing cfs_status_temps.
+     */
+    cursor?: cfs_status_tempWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` cfs_status_temps from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` cfs_status_temps.
+     */
+    skip?: number
+    distinct?: Cfs_status_tempScalarFieldEnum | Cfs_status_tempScalarFieldEnum[]
+  }
+
+  /**
+   * cfs_status_temp create
+   */
+  export type cfs_status_tempCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status_temp
+     */
+    select?: cfs_status_tempSelect<ExtArgs> | null
+    /**
+     * The data needed to create a cfs_status_temp.
+     */
+    data: XOR<cfs_status_tempCreateInput, cfs_status_tempUncheckedCreateInput>
+  }
+
+  /**
+   * cfs_status_temp createMany
+   */
+  export type cfs_status_tempCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many cfs_status_temps.
+     */
+    data: cfs_status_tempCreateManyInput | cfs_status_tempCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * cfs_status_temp createManyAndReturn
+   */
+  export type cfs_status_tempCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status_temp
+     */
+    select?: cfs_status_tempSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many cfs_status_temps.
+     */
+    data: cfs_status_tempCreateManyInput | cfs_status_tempCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * cfs_status_temp update
+   */
+  export type cfs_status_tempUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status_temp
+     */
+    select?: cfs_status_tempSelect<ExtArgs> | null
+    /**
+     * The data needed to update a cfs_status_temp.
+     */
+    data: XOR<cfs_status_tempUpdateInput, cfs_status_tempUncheckedUpdateInput>
+    /**
+     * Choose, which cfs_status_temp to update.
+     */
+    where: cfs_status_tempWhereUniqueInput
+  }
+
+  /**
+   * cfs_status_temp updateMany
+   */
+  export type cfs_status_tempUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update cfs_status_temps.
+     */
+    data: XOR<cfs_status_tempUpdateManyMutationInput, cfs_status_tempUncheckedUpdateManyInput>
+    /**
+     * Filter which cfs_status_temps to update
+     */
+    where?: cfs_status_tempWhereInput
+  }
+
+  /**
+   * cfs_status_temp upsert
+   */
+  export type cfs_status_tempUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status_temp
+     */
+    select?: cfs_status_tempSelect<ExtArgs> | null
+    /**
+     * The filter to search for the cfs_status_temp to update in case it exists.
+     */
+    where: cfs_status_tempWhereUniqueInput
+    /**
+     * In case the cfs_status_temp found by the `where` argument doesn't exist, create a new cfs_status_temp with this data.
+     */
+    create: XOR<cfs_status_tempCreateInput, cfs_status_tempUncheckedCreateInput>
+    /**
+     * In case the cfs_status_temp was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<cfs_status_tempUpdateInput, cfs_status_tempUncheckedUpdateInput>
+  }
+
+  /**
+   * cfs_status_temp delete
+   */
+  export type cfs_status_tempDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status_temp
+     */
+    select?: cfs_status_tempSelect<ExtArgs> | null
+    /**
+     * Filter which cfs_status_temp to delete.
+     */
+    where: cfs_status_tempWhereUniqueInput
+  }
+
+  /**
+   * cfs_status_temp deleteMany
+   */
+  export type cfs_status_tempDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which cfs_status_temps to delete
+     */
+    where?: cfs_status_tempWhereInput
+  }
+
+  /**
+   * cfs_status_temp without action
+   */
+  export type cfs_status_tempDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the cfs_status_temp
+     */
+    select?: cfs_status_tempSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * Model weather_data
+   */
+
+  export type AggregateWeather_data = {
+    _count: Weather_dataCountAggregateOutputType | null
+    _avg: Weather_dataAvgAggregateOutputType | null
+    _sum: Weather_dataSumAggregateOutputType | null
+    _min: Weather_dataMinAggregateOutputType | null
+    _max: Weather_dataMaxAggregateOutputType | null
+  }
+
+  export type Weather_dataAvgAggregateOutputType = {
+    STN: number | null
+    WD: number | null
+    WS: number | null
+    GST_WD: number | null
+    GST_WS: number | null
+    GST_TM: number | null
+    PA: number | null
+    PS: number | null
+    PT: number | null
+    PR: number | null
+    TA: number | null
+    TD: number | null
+    HM: number | null
+    PV: number | null
+    RN: number | null
+    RN_DAY: number | null
+    RN_JUN: number | null
+    RN_INT: number | null
+    SD_HR3: number | null
+    SD_DAY: number | null
+    SD_TOT: number | null
+    WC: number | null
+    WP: number | null
+    WW: number | null
+    CA_TOT: number | null
+    CA_MID: number | null
+    CH_MIN: number | null
+    CT: number | null
+    CT_TOP: number | null
+    CT_MID: number | null
+    CT_LOW: number | null
+    VS: number | null
+    SS: number | null
+    SI: number | null
+    ST_GD: number | null
+    TS: number | null
+    TE_005: number | null
+    TE_01: number | null
+    TE_02: number | null
+    TE_03: number | null
+    ST_SEA: number | null
+    WH: number | null
+    BF: number | null
+    IR: number | null
+    IX: number | null
+  }
+
+  export type Weather_dataSumAggregateOutputType = {
+    STN: number | null
+    WD: number | null
+    WS: number | null
+    GST_WD: number | null
+    GST_WS: number | null
+    GST_TM: number | null
+    PA: number | null
+    PS: number | null
+    PT: number | null
+    PR: number | null
+    TA: number | null
+    TD: number | null
+    HM: number | null
+    PV: number | null
+    RN: number | null
+    RN_DAY: number | null
+    RN_JUN: number | null
+    RN_INT: number | null
+    SD_HR3: number | null
+    SD_DAY: number | null
+    SD_TOT: number | null
+    WC: number | null
+    WP: number | null
+    WW: number | null
+    CA_TOT: number | null
+    CA_MID: number | null
+    CH_MIN: number | null
+    CT: number | null
+    CT_TOP: number | null
+    CT_MID: number | null
+    CT_LOW: number | null
+    VS: number | null
+    SS: number | null
+    SI: number | null
+    ST_GD: number | null
+    TS: number | null
+    TE_005: number | null
+    TE_01: number | null
+    TE_02: number | null
+    TE_03: number | null
+    ST_SEA: number | null
+    WH: number | null
+    BF: number | null
+    IR: number | null
+    IX: number | null
+  }
+
+  export type Weather_dataMinAggregateOutputType = {
+    TM: Date | null
+    STN: number | null
+    WD: number | null
+    WS: number | null
+    GST_WD: number | null
+    GST_WS: number | null
+    GST_TM: number | null
+    PA: number | null
+    PS: number | null
+    PT: number | null
+    PR: number | null
+    TA: number | null
+    TD: number | null
+    HM: number | null
+    PV: number | null
+    RN: number | null
+    RN_DAY: number | null
+    RN_JUN: number | null
+    RN_INT: number | null
+    SD_HR3: number | null
+    SD_DAY: number | null
+    SD_TOT: number | null
+    WC: number | null
+    WP: number | null
+    WW: number | null
+    CA_TOT: number | null
+    CA_MID: number | null
+    CH_MIN: number | null
+    CT: number | null
+    CT_TOP: number | null
+    CT_MID: number | null
+    CT_LOW: number | null
+    VS: number | null
+    SS: number | null
+    SI: number | null
+    ST_GD: number | null
+    TS: number | null
+    TE_005: number | null
+    TE_01: number | null
+    TE_02: number | null
+    TE_03: number | null
+    ST_SEA: number | null
+    WH: number | null
+    BF: number | null
+    IR: number | null
+    IX: number | null
+  }
+
+  export type Weather_dataMaxAggregateOutputType = {
+    TM: Date | null
+    STN: number | null
+    WD: number | null
+    WS: number | null
+    GST_WD: number | null
+    GST_WS: number | null
+    GST_TM: number | null
+    PA: number | null
+    PS: number | null
+    PT: number | null
+    PR: number | null
+    TA: number | null
+    TD: number | null
+    HM: number | null
+    PV: number | null
+    RN: number | null
+    RN_DAY: number | null
+    RN_JUN: number | null
+    RN_INT: number | null
+    SD_HR3: number | null
+    SD_DAY: number | null
+    SD_TOT: number | null
+    WC: number | null
+    WP: number | null
+    WW: number | null
+    CA_TOT: number | null
+    CA_MID: number | null
+    CH_MIN: number | null
+    CT: number | null
+    CT_TOP: number | null
+    CT_MID: number | null
+    CT_LOW: number | null
+    VS: number | null
+    SS: number | null
+    SI: number | null
+    ST_GD: number | null
+    TS: number | null
+    TE_005: number | null
+    TE_01: number | null
+    TE_02: number | null
+    TE_03: number | null
+    ST_SEA: number | null
+    WH: number | null
+    BF: number | null
+    IR: number | null
+    IX: number | null
+  }
+
+  export type Weather_dataCountAggregateOutputType = {
+    TM: number
+    STN: number
+    WD: number
+    WS: number
+    GST_WD: number
+    GST_WS: number
+    GST_TM: number
+    PA: number
+    PS: number
+    PT: number
+    PR: number
+    TA: number
+    TD: number
+    HM: number
+    PV: number
+    RN: number
+    RN_DAY: number
+    RN_JUN: number
+    RN_INT: number
+    SD_HR3: number
+    SD_DAY: number
+    SD_TOT: number
+    WC: number
+    WP: number
+    WW: number
+    CA_TOT: number
+    CA_MID: number
+    CH_MIN: number
+    CT: number
+    CT_TOP: number
+    CT_MID: number
+    CT_LOW: number
+    VS: number
+    SS: number
+    SI: number
+    ST_GD: number
+    TS: number
+    TE_005: number
+    TE_01: number
+    TE_02: number
+    TE_03: number
+    ST_SEA: number
+    WH: number
+    BF: number
+    IR: number
+    IX: number
+    _all: number
+  }
+
+
+  export type Weather_dataAvgAggregateInputType = {
+    STN?: true
+    WD?: true
+    WS?: true
+    GST_WD?: true
+    GST_WS?: true
+    GST_TM?: true
+    PA?: true
+    PS?: true
+    PT?: true
+    PR?: true
+    TA?: true
+    TD?: true
+    HM?: true
+    PV?: true
+    RN?: true
+    RN_DAY?: true
+    RN_JUN?: true
+    RN_INT?: true
+    SD_HR3?: true
+    SD_DAY?: true
+    SD_TOT?: true
+    WC?: true
+    WP?: true
+    WW?: true
+    CA_TOT?: true
+    CA_MID?: true
+    CH_MIN?: true
+    CT?: true
+    CT_TOP?: true
+    CT_MID?: true
+    CT_LOW?: true
+    VS?: true
+    SS?: true
+    SI?: true
+    ST_GD?: true
+    TS?: true
+    TE_005?: true
+    TE_01?: true
+    TE_02?: true
+    TE_03?: true
+    ST_SEA?: true
+    WH?: true
+    BF?: true
+    IR?: true
+    IX?: true
+  }
+
+  export type Weather_dataSumAggregateInputType = {
+    STN?: true
+    WD?: true
+    WS?: true
+    GST_WD?: true
+    GST_WS?: true
+    GST_TM?: true
+    PA?: true
+    PS?: true
+    PT?: true
+    PR?: true
+    TA?: true
+    TD?: true
+    HM?: true
+    PV?: true
+    RN?: true
+    RN_DAY?: true
+    RN_JUN?: true
+    RN_INT?: true
+    SD_HR3?: true
+    SD_DAY?: true
+    SD_TOT?: true
+    WC?: true
+    WP?: true
+    WW?: true
+    CA_TOT?: true
+    CA_MID?: true
+    CH_MIN?: true
+    CT?: true
+    CT_TOP?: true
+    CT_MID?: true
+    CT_LOW?: true
+    VS?: true
+    SS?: true
+    SI?: true
+    ST_GD?: true
+    TS?: true
+    TE_005?: true
+    TE_01?: true
+    TE_02?: true
+    TE_03?: true
+    ST_SEA?: true
+    WH?: true
+    BF?: true
+    IR?: true
+    IX?: true
+  }
+
+  export type Weather_dataMinAggregateInputType = {
+    TM?: true
+    STN?: true
+    WD?: true
+    WS?: true
+    GST_WD?: true
+    GST_WS?: true
+    GST_TM?: true
+    PA?: true
+    PS?: true
+    PT?: true
+    PR?: true
+    TA?: true
+    TD?: true
+    HM?: true
+    PV?: true
+    RN?: true
+    RN_DAY?: true
+    RN_JUN?: true
+    RN_INT?: true
+    SD_HR3?: true
+    SD_DAY?: true
+    SD_TOT?: true
+    WC?: true
+    WP?: true
+    WW?: true
+    CA_TOT?: true
+    CA_MID?: true
+    CH_MIN?: true
+    CT?: true
+    CT_TOP?: true
+    CT_MID?: true
+    CT_LOW?: true
+    VS?: true
+    SS?: true
+    SI?: true
+    ST_GD?: true
+    TS?: true
+    TE_005?: true
+    TE_01?: true
+    TE_02?: true
+    TE_03?: true
+    ST_SEA?: true
+    WH?: true
+    BF?: true
+    IR?: true
+    IX?: true
+  }
+
+  export type Weather_dataMaxAggregateInputType = {
+    TM?: true
+    STN?: true
+    WD?: true
+    WS?: true
+    GST_WD?: true
+    GST_WS?: true
+    GST_TM?: true
+    PA?: true
+    PS?: true
+    PT?: true
+    PR?: true
+    TA?: true
+    TD?: true
+    HM?: true
+    PV?: true
+    RN?: true
+    RN_DAY?: true
+    RN_JUN?: true
+    RN_INT?: true
+    SD_HR3?: true
+    SD_DAY?: true
+    SD_TOT?: true
+    WC?: true
+    WP?: true
+    WW?: true
+    CA_TOT?: true
+    CA_MID?: true
+    CH_MIN?: true
+    CT?: true
+    CT_TOP?: true
+    CT_MID?: true
+    CT_LOW?: true
+    VS?: true
+    SS?: true
+    SI?: true
+    ST_GD?: true
+    TS?: true
+    TE_005?: true
+    TE_01?: true
+    TE_02?: true
+    TE_03?: true
+    ST_SEA?: true
+    WH?: true
+    BF?: true
+    IR?: true
+    IX?: true
+  }
+
+  export type Weather_dataCountAggregateInputType = {
+    TM?: true
+    STN?: true
+    WD?: true
+    WS?: true
+    GST_WD?: true
+    GST_WS?: true
+    GST_TM?: true
+    PA?: true
+    PS?: true
+    PT?: true
+    PR?: true
+    TA?: true
+    TD?: true
+    HM?: true
+    PV?: true
+    RN?: true
+    RN_DAY?: true
+    RN_JUN?: true
+    RN_INT?: true
+    SD_HR3?: true
+    SD_DAY?: true
+    SD_TOT?: true
+    WC?: true
+    WP?: true
+    WW?: true
+    CA_TOT?: true
+    CA_MID?: true
+    CH_MIN?: true
+    CT?: true
+    CT_TOP?: true
+    CT_MID?: true
+    CT_LOW?: true
+    VS?: true
+    SS?: true
+    SI?: true
+    ST_GD?: true
+    TS?: true
+    TE_005?: true
+    TE_01?: true
+    TE_02?: true
+    TE_03?: true
+    ST_SEA?: true
+    WH?: true
+    BF?: true
+    IR?: true
+    IX?: true
+    _all?: true
+  }
+
+  export type Weather_dataAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which weather_data to aggregate.
+     */
+    where?: weather_dataWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of weather_data to fetch.
+     */
+    orderBy?: weather_dataOrderByWithRelationInput | weather_dataOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: weather_dataWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` weather_data from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` weather_data.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned weather_data
+    **/
+    _count?: true | Weather_dataCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Weather_dataAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Weather_dataSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Weather_dataMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Weather_dataMaxAggregateInputType
+  }
+
+  export type GetWeather_dataAggregateType<T extends Weather_dataAggregateArgs> = {
+        [P in keyof T & keyof AggregateWeather_data]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWeather_data[P]>
+      : GetScalarType<T[P], AggregateWeather_data[P]>
+  }
+
+
+
+
+  export type weather_dataGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: weather_dataWhereInput
+    orderBy?: weather_dataOrderByWithAggregationInput | weather_dataOrderByWithAggregationInput[]
+    by: Weather_dataScalarFieldEnum[] | Weather_dataScalarFieldEnum
+    having?: weather_dataScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Weather_dataCountAggregateInputType | true
+    _avg?: Weather_dataAvgAggregateInputType
+    _sum?: Weather_dataSumAggregateInputType
+    _min?: Weather_dataMinAggregateInputType
+    _max?: Weather_dataMaxAggregateInputType
+  }
+
+  export type Weather_dataGroupByOutputType = {
+    TM: Date
+    STN: number
+    WD: number | null
+    WS: number | null
+    GST_WD: number | null
+    GST_WS: number | null
+    GST_TM: number | null
+    PA: number | null
+    PS: number | null
+    PT: number | null
+    PR: number | null
+    TA: number | null
+    TD: number | null
+    HM: number | null
+    PV: number | null
+    RN: number | null
+    RN_DAY: number | null
+    RN_JUN: number | null
+    RN_INT: number | null
+    SD_HR3: number | null
+    SD_DAY: number | null
+    SD_TOT: number | null
+    WC: number | null
+    WP: number | null
+    WW: number | null
+    CA_TOT: number | null
+    CA_MID: number | null
+    CH_MIN: number | null
+    CT: number | null
+    CT_TOP: number | null
+    CT_MID: number | null
+    CT_LOW: number | null
+    VS: number | null
+    SS: number | null
+    SI: number | null
+    ST_GD: number | null
+    TS: number | null
+    TE_005: number | null
+    TE_01: number | null
+    TE_02: number | null
+    TE_03: number | null
+    ST_SEA: number | null
+    WH: number | null
+    BF: number | null
+    IR: number | null
+    IX: number | null
+    _count: Weather_dataCountAggregateOutputType | null
+    _avg: Weather_dataAvgAggregateOutputType | null
+    _sum: Weather_dataSumAggregateOutputType | null
+    _min: Weather_dataMinAggregateOutputType | null
+    _max: Weather_dataMaxAggregateOutputType | null
+  }
+
+  type GetWeather_dataGroupByPayload<T extends weather_dataGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Weather_dataGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Weather_dataGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Weather_dataGroupByOutputType[P]>
+            : GetScalarType<T[P], Weather_dataGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type weather_dataSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    TM?: boolean
+    STN?: boolean
+    WD?: boolean
+    WS?: boolean
+    GST_WD?: boolean
+    GST_WS?: boolean
+    GST_TM?: boolean
+    PA?: boolean
+    PS?: boolean
+    PT?: boolean
+    PR?: boolean
+    TA?: boolean
+    TD?: boolean
+    HM?: boolean
+    PV?: boolean
+    RN?: boolean
+    RN_DAY?: boolean
+    RN_JUN?: boolean
+    RN_INT?: boolean
+    SD_HR3?: boolean
+    SD_DAY?: boolean
+    SD_TOT?: boolean
+    WC?: boolean
+    WP?: boolean
+    WW?: boolean
+    CA_TOT?: boolean
+    CA_MID?: boolean
+    CH_MIN?: boolean
+    CT?: boolean
+    CT_TOP?: boolean
+    CT_MID?: boolean
+    CT_LOW?: boolean
+    VS?: boolean
+    SS?: boolean
+    SI?: boolean
+    ST_GD?: boolean
+    TS?: boolean
+    TE_005?: boolean
+    TE_01?: boolean
+    TE_02?: boolean
+    TE_03?: boolean
+    ST_SEA?: boolean
+    WH?: boolean
+    BF?: boolean
+    IR?: boolean
+    IX?: boolean
+  }, ExtArgs["result"]["weather_data"]>
+
+  export type weather_dataSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    TM?: boolean
+    STN?: boolean
+    WD?: boolean
+    WS?: boolean
+    GST_WD?: boolean
+    GST_WS?: boolean
+    GST_TM?: boolean
+    PA?: boolean
+    PS?: boolean
+    PT?: boolean
+    PR?: boolean
+    TA?: boolean
+    TD?: boolean
+    HM?: boolean
+    PV?: boolean
+    RN?: boolean
+    RN_DAY?: boolean
+    RN_JUN?: boolean
+    RN_INT?: boolean
+    SD_HR3?: boolean
+    SD_DAY?: boolean
+    SD_TOT?: boolean
+    WC?: boolean
+    WP?: boolean
+    WW?: boolean
+    CA_TOT?: boolean
+    CA_MID?: boolean
+    CH_MIN?: boolean
+    CT?: boolean
+    CT_TOP?: boolean
+    CT_MID?: boolean
+    CT_LOW?: boolean
+    VS?: boolean
+    SS?: boolean
+    SI?: boolean
+    ST_GD?: boolean
+    TS?: boolean
+    TE_005?: boolean
+    TE_01?: boolean
+    TE_02?: boolean
+    TE_03?: boolean
+    ST_SEA?: boolean
+    WH?: boolean
+    BF?: boolean
+    IR?: boolean
+    IX?: boolean
+  }, ExtArgs["result"]["weather_data"]>
+
+  export type weather_dataSelectScalar = {
+    TM?: boolean
+    STN?: boolean
+    WD?: boolean
+    WS?: boolean
+    GST_WD?: boolean
+    GST_WS?: boolean
+    GST_TM?: boolean
+    PA?: boolean
+    PS?: boolean
+    PT?: boolean
+    PR?: boolean
+    TA?: boolean
+    TD?: boolean
+    HM?: boolean
+    PV?: boolean
+    RN?: boolean
+    RN_DAY?: boolean
+    RN_JUN?: boolean
+    RN_INT?: boolean
+    SD_HR3?: boolean
+    SD_DAY?: boolean
+    SD_TOT?: boolean
+    WC?: boolean
+    WP?: boolean
+    WW?: boolean
+    CA_TOT?: boolean
+    CA_MID?: boolean
+    CH_MIN?: boolean
+    CT?: boolean
+    CT_TOP?: boolean
+    CT_MID?: boolean
+    CT_LOW?: boolean
+    VS?: boolean
+    SS?: boolean
+    SI?: boolean
+    ST_GD?: boolean
+    TS?: boolean
+    TE_005?: boolean
+    TE_01?: boolean
+    TE_02?: boolean
+    TE_03?: boolean
+    ST_SEA?: boolean
+    WH?: boolean
+    BF?: boolean
+    IR?: boolean
+    IX?: boolean
+  }
+
+
+  export type $weather_dataPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "weather_data"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      TM: Date
+      STN: number
+      WD: number | null
+      WS: number | null
+      GST_WD: number | null
+      GST_WS: number | null
+      GST_TM: number | null
+      PA: number | null
+      PS: number | null
+      PT: number | null
+      PR: number | null
+      TA: number | null
+      TD: number | null
+      HM: number | null
+      PV: number | null
+      RN: number | null
+      RN_DAY: number | null
+      RN_JUN: number | null
+      RN_INT: number | null
+      SD_HR3: number | null
+      SD_DAY: number | null
+      SD_TOT: number | null
+      WC: number | null
+      WP: number | null
+      WW: number | null
+      CA_TOT: number | null
+      CA_MID: number | null
+      CH_MIN: number | null
+      CT: number | null
+      CT_TOP: number | null
+      CT_MID: number | null
+      CT_LOW: number | null
+      VS: number | null
+      SS: number | null
+      SI: number | null
+      ST_GD: number | null
+      TS: number | null
+      TE_005: number | null
+      TE_01: number | null
+      TE_02: number | null
+      TE_03: number | null
+      ST_SEA: number | null
+      WH: number | null
+      BF: number | null
+      IR: number | null
+      IX: number | null
+    }, ExtArgs["result"]["weather_data"]>
+    composites: {}
+  }
+
+  type weather_dataGetPayload<S extends boolean | null | undefined | weather_dataDefaultArgs> = $Result.GetResult<Prisma.$weather_dataPayload, S>
+
+  type weather_dataCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<weather_dataFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Weather_dataCountAggregateInputType | true
+    }
+
+  export interface weather_dataDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['weather_data'], meta: { name: 'weather_data' } }
+    /**
+     * Find zero or one Weather_data that matches the filter.
+     * @param {weather_dataFindUniqueArgs} args - Arguments to find a Weather_data
+     * @example
+     * // Get one Weather_data
+     * const weather_data = await prisma.weather_data.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends weather_dataFindUniqueArgs>(args: SelectSubset<T, weather_dataFindUniqueArgs<ExtArgs>>): Prisma__weather_dataClient<$Result.GetResult<Prisma.$weather_dataPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Weather_data that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {weather_dataFindUniqueOrThrowArgs} args - Arguments to find a Weather_data
+     * @example
+     * // Get one Weather_data
+     * const weather_data = await prisma.weather_data.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends weather_dataFindUniqueOrThrowArgs>(args: SelectSubset<T, weather_dataFindUniqueOrThrowArgs<ExtArgs>>): Prisma__weather_dataClient<$Result.GetResult<Prisma.$weather_dataPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Weather_data that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {weather_dataFindFirstArgs} args - Arguments to find a Weather_data
+     * @example
+     * // Get one Weather_data
+     * const weather_data = await prisma.weather_data.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends weather_dataFindFirstArgs>(args?: SelectSubset<T, weather_dataFindFirstArgs<ExtArgs>>): Prisma__weather_dataClient<$Result.GetResult<Prisma.$weather_dataPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Weather_data that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {weather_dataFindFirstOrThrowArgs} args - Arguments to find a Weather_data
+     * @example
+     * // Get one Weather_data
+     * const weather_data = await prisma.weather_data.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends weather_dataFindFirstOrThrowArgs>(args?: SelectSubset<T, weather_dataFindFirstOrThrowArgs<ExtArgs>>): Prisma__weather_dataClient<$Result.GetResult<Prisma.$weather_dataPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Weather_data that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {weather_dataFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Weather_data
+     * const weather_data = await prisma.weather_data.findMany()
+     * 
+     * // Get first 10 Weather_data
+     * const weather_data = await prisma.weather_data.findMany({ take: 10 })
+     * 
+     * // Only select the `TM`
+     * const weather_dataWithTMOnly = await prisma.weather_data.findMany({ select: { TM: true } })
+     * 
+     */
+    findMany<T extends weather_dataFindManyArgs>(args?: SelectSubset<T, weather_dataFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$weather_dataPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Weather_data.
+     * @param {weather_dataCreateArgs} args - Arguments to create a Weather_data.
+     * @example
+     * // Create one Weather_data
+     * const Weather_data = await prisma.weather_data.create({
+     *   data: {
+     *     // ... data to create a Weather_data
+     *   }
+     * })
+     * 
+     */
+    create<T extends weather_dataCreateArgs>(args: SelectSubset<T, weather_dataCreateArgs<ExtArgs>>): Prisma__weather_dataClient<$Result.GetResult<Prisma.$weather_dataPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Weather_data.
+     * @param {weather_dataCreateManyArgs} args - Arguments to create many Weather_data.
+     * @example
+     * // Create many Weather_data
+     * const weather_data = await prisma.weather_data.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends weather_dataCreateManyArgs>(args?: SelectSubset<T, weather_dataCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Weather_data and returns the data saved in the database.
+     * @param {weather_dataCreateManyAndReturnArgs} args - Arguments to create many Weather_data.
+     * @example
+     * // Create many Weather_data
+     * const weather_data = await prisma.weather_data.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Weather_data and only return the `TM`
+     * const weather_dataWithTMOnly = await prisma.weather_data.createManyAndReturn({ 
+     *   select: { TM: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends weather_dataCreateManyAndReturnArgs>(args?: SelectSubset<T, weather_dataCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$weather_dataPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Weather_data.
+     * @param {weather_dataDeleteArgs} args - Arguments to delete one Weather_data.
+     * @example
+     * // Delete one Weather_data
+     * const Weather_data = await prisma.weather_data.delete({
+     *   where: {
+     *     // ... filter to delete one Weather_data
+     *   }
+     * })
+     * 
+     */
+    delete<T extends weather_dataDeleteArgs>(args: SelectSubset<T, weather_dataDeleteArgs<ExtArgs>>): Prisma__weather_dataClient<$Result.GetResult<Prisma.$weather_dataPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Weather_data.
+     * @param {weather_dataUpdateArgs} args - Arguments to update one Weather_data.
+     * @example
+     * // Update one Weather_data
+     * const weather_data = await prisma.weather_data.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends weather_dataUpdateArgs>(args: SelectSubset<T, weather_dataUpdateArgs<ExtArgs>>): Prisma__weather_dataClient<$Result.GetResult<Prisma.$weather_dataPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Weather_data.
+     * @param {weather_dataDeleteManyArgs} args - Arguments to filter Weather_data to delete.
+     * @example
+     * // Delete a few Weather_data
+     * const { count } = await prisma.weather_data.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends weather_dataDeleteManyArgs>(args?: SelectSubset<T, weather_dataDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Weather_data.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {weather_dataUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Weather_data
+     * const weather_data = await prisma.weather_data.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends weather_dataUpdateManyArgs>(args: SelectSubset<T, weather_dataUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Weather_data.
+     * @param {weather_dataUpsertArgs} args - Arguments to update or create a Weather_data.
+     * @example
+     * // Update or create a Weather_data
+     * const weather_data = await prisma.weather_data.upsert({
+     *   create: {
+     *     // ... data to create a Weather_data
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Weather_data we want to update
+     *   }
+     * })
+     */
+    upsert<T extends weather_dataUpsertArgs>(args: SelectSubset<T, weather_dataUpsertArgs<ExtArgs>>): Prisma__weather_dataClient<$Result.GetResult<Prisma.$weather_dataPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Weather_data.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {weather_dataCountArgs} args - Arguments to filter Weather_data to count.
+     * @example
+     * // Count the number of Weather_data
+     * const count = await prisma.weather_data.count({
+     *   where: {
+     *     // ... the filter for the Weather_data we want to count
+     *   }
+     * })
+    **/
+    count<T extends weather_dataCountArgs>(
+      args?: Subset<T, weather_dataCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Weather_dataCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Weather_data.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Weather_dataAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Weather_dataAggregateArgs>(args: Subset<T, Weather_dataAggregateArgs>): Prisma.PrismaPromise<GetWeather_dataAggregateType<T>>
+
+    /**
+     * Group by Weather_data.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {weather_dataGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends weather_dataGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: weather_dataGroupByArgs['orderBy'] }
+        : { orderBy?: weather_dataGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, weather_dataGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWeather_dataGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the weather_data model
+   */
+  readonly fields: weather_dataFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for weather_data.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__weather_dataClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the weather_data model
+   */ 
+  interface weather_dataFieldRefs {
+    readonly TM: FieldRef<"weather_data", 'DateTime'>
+    readonly STN: FieldRef<"weather_data", 'Int'>
+    readonly WD: FieldRef<"weather_data", 'Float'>
+    readonly WS: FieldRef<"weather_data", 'Float'>
+    readonly GST_WD: FieldRef<"weather_data", 'Float'>
+    readonly GST_WS: FieldRef<"weather_data", 'Float'>
+    readonly GST_TM: FieldRef<"weather_data", 'Float'>
+    readonly PA: FieldRef<"weather_data", 'Float'>
+    readonly PS: FieldRef<"weather_data", 'Float'>
+    readonly PT: FieldRef<"weather_data", 'Float'>
+    readonly PR: FieldRef<"weather_data", 'Float'>
+    readonly TA: FieldRef<"weather_data", 'Float'>
+    readonly TD: FieldRef<"weather_data", 'Float'>
+    readonly HM: FieldRef<"weather_data", 'Float'>
+    readonly PV: FieldRef<"weather_data", 'Float'>
+    readonly RN: FieldRef<"weather_data", 'Float'>
+    readonly RN_DAY: FieldRef<"weather_data", 'Float'>
+    readonly RN_JUN: FieldRef<"weather_data", 'Float'>
+    readonly RN_INT: FieldRef<"weather_data", 'Float'>
+    readonly SD_HR3: FieldRef<"weather_data", 'Float'>
+    readonly SD_DAY: FieldRef<"weather_data", 'Float'>
+    readonly SD_TOT: FieldRef<"weather_data", 'Float'>
+    readonly WC: FieldRef<"weather_data", 'Float'>
+    readonly WP: FieldRef<"weather_data", 'Float'>
+    readonly WW: FieldRef<"weather_data", 'Float'>
+    readonly CA_TOT: FieldRef<"weather_data", 'Float'>
+    readonly CA_MID: FieldRef<"weather_data", 'Float'>
+    readonly CH_MIN: FieldRef<"weather_data", 'Float'>
+    readonly CT: FieldRef<"weather_data", 'Float'>
+    readonly CT_TOP: FieldRef<"weather_data", 'Float'>
+    readonly CT_MID: FieldRef<"weather_data", 'Float'>
+    readonly CT_LOW: FieldRef<"weather_data", 'Float'>
+    readonly VS: FieldRef<"weather_data", 'Float'>
+    readonly SS: FieldRef<"weather_data", 'Float'>
+    readonly SI: FieldRef<"weather_data", 'Float'>
+    readonly ST_GD: FieldRef<"weather_data", 'Float'>
+    readonly TS: FieldRef<"weather_data", 'Float'>
+    readonly TE_005: FieldRef<"weather_data", 'Float'>
+    readonly TE_01: FieldRef<"weather_data", 'Float'>
+    readonly TE_02: FieldRef<"weather_data", 'Float'>
+    readonly TE_03: FieldRef<"weather_data", 'Float'>
+    readonly ST_SEA: FieldRef<"weather_data", 'Float'>
+    readonly WH: FieldRef<"weather_data", 'Float'>
+    readonly BF: FieldRef<"weather_data", 'Float'>
+    readonly IR: FieldRef<"weather_data", 'Float'>
+    readonly IX: FieldRef<"weather_data", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * weather_data findUnique
+   */
+  export type weather_dataFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weather_data
+     */
+    select?: weather_dataSelect<ExtArgs> | null
+    /**
+     * Filter, which weather_data to fetch.
+     */
+    where: weather_dataWhereUniqueInput
+  }
+
+  /**
+   * weather_data findUniqueOrThrow
+   */
+  export type weather_dataFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weather_data
+     */
+    select?: weather_dataSelect<ExtArgs> | null
+    /**
+     * Filter, which weather_data to fetch.
+     */
+    where: weather_dataWhereUniqueInput
+  }
+
+  /**
+   * weather_data findFirst
+   */
+  export type weather_dataFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weather_data
+     */
+    select?: weather_dataSelect<ExtArgs> | null
+    /**
+     * Filter, which weather_data to fetch.
+     */
+    where?: weather_dataWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of weather_data to fetch.
+     */
+    orderBy?: weather_dataOrderByWithRelationInput | weather_dataOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for weather_data.
+     */
+    cursor?: weather_dataWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` weather_data from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` weather_data.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of weather_data.
+     */
+    distinct?: Weather_dataScalarFieldEnum | Weather_dataScalarFieldEnum[]
+  }
+
+  /**
+   * weather_data findFirstOrThrow
+   */
+  export type weather_dataFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weather_data
+     */
+    select?: weather_dataSelect<ExtArgs> | null
+    /**
+     * Filter, which weather_data to fetch.
+     */
+    where?: weather_dataWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of weather_data to fetch.
+     */
+    orderBy?: weather_dataOrderByWithRelationInput | weather_dataOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for weather_data.
+     */
+    cursor?: weather_dataWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` weather_data from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` weather_data.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of weather_data.
+     */
+    distinct?: Weather_dataScalarFieldEnum | Weather_dataScalarFieldEnum[]
+  }
+
+  /**
+   * weather_data findMany
+   */
+  export type weather_dataFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weather_data
+     */
+    select?: weather_dataSelect<ExtArgs> | null
+    /**
+     * Filter, which weather_data to fetch.
+     */
+    where?: weather_dataWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of weather_data to fetch.
+     */
+    orderBy?: weather_dataOrderByWithRelationInput | weather_dataOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing weather_data.
+     */
+    cursor?: weather_dataWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` weather_data from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` weather_data.
+     */
+    skip?: number
+    distinct?: Weather_dataScalarFieldEnum | Weather_dataScalarFieldEnum[]
+  }
+
+  /**
+   * weather_data create
+   */
+  export type weather_dataCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weather_data
+     */
+    select?: weather_dataSelect<ExtArgs> | null
+    /**
+     * The data needed to create a weather_data.
+     */
+    data: XOR<weather_dataCreateInput, weather_dataUncheckedCreateInput>
+  }
+
+  /**
+   * weather_data createMany
+   */
+  export type weather_dataCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many weather_data.
+     */
+    data: weather_dataCreateManyInput | weather_dataCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * weather_data createManyAndReturn
+   */
+  export type weather_dataCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weather_data
+     */
+    select?: weather_dataSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many weather_data.
+     */
+    data: weather_dataCreateManyInput | weather_dataCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * weather_data update
+   */
+  export type weather_dataUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weather_data
+     */
+    select?: weather_dataSelect<ExtArgs> | null
+    /**
+     * The data needed to update a weather_data.
+     */
+    data: XOR<weather_dataUpdateInput, weather_dataUncheckedUpdateInput>
+    /**
+     * Choose, which weather_data to update.
+     */
+    where: weather_dataWhereUniqueInput
+  }
+
+  /**
+   * weather_data updateMany
+   */
+  export type weather_dataUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update weather_data.
+     */
+    data: XOR<weather_dataUpdateManyMutationInput, weather_dataUncheckedUpdateManyInput>
+    /**
+     * Filter which weather_data to update
+     */
+    where?: weather_dataWhereInput
+  }
+
+  /**
+   * weather_data upsert
+   */
+  export type weather_dataUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weather_data
+     */
+    select?: weather_dataSelect<ExtArgs> | null
+    /**
+     * The filter to search for the weather_data to update in case it exists.
+     */
+    where: weather_dataWhereUniqueInput
+    /**
+     * In case the weather_data found by the `where` argument doesn't exist, create a new weather_data with this data.
+     */
+    create: XOR<weather_dataCreateInput, weather_dataUncheckedCreateInput>
+    /**
+     * In case the weather_data was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<weather_dataUpdateInput, weather_dataUncheckedUpdateInput>
+  }
+
+  /**
+   * weather_data delete
+   */
+  export type weather_dataDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weather_data
+     */
+    select?: weather_dataSelect<ExtArgs> | null
+    /**
+     * Filter which weather_data to delete.
+     */
+    where: weather_dataWhereUniqueInput
+  }
+
+  /**
+   * weather_data deleteMany
+   */
+  export type weather_dataDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which weather_data to delete
+     */
+    where?: weather_dataWhereInput
+  }
+
+  /**
+   * weather_data without action
+   */
+  export type weather_dataDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weather_data
+     */
+    select?: weather_dataSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -12042,7 +16316,11 @@ export namespace Prisma {
     region_id: 'region_id',
     schedule_status: 'schedule_status',
     pump_status: 'pump_status',
-    mtr_schedule_status: 'mtr_schedule_status'
+    mtr_schedule_status: 'mtr_schedule_status',
+    register_values: 'register_values',
+    sample_depth: 'sample_depth',
+    sub_register_values: 'sub_register_values',
+    ngrok_url: 'ngrok_url'
   };
 
   export type Ecobot_status_tempScalarFieldEnum = (typeof Ecobot_status_tempScalarFieldEnum)[keyof typeof Ecobot_status_tempScalarFieldEnum]
@@ -12164,7 +16442,8 @@ export namespace Prisma {
     latitude: 'latitude',
     longitude: 'longitude',
     robot_id: 'robot_id',
-    region_id: 'region_id'
+    region_id: 'region_id',
+    sample_depth: 'sample_depth'
   };
 
   export type Water_qualityScalarFieldEnum = (typeof Water_qualityScalarFieldEnum)[keyof typeof Water_qualityScalarFieldEnum]
@@ -12187,10 +16466,117 @@ export namespace Prisma {
     latitude: 'latitude',
     longitude: 'longitude',
     robot_id: 'robot_id',
-    region_id: 'region_id'
+    region_id: 'region_id',
+    sample_depth: 'sample_depth'
   };
 
   export type Water_quality_tempScalarFieldEnum = (typeof Water_quality_tempScalarFieldEnum)[keyof typeof Water_quality_tempScalarFieldEnum]
+
+
+  export const Cfs_statusScalarFieldEnum: {
+    timestamp: 'timestamp',
+    remote_sts: 'remote_sts',
+    high_pump_sts: 'high_pump_sts',
+    sub_pump_sts: 'sub_pump_sts',
+    red_motor_sts: 'red_motor_sts',
+    sol_relay_sts: 'sol_relay_sts',
+    high_pump_alm: 'high_pump_alm',
+    sub_pump_alm: 'sub_pump_alm',
+    red_motor_alm: 'red_motor_alm',
+    eocr_alm_1: 'eocr_alm_1',
+    eocr_alm_2: 'eocr_alm_2',
+    eocr_alm_3: 'eocr_alm_3',
+    emg_alm: 'emg_alm',
+    sec_clk: 'sec_clk',
+    high_pump_freq: 'high_pump_freq',
+    sub_pump_freq: 'sub_pump_freq',
+    red_motor_freq: 'red_motor_freq',
+    current_pressure: 'current_pressure',
+    current_flow: 'current_flow',
+    robot_id: 'robot_id',
+    region_id: 'region_id'
+  };
+
+  export type Cfs_statusScalarFieldEnum = (typeof Cfs_statusScalarFieldEnum)[keyof typeof Cfs_statusScalarFieldEnum]
+
+
+  export const Cfs_status_tempScalarFieldEnum: {
+    timestamp: 'timestamp',
+    remote_sts: 'remote_sts',
+    high_pump_sts: 'high_pump_sts',
+    sub_pump_sts: 'sub_pump_sts',
+    red_motor_sts: 'red_motor_sts',
+    sol_relay_sts: 'sol_relay_sts',
+    high_pump_alm: 'high_pump_alm',
+    sub_pump_alm: 'sub_pump_alm',
+    red_motor_alm: 'red_motor_alm',
+    eocr_alm_1: 'eocr_alm_1',
+    eocr_alm_2: 'eocr_alm_2',
+    eocr_alm_3: 'eocr_alm_3',
+    emg_alm: 'emg_alm',
+    sec_clk: 'sec_clk',
+    high_pump_freq: 'high_pump_freq',
+    sub_pump_freq: 'sub_pump_freq',
+    red_motor_freq: 'red_motor_freq',
+    current_pressure: 'current_pressure',
+    current_flow: 'current_flow',
+    robot_id: 'robot_id',
+    region_id: 'region_id'
+  };
+
+  export type Cfs_status_tempScalarFieldEnum = (typeof Cfs_status_tempScalarFieldEnum)[keyof typeof Cfs_status_tempScalarFieldEnum]
+
+
+  export const Weather_dataScalarFieldEnum: {
+    TM: 'TM',
+    STN: 'STN',
+    WD: 'WD',
+    WS: 'WS',
+    GST_WD: 'GST_WD',
+    GST_WS: 'GST_WS',
+    GST_TM: 'GST_TM',
+    PA: 'PA',
+    PS: 'PS',
+    PT: 'PT',
+    PR: 'PR',
+    TA: 'TA',
+    TD: 'TD',
+    HM: 'HM',
+    PV: 'PV',
+    RN: 'RN',
+    RN_DAY: 'RN_DAY',
+    RN_JUN: 'RN_JUN',
+    RN_INT: 'RN_INT',
+    SD_HR3: 'SD_HR3',
+    SD_DAY: 'SD_DAY',
+    SD_TOT: 'SD_TOT',
+    WC: 'WC',
+    WP: 'WP',
+    WW: 'WW',
+    CA_TOT: 'CA_TOT',
+    CA_MID: 'CA_MID',
+    CH_MIN: 'CH_MIN',
+    CT: 'CT',
+    CT_TOP: 'CT_TOP',
+    CT_MID: 'CT_MID',
+    CT_LOW: 'CT_LOW',
+    VS: 'VS',
+    SS: 'SS',
+    SI: 'SI',
+    ST_GD: 'ST_GD',
+    TS: 'TS',
+    TE_005: 'TE_005',
+    TE_01: 'TE_01',
+    TE_02: 'TE_02',
+    TE_03: 'TE_03',
+    ST_SEA: 'ST_SEA',
+    WH: 'WH',
+    BF: 'BF',
+    IR: 'IR',
+    IX: 'IX'
+  };
+
+  export type Weather_dataScalarFieldEnum = (typeof Weather_dataScalarFieldEnum)[keyof typeof Weather_dataScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -12514,6 +16900,10 @@ export namespace Prisma {
     schedule_status?: BoolNullableFilter<"ecobot_status_temp"> | boolean | null
     pump_status?: IntNullableFilter<"ecobot_status_temp"> | number | null
     mtr_schedule_status?: BoolNullableFilter<"ecobot_status_temp"> | boolean | null
+    register_values?: IntNullableListFilter<"ecobot_status_temp">
+    sample_depth?: IntNullableFilter<"ecobot_status_temp"> | number | null
+    sub_register_values?: IntNullableListFilter<"ecobot_status_temp">
+    ngrok_url?: StringNullableFilter<"ecobot_status_temp"> | string | null
   }
 
   export type ecobot_status_tempOrderByWithRelationInput = {
@@ -12564,6 +16954,10 @@ export namespace Prisma {
     schedule_status?: SortOrderInput | SortOrder
     pump_status?: SortOrderInput | SortOrder
     mtr_schedule_status?: SortOrderInput | SortOrder
+    register_values?: SortOrder
+    sample_depth?: SortOrderInput | SortOrder
+    sub_register_values?: SortOrder
+    ngrok_url?: SortOrderInput | SortOrder
   }
 
   export type ecobot_status_tempWhereUniqueInput = Prisma.AtLeast<{
@@ -12618,6 +17012,10 @@ export namespace Prisma {
     schedule_status?: BoolNullableFilter<"ecobot_status_temp"> | boolean | null
     pump_status?: IntNullableFilter<"ecobot_status_temp"> | number | null
     mtr_schedule_status?: BoolNullableFilter<"ecobot_status_temp"> | boolean | null
+    register_values?: IntNullableListFilter<"ecobot_status_temp">
+    sample_depth?: IntNullableFilter<"ecobot_status_temp"> | number | null
+    sub_register_values?: IntNullableListFilter<"ecobot_status_temp">
+    ngrok_url?: StringNullableFilter<"ecobot_status_temp"> | string | null
   }, "robot_id_timestamp">
 
   export type ecobot_status_tempOrderByWithAggregationInput = {
@@ -12668,6 +17066,10 @@ export namespace Prisma {
     schedule_status?: SortOrderInput | SortOrder
     pump_status?: SortOrderInput | SortOrder
     mtr_schedule_status?: SortOrderInput | SortOrder
+    register_values?: SortOrder
+    sample_depth?: SortOrderInput | SortOrder
+    sub_register_values?: SortOrder
+    ngrok_url?: SortOrderInput | SortOrder
     _count?: ecobot_status_tempCountOrderByAggregateInput
     _avg?: ecobot_status_tempAvgOrderByAggregateInput
     _max?: ecobot_status_tempMaxOrderByAggregateInput
@@ -12726,6 +17128,10 @@ export namespace Prisma {
     schedule_status?: BoolNullableWithAggregatesFilter<"ecobot_status_temp"> | boolean | null
     pump_status?: IntNullableWithAggregatesFilter<"ecobot_status_temp"> | number | null
     mtr_schedule_status?: BoolNullableWithAggregatesFilter<"ecobot_status_temp"> | boolean | null
+    register_values?: IntNullableListFilter<"ecobot_status_temp">
+    sample_depth?: IntNullableWithAggregatesFilter<"ecobot_status_temp"> | number | null
+    sub_register_values?: IntNullableListFilter<"ecobot_status_temp">
+    ngrok_url?: StringNullableWithAggregatesFilter<"ecobot_status_temp"> | string | null
   }
 
   export type ecobot_ts_infoWhereInput = {
@@ -13242,6 +17648,7 @@ export namespace Prisma {
     longitude?: FloatNullableFilter<"water_quality"> | number | null
     robot_id?: StringFilter<"water_quality"> | string
     region_id?: IntNullableFilter<"water_quality"> | number | null
+    sample_depth?: IntNullableFilter<"water_quality"> | number | null
   }
 
   export type water_qualityOrderByWithRelationInput = {
@@ -13262,6 +17669,7 @@ export namespace Prisma {
     longitude?: SortOrderInput | SortOrder
     robot_id?: SortOrder
     region_id?: SortOrderInput | SortOrder
+    sample_depth?: SortOrderInput | SortOrder
   }
 
   export type water_qualityWhereUniqueInput = Prisma.AtLeast<{
@@ -13286,6 +17694,7 @@ export namespace Prisma {
     longitude?: FloatNullableFilter<"water_quality"> | number | null
     robot_id?: StringFilter<"water_quality"> | string
     region_id?: IntNullableFilter<"water_quality"> | number | null
+    sample_depth?: IntNullableFilter<"water_quality"> | number | null
   }, "robot_id_timestamp">
 
   export type water_qualityOrderByWithAggregationInput = {
@@ -13306,6 +17715,7 @@ export namespace Prisma {
     longitude?: SortOrderInput | SortOrder
     robot_id?: SortOrder
     region_id?: SortOrderInput | SortOrder
+    sample_depth?: SortOrderInput | SortOrder
     _count?: water_qualityCountOrderByAggregateInput
     _avg?: water_qualityAvgOrderByAggregateInput
     _max?: water_qualityMaxOrderByAggregateInput
@@ -13334,6 +17744,7 @@ export namespace Prisma {
     longitude?: FloatNullableWithAggregatesFilter<"water_quality"> | number | null
     robot_id?: StringWithAggregatesFilter<"water_quality"> | string
     region_id?: IntNullableWithAggregatesFilter<"water_quality"> | number | null
+    sample_depth?: IntNullableWithAggregatesFilter<"water_quality"> | number | null
   }
 
   export type water_quality_tempWhereInput = {
@@ -13357,6 +17768,7 @@ export namespace Prisma {
     longitude?: FloatNullableFilter<"water_quality_temp"> | number | null
     robot_id?: StringFilter<"water_quality_temp"> | string
     region_id?: IntNullableFilter<"water_quality_temp"> | number | null
+    sample_depth?: IntNullableFilter<"water_quality_temp"> | number | null
   }
 
   export type water_quality_tempOrderByWithRelationInput = {
@@ -13377,6 +17789,7 @@ export namespace Prisma {
     longitude?: SortOrderInput | SortOrder
     robot_id?: SortOrder
     region_id?: SortOrderInput | SortOrder
+    sample_depth?: SortOrderInput | SortOrder
   }
 
   export type water_quality_tempWhereUniqueInput = Prisma.AtLeast<{
@@ -13401,6 +17814,7 @@ export namespace Prisma {
     longitude?: FloatNullableFilter<"water_quality_temp"> | number | null
     robot_id?: StringFilter<"water_quality_temp"> | string
     region_id?: IntNullableFilter<"water_quality_temp"> | number | null
+    sample_depth?: IntNullableFilter<"water_quality_temp"> | number | null
   }, "robot_id_timestamp">
 
   export type water_quality_tempOrderByWithAggregationInput = {
@@ -13421,6 +17835,7 @@ export namespace Prisma {
     longitude?: SortOrderInput | SortOrder
     robot_id?: SortOrder
     region_id?: SortOrderInput | SortOrder
+    sample_depth?: SortOrderInput | SortOrder
     _count?: water_quality_tempCountOrderByAggregateInput
     _avg?: water_quality_tempAvgOrderByAggregateInput
     _max?: water_quality_tempMaxOrderByAggregateInput
@@ -13449,6 +17864,537 @@ export namespace Prisma {
     longitude?: FloatNullableWithAggregatesFilter<"water_quality_temp"> | number | null
     robot_id?: StringWithAggregatesFilter<"water_quality_temp"> | string
     region_id?: IntNullableWithAggregatesFilter<"water_quality_temp"> | number | null
+    sample_depth?: IntNullableWithAggregatesFilter<"water_quality_temp"> | number | null
+  }
+
+  export type cfs_statusWhereInput = {
+    AND?: cfs_statusWhereInput | cfs_statusWhereInput[]
+    OR?: cfs_statusWhereInput[]
+    NOT?: cfs_statusWhereInput | cfs_statusWhereInput[]
+    timestamp?: DateTimeFilter<"cfs_status"> | Date | string
+    remote_sts?: IntNullableFilter<"cfs_status"> | number | null
+    high_pump_sts?: IntNullableFilter<"cfs_status"> | number | null
+    sub_pump_sts?: IntNullableFilter<"cfs_status"> | number | null
+    red_motor_sts?: IntNullableFilter<"cfs_status"> | number | null
+    sol_relay_sts?: IntNullableFilter<"cfs_status"> | number | null
+    high_pump_alm?: IntNullableFilter<"cfs_status"> | number | null
+    sub_pump_alm?: IntNullableFilter<"cfs_status"> | number | null
+    red_motor_alm?: IntNullableFilter<"cfs_status"> | number | null
+    eocr_alm_1?: IntNullableFilter<"cfs_status"> | number | null
+    eocr_alm_2?: IntNullableFilter<"cfs_status"> | number | null
+    eocr_alm_3?: IntNullableFilter<"cfs_status"> | number | null
+    emg_alm?: IntNullableFilter<"cfs_status"> | number | null
+    sec_clk?: IntNullableFilter<"cfs_status"> | number | null
+    high_pump_freq?: IntNullableFilter<"cfs_status"> | number | null
+    sub_pump_freq?: IntNullableFilter<"cfs_status"> | number | null
+    red_motor_freq?: IntNullableFilter<"cfs_status"> | number | null
+    current_pressure?: IntNullableFilter<"cfs_status"> | number | null
+    current_flow?: IntNullableFilter<"cfs_status"> | number | null
+    robot_id?: StringFilter<"cfs_status"> | string
+    region_id?: IntNullableFilter<"cfs_status"> | number | null
+  }
+
+  export type cfs_statusOrderByWithRelationInput = {
+    timestamp?: SortOrder
+    remote_sts?: SortOrderInput | SortOrder
+    high_pump_sts?: SortOrderInput | SortOrder
+    sub_pump_sts?: SortOrderInput | SortOrder
+    red_motor_sts?: SortOrderInput | SortOrder
+    sol_relay_sts?: SortOrderInput | SortOrder
+    high_pump_alm?: SortOrderInput | SortOrder
+    sub_pump_alm?: SortOrderInput | SortOrder
+    red_motor_alm?: SortOrderInput | SortOrder
+    eocr_alm_1?: SortOrderInput | SortOrder
+    eocr_alm_2?: SortOrderInput | SortOrder
+    eocr_alm_3?: SortOrderInput | SortOrder
+    emg_alm?: SortOrderInput | SortOrder
+    sec_clk?: SortOrderInput | SortOrder
+    high_pump_freq?: SortOrderInput | SortOrder
+    sub_pump_freq?: SortOrderInput | SortOrder
+    red_motor_freq?: SortOrderInput | SortOrder
+    current_pressure?: SortOrderInput | SortOrder
+    current_flow?: SortOrderInput | SortOrder
+    robot_id?: SortOrder
+    region_id?: SortOrderInput | SortOrder
+  }
+
+  export type cfs_statusWhereUniqueInput = Prisma.AtLeast<{
+    robot_id_timestamp?: cfs_statusRobot_idTimestampCompoundUniqueInput
+    AND?: cfs_statusWhereInput | cfs_statusWhereInput[]
+    OR?: cfs_statusWhereInput[]
+    NOT?: cfs_statusWhereInput | cfs_statusWhereInput[]
+    timestamp?: DateTimeFilter<"cfs_status"> | Date | string
+    remote_sts?: IntNullableFilter<"cfs_status"> | number | null
+    high_pump_sts?: IntNullableFilter<"cfs_status"> | number | null
+    sub_pump_sts?: IntNullableFilter<"cfs_status"> | number | null
+    red_motor_sts?: IntNullableFilter<"cfs_status"> | number | null
+    sol_relay_sts?: IntNullableFilter<"cfs_status"> | number | null
+    high_pump_alm?: IntNullableFilter<"cfs_status"> | number | null
+    sub_pump_alm?: IntNullableFilter<"cfs_status"> | number | null
+    red_motor_alm?: IntNullableFilter<"cfs_status"> | number | null
+    eocr_alm_1?: IntNullableFilter<"cfs_status"> | number | null
+    eocr_alm_2?: IntNullableFilter<"cfs_status"> | number | null
+    eocr_alm_3?: IntNullableFilter<"cfs_status"> | number | null
+    emg_alm?: IntNullableFilter<"cfs_status"> | number | null
+    sec_clk?: IntNullableFilter<"cfs_status"> | number | null
+    high_pump_freq?: IntNullableFilter<"cfs_status"> | number | null
+    sub_pump_freq?: IntNullableFilter<"cfs_status"> | number | null
+    red_motor_freq?: IntNullableFilter<"cfs_status"> | number | null
+    current_pressure?: IntNullableFilter<"cfs_status"> | number | null
+    current_flow?: IntNullableFilter<"cfs_status"> | number | null
+    robot_id?: StringFilter<"cfs_status"> | string
+    region_id?: IntNullableFilter<"cfs_status"> | number | null
+  }, "robot_id_timestamp">
+
+  export type cfs_statusOrderByWithAggregationInput = {
+    timestamp?: SortOrder
+    remote_sts?: SortOrderInput | SortOrder
+    high_pump_sts?: SortOrderInput | SortOrder
+    sub_pump_sts?: SortOrderInput | SortOrder
+    red_motor_sts?: SortOrderInput | SortOrder
+    sol_relay_sts?: SortOrderInput | SortOrder
+    high_pump_alm?: SortOrderInput | SortOrder
+    sub_pump_alm?: SortOrderInput | SortOrder
+    red_motor_alm?: SortOrderInput | SortOrder
+    eocr_alm_1?: SortOrderInput | SortOrder
+    eocr_alm_2?: SortOrderInput | SortOrder
+    eocr_alm_3?: SortOrderInput | SortOrder
+    emg_alm?: SortOrderInput | SortOrder
+    sec_clk?: SortOrderInput | SortOrder
+    high_pump_freq?: SortOrderInput | SortOrder
+    sub_pump_freq?: SortOrderInput | SortOrder
+    red_motor_freq?: SortOrderInput | SortOrder
+    current_pressure?: SortOrderInput | SortOrder
+    current_flow?: SortOrderInput | SortOrder
+    robot_id?: SortOrder
+    region_id?: SortOrderInput | SortOrder
+    _count?: cfs_statusCountOrderByAggregateInput
+    _avg?: cfs_statusAvgOrderByAggregateInput
+    _max?: cfs_statusMaxOrderByAggregateInput
+    _min?: cfs_statusMinOrderByAggregateInput
+    _sum?: cfs_statusSumOrderByAggregateInput
+  }
+
+  export type cfs_statusScalarWhereWithAggregatesInput = {
+    AND?: cfs_statusScalarWhereWithAggregatesInput | cfs_statusScalarWhereWithAggregatesInput[]
+    OR?: cfs_statusScalarWhereWithAggregatesInput[]
+    NOT?: cfs_statusScalarWhereWithAggregatesInput | cfs_statusScalarWhereWithAggregatesInput[]
+    timestamp?: DateTimeWithAggregatesFilter<"cfs_status"> | Date | string
+    remote_sts?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    high_pump_sts?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    sub_pump_sts?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    red_motor_sts?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    sol_relay_sts?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    high_pump_alm?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    sub_pump_alm?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    red_motor_alm?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    eocr_alm_1?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    eocr_alm_2?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    eocr_alm_3?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    emg_alm?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    sec_clk?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    high_pump_freq?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    sub_pump_freq?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    red_motor_freq?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    current_pressure?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    current_flow?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+    robot_id?: StringWithAggregatesFilter<"cfs_status"> | string
+    region_id?: IntNullableWithAggregatesFilter<"cfs_status"> | number | null
+  }
+
+  export type cfs_status_tempWhereInput = {
+    AND?: cfs_status_tempWhereInput | cfs_status_tempWhereInput[]
+    OR?: cfs_status_tempWhereInput[]
+    NOT?: cfs_status_tempWhereInput | cfs_status_tempWhereInput[]
+    timestamp?: DateTimeFilter<"cfs_status_temp"> | Date | string
+    remote_sts?: IntNullableFilter<"cfs_status_temp"> | number | null
+    high_pump_sts?: IntNullableFilter<"cfs_status_temp"> | number | null
+    sub_pump_sts?: IntNullableFilter<"cfs_status_temp"> | number | null
+    red_motor_sts?: IntNullableFilter<"cfs_status_temp"> | number | null
+    sol_relay_sts?: IntNullableFilter<"cfs_status_temp"> | number | null
+    high_pump_alm?: IntNullableFilter<"cfs_status_temp"> | number | null
+    sub_pump_alm?: IntNullableFilter<"cfs_status_temp"> | number | null
+    red_motor_alm?: IntNullableFilter<"cfs_status_temp"> | number | null
+    eocr_alm_1?: IntNullableFilter<"cfs_status_temp"> | number | null
+    eocr_alm_2?: IntNullableFilter<"cfs_status_temp"> | number | null
+    eocr_alm_3?: IntNullableFilter<"cfs_status_temp"> | number | null
+    emg_alm?: IntNullableFilter<"cfs_status_temp"> | number | null
+    sec_clk?: IntNullableFilter<"cfs_status_temp"> | number | null
+    high_pump_freq?: IntNullableFilter<"cfs_status_temp"> | number | null
+    sub_pump_freq?: IntNullableFilter<"cfs_status_temp"> | number | null
+    red_motor_freq?: IntNullableFilter<"cfs_status_temp"> | number | null
+    current_pressure?: IntNullableFilter<"cfs_status_temp"> | number | null
+    current_flow?: IntNullableFilter<"cfs_status_temp"> | number | null
+    robot_id?: StringFilter<"cfs_status_temp"> | string
+    region_id?: IntNullableFilter<"cfs_status_temp"> | number | null
+  }
+
+  export type cfs_status_tempOrderByWithRelationInput = {
+    timestamp?: SortOrder
+    remote_sts?: SortOrderInput | SortOrder
+    high_pump_sts?: SortOrderInput | SortOrder
+    sub_pump_sts?: SortOrderInput | SortOrder
+    red_motor_sts?: SortOrderInput | SortOrder
+    sol_relay_sts?: SortOrderInput | SortOrder
+    high_pump_alm?: SortOrderInput | SortOrder
+    sub_pump_alm?: SortOrderInput | SortOrder
+    red_motor_alm?: SortOrderInput | SortOrder
+    eocr_alm_1?: SortOrderInput | SortOrder
+    eocr_alm_2?: SortOrderInput | SortOrder
+    eocr_alm_3?: SortOrderInput | SortOrder
+    emg_alm?: SortOrderInput | SortOrder
+    sec_clk?: SortOrderInput | SortOrder
+    high_pump_freq?: SortOrderInput | SortOrder
+    sub_pump_freq?: SortOrderInput | SortOrder
+    red_motor_freq?: SortOrderInput | SortOrder
+    current_pressure?: SortOrderInput | SortOrder
+    current_flow?: SortOrderInput | SortOrder
+    robot_id?: SortOrder
+    region_id?: SortOrderInput | SortOrder
+  }
+
+  export type cfs_status_tempWhereUniqueInput = Prisma.AtLeast<{
+    robot_id_timestamp?: cfs_status_tempRobot_idTimestampCompoundUniqueInput
+    AND?: cfs_status_tempWhereInput | cfs_status_tempWhereInput[]
+    OR?: cfs_status_tempWhereInput[]
+    NOT?: cfs_status_tempWhereInput | cfs_status_tempWhereInput[]
+    timestamp?: DateTimeFilter<"cfs_status_temp"> | Date | string
+    remote_sts?: IntNullableFilter<"cfs_status_temp"> | number | null
+    high_pump_sts?: IntNullableFilter<"cfs_status_temp"> | number | null
+    sub_pump_sts?: IntNullableFilter<"cfs_status_temp"> | number | null
+    red_motor_sts?: IntNullableFilter<"cfs_status_temp"> | number | null
+    sol_relay_sts?: IntNullableFilter<"cfs_status_temp"> | number | null
+    high_pump_alm?: IntNullableFilter<"cfs_status_temp"> | number | null
+    sub_pump_alm?: IntNullableFilter<"cfs_status_temp"> | number | null
+    red_motor_alm?: IntNullableFilter<"cfs_status_temp"> | number | null
+    eocr_alm_1?: IntNullableFilter<"cfs_status_temp"> | number | null
+    eocr_alm_2?: IntNullableFilter<"cfs_status_temp"> | number | null
+    eocr_alm_3?: IntNullableFilter<"cfs_status_temp"> | number | null
+    emg_alm?: IntNullableFilter<"cfs_status_temp"> | number | null
+    sec_clk?: IntNullableFilter<"cfs_status_temp"> | number | null
+    high_pump_freq?: IntNullableFilter<"cfs_status_temp"> | number | null
+    sub_pump_freq?: IntNullableFilter<"cfs_status_temp"> | number | null
+    red_motor_freq?: IntNullableFilter<"cfs_status_temp"> | number | null
+    current_pressure?: IntNullableFilter<"cfs_status_temp"> | number | null
+    current_flow?: IntNullableFilter<"cfs_status_temp"> | number | null
+    robot_id?: StringFilter<"cfs_status_temp"> | string
+    region_id?: IntNullableFilter<"cfs_status_temp"> | number | null
+  }, "robot_id_timestamp">
+
+  export type cfs_status_tempOrderByWithAggregationInput = {
+    timestamp?: SortOrder
+    remote_sts?: SortOrderInput | SortOrder
+    high_pump_sts?: SortOrderInput | SortOrder
+    sub_pump_sts?: SortOrderInput | SortOrder
+    red_motor_sts?: SortOrderInput | SortOrder
+    sol_relay_sts?: SortOrderInput | SortOrder
+    high_pump_alm?: SortOrderInput | SortOrder
+    sub_pump_alm?: SortOrderInput | SortOrder
+    red_motor_alm?: SortOrderInput | SortOrder
+    eocr_alm_1?: SortOrderInput | SortOrder
+    eocr_alm_2?: SortOrderInput | SortOrder
+    eocr_alm_3?: SortOrderInput | SortOrder
+    emg_alm?: SortOrderInput | SortOrder
+    sec_clk?: SortOrderInput | SortOrder
+    high_pump_freq?: SortOrderInput | SortOrder
+    sub_pump_freq?: SortOrderInput | SortOrder
+    red_motor_freq?: SortOrderInput | SortOrder
+    current_pressure?: SortOrderInput | SortOrder
+    current_flow?: SortOrderInput | SortOrder
+    robot_id?: SortOrder
+    region_id?: SortOrderInput | SortOrder
+    _count?: cfs_status_tempCountOrderByAggregateInput
+    _avg?: cfs_status_tempAvgOrderByAggregateInput
+    _max?: cfs_status_tempMaxOrderByAggregateInput
+    _min?: cfs_status_tempMinOrderByAggregateInput
+    _sum?: cfs_status_tempSumOrderByAggregateInput
+  }
+
+  export type cfs_status_tempScalarWhereWithAggregatesInput = {
+    AND?: cfs_status_tempScalarWhereWithAggregatesInput | cfs_status_tempScalarWhereWithAggregatesInput[]
+    OR?: cfs_status_tempScalarWhereWithAggregatesInput[]
+    NOT?: cfs_status_tempScalarWhereWithAggregatesInput | cfs_status_tempScalarWhereWithAggregatesInput[]
+    timestamp?: DateTimeWithAggregatesFilter<"cfs_status_temp"> | Date | string
+    remote_sts?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    high_pump_sts?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    sub_pump_sts?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    red_motor_sts?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    sol_relay_sts?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    high_pump_alm?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    sub_pump_alm?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    red_motor_alm?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    eocr_alm_1?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    eocr_alm_2?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    eocr_alm_3?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    emg_alm?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    sec_clk?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    high_pump_freq?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    sub_pump_freq?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    red_motor_freq?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    current_pressure?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    current_flow?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+    robot_id?: StringWithAggregatesFilter<"cfs_status_temp"> | string
+    region_id?: IntNullableWithAggregatesFilter<"cfs_status_temp"> | number | null
+  }
+
+  export type weather_dataWhereInput = {
+    AND?: weather_dataWhereInput | weather_dataWhereInput[]
+    OR?: weather_dataWhereInput[]
+    NOT?: weather_dataWhereInput | weather_dataWhereInput[]
+    TM?: DateTimeFilter<"weather_data"> | Date | string
+    STN?: IntFilter<"weather_data"> | number
+    WD?: FloatNullableFilter<"weather_data"> | number | null
+    WS?: FloatNullableFilter<"weather_data"> | number | null
+    GST_WD?: FloatNullableFilter<"weather_data"> | number | null
+    GST_WS?: FloatNullableFilter<"weather_data"> | number | null
+    GST_TM?: FloatNullableFilter<"weather_data"> | number | null
+    PA?: FloatNullableFilter<"weather_data"> | number | null
+    PS?: FloatNullableFilter<"weather_data"> | number | null
+    PT?: FloatNullableFilter<"weather_data"> | number | null
+    PR?: FloatNullableFilter<"weather_data"> | number | null
+    TA?: FloatNullableFilter<"weather_data"> | number | null
+    TD?: FloatNullableFilter<"weather_data"> | number | null
+    HM?: FloatNullableFilter<"weather_data"> | number | null
+    PV?: FloatNullableFilter<"weather_data"> | number | null
+    RN?: FloatNullableFilter<"weather_data"> | number | null
+    RN_DAY?: FloatNullableFilter<"weather_data"> | number | null
+    RN_JUN?: FloatNullableFilter<"weather_data"> | number | null
+    RN_INT?: FloatNullableFilter<"weather_data"> | number | null
+    SD_HR3?: FloatNullableFilter<"weather_data"> | number | null
+    SD_DAY?: FloatNullableFilter<"weather_data"> | number | null
+    SD_TOT?: FloatNullableFilter<"weather_data"> | number | null
+    WC?: FloatNullableFilter<"weather_data"> | number | null
+    WP?: FloatNullableFilter<"weather_data"> | number | null
+    WW?: FloatNullableFilter<"weather_data"> | number | null
+    CA_TOT?: FloatNullableFilter<"weather_data"> | number | null
+    CA_MID?: FloatNullableFilter<"weather_data"> | number | null
+    CH_MIN?: FloatNullableFilter<"weather_data"> | number | null
+    CT?: FloatNullableFilter<"weather_data"> | number | null
+    CT_TOP?: FloatNullableFilter<"weather_data"> | number | null
+    CT_MID?: FloatNullableFilter<"weather_data"> | number | null
+    CT_LOW?: FloatNullableFilter<"weather_data"> | number | null
+    VS?: FloatNullableFilter<"weather_data"> | number | null
+    SS?: FloatNullableFilter<"weather_data"> | number | null
+    SI?: FloatNullableFilter<"weather_data"> | number | null
+    ST_GD?: FloatNullableFilter<"weather_data"> | number | null
+    TS?: FloatNullableFilter<"weather_data"> | number | null
+    TE_005?: FloatNullableFilter<"weather_data"> | number | null
+    TE_01?: FloatNullableFilter<"weather_data"> | number | null
+    TE_02?: FloatNullableFilter<"weather_data"> | number | null
+    TE_03?: FloatNullableFilter<"weather_data"> | number | null
+    ST_SEA?: FloatNullableFilter<"weather_data"> | number | null
+    WH?: FloatNullableFilter<"weather_data"> | number | null
+    BF?: FloatNullableFilter<"weather_data"> | number | null
+    IR?: FloatNullableFilter<"weather_data"> | number | null
+    IX?: FloatNullableFilter<"weather_data"> | number | null
+  }
+
+  export type weather_dataOrderByWithRelationInput = {
+    TM?: SortOrder
+    STN?: SortOrder
+    WD?: SortOrderInput | SortOrder
+    WS?: SortOrderInput | SortOrder
+    GST_WD?: SortOrderInput | SortOrder
+    GST_WS?: SortOrderInput | SortOrder
+    GST_TM?: SortOrderInput | SortOrder
+    PA?: SortOrderInput | SortOrder
+    PS?: SortOrderInput | SortOrder
+    PT?: SortOrderInput | SortOrder
+    PR?: SortOrderInput | SortOrder
+    TA?: SortOrderInput | SortOrder
+    TD?: SortOrderInput | SortOrder
+    HM?: SortOrderInput | SortOrder
+    PV?: SortOrderInput | SortOrder
+    RN?: SortOrderInput | SortOrder
+    RN_DAY?: SortOrderInput | SortOrder
+    RN_JUN?: SortOrderInput | SortOrder
+    RN_INT?: SortOrderInput | SortOrder
+    SD_HR3?: SortOrderInput | SortOrder
+    SD_DAY?: SortOrderInput | SortOrder
+    SD_TOT?: SortOrderInput | SortOrder
+    WC?: SortOrderInput | SortOrder
+    WP?: SortOrderInput | SortOrder
+    WW?: SortOrderInput | SortOrder
+    CA_TOT?: SortOrderInput | SortOrder
+    CA_MID?: SortOrderInput | SortOrder
+    CH_MIN?: SortOrderInput | SortOrder
+    CT?: SortOrderInput | SortOrder
+    CT_TOP?: SortOrderInput | SortOrder
+    CT_MID?: SortOrderInput | SortOrder
+    CT_LOW?: SortOrderInput | SortOrder
+    VS?: SortOrderInput | SortOrder
+    SS?: SortOrderInput | SortOrder
+    SI?: SortOrderInput | SortOrder
+    ST_GD?: SortOrderInput | SortOrder
+    TS?: SortOrderInput | SortOrder
+    TE_005?: SortOrderInput | SortOrder
+    TE_01?: SortOrderInput | SortOrder
+    TE_02?: SortOrderInput | SortOrder
+    TE_03?: SortOrderInput | SortOrder
+    ST_SEA?: SortOrderInput | SortOrder
+    WH?: SortOrderInput | SortOrder
+    BF?: SortOrderInput | SortOrder
+    IR?: SortOrderInput | SortOrder
+    IX?: SortOrderInput | SortOrder
+  }
+
+  export type weather_dataWhereUniqueInput = Prisma.AtLeast<{
+    STN_TM?: weather_dataSTNTMCompoundUniqueInput
+    AND?: weather_dataWhereInput | weather_dataWhereInput[]
+    OR?: weather_dataWhereInput[]
+    NOT?: weather_dataWhereInput | weather_dataWhereInput[]
+    TM?: DateTimeFilter<"weather_data"> | Date | string
+    STN?: IntFilter<"weather_data"> | number
+    WD?: FloatNullableFilter<"weather_data"> | number | null
+    WS?: FloatNullableFilter<"weather_data"> | number | null
+    GST_WD?: FloatNullableFilter<"weather_data"> | number | null
+    GST_WS?: FloatNullableFilter<"weather_data"> | number | null
+    GST_TM?: FloatNullableFilter<"weather_data"> | number | null
+    PA?: FloatNullableFilter<"weather_data"> | number | null
+    PS?: FloatNullableFilter<"weather_data"> | number | null
+    PT?: FloatNullableFilter<"weather_data"> | number | null
+    PR?: FloatNullableFilter<"weather_data"> | number | null
+    TA?: FloatNullableFilter<"weather_data"> | number | null
+    TD?: FloatNullableFilter<"weather_data"> | number | null
+    HM?: FloatNullableFilter<"weather_data"> | number | null
+    PV?: FloatNullableFilter<"weather_data"> | number | null
+    RN?: FloatNullableFilter<"weather_data"> | number | null
+    RN_DAY?: FloatNullableFilter<"weather_data"> | number | null
+    RN_JUN?: FloatNullableFilter<"weather_data"> | number | null
+    RN_INT?: FloatNullableFilter<"weather_data"> | number | null
+    SD_HR3?: FloatNullableFilter<"weather_data"> | number | null
+    SD_DAY?: FloatNullableFilter<"weather_data"> | number | null
+    SD_TOT?: FloatNullableFilter<"weather_data"> | number | null
+    WC?: FloatNullableFilter<"weather_data"> | number | null
+    WP?: FloatNullableFilter<"weather_data"> | number | null
+    WW?: FloatNullableFilter<"weather_data"> | number | null
+    CA_TOT?: FloatNullableFilter<"weather_data"> | number | null
+    CA_MID?: FloatNullableFilter<"weather_data"> | number | null
+    CH_MIN?: FloatNullableFilter<"weather_data"> | number | null
+    CT?: FloatNullableFilter<"weather_data"> | number | null
+    CT_TOP?: FloatNullableFilter<"weather_data"> | number | null
+    CT_MID?: FloatNullableFilter<"weather_data"> | number | null
+    CT_LOW?: FloatNullableFilter<"weather_data"> | number | null
+    VS?: FloatNullableFilter<"weather_data"> | number | null
+    SS?: FloatNullableFilter<"weather_data"> | number | null
+    SI?: FloatNullableFilter<"weather_data"> | number | null
+    ST_GD?: FloatNullableFilter<"weather_data"> | number | null
+    TS?: FloatNullableFilter<"weather_data"> | number | null
+    TE_005?: FloatNullableFilter<"weather_data"> | number | null
+    TE_01?: FloatNullableFilter<"weather_data"> | number | null
+    TE_02?: FloatNullableFilter<"weather_data"> | number | null
+    TE_03?: FloatNullableFilter<"weather_data"> | number | null
+    ST_SEA?: FloatNullableFilter<"weather_data"> | number | null
+    WH?: FloatNullableFilter<"weather_data"> | number | null
+    BF?: FloatNullableFilter<"weather_data"> | number | null
+    IR?: FloatNullableFilter<"weather_data"> | number | null
+    IX?: FloatNullableFilter<"weather_data"> | number | null
+  }, "STN_TM">
+
+  export type weather_dataOrderByWithAggregationInput = {
+    TM?: SortOrder
+    STN?: SortOrder
+    WD?: SortOrderInput | SortOrder
+    WS?: SortOrderInput | SortOrder
+    GST_WD?: SortOrderInput | SortOrder
+    GST_WS?: SortOrderInput | SortOrder
+    GST_TM?: SortOrderInput | SortOrder
+    PA?: SortOrderInput | SortOrder
+    PS?: SortOrderInput | SortOrder
+    PT?: SortOrderInput | SortOrder
+    PR?: SortOrderInput | SortOrder
+    TA?: SortOrderInput | SortOrder
+    TD?: SortOrderInput | SortOrder
+    HM?: SortOrderInput | SortOrder
+    PV?: SortOrderInput | SortOrder
+    RN?: SortOrderInput | SortOrder
+    RN_DAY?: SortOrderInput | SortOrder
+    RN_JUN?: SortOrderInput | SortOrder
+    RN_INT?: SortOrderInput | SortOrder
+    SD_HR3?: SortOrderInput | SortOrder
+    SD_DAY?: SortOrderInput | SortOrder
+    SD_TOT?: SortOrderInput | SortOrder
+    WC?: SortOrderInput | SortOrder
+    WP?: SortOrderInput | SortOrder
+    WW?: SortOrderInput | SortOrder
+    CA_TOT?: SortOrderInput | SortOrder
+    CA_MID?: SortOrderInput | SortOrder
+    CH_MIN?: SortOrderInput | SortOrder
+    CT?: SortOrderInput | SortOrder
+    CT_TOP?: SortOrderInput | SortOrder
+    CT_MID?: SortOrderInput | SortOrder
+    CT_LOW?: SortOrderInput | SortOrder
+    VS?: SortOrderInput | SortOrder
+    SS?: SortOrderInput | SortOrder
+    SI?: SortOrderInput | SortOrder
+    ST_GD?: SortOrderInput | SortOrder
+    TS?: SortOrderInput | SortOrder
+    TE_005?: SortOrderInput | SortOrder
+    TE_01?: SortOrderInput | SortOrder
+    TE_02?: SortOrderInput | SortOrder
+    TE_03?: SortOrderInput | SortOrder
+    ST_SEA?: SortOrderInput | SortOrder
+    WH?: SortOrderInput | SortOrder
+    BF?: SortOrderInput | SortOrder
+    IR?: SortOrderInput | SortOrder
+    IX?: SortOrderInput | SortOrder
+    _count?: weather_dataCountOrderByAggregateInput
+    _avg?: weather_dataAvgOrderByAggregateInput
+    _max?: weather_dataMaxOrderByAggregateInput
+    _min?: weather_dataMinOrderByAggregateInput
+    _sum?: weather_dataSumOrderByAggregateInput
+  }
+
+  export type weather_dataScalarWhereWithAggregatesInput = {
+    AND?: weather_dataScalarWhereWithAggregatesInput | weather_dataScalarWhereWithAggregatesInput[]
+    OR?: weather_dataScalarWhereWithAggregatesInput[]
+    NOT?: weather_dataScalarWhereWithAggregatesInput | weather_dataScalarWhereWithAggregatesInput[]
+    TM?: DateTimeWithAggregatesFilter<"weather_data"> | Date | string
+    STN?: IntWithAggregatesFilter<"weather_data"> | number
+    WD?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    WS?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    GST_WD?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    GST_WS?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    GST_TM?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    PA?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    PS?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    PT?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    PR?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    TA?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    TD?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    HM?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    PV?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    RN?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    RN_DAY?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    RN_JUN?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    RN_INT?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    SD_HR3?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    SD_DAY?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    SD_TOT?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    WC?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    WP?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    WW?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    CA_TOT?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    CA_MID?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    CH_MIN?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    CT?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    CT_TOP?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    CT_MID?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    CT_LOW?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    VS?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    SS?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    SI?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    ST_GD?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    TS?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    TE_005?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    TE_01?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    TE_02?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    TE_03?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    ST_SEA?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    WH?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    BF?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    IR?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
+    IX?: FloatNullableWithAggregatesFilter<"weather_data"> | number | null
   }
 
   export type ecobot_statusCreateInput = {
@@ -13723,6 +18669,10 @@ export namespace Prisma {
     schedule_status?: boolean | null
     pump_status?: number | null
     mtr_schedule_status?: boolean | null
+    register_values?: ecobot_status_tempCreateregister_valuesInput | number[]
+    sample_depth?: number | null
+    sub_register_values?: ecobot_status_tempCreatesub_register_valuesInput | number[]
+    ngrok_url?: string | null
   }
 
   export type ecobot_status_tempUncheckedCreateInput = {
@@ -13773,6 +18723,10 @@ export namespace Prisma {
     schedule_status?: boolean | null
     pump_status?: number | null
     mtr_schedule_status?: boolean | null
+    register_values?: ecobot_status_tempCreateregister_valuesInput | number[]
+    sample_depth?: number | null
+    sub_register_values?: ecobot_status_tempCreatesub_register_valuesInput | number[]
+    ngrok_url?: string | null
   }
 
   export type ecobot_status_tempUpdateInput = {
@@ -13823,6 +18777,10 @@ export namespace Prisma {
     schedule_status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     pump_status?: NullableIntFieldUpdateOperationsInput | number | null
     mtr_schedule_status?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    register_values?: ecobot_status_tempUpdateregister_valuesInput | number[]
+    sample_depth?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_register_values?: ecobot_status_tempUpdatesub_register_valuesInput | number[]
+    ngrok_url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ecobot_status_tempUncheckedUpdateInput = {
@@ -13873,6 +18831,10 @@ export namespace Prisma {
     schedule_status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     pump_status?: NullableIntFieldUpdateOperationsInput | number | null
     mtr_schedule_status?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    register_values?: ecobot_status_tempUpdateregister_valuesInput | number[]
+    sample_depth?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_register_values?: ecobot_status_tempUpdatesub_register_valuesInput | number[]
+    ngrok_url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ecobot_status_tempCreateManyInput = {
@@ -13923,6 +18885,10 @@ export namespace Prisma {
     schedule_status?: boolean | null
     pump_status?: number | null
     mtr_schedule_status?: boolean | null
+    register_values?: ecobot_status_tempCreateregister_valuesInput | number[]
+    sample_depth?: number | null
+    sub_register_values?: ecobot_status_tempCreatesub_register_valuesInput | number[]
+    ngrok_url?: string | null
   }
 
   export type ecobot_status_tempUpdateManyMutationInput = {
@@ -13973,6 +18939,10 @@ export namespace Prisma {
     schedule_status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     pump_status?: NullableIntFieldUpdateOperationsInput | number | null
     mtr_schedule_status?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    register_values?: ecobot_status_tempUpdateregister_valuesInput | number[]
+    sample_depth?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_register_values?: ecobot_status_tempUpdatesub_register_valuesInput | number[]
+    ngrok_url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ecobot_status_tempUncheckedUpdateManyInput = {
@@ -14023,6 +18993,10 @@ export namespace Prisma {
     schedule_status?: NullableBoolFieldUpdateOperationsInput | boolean | null
     pump_status?: NullableIntFieldUpdateOperationsInput | number | null
     mtr_schedule_status?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    register_values?: ecobot_status_tempUpdateregister_valuesInput | number[]
+    sample_depth?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_register_values?: ecobot_status_tempUpdatesub_register_valuesInput | number[]
+    ngrok_url?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ecobot_ts_infoCreateInput = {
@@ -14628,6 +19602,7 @@ export namespace Prisma {
     longitude?: number | null
     robot_id: string
     region_id?: number | null
+    sample_depth?: number | null
   }
 
   export type water_qualityUncheckedCreateInput = {
@@ -14648,6 +19623,7 @@ export namespace Prisma {
     longitude?: number | null
     robot_id: string
     region_id?: number | null
+    sample_depth?: number | null
   }
 
   export type water_qualityUpdateInput = {
@@ -14668,6 +19644,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     robot_id?: StringFieldUpdateOperationsInput | string
     region_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sample_depth?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type water_qualityUncheckedUpdateInput = {
@@ -14688,6 +19665,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     robot_id?: StringFieldUpdateOperationsInput | string
     region_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sample_depth?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type water_qualityCreateManyInput = {
@@ -14708,6 +19686,7 @@ export namespace Prisma {
     longitude?: number | null
     robot_id: string
     region_id?: number | null
+    sample_depth?: number | null
   }
 
   export type water_qualityUpdateManyMutationInput = {
@@ -14728,6 +19707,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     robot_id?: StringFieldUpdateOperationsInput | string
     region_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sample_depth?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type water_qualityUncheckedUpdateManyInput = {
@@ -14748,6 +19728,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     robot_id?: StringFieldUpdateOperationsInput | string
     region_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sample_depth?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type water_quality_tempCreateInput = {
@@ -14768,6 +19749,7 @@ export namespace Prisma {
     longitude?: number | null
     robot_id: string
     region_id?: number | null
+    sample_depth?: number | null
   }
 
   export type water_quality_tempUncheckedCreateInput = {
@@ -14788,6 +19770,7 @@ export namespace Prisma {
     longitude?: number | null
     robot_id: string
     region_id?: number | null
+    sample_depth?: number | null
   }
 
   export type water_quality_tempUpdateInput = {
@@ -14808,6 +19791,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     robot_id?: StringFieldUpdateOperationsInput | string
     region_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sample_depth?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type water_quality_tempUncheckedUpdateInput = {
@@ -14828,6 +19812,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     robot_id?: StringFieldUpdateOperationsInput | string
     region_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sample_depth?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type water_quality_tempCreateManyInput = {
@@ -14848,6 +19833,7 @@ export namespace Prisma {
     longitude?: number | null
     robot_id: string
     region_id?: number | null
+    sample_depth?: number | null
   }
 
   export type water_quality_tempUpdateManyMutationInput = {
@@ -14868,6 +19854,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     robot_id?: StringFieldUpdateOperationsInput | string
     region_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sample_depth?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type water_quality_tempUncheckedUpdateManyInput = {
@@ -14888,6 +19875,686 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     robot_id?: StringFieldUpdateOperationsInput | string
     region_id?: NullableIntFieldUpdateOperationsInput | number | null
+    sample_depth?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type cfs_statusCreateInput = {
+    timestamp: Date | string
+    remote_sts?: number | null
+    high_pump_sts?: number | null
+    sub_pump_sts?: number | null
+    red_motor_sts?: number | null
+    sol_relay_sts?: number | null
+    high_pump_alm?: number | null
+    sub_pump_alm?: number | null
+    red_motor_alm?: number | null
+    eocr_alm_1?: number | null
+    eocr_alm_2?: number | null
+    eocr_alm_3?: number | null
+    emg_alm?: number | null
+    sec_clk?: number | null
+    high_pump_freq?: number | null
+    sub_pump_freq?: number | null
+    red_motor_freq?: number | null
+    current_pressure?: number | null
+    current_flow?: number | null
+    robot_id: string
+    region_id?: number | null
+  }
+
+  export type cfs_statusUncheckedCreateInput = {
+    timestamp: Date | string
+    remote_sts?: number | null
+    high_pump_sts?: number | null
+    sub_pump_sts?: number | null
+    red_motor_sts?: number | null
+    sol_relay_sts?: number | null
+    high_pump_alm?: number | null
+    sub_pump_alm?: number | null
+    red_motor_alm?: number | null
+    eocr_alm_1?: number | null
+    eocr_alm_2?: number | null
+    eocr_alm_3?: number | null
+    emg_alm?: number | null
+    sec_clk?: number | null
+    high_pump_freq?: number | null
+    sub_pump_freq?: number | null
+    red_motor_freq?: number | null
+    current_pressure?: number | null
+    current_flow?: number | null
+    robot_id: string
+    region_id?: number | null
+  }
+
+  export type cfs_statusUpdateInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    remote_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sol_relay_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_1?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_2?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_3?: NullableIntFieldUpdateOperationsInput | number | null
+    emg_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sec_clk?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    current_pressure?: NullableIntFieldUpdateOperationsInput | number | null
+    current_flow?: NullableIntFieldUpdateOperationsInput | number | null
+    robot_id?: StringFieldUpdateOperationsInput | string
+    region_id?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type cfs_statusUncheckedUpdateInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    remote_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sol_relay_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_1?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_2?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_3?: NullableIntFieldUpdateOperationsInput | number | null
+    emg_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sec_clk?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    current_pressure?: NullableIntFieldUpdateOperationsInput | number | null
+    current_flow?: NullableIntFieldUpdateOperationsInput | number | null
+    robot_id?: StringFieldUpdateOperationsInput | string
+    region_id?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type cfs_statusCreateManyInput = {
+    timestamp: Date | string
+    remote_sts?: number | null
+    high_pump_sts?: number | null
+    sub_pump_sts?: number | null
+    red_motor_sts?: number | null
+    sol_relay_sts?: number | null
+    high_pump_alm?: number | null
+    sub_pump_alm?: number | null
+    red_motor_alm?: number | null
+    eocr_alm_1?: number | null
+    eocr_alm_2?: number | null
+    eocr_alm_3?: number | null
+    emg_alm?: number | null
+    sec_clk?: number | null
+    high_pump_freq?: number | null
+    sub_pump_freq?: number | null
+    red_motor_freq?: number | null
+    current_pressure?: number | null
+    current_flow?: number | null
+    robot_id: string
+    region_id?: number | null
+  }
+
+  export type cfs_statusUpdateManyMutationInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    remote_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sol_relay_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_1?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_2?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_3?: NullableIntFieldUpdateOperationsInput | number | null
+    emg_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sec_clk?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    current_pressure?: NullableIntFieldUpdateOperationsInput | number | null
+    current_flow?: NullableIntFieldUpdateOperationsInput | number | null
+    robot_id?: StringFieldUpdateOperationsInput | string
+    region_id?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type cfs_statusUncheckedUpdateManyInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    remote_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sol_relay_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_1?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_2?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_3?: NullableIntFieldUpdateOperationsInput | number | null
+    emg_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sec_clk?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    current_pressure?: NullableIntFieldUpdateOperationsInput | number | null
+    current_flow?: NullableIntFieldUpdateOperationsInput | number | null
+    robot_id?: StringFieldUpdateOperationsInput | string
+    region_id?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type cfs_status_tempCreateInput = {
+    timestamp: Date | string
+    remote_sts?: number | null
+    high_pump_sts?: number | null
+    sub_pump_sts?: number | null
+    red_motor_sts?: number | null
+    sol_relay_sts?: number | null
+    high_pump_alm?: number | null
+    sub_pump_alm?: number | null
+    red_motor_alm?: number | null
+    eocr_alm_1?: number | null
+    eocr_alm_2?: number | null
+    eocr_alm_3?: number | null
+    emg_alm?: number | null
+    sec_clk?: number | null
+    high_pump_freq?: number | null
+    sub_pump_freq?: number | null
+    red_motor_freq?: number | null
+    current_pressure?: number | null
+    current_flow?: number | null
+    robot_id: string
+    region_id?: number | null
+  }
+
+  export type cfs_status_tempUncheckedCreateInput = {
+    timestamp: Date | string
+    remote_sts?: number | null
+    high_pump_sts?: number | null
+    sub_pump_sts?: number | null
+    red_motor_sts?: number | null
+    sol_relay_sts?: number | null
+    high_pump_alm?: number | null
+    sub_pump_alm?: number | null
+    red_motor_alm?: number | null
+    eocr_alm_1?: number | null
+    eocr_alm_2?: number | null
+    eocr_alm_3?: number | null
+    emg_alm?: number | null
+    sec_clk?: number | null
+    high_pump_freq?: number | null
+    sub_pump_freq?: number | null
+    red_motor_freq?: number | null
+    current_pressure?: number | null
+    current_flow?: number | null
+    robot_id: string
+    region_id?: number | null
+  }
+
+  export type cfs_status_tempUpdateInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    remote_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sol_relay_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_1?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_2?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_3?: NullableIntFieldUpdateOperationsInput | number | null
+    emg_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sec_clk?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    current_pressure?: NullableIntFieldUpdateOperationsInput | number | null
+    current_flow?: NullableIntFieldUpdateOperationsInput | number | null
+    robot_id?: StringFieldUpdateOperationsInput | string
+    region_id?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type cfs_status_tempUncheckedUpdateInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    remote_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sol_relay_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_1?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_2?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_3?: NullableIntFieldUpdateOperationsInput | number | null
+    emg_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sec_clk?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    current_pressure?: NullableIntFieldUpdateOperationsInput | number | null
+    current_flow?: NullableIntFieldUpdateOperationsInput | number | null
+    robot_id?: StringFieldUpdateOperationsInput | string
+    region_id?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type cfs_status_tempCreateManyInput = {
+    timestamp: Date | string
+    remote_sts?: number | null
+    high_pump_sts?: number | null
+    sub_pump_sts?: number | null
+    red_motor_sts?: number | null
+    sol_relay_sts?: number | null
+    high_pump_alm?: number | null
+    sub_pump_alm?: number | null
+    red_motor_alm?: number | null
+    eocr_alm_1?: number | null
+    eocr_alm_2?: number | null
+    eocr_alm_3?: number | null
+    emg_alm?: number | null
+    sec_clk?: number | null
+    high_pump_freq?: number | null
+    sub_pump_freq?: number | null
+    red_motor_freq?: number | null
+    current_pressure?: number | null
+    current_flow?: number | null
+    robot_id: string
+    region_id?: number | null
+  }
+
+  export type cfs_status_tempUpdateManyMutationInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    remote_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sol_relay_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_1?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_2?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_3?: NullableIntFieldUpdateOperationsInput | number | null
+    emg_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sec_clk?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    current_pressure?: NullableIntFieldUpdateOperationsInput | number | null
+    current_flow?: NullableIntFieldUpdateOperationsInput | number | null
+    robot_id?: StringFieldUpdateOperationsInput | string
+    region_id?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type cfs_status_tempUncheckedUpdateManyInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    remote_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    sol_relay_sts?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_1?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_2?: NullableIntFieldUpdateOperationsInput | number | null
+    eocr_alm_3?: NullableIntFieldUpdateOperationsInput | number | null
+    emg_alm?: NullableIntFieldUpdateOperationsInput | number | null
+    sec_clk?: NullableIntFieldUpdateOperationsInput | number | null
+    high_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    sub_pump_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    red_motor_freq?: NullableIntFieldUpdateOperationsInput | number | null
+    current_pressure?: NullableIntFieldUpdateOperationsInput | number | null
+    current_flow?: NullableIntFieldUpdateOperationsInput | number | null
+    robot_id?: StringFieldUpdateOperationsInput | string
+    region_id?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type weather_dataCreateInput = {
+    TM: Date | string
+    STN: number
+    WD?: number | null
+    WS?: number | null
+    GST_WD?: number | null
+    GST_WS?: number | null
+    GST_TM?: number | null
+    PA?: number | null
+    PS?: number | null
+    PT?: number | null
+    PR?: number | null
+    TA?: number | null
+    TD?: number | null
+    HM?: number | null
+    PV?: number | null
+    RN?: number | null
+    RN_DAY?: number | null
+    RN_JUN?: number | null
+    RN_INT?: number | null
+    SD_HR3?: number | null
+    SD_DAY?: number | null
+    SD_TOT?: number | null
+    WC?: number | null
+    WP?: number | null
+    WW?: number | null
+    CA_TOT?: number | null
+    CA_MID?: number | null
+    CH_MIN?: number | null
+    CT?: number | null
+    CT_TOP?: number | null
+    CT_MID?: number | null
+    CT_LOW?: number | null
+    VS?: number | null
+    SS?: number | null
+    SI?: number | null
+    ST_GD?: number | null
+    TS?: number | null
+    TE_005?: number | null
+    TE_01?: number | null
+    TE_02?: number | null
+    TE_03?: number | null
+    ST_SEA?: number | null
+    WH?: number | null
+    BF?: number | null
+    IR?: number | null
+    IX?: number | null
+  }
+
+  export type weather_dataUncheckedCreateInput = {
+    TM: Date | string
+    STN: number
+    WD?: number | null
+    WS?: number | null
+    GST_WD?: number | null
+    GST_WS?: number | null
+    GST_TM?: number | null
+    PA?: number | null
+    PS?: number | null
+    PT?: number | null
+    PR?: number | null
+    TA?: number | null
+    TD?: number | null
+    HM?: number | null
+    PV?: number | null
+    RN?: number | null
+    RN_DAY?: number | null
+    RN_JUN?: number | null
+    RN_INT?: number | null
+    SD_HR3?: number | null
+    SD_DAY?: number | null
+    SD_TOT?: number | null
+    WC?: number | null
+    WP?: number | null
+    WW?: number | null
+    CA_TOT?: number | null
+    CA_MID?: number | null
+    CH_MIN?: number | null
+    CT?: number | null
+    CT_TOP?: number | null
+    CT_MID?: number | null
+    CT_LOW?: number | null
+    VS?: number | null
+    SS?: number | null
+    SI?: number | null
+    ST_GD?: number | null
+    TS?: number | null
+    TE_005?: number | null
+    TE_01?: number | null
+    TE_02?: number | null
+    TE_03?: number | null
+    ST_SEA?: number | null
+    WH?: number | null
+    BF?: number | null
+    IR?: number | null
+    IX?: number | null
+  }
+
+  export type weather_dataUpdateInput = {
+    TM?: DateTimeFieldUpdateOperationsInput | Date | string
+    STN?: IntFieldUpdateOperationsInput | number
+    WD?: NullableFloatFieldUpdateOperationsInput | number | null
+    WS?: NullableFloatFieldUpdateOperationsInput | number | null
+    GST_WD?: NullableFloatFieldUpdateOperationsInput | number | null
+    GST_WS?: NullableFloatFieldUpdateOperationsInput | number | null
+    GST_TM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PA?: NullableFloatFieldUpdateOperationsInput | number | null
+    PS?: NullableFloatFieldUpdateOperationsInput | number | null
+    PT?: NullableFloatFieldUpdateOperationsInput | number | null
+    PR?: NullableFloatFieldUpdateOperationsInput | number | null
+    TA?: NullableFloatFieldUpdateOperationsInput | number | null
+    TD?: NullableFloatFieldUpdateOperationsInput | number | null
+    HM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PV?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN_DAY?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN_JUN?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN_INT?: NullableFloatFieldUpdateOperationsInput | number | null
+    SD_HR3?: NullableFloatFieldUpdateOperationsInput | number | null
+    SD_DAY?: NullableFloatFieldUpdateOperationsInput | number | null
+    SD_TOT?: NullableFloatFieldUpdateOperationsInput | number | null
+    WC?: NullableFloatFieldUpdateOperationsInput | number | null
+    WP?: NullableFloatFieldUpdateOperationsInput | number | null
+    WW?: NullableFloatFieldUpdateOperationsInput | number | null
+    CA_TOT?: NullableFloatFieldUpdateOperationsInput | number | null
+    CA_MID?: NullableFloatFieldUpdateOperationsInput | number | null
+    CH_MIN?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT_TOP?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT_MID?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT_LOW?: NullableFloatFieldUpdateOperationsInput | number | null
+    VS?: NullableFloatFieldUpdateOperationsInput | number | null
+    SS?: NullableFloatFieldUpdateOperationsInput | number | null
+    SI?: NullableFloatFieldUpdateOperationsInput | number | null
+    ST_GD?: NullableFloatFieldUpdateOperationsInput | number | null
+    TS?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_005?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_01?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_02?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_03?: NullableFloatFieldUpdateOperationsInput | number | null
+    ST_SEA?: NullableFloatFieldUpdateOperationsInput | number | null
+    WH?: NullableFloatFieldUpdateOperationsInput | number | null
+    BF?: NullableFloatFieldUpdateOperationsInput | number | null
+    IR?: NullableFloatFieldUpdateOperationsInput | number | null
+    IX?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type weather_dataUncheckedUpdateInput = {
+    TM?: DateTimeFieldUpdateOperationsInput | Date | string
+    STN?: IntFieldUpdateOperationsInput | number
+    WD?: NullableFloatFieldUpdateOperationsInput | number | null
+    WS?: NullableFloatFieldUpdateOperationsInput | number | null
+    GST_WD?: NullableFloatFieldUpdateOperationsInput | number | null
+    GST_WS?: NullableFloatFieldUpdateOperationsInput | number | null
+    GST_TM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PA?: NullableFloatFieldUpdateOperationsInput | number | null
+    PS?: NullableFloatFieldUpdateOperationsInput | number | null
+    PT?: NullableFloatFieldUpdateOperationsInput | number | null
+    PR?: NullableFloatFieldUpdateOperationsInput | number | null
+    TA?: NullableFloatFieldUpdateOperationsInput | number | null
+    TD?: NullableFloatFieldUpdateOperationsInput | number | null
+    HM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PV?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN_DAY?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN_JUN?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN_INT?: NullableFloatFieldUpdateOperationsInput | number | null
+    SD_HR3?: NullableFloatFieldUpdateOperationsInput | number | null
+    SD_DAY?: NullableFloatFieldUpdateOperationsInput | number | null
+    SD_TOT?: NullableFloatFieldUpdateOperationsInput | number | null
+    WC?: NullableFloatFieldUpdateOperationsInput | number | null
+    WP?: NullableFloatFieldUpdateOperationsInput | number | null
+    WW?: NullableFloatFieldUpdateOperationsInput | number | null
+    CA_TOT?: NullableFloatFieldUpdateOperationsInput | number | null
+    CA_MID?: NullableFloatFieldUpdateOperationsInput | number | null
+    CH_MIN?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT_TOP?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT_MID?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT_LOW?: NullableFloatFieldUpdateOperationsInput | number | null
+    VS?: NullableFloatFieldUpdateOperationsInput | number | null
+    SS?: NullableFloatFieldUpdateOperationsInput | number | null
+    SI?: NullableFloatFieldUpdateOperationsInput | number | null
+    ST_GD?: NullableFloatFieldUpdateOperationsInput | number | null
+    TS?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_005?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_01?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_02?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_03?: NullableFloatFieldUpdateOperationsInput | number | null
+    ST_SEA?: NullableFloatFieldUpdateOperationsInput | number | null
+    WH?: NullableFloatFieldUpdateOperationsInput | number | null
+    BF?: NullableFloatFieldUpdateOperationsInput | number | null
+    IR?: NullableFloatFieldUpdateOperationsInput | number | null
+    IX?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type weather_dataCreateManyInput = {
+    TM: Date | string
+    STN: number
+    WD?: number | null
+    WS?: number | null
+    GST_WD?: number | null
+    GST_WS?: number | null
+    GST_TM?: number | null
+    PA?: number | null
+    PS?: number | null
+    PT?: number | null
+    PR?: number | null
+    TA?: number | null
+    TD?: number | null
+    HM?: number | null
+    PV?: number | null
+    RN?: number | null
+    RN_DAY?: number | null
+    RN_JUN?: number | null
+    RN_INT?: number | null
+    SD_HR3?: number | null
+    SD_DAY?: number | null
+    SD_TOT?: number | null
+    WC?: number | null
+    WP?: number | null
+    WW?: number | null
+    CA_TOT?: number | null
+    CA_MID?: number | null
+    CH_MIN?: number | null
+    CT?: number | null
+    CT_TOP?: number | null
+    CT_MID?: number | null
+    CT_LOW?: number | null
+    VS?: number | null
+    SS?: number | null
+    SI?: number | null
+    ST_GD?: number | null
+    TS?: number | null
+    TE_005?: number | null
+    TE_01?: number | null
+    TE_02?: number | null
+    TE_03?: number | null
+    ST_SEA?: number | null
+    WH?: number | null
+    BF?: number | null
+    IR?: number | null
+    IX?: number | null
+  }
+
+  export type weather_dataUpdateManyMutationInput = {
+    TM?: DateTimeFieldUpdateOperationsInput | Date | string
+    STN?: IntFieldUpdateOperationsInput | number
+    WD?: NullableFloatFieldUpdateOperationsInput | number | null
+    WS?: NullableFloatFieldUpdateOperationsInput | number | null
+    GST_WD?: NullableFloatFieldUpdateOperationsInput | number | null
+    GST_WS?: NullableFloatFieldUpdateOperationsInput | number | null
+    GST_TM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PA?: NullableFloatFieldUpdateOperationsInput | number | null
+    PS?: NullableFloatFieldUpdateOperationsInput | number | null
+    PT?: NullableFloatFieldUpdateOperationsInput | number | null
+    PR?: NullableFloatFieldUpdateOperationsInput | number | null
+    TA?: NullableFloatFieldUpdateOperationsInput | number | null
+    TD?: NullableFloatFieldUpdateOperationsInput | number | null
+    HM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PV?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN_DAY?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN_JUN?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN_INT?: NullableFloatFieldUpdateOperationsInput | number | null
+    SD_HR3?: NullableFloatFieldUpdateOperationsInput | number | null
+    SD_DAY?: NullableFloatFieldUpdateOperationsInput | number | null
+    SD_TOT?: NullableFloatFieldUpdateOperationsInput | number | null
+    WC?: NullableFloatFieldUpdateOperationsInput | number | null
+    WP?: NullableFloatFieldUpdateOperationsInput | number | null
+    WW?: NullableFloatFieldUpdateOperationsInput | number | null
+    CA_TOT?: NullableFloatFieldUpdateOperationsInput | number | null
+    CA_MID?: NullableFloatFieldUpdateOperationsInput | number | null
+    CH_MIN?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT_TOP?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT_MID?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT_LOW?: NullableFloatFieldUpdateOperationsInput | number | null
+    VS?: NullableFloatFieldUpdateOperationsInput | number | null
+    SS?: NullableFloatFieldUpdateOperationsInput | number | null
+    SI?: NullableFloatFieldUpdateOperationsInput | number | null
+    ST_GD?: NullableFloatFieldUpdateOperationsInput | number | null
+    TS?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_005?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_01?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_02?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_03?: NullableFloatFieldUpdateOperationsInput | number | null
+    ST_SEA?: NullableFloatFieldUpdateOperationsInput | number | null
+    WH?: NullableFloatFieldUpdateOperationsInput | number | null
+    BF?: NullableFloatFieldUpdateOperationsInput | number | null
+    IR?: NullableFloatFieldUpdateOperationsInput | number | null
+    IX?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type weather_dataUncheckedUpdateManyInput = {
+    TM?: DateTimeFieldUpdateOperationsInput | Date | string
+    STN?: IntFieldUpdateOperationsInput | number
+    WD?: NullableFloatFieldUpdateOperationsInput | number | null
+    WS?: NullableFloatFieldUpdateOperationsInput | number | null
+    GST_WD?: NullableFloatFieldUpdateOperationsInput | number | null
+    GST_WS?: NullableFloatFieldUpdateOperationsInput | number | null
+    GST_TM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PA?: NullableFloatFieldUpdateOperationsInput | number | null
+    PS?: NullableFloatFieldUpdateOperationsInput | number | null
+    PT?: NullableFloatFieldUpdateOperationsInput | number | null
+    PR?: NullableFloatFieldUpdateOperationsInput | number | null
+    TA?: NullableFloatFieldUpdateOperationsInput | number | null
+    TD?: NullableFloatFieldUpdateOperationsInput | number | null
+    HM?: NullableFloatFieldUpdateOperationsInput | number | null
+    PV?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN_DAY?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN_JUN?: NullableFloatFieldUpdateOperationsInput | number | null
+    RN_INT?: NullableFloatFieldUpdateOperationsInput | number | null
+    SD_HR3?: NullableFloatFieldUpdateOperationsInput | number | null
+    SD_DAY?: NullableFloatFieldUpdateOperationsInput | number | null
+    SD_TOT?: NullableFloatFieldUpdateOperationsInput | number | null
+    WC?: NullableFloatFieldUpdateOperationsInput | number | null
+    WP?: NullableFloatFieldUpdateOperationsInput | number | null
+    WW?: NullableFloatFieldUpdateOperationsInput | number | null
+    CA_TOT?: NullableFloatFieldUpdateOperationsInput | number | null
+    CA_MID?: NullableFloatFieldUpdateOperationsInput | number | null
+    CH_MIN?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT_TOP?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT_MID?: NullableFloatFieldUpdateOperationsInput | number | null
+    CT_LOW?: NullableFloatFieldUpdateOperationsInput | number | null
+    VS?: NullableFloatFieldUpdateOperationsInput | number | null
+    SS?: NullableFloatFieldUpdateOperationsInput | number | null
+    SI?: NullableFloatFieldUpdateOperationsInput | number | null
+    ST_GD?: NullableFloatFieldUpdateOperationsInput | number | null
+    TS?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_005?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_01?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_02?: NullableFloatFieldUpdateOperationsInput | number | null
+    TE_03?: NullableFloatFieldUpdateOperationsInput | number | null
+    ST_SEA?: NullableFloatFieldUpdateOperationsInput | number | null
+    WH?: NullableFloatFieldUpdateOperationsInput | number | null
+    BF?: NullableFloatFieldUpdateOperationsInput | number | null
+    IR?: NullableFloatFieldUpdateOperationsInput | number | null
+    IX?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -15206,6 +20873,21 @@ export namespace Prisma {
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type ecobot_status_tempRobot_idTimestampCompoundUniqueInput = {
     robot_id: string
     timestamp: Date | string
@@ -15259,6 +20941,10 @@ export namespace Prisma {
     schedule_status?: SortOrder
     pump_status?: SortOrder
     mtr_schedule_status?: SortOrder
+    register_values?: SortOrder
+    sample_depth?: SortOrder
+    sub_register_values?: SortOrder
+    ngrok_url?: SortOrder
   }
 
   export type ecobot_status_tempAvgOrderByAggregateInput = {
@@ -15305,6 +20991,9 @@ export namespace Prisma {
     current_speeds?: SortOrder
     region_id?: SortOrder
     pump_status?: SortOrder
+    register_values?: SortOrder
+    sample_depth?: SortOrder
+    sub_register_values?: SortOrder
   }
 
   export type ecobot_status_tempMaxOrderByAggregateInput = {
@@ -15351,6 +21040,8 @@ export namespace Prisma {
     schedule_status?: SortOrder
     pump_status?: SortOrder
     mtr_schedule_status?: SortOrder
+    sample_depth?: SortOrder
+    ngrok_url?: SortOrder
   }
 
   export type ecobot_status_tempMinOrderByAggregateInput = {
@@ -15397,6 +21088,8 @@ export namespace Prisma {
     schedule_status?: SortOrder
     pump_status?: SortOrder
     mtr_schedule_status?: SortOrder
+    sample_depth?: SortOrder
+    ngrok_url?: SortOrder
   }
 
   export type ecobot_status_tempSumOrderByAggregateInput = {
@@ -15443,6 +21136,9 @@ export namespace Prisma {
     current_speeds?: SortOrder
     region_id?: SortOrder
     pump_status?: SortOrder
+    register_values?: SortOrder
+    sample_depth?: SortOrder
+    sub_register_values?: SortOrder
   }
 
   export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -15451,6 +21147,24 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type ecobot_ts_infoRobot_idTimestampCompoundUniqueInput = {
@@ -15792,21 +21506,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type regionsCountOrderByAggregateInput = {
     region_id?: SortOrder
     region_name?: SortOrder
@@ -15868,24 +21567,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
   export type spatial_ref_sysCountOrderByAggregateInput = {
     srid?: SortOrder
     auth_name?: SortOrder
@@ -15943,6 +21624,7 @@ export namespace Prisma {
     longitude?: SortOrder
     robot_id?: SortOrder
     region_id?: SortOrder
+    sample_depth?: SortOrder
   }
 
   export type water_qualityAvgOrderByAggregateInput = {
@@ -15961,6 +21643,7 @@ export namespace Prisma {
     latitude?: SortOrder
     longitude?: SortOrder
     region_id?: SortOrder
+    sample_depth?: SortOrder
   }
 
   export type water_qualityMaxOrderByAggregateInput = {
@@ -15981,6 +21664,7 @@ export namespace Prisma {
     longitude?: SortOrder
     robot_id?: SortOrder
     region_id?: SortOrder
+    sample_depth?: SortOrder
   }
 
   export type water_qualityMinOrderByAggregateInput = {
@@ -16001,6 +21685,7 @@ export namespace Prisma {
     longitude?: SortOrder
     robot_id?: SortOrder
     region_id?: SortOrder
+    sample_depth?: SortOrder
   }
 
   export type water_qualitySumOrderByAggregateInput = {
@@ -16019,6 +21704,7 @@ export namespace Prisma {
     latitude?: SortOrder
     longitude?: SortOrder
     region_id?: SortOrder
+    sample_depth?: SortOrder
   }
 
   export type water_quality_tempRobot_idTimestampCompoundUniqueInput = {
@@ -16044,6 +21730,7 @@ export namespace Prisma {
     longitude?: SortOrder
     robot_id?: SortOrder
     region_id?: SortOrder
+    sample_depth?: SortOrder
   }
 
   export type water_quality_tempAvgOrderByAggregateInput = {
@@ -16062,6 +21749,7 @@ export namespace Prisma {
     latitude?: SortOrder
     longitude?: SortOrder
     region_id?: SortOrder
+    sample_depth?: SortOrder
   }
 
   export type water_quality_tempMaxOrderByAggregateInput = {
@@ -16082,6 +21770,7 @@ export namespace Prisma {
     longitude?: SortOrder
     robot_id?: SortOrder
     region_id?: SortOrder
+    sample_depth?: SortOrder
   }
 
   export type water_quality_tempMinOrderByAggregateInput = {
@@ -16102,6 +21791,7 @@ export namespace Prisma {
     longitude?: SortOrder
     robot_id?: SortOrder
     region_id?: SortOrder
+    sample_depth?: SortOrder
   }
 
   export type water_quality_tempSumOrderByAggregateInput = {
@@ -16120,6 +21810,497 @@ export namespace Prisma {
     latitude?: SortOrder
     longitude?: SortOrder
     region_id?: SortOrder
+    sample_depth?: SortOrder
+  }
+
+  export type cfs_statusRobot_idTimestampCompoundUniqueInput = {
+    robot_id: string
+    timestamp: Date | string
+  }
+
+  export type cfs_statusCountOrderByAggregateInput = {
+    timestamp?: SortOrder
+    remote_sts?: SortOrder
+    high_pump_sts?: SortOrder
+    sub_pump_sts?: SortOrder
+    red_motor_sts?: SortOrder
+    sol_relay_sts?: SortOrder
+    high_pump_alm?: SortOrder
+    sub_pump_alm?: SortOrder
+    red_motor_alm?: SortOrder
+    eocr_alm_1?: SortOrder
+    eocr_alm_2?: SortOrder
+    eocr_alm_3?: SortOrder
+    emg_alm?: SortOrder
+    sec_clk?: SortOrder
+    high_pump_freq?: SortOrder
+    sub_pump_freq?: SortOrder
+    red_motor_freq?: SortOrder
+    current_pressure?: SortOrder
+    current_flow?: SortOrder
+    robot_id?: SortOrder
+    region_id?: SortOrder
+  }
+
+  export type cfs_statusAvgOrderByAggregateInput = {
+    remote_sts?: SortOrder
+    high_pump_sts?: SortOrder
+    sub_pump_sts?: SortOrder
+    red_motor_sts?: SortOrder
+    sol_relay_sts?: SortOrder
+    high_pump_alm?: SortOrder
+    sub_pump_alm?: SortOrder
+    red_motor_alm?: SortOrder
+    eocr_alm_1?: SortOrder
+    eocr_alm_2?: SortOrder
+    eocr_alm_3?: SortOrder
+    emg_alm?: SortOrder
+    sec_clk?: SortOrder
+    high_pump_freq?: SortOrder
+    sub_pump_freq?: SortOrder
+    red_motor_freq?: SortOrder
+    current_pressure?: SortOrder
+    current_flow?: SortOrder
+    region_id?: SortOrder
+  }
+
+  export type cfs_statusMaxOrderByAggregateInput = {
+    timestamp?: SortOrder
+    remote_sts?: SortOrder
+    high_pump_sts?: SortOrder
+    sub_pump_sts?: SortOrder
+    red_motor_sts?: SortOrder
+    sol_relay_sts?: SortOrder
+    high_pump_alm?: SortOrder
+    sub_pump_alm?: SortOrder
+    red_motor_alm?: SortOrder
+    eocr_alm_1?: SortOrder
+    eocr_alm_2?: SortOrder
+    eocr_alm_3?: SortOrder
+    emg_alm?: SortOrder
+    sec_clk?: SortOrder
+    high_pump_freq?: SortOrder
+    sub_pump_freq?: SortOrder
+    red_motor_freq?: SortOrder
+    current_pressure?: SortOrder
+    current_flow?: SortOrder
+    robot_id?: SortOrder
+    region_id?: SortOrder
+  }
+
+  export type cfs_statusMinOrderByAggregateInput = {
+    timestamp?: SortOrder
+    remote_sts?: SortOrder
+    high_pump_sts?: SortOrder
+    sub_pump_sts?: SortOrder
+    red_motor_sts?: SortOrder
+    sol_relay_sts?: SortOrder
+    high_pump_alm?: SortOrder
+    sub_pump_alm?: SortOrder
+    red_motor_alm?: SortOrder
+    eocr_alm_1?: SortOrder
+    eocr_alm_2?: SortOrder
+    eocr_alm_3?: SortOrder
+    emg_alm?: SortOrder
+    sec_clk?: SortOrder
+    high_pump_freq?: SortOrder
+    sub_pump_freq?: SortOrder
+    red_motor_freq?: SortOrder
+    current_pressure?: SortOrder
+    current_flow?: SortOrder
+    robot_id?: SortOrder
+    region_id?: SortOrder
+  }
+
+  export type cfs_statusSumOrderByAggregateInput = {
+    remote_sts?: SortOrder
+    high_pump_sts?: SortOrder
+    sub_pump_sts?: SortOrder
+    red_motor_sts?: SortOrder
+    sol_relay_sts?: SortOrder
+    high_pump_alm?: SortOrder
+    sub_pump_alm?: SortOrder
+    red_motor_alm?: SortOrder
+    eocr_alm_1?: SortOrder
+    eocr_alm_2?: SortOrder
+    eocr_alm_3?: SortOrder
+    emg_alm?: SortOrder
+    sec_clk?: SortOrder
+    high_pump_freq?: SortOrder
+    sub_pump_freq?: SortOrder
+    red_motor_freq?: SortOrder
+    current_pressure?: SortOrder
+    current_flow?: SortOrder
+    region_id?: SortOrder
+  }
+
+  export type cfs_status_tempRobot_idTimestampCompoundUniqueInput = {
+    robot_id: string
+    timestamp: Date | string
+  }
+
+  export type cfs_status_tempCountOrderByAggregateInput = {
+    timestamp?: SortOrder
+    remote_sts?: SortOrder
+    high_pump_sts?: SortOrder
+    sub_pump_sts?: SortOrder
+    red_motor_sts?: SortOrder
+    sol_relay_sts?: SortOrder
+    high_pump_alm?: SortOrder
+    sub_pump_alm?: SortOrder
+    red_motor_alm?: SortOrder
+    eocr_alm_1?: SortOrder
+    eocr_alm_2?: SortOrder
+    eocr_alm_3?: SortOrder
+    emg_alm?: SortOrder
+    sec_clk?: SortOrder
+    high_pump_freq?: SortOrder
+    sub_pump_freq?: SortOrder
+    red_motor_freq?: SortOrder
+    current_pressure?: SortOrder
+    current_flow?: SortOrder
+    robot_id?: SortOrder
+    region_id?: SortOrder
+  }
+
+  export type cfs_status_tempAvgOrderByAggregateInput = {
+    remote_sts?: SortOrder
+    high_pump_sts?: SortOrder
+    sub_pump_sts?: SortOrder
+    red_motor_sts?: SortOrder
+    sol_relay_sts?: SortOrder
+    high_pump_alm?: SortOrder
+    sub_pump_alm?: SortOrder
+    red_motor_alm?: SortOrder
+    eocr_alm_1?: SortOrder
+    eocr_alm_2?: SortOrder
+    eocr_alm_3?: SortOrder
+    emg_alm?: SortOrder
+    sec_clk?: SortOrder
+    high_pump_freq?: SortOrder
+    sub_pump_freq?: SortOrder
+    red_motor_freq?: SortOrder
+    current_pressure?: SortOrder
+    current_flow?: SortOrder
+    region_id?: SortOrder
+  }
+
+  export type cfs_status_tempMaxOrderByAggregateInput = {
+    timestamp?: SortOrder
+    remote_sts?: SortOrder
+    high_pump_sts?: SortOrder
+    sub_pump_sts?: SortOrder
+    red_motor_sts?: SortOrder
+    sol_relay_sts?: SortOrder
+    high_pump_alm?: SortOrder
+    sub_pump_alm?: SortOrder
+    red_motor_alm?: SortOrder
+    eocr_alm_1?: SortOrder
+    eocr_alm_2?: SortOrder
+    eocr_alm_3?: SortOrder
+    emg_alm?: SortOrder
+    sec_clk?: SortOrder
+    high_pump_freq?: SortOrder
+    sub_pump_freq?: SortOrder
+    red_motor_freq?: SortOrder
+    current_pressure?: SortOrder
+    current_flow?: SortOrder
+    robot_id?: SortOrder
+    region_id?: SortOrder
+  }
+
+  export type cfs_status_tempMinOrderByAggregateInput = {
+    timestamp?: SortOrder
+    remote_sts?: SortOrder
+    high_pump_sts?: SortOrder
+    sub_pump_sts?: SortOrder
+    red_motor_sts?: SortOrder
+    sol_relay_sts?: SortOrder
+    high_pump_alm?: SortOrder
+    sub_pump_alm?: SortOrder
+    red_motor_alm?: SortOrder
+    eocr_alm_1?: SortOrder
+    eocr_alm_2?: SortOrder
+    eocr_alm_3?: SortOrder
+    emg_alm?: SortOrder
+    sec_clk?: SortOrder
+    high_pump_freq?: SortOrder
+    sub_pump_freq?: SortOrder
+    red_motor_freq?: SortOrder
+    current_pressure?: SortOrder
+    current_flow?: SortOrder
+    robot_id?: SortOrder
+    region_id?: SortOrder
+  }
+
+  export type cfs_status_tempSumOrderByAggregateInput = {
+    remote_sts?: SortOrder
+    high_pump_sts?: SortOrder
+    sub_pump_sts?: SortOrder
+    red_motor_sts?: SortOrder
+    sol_relay_sts?: SortOrder
+    high_pump_alm?: SortOrder
+    sub_pump_alm?: SortOrder
+    red_motor_alm?: SortOrder
+    eocr_alm_1?: SortOrder
+    eocr_alm_2?: SortOrder
+    eocr_alm_3?: SortOrder
+    emg_alm?: SortOrder
+    sec_clk?: SortOrder
+    high_pump_freq?: SortOrder
+    sub_pump_freq?: SortOrder
+    red_motor_freq?: SortOrder
+    current_pressure?: SortOrder
+    current_flow?: SortOrder
+    region_id?: SortOrder
+  }
+
+  export type weather_dataSTNTMCompoundUniqueInput = {
+    STN: number
+    TM: Date | string
+  }
+
+  export type weather_dataCountOrderByAggregateInput = {
+    TM?: SortOrder
+    STN?: SortOrder
+    WD?: SortOrder
+    WS?: SortOrder
+    GST_WD?: SortOrder
+    GST_WS?: SortOrder
+    GST_TM?: SortOrder
+    PA?: SortOrder
+    PS?: SortOrder
+    PT?: SortOrder
+    PR?: SortOrder
+    TA?: SortOrder
+    TD?: SortOrder
+    HM?: SortOrder
+    PV?: SortOrder
+    RN?: SortOrder
+    RN_DAY?: SortOrder
+    RN_JUN?: SortOrder
+    RN_INT?: SortOrder
+    SD_HR3?: SortOrder
+    SD_DAY?: SortOrder
+    SD_TOT?: SortOrder
+    WC?: SortOrder
+    WP?: SortOrder
+    WW?: SortOrder
+    CA_TOT?: SortOrder
+    CA_MID?: SortOrder
+    CH_MIN?: SortOrder
+    CT?: SortOrder
+    CT_TOP?: SortOrder
+    CT_MID?: SortOrder
+    CT_LOW?: SortOrder
+    VS?: SortOrder
+    SS?: SortOrder
+    SI?: SortOrder
+    ST_GD?: SortOrder
+    TS?: SortOrder
+    TE_005?: SortOrder
+    TE_01?: SortOrder
+    TE_02?: SortOrder
+    TE_03?: SortOrder
+    ST_SEA?: SortOrder
+    WH?: SortOrder
+    BF?: SortOrder
+    IR?: SortOrder
+    IX?: SortOrder
+  }
+
+  export type weather_dataAvgOrderByAggregateInput = {
+    STN?: SortOrder
+    WD?: SortOrder
+    WS?: SortOrder
+    GST_WD?: SortOrder
+    GST_WS?: SortOrder
+    GST_TM?: SortOrder
+    PA?: SortOrder
+    PS?: SortOrder
+    PT?: SortOrder
+    PR?: SortOrder
+    TA?: SortOrder
+    TD?: SortOrder
+    HM?: SortOrder
+    PV?: SortOrder
+    RN?: SortOrder
+    RN_DAY?: SortOrder
+    RN_JUN?: SortOrder
+    RN_INT?: SortOrder
+    SD_HR3?: SortOrder
+    SD_DAY?: SortOrder
+    SD_TOT?: SortOrder
+    WC?: SortOrder
+    WP?: SortOrder
+    WW?: SortOrder
+    CA_TOT?: SortOrder
+    CA_MID?: SortOrder
+    CH_MIN?: SortOrder
+    CT?: SortOrder
+    CT_TOP?: SortOrder
+    CT_MID?: SortOrder
+    CT_LOW?: SortOrder
+    VS?: SortOrder
+    SS?: SortOrder
+    SI?: SortOrder
+    ST_GD?: SortOrder
+    TS?: SortOrder
+    TE_005?: SortOrder
+    TE_01?: SortOrder
+    TE_02?: SortOrder
+    TE_03?: SortOrder
+    ST_SEA?: SortOrder
+    WH?: SortOrder
+    BF?: SortOrder
+    IR?: SortOrder
+    IX?: SortOrder
+  }
+
+  export type weather_dataMaxOrderByAggregateInput = {
+    TM?: SortOrder
+    STN?: SortOrder
+    WD?: SortOrder
+    WS?: SortOrder
+    GST_WD?: SortOrder
+    GST_WS?: SortOrder
+    GST_TM?: SortOrder
+    PA?: SortOrder
+    PS?: SortOrder
+    PT?: SortOrder
+    PR?: SortOrder
+    TA?: SortOrder
+    TD?: SortOrder
+    HM?: SortOrder
+    PV?: SortOrder
+    RN?: SortOrder
+    RN_DAY?: SortOrder
+    RN_JUN?: SortOrder
+    RN_INT?: SortOrder
+    SD_HR3?: SortOrder
+    SD_DAY?: SortOrder
+    SD_TOT?: SortOrder
+    WC?: SortOrder
+    WP?: SortOrder
+    WW?: SortOrder
+    CA_TOT?: SortOrder
+    CA_MID?: SortOrder
+    CH_MIN?: SortOrder
+    CT?: SortOrder
+    CT_TOP?: SortOrder
+    CT_MID?: SortOrder
+    CT_LOW?: SortOrder
+    VS?: SortOrder
+    SS?: SortOrder
+    SI?: SortOrder
+    ST_GD?: SortOrder
+    TS?: SortOrder
+    TE_005?: SortOrder
+    TE_01?: SortOrder
+    TE_02?: SortOrder
+    TE_03?: SortOrder
+    ST_SEA?: SortOrder
+    WH?: SortOrder
+    BF?: SortOrder
+    IR?: SortOrder
+    IX?: SortOrder
+  }
+
+  export type weather_dataMinOrderByAggregateInput = {
+    TM?: SortOrder
+    STN?: SortOrder
+    WD?: SortOrder
+    WS?: SortOrder
+    GST_WD?: SortOrder
+    GST_WS?: SortOrder
+    GST_TM?: SortOrder
+    PA?: SortOrder
+    PS?: SortOrder
+    PT?: SortOrder
+    PR?: SortOrder
+    TA?: SortOrder
+    TD?: SortOrder
+    HM?: SortOrder
+    PV?: SortOrder
+    RN?: SortOrder
+    RN_DAY?: SortOrder
+    RN_JUN?: SortOrder
+    RN_INT?: SortOrder
+    SD_HR3?: SortOrder
+    SD_DAY?: SortOrder
+    SD_TOT?: SortOrder
+    WC?: SortOrder
+    WP?: SortOrder
+    WW?: SortOrder
+    CA_TOT?: SortOrder
+    CA_MID?: SortOrder
+    CH_MIN?: SortOrder
+    CT?: SortOrder
+    CT_TOP?: SortOrder
+    CT_MID?: SortOrder
+    CT_LOW?: SortOrder
+    VS?: SortOrder
+    SS?: SortOrder
+    SI?: SortOrder
+    ST_GD?: SortOrder
+    TS?: SortOrder
+    TE_005?: SortOrder
+    TE_01?: SortOrder
+    TE_02?: SortOrder
+    TE_03?: SortOrder
+    ST_SEA?: SortOrder
+    WH?: SortOrder
+    BF?: SortOrder
+    IR?: SortOrder
+    IX?: SortOrder
+  }
+
+  export type weather_dataSumOrderByAggregateInput = {
+    STN?: SortOrder
+    WD?: SortOrder
+    WS?: SortOrder
+    GST_WD?: SortOrder
+    GST_WS?: SortOrder
+    GST_TM?: SortOrder
+    PA?: SortOrder
+    PS?: SortOrder
+    PT?: SortOrder
+    PR?: SortOrder
+    TA?: SortOrder
+    TD?: SortOrder
+    HM?: SortOrder
+    PV?: SortOrder
+    RN?: SortOrder
+    RN_DAY?: SortOrder
+    RN_JUN?: SortOrder
+    RN_INT?: SortOrder
+    SD_HR3?: SortOrder
+    SD_DAY?: SortOrder
+    SD_TOT?: SortOrder
+    WC?: SortOrder
+    WP?: SortOrder
+    WW?: SortOrder
+    CA_TOT?: SortOrder
+    CA_MID?: SortOrder
+    CH_MIN?: SortOrder
+    CT?: SortOrder
+    CT_TOP?: SortOrder
+    CT_MID?: SortOrder
+    CT_LOW?: SortOrder
+    VS?: SortOrder
+    SS?: SortOrder
+    SI?: SortOrder
+    ST_GD?: SortOrder
+    TS?: SortOrder
+    TE_005?: SortOrder
+    TE_01?: SortOrder
+    TE_02?: SortOrder
+    TE_03?: SortOrder
+    ST_SEA?: SortOrder
+    WH?: SortOrder
+    BF?: SortOrder
+    IR?: SortOrder
+    IX?: SortOrder
   }
 
   export type ecobot_statusCreatepump_valuesInput = {
@@ -16179,6 +22360,14 @@ export namespace Prisma {
     set: number[]
   }
 
+  export type ecobot_status_tempCreateregister_valuesInput = {
+    set: number[]
+  }
+
+  export type ecobot_status_tempCreatesub_register_valuesInput = {
+    set: number[]
+  }
+
   export type ecobot_status_tempUpdatemotor_valuesInput = {
     set?: number[]
     push?: number | number[]
@@ -16201,6 +22390,16 @@ export namespace Prisma {
 
   export type NullableBoolFieldUpdateOperationsInput = {
     set?: boolean | null
+  }
+
+  export type ecobot_status_tempUpdateregister_valuesInput = {
+    set?: number[]
+    push?: number | number[]
+  }
+
+  export type ecobot_status_tempUpdatesub_register_valuesInput = {
+    set?: number[]
+    push?: number | number[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -16368,14 +22567,6 @@ export namespace Prisma {
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -16390,20 +22581,12 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -16421,6 +22604,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
 
@@ -16464,6 +22663,18 @@ export namespace Prisma {
      * @deprecated Use water_quality_tempDefaultArgs instead
      */
     export type water_quality_tempArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = water_quality_tempDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use cfs_statusDefaultArgs instead
+     */
+    export type cfs_statusArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = cfs_statusDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use cfs_status_tempDefaultArgs instead
+     */
+    export type cfs_status_tempArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = cfs_status_tempDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use weather_dataDefaultArgs instead
+     */
+    export type weather_dataArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = weather_dataDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

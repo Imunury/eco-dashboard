@@ -152,7 +152,7 @@ button:hover {
 }
 
 .sidebar {
-  @apply m-10 flex flex-col space-y-2;
+  @apply ml-7 flex mt-7 flex-col space-y-2;
 }
 
 .sidebar h1 {
