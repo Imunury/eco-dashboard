@@ -7,7 +7,7 @@ import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { start } from "repl";
 import stnMapping2 from "@/utils/stnMapping2"
-import boMapping from "@/utils/boMapping"
+import wlMapping from "@/utils/wlMapping"
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -16,9 +16,9 @@ const Weather: React.FC = () => {
     const [startDate, setStartDate] = useState<string>("");
     const [endDate, setEndDate] = useState<string>("");
     const [weatherData, setWeatherData] = useState<{ time: string; rn: string }[]>([]);
-    const [boData, setBoData] = useState<{ time: string; rn: string }[]>([]);
+    const [wlData, setWlData] = useState<{ time: string; rn: string }[]>([]);
     const [stn, setStn] = useState<string>("")
-    const [bo, setBo] = useState<string>("")
+    const [wl, setWl] = useState<string>("")
 
     const params = useParams();
     const id = params?.id as string | undefined;
@@ -30,8 +30,8 @@ const Weather: React.FC = () => {
     }, [id]);
 
     useEffect(() => {
-        if (id && boMapping[id] !== undefined) {
-            setBo(boMapping[id]); // ✅ 매핑된 값 설정
+        if (id && wlMapping[id] !== undefined) {
+            setWl(wlMapping[id]); // ✅ 매핑된 값 설정
         }
     }, [id]);
 
@@ -56,19 +56,19 @@ const Weather: React.FC = () => {
         }
 
         try {
-            const boResponse = await fetch(
-                `https://api.hrfco.go.kr/966803A1-1446-4FCC-A18D-3998A76E082E/bo/list/1H/${bo}/${sdt}/${edt}.json`
+            const wlResponse = await fetch(
+                `https://api.hrfco.go.kr/966803A1-1446-4FCC-A18D-3998A76E082E/waterlevel/list/1H/${wl}/${sdt}/${edt}.json`
             );
-            const content = await boResponse.json();
+            const content = await wlResponse.json();
             const data = content.content
 
             const filteredData = data.map((item: any) => ({
                 time: item.ymdhm,
-                rn: item.sfw,
-                bo: item.rfobscd
+                rn: item.wl,
+                level: item.wlobscd
             }));
 
-            setBoData(filteredData);
+            setWlData(filteredData);
 
         } catch (error) {
             console.error("Error fetching weather data:", error);
@@ -102,8 +102,8 @@ const Weather: React.FC = () => {
         ],
     };
 
-    const boChartData = {
-        labels: boData.map((item) => {
+    const wlChartData = {
+        labels: wlData.map((item) => {
             // item.time에서 시간(YYMMDDHH)만 추출
             const time = item.time.slice(2, 10); // YYYYMMDDHH 형식으로 잘라냄
             return time;
@@ -111,7 +111,7 @@ const Weather: React.FC = () => {
         datasets: [
             {
                 label: '강수량 (mm)',       // y축: 강수량
-                data: boData.map((item) => item.rn), // y축 데이터
+                data: wlData.map((item) => item.rn), // y축 데이터
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 fill: false,
@@ -140,7 +140,7 @@ const Weather: React.FC = () => {
                 <Line data={rainfallChartData} />
             </div>
             <div>
-                <Line data={boChartData} />
+                <Line data={wlChartData} />
             </div>
         </section>
     );
