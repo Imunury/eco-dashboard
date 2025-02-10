@@ -85,16 +85,16 @@ const Weather: React.FC = () => {
     };
 
     // 차트 데이터 설정
+    const sortedWeatherData = weatherData
+        .slice() // 원본 배열을 변경하지 않도록 복사
+        .sort((a, b) => a.time.localeCompare(b.time)); // time 기준 오름차순 정렬
+
     const rainfallChartData = {
-        labels: weatherData.map((item) => {
-            // item.time에서 시간(YYMMDDHH)만 추출
-            const time = item.time.slice(2, 10); // YYYYMMDDHH 형식으로 잘라냄
-            return time;
-        }),  // x축: 시간 (YYMMDDHH)
+        labels: sortedWeatherData.map((item) => item.time.slice(2, 10)), // YYMMDDHH 형식으로 변환
         datasets: [
             {
-                label: '강수량 (mm)',       // y축: 강수량
-                data: weatherData.map((item) => item.rn), // y축 데이터
+                label: '강수량 (mm)',
+                data: sortedWeatherData.map((item) => item.rn), // y축 데이터
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 fill: false,
@@ -102,22 +102,24 @@ const Weather: React.FC = () => {
         ],
     };
 
+    // wlData를 과거 → 최신 순으로 정렬
+    const sortedWlData = wlData
+        .slice() // 원본 배열을 변경하지 않도록 복사
+        .sort((a, b) => a.time.localeCompare(b.time)); // time 기준 오름차순 정렬
+
     const wlChartData = {
-        labels: wlData.map((item) => {
-            // item.time에서 시간(YYMMDDHH)만 추출
-            const time = item.time.slice(2, 10); // YYYYMMDDHH 형식으로 잘라냄
-            return time;
-        }),  // x축: 시간 (YYMMDDHH)
+        labels: sortedWlData.map((item) => item.time.slice(2, 10)), // YYMMDDHH 형식으로 변환
         datasets: [
             {
-                label: '강수량 (mm)',       // y축: 강수량
-                data: wlData.map((item) => item.rn), // y축 데이터
+                label: '강수량 (mm)',
+                data: sortedWlData.map((item) => item.rn), // y축 데이터
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 fill: false,
             },
         ],
     };
+
 
     return (
         <section className="h-full w-full">
