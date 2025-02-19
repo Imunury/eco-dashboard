@@ -25,6 +25,9 @@ const Sidebar: React.FC = () => {
                 <Link href="/han/ecobot00001">
                     <h2 className=''>🟤 Weather</h2>
                 </Link>
+                <Link href="/waterlevel/ecobot00001">
+                    <h2 className=''>🟤 WaterLevel</h2>
+                </Link>
             </nav>
         </nav>
     );
