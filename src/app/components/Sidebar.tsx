@@ -10,11 +10,11 @@ const Sidebar: React.FC = () => {
                 <Link href="/">
                     <h2 className=''>🟡 Robot Map</h2>
                 </Link>
-                <Link href="/tracking_map/ecobot00001">
-                    <h2 className=''>🟢 Tracking Map</h2>
+                <Link href="/tracking_map/ecobot00005">
+                    <h2 className=''>🟤 Tracking Map</h2>
                 </Link>
-                <Link href="/control/ecobot00001">
-                    <h2 className=''>🔵 Robot Control</h2>
+                <Link href="/control/ecobot00005">
+                    <h2 className=''>🔴 Robot Control</h2>
                 </Link>
                 <Link href="/cctv">
                     <h2 className=''>🟣 CCTV</h2>
@@ -22,11 +22,11 @@ const Sidebar: React.FC = () => {
                 <Link href="/water_quality">
                     <h2 className=''>🟠 Water Quality</h2>
                 </Link>
-                <Link href="/han/ecobot00001">
-                    <h2 className=''>🟤 Weather</h2>
+                <Link href="/han/ecobot00005">
+                    <h2 className=''>🟢 Weather</h2>
                 </Link>
-                <Link href="/waterlevel/ecobot00001">
-                    <h2 className=''>🟤 WaterLevel</h2>
+                <Link href="/waterlevel/ecobot00005">
+                    <h2 className=''>🔵 WaterLevel</h2>
                 </Link>
             </nav>
         </nav>
