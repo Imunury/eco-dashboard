@@ -15,7 +15,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
             if (window.naver && window.naver.maps) {
                 const container = document.getElementById('map');
                 const options = {
-                    center: new window.naver.maps.LatLng(36.5324, 127.6120),
+                    center: new window.naver.maps.LatLng(36.5325, 127.6120),
                     zoom: 8,
                     mapTypeId: 'satellite'
                 };

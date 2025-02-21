@@ -113,15 +113,6 @@ const Weather: React.FC = () => {
                 pointRadius: 3
             },
         ],
-
-        // options: {
-        //     scales: {
-        //         y: {
-        //             suggestedMin: 50,
-        //             suggestedMax: 100
-        //         }
-        //     }
-        // }
     };
 
     const sortedWlData = useMemo(() => {

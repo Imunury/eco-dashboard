@@ -6,7 +6,7 @@ import stnMapping2 from "@/utils/stnMapping2"
 import wlMapping from "@/utils/wlMapping"
 import { motion } from "framer-motion";
 
-import "@/styles/navigation.css"
+import "@/styles/water_level.css"
 
 const WaterLevel: React.FC = () => {
 
@@ -97,9 +97,9 @@ const WaterLevel: React.FC = () => {
 
     return (
         <section className="h-full w-full">
-            <h1>{id}</h1>
-            <h2>시작 날짜</h2>
+
             <input
+                className="m-3"
                 type="datetime-local"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
@@ -107,15 +107,13 @@ const WaterLevel: React.FC = () => {
             <button onClick={handleSubmit}>Submit</button>
 
             <h1>
-                {currentLevel}
+                {currentLevel}m
             </h1>
             <motion.div
-                className="water_container"
-                animate={{ height: `${currentLevel * 2}px` }}
-                transition={{ duration: 1, ease: "easeInOut" }}
+                className="water_container bottom-0"
+                animate={{ height: `${currentLevel * 5}px` }}
+                
             >
-                <div className="wave wave1"></div>
-               
             </motion.div>
 
         </section>

@@ -62,11 +62,11 @@ button:hover {
   @apply flex flex-col;
 }
 
-.control > div {
+.control>div {
   @apply flex flex-row w-full my-3;
 }
 
-.control > div > div {
+.control>div>div {
   @apply h-full bg-emerald-400 mx-3 rounded-lg opacity-90;
 }
 
@@ -78,19 +78,19 @@ button:hover {
   @apply flex justify-evenly items-center h-2/3;
 }
 
-.control_items h3{
-  @apply text-slate-800 
+.control_items h3 {
+  @apply text-slate-800
 }
 
 .pump {
   @apply flex h-2/3 justify-evenly w-full;
 }
 
-.pump > div {
+.pump>div {
   @apply flex flex-col w-full;
 }
 
-.pump > div > div {
+.pump>div>div {
   @apply flex justify-evenly;
 }
 
@@ -98,15 +98,15 @@ button:hover {
   @apply text-center h-full;
 }
 
-.CCTV > div {
+.CCTV>div {
   @apply w-full h-1/3 flex;
 }
 
-.CCTV > div > div {
+.CCTV>div>div {
   @apply w-1/3 h-full;
 }
 
-.CCTV > div > div > iframe {
+.CCTV>div>div>iframe {
   @apply w-full h-full;
 }
 
@@ -131,7 +131,7 @@ button:hover {
   @apply w-28 h-20 px-1 bg-green-200;
 }
 
-.markerInfo > p {
+.markerInfo>p {
   @apply text-xs font-semibold;
 }
 
