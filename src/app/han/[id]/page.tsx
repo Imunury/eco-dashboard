@@ -3,11 +3,11 @@
 import { useEffect, useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
 import stnMapping2 from "@/utils/stnMapping2"
 import wlMapping from "@/utils/wlMapping"
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(Filler, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const Weather: React.FC = () => {
     const [startDate, setStartDate] = useState<string>("");
@@ -90,42 +90,50 @@ const Weather: React.FC = () => {
     // time 기준 오름차순 정렬
     const sortedWeatherData = useMemo(() => {
         return [...weatherData].sort((a, b) => a.time.localeCompare(b.time)); // ✅ 원본 유지하면서 정렬
-    }, [weatherData]); // ✅ weatherData가 변경될 때만 정렬 실행
+    }, [weatherData]);
 
     useEffect(() => {
-        if (sortedWeatherData.length === 0) return; // ✅ 데이터 없을 때 실행 X
+        if (sortedWeatherData.length === 0) return;
 
         setWeatherLabel(
             sortedWeatherData.map((item) => (mt <= 700 ? item.time.slice(4, 10) : item.time.slice(2, 8)))
         );
-    }, [mt, sortedWeatherData]); // ✅ 의존성 배열을 올바르게 설정
+    }, [mt, sortedWeatherData]);
 
     const rainfallChartData = {
-        // labels: sortedWeatherData.map((item) => item.time.slice(4, 10)), 
         labels: weatherLabel,
         datasets: [
             {
                 label: '강수량 (mm)',
-                data: sortedWeatherData.map((item) => item.rn), // y축 데이터
+                data: sortedWeatherData.map((item) => item.rn),
                 fill: true,
                 borderColor: 'rgb(75, 192, 192)',
-                backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                tension: 0.1,
-            }
-        ]
+                backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                tension: 0.3,
+                pointRadius: 3
+            },
+        ],
+        // options: {
+        //     scales: {
+        //         y: {
+        //             suggestedMin: 50,
+        //             suggestedMax: 100
+        //         }
+        //     }
+        // }
     };
 
     const sortedWlData = useMemo(() => {
-        return [...wlData].sort((a, b) => a.time.localeCompare(b.time)); // ✅ 원본 유지하면서 정렬
-    }, [wlData]); // ✅ weatherData가 변경될 때만 정렬 실행
+        return [...wlData].sort((a, b) => a.time.localeCompare(b.time));
+    }, [wlData]);
 
     useEffect(() => {
-        if (sortedWlData.length === 0) return; // ✅ 데이터 없을 때 실행 X
+        if (sortedWlData.length === 0) return;
 
         setWlLabel(
             sortedWlData.map((item) => (mt <= 700 ? item.time.slice(4, 10) : item.time.slice(2, 8)))
         );
-    }, [mt, sortedWlData]); // ✅ 의존성 배열을 올바르게 설정
+    }, [mt, sortedWlData]);
 
     const wlChartData = {
         labels: wlLabel,
@@ -135,28 +143,37 @@ const Weather: React.FC = () => {
                 data: sortedWlData.map((item) => item.rn),
                 borderColor: "rgba(75, 192, 192, 1)",
                 backgroundColor: "rgba(75, 192, 192, 1)",
-                tension: 0.1,
+                tension: 0.3,
                 fill: true,
+                pointRadius: 1,
             },
         ],
+
     };
 
     return (
         <section className="h-full w-full">
-            <h1>{id}</h1>
-            <h2>시작 날짜</h2>
-            <input
-                type="date"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-            />
-            <h2>종료 날짜</h2>
-            <input
-                type="date"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-            />
-            <button onClick={handleSubmit}>Submit</button>
+            <div className="flex pt-3 items-center">
+                <div className="p-3">
+                    <h2>시작 날짜</h2>
+                    <input
+                        type="date"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                    />
+                </div>
+                <div className="p-3">
+                    <h2>종료 날짜</h2>
+                    <input
+                        type="date"
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <button onClick={handleSubmit}>Submit</button>
+                </div>
+            </div>
 
             <div>
                 <Line data={rainfallChartData} />
