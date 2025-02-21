@@ -89,7 +89,7 @@ const Weather: React.FC = () => {
     // 차트 데이터 설정
     // time 기준 오름차순 정렬
     const sortedWeatherData = useMemo(() => {
-        return [...weatherData].sort((a, b) => a.time.localeCompare(b.time)); // ✅ 원본 유지하면서 정렬
+        return [...weatherData].sort((a, b) => a.time.localeCompare(b.time));
     }, [weatherData]);
 
     useEffect(() => {
@@ -113,6 +113,7 @@ const Weather: React.FC = () => {
                 pointRadius: 3
             },
         ],
+
         // options: {
         //     scales: {
         //         y: {

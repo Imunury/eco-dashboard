@@ -19,10 +19,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         try {
             const ecobotAll = await prisma.$queryRaw<RobotAll[]>`
                 SELECT 
-                    wq.robot_id,
-                    wq.timestamp as timestamp,
-                    wq.chl_ug_l,
-                    wq.bg_ppb,
+                    es.robot_id,
+                    es.timestamp as timestamp,
+                    COALESCE(wq.chl_ug_l, '9999') AS chl_ug_l,  -- 기본값 0
+                    COALESCE(wq.bg_ppb, '9999') AS bg_ppb,      -- 기본값 0
                     es.latitude,
                     es.longitude,
                     es.current_state
@@ -34,12 +34,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         FROM water_quality_temp
                         GROUP BY robot_id
                     )) AS wq
-                JOIN 
+                FULL OUTER JOIN 
                     (SELECT * 
-                    FROM ecobot_status_temp
+                    FROM ecobot_status
                     WHERE (robot_id, timestamp) IN (
                         SELECT robot_id, MAX(timestamp)
-                        FROM ecobot_status_temp
+                        FROM ecobot_status
                         GROUP BY robot_id
                     )) AS es
                 ON 
@@ -50,10 +50,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
             const jincheon1 = await prisma_jincheon1.$queryRaw<RobotAll[]>`
                 SELECT 
-                    wq.robot_id,
-                    wq.timestamp as timestamp,
-                    wq.chl_ug_l,
-                    wq.bg_ppb,
+                    es.robot_id,
+                    es.timestamp as timestamp,
+                    COALESCE(wq.chl_ug_l, '9999') AS chl_ug_l,  -- 기본값 0
+                    COALESCE(wq.bg_ppb, '9999') AS bg_ppb,      -- 기본값 0
                     es.latitude,
                     es.longitude,
                     es.current_state
@@ -65,12 +65,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         FROM water_quality_temp
                         GROUP BY robot_id
                     )) AS wq
-                JOIN 
+                FULL OUTER JOIN 
                     (SELECT * 
-                    FROM ecobot_status_temp
+                    FROM ecobot_status
                     WHERE (robot_id, timestamp) IN (
                         SELECT robot_id, MAX(timestamp)
-                        FROM ecobot_status_temp
+                        FROM ecobot_status
                         GROUP BY robot_id
                     )) AS es
                 ON 
@@ -81,10 +81,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
             const jincheon2 = await prisma_jincheon2.$queryRaw<RobotAll[]>`
                 SELECT 
-                    wq.robot_id,
-                    wq.timestamp as timestamp,
-                    wq.chl_ug_l,
-                    wq.bg_ppb,
+                    es.robot_id,
+                    es.timestamp as timestamp,
+                    COALESCE(wq.chl_ug_l, '9999') AS chl_ug_l,  -- 기본값 0
+                    COALESCE(wq.bg_ppb, '9999') AS bg_ppb,      -- 기본값 0
                     es.latitude,
                     es.longitude,
                     es.current_state
@@ -96,7 +96,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         FROM water_quality_temp
                         GROUP BY robot_id
                     )) AS wq
-                JOIN 
+                FULL OUTER JOIN 
                     (SELECT * 
                     FROM ecobot_status_temp
                     WHERE (robot_id, timestamp) IN (

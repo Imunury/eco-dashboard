@@ -128,11 +128,7 @@ button:hover {
 }
 
 .markerInfo {
-  @apply w-28 h-16 px-1;
-}
-
-.markerInfo {
-  @apply bg-green-200;
+  @apply w-28 h-20 px-1 bg-green-200;
 }
 
 .markerInfo > p {

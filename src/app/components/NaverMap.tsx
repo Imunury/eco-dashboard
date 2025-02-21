@@ -52,6 +52,8 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
 
                     let latitude = data.latitude
                     let longitude = data.longitude
+                    let timestamp = data.timestamp
+                    let formattedTimestamp = timestamp?.replace(/[T:.]/g, "").slice(0, -10) || "";
 
                     if (data.robot_id === 'ecobot00008' || data.robot_id === 'ecobot00012') {
                         latitude = data.latitude + 0.3
@@ -66,6 +68,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                                 <p><span>클로로필 : </span><span class="${textChl}">${data.chl_ug_l}</span></p>
                                 <p><span>남조류 : </span><span class="${textBg}">${data.bg_ppb}</span></p>
                                 <p><span>모드 : </span><span>${robot_mode}</span></p>
+                                <p><span></span><span>${formattedTimestamp}</span></p>
                             </div>`
                         },
                     });
@@ -89,6 +92,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                                     <p><span>클로로필 : </span><span class="${textChl}">${data.chl_ug_l}</span></p>
                                     <p><span>남조류 : </span><span class="${textBg}">${data.bg_ppb}</span></p>
                                     <p><span>모드 : </span><span>${robot_mode}</span></p>
+                                    <p><span></span><span>${formattedTimestamp}</span></p>
                                 </div>`
                                 },
                             });
@@ -107,7 +111,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                               </svg>
                             `,
                             anchor: new window.naver.maps.Point(12, 12) // 마커 중심 위치 조정
-                          }
+                        }
                     });
 
 
