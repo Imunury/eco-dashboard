@@ -8,7 +8,6 @@ interface NaverMapProps {
 }
 
 const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
-    // const [selectedRobot, setSelectedRobot] = useState<RobotAll | null>(null);
 
     useEffect(() => {
         const initializeMap = () => {
@@ -63,7 +62,8 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                         position: new window.naver.maps.LatLng(latitude, longitude),
                         map: map,
                         icon: {
-                            content: `<div class="markerInfo">
+                            content:
+                                `<div class="markerInfo">
                                 <p>${data.robot_id}</p>
                                 <p><span>클로로필 : </span><span class="${textChl}">${data.chl_ug_l}</span></p>
                                 <p><span>남조류 : </span><span class="${textBg}">${data.bg_ppb}</span></p>
@@ -87,7 +87,8 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                                 position: new window.naver.maps.LatLng(latitude, longitude),
                                 map: map,
                                 icon: {
-                                    content: `<div class="markerInfo">
+                                    content:
+                                        `<div class="markerInfo">
                                     <p>${data.robot_id}</p>
                                     <p><span>클로로필 : </span><span class="${textChl}">${data.chl_ug_l}</span></p>
                                     <p><span>남조류 : </span><span class="${textBg}">${data.bg_ppb}</span></p>
@@ -113,11 +114,6 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                             anchor: new window.naver.maps.Point(12, 12) // 마커 중심 위치 조정
                         }
                     });
-
-
-                    // marker.addListener('click', () => {
-                    //     setSelectedRobot(data);
-                    // });
                 });
             }
         };
@@ -137,14 +133,6 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
     return (
         <div className="w-full h-full relative">
             <div id="map" className="w-full h-full"></div>
-            {/* {selectedRobot && (
-                <div className="absolute top-0 left-0 bg-white p-4 border z-10 text-red-500">
-                    <ul>
-                        <li>로봇 아이디: {selectedRobot.robot_id}</li>
-                        <li>Timestamp: {new Date(selectedRobot.timestamp).toLocaleString()}</li>
-                    </ul>
-                </div>
-            )} */}
         </div>
     );
 };

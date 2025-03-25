@@ -13,5 +13,4 @@ const HeaderBar = () => {
         </header>
     );
 };
-
 export default HeaderBar;

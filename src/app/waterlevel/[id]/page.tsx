@@ -107,7 +107,7 @@ const WaterLevel: React.FC = () => {
             <button onClick={handleSubmit}>Submit</button>
 
             <h1>
-                {currentLevel}m
+                {currentLevel}
             </h1>
             <motion.div
                 className="water_container bottom-0"

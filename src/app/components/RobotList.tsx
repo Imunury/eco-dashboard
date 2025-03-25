@@ -30,7 +30,7 @@ const RobotList: React.FC = () => {
 
         fetchData();
 
-        const intervalId = setInterval(fetchData, 5000);
+        const intervalId = setInterval(fetchData, 10000);
 
         return () => clearInterval(intervalId);
     }, [params]);
