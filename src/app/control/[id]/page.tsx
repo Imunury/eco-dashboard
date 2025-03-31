@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { ecobot_status_temp } from '@prisma/client';
 
-
 import ONOFF from '../components/ONOFF'
 import RobotInfo from '../components/RobotInfo'
 import CCTV from '../components/CCTV'
@@ -45,7 +44,7 @@ const Control: React.FC = () => {
     return (
         <section className='control'>
 
-            <div className='h-28'>
+            <div className='h-32'>
                 <div className='w-1/6 '>
                     <ONOFF robotData={robotData} />
                 </div>
@@ -54,7 +53,7 @@ const Control: React.FC = () => {
                 </div>
             </div>
 
-            <div className='h-28'>
+            <div className='h-32'>
                 <div className='w-1/3'>
                     <Pump robotData={robotData} />
                 </div>
@@ -64,7 +63,7 @@ const Control: React.FC = () => {
                 </div>
             </div>
 
-            <div className='h-80'>
+            <div className='h-96'>
                 <div className='w-1/3'>
                     <CCTV robotData={robotData} />
                 </div>

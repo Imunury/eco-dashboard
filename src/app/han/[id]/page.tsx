@@ -147,7 +147,7 @@ const Weather: React.FC = () => {
         <section className="h-full w-full">
             <div className="flex pt-3 items-center">
                 <div className="p-3">
-                    <h2>시작 날짜</h2>
+                    <h1>시작 날짜</h1>
                     <input
                         type="date"
                         value={startDate}
@@ -155,7 +155,7 @@ const Weather: React.FC = () => {
                     />
                 </div>
                 <div className="p-3">
-                    <h2>종료 날짜</h2>
+                    <h1>종료 날짜</h1>
                     <input
                         type="date"
                         value={endDate}

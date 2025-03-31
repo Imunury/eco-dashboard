@@ -1,4 +1,5 @@
 import { ecobot_status_temp } from '@prisma/client';
+import Image from 'next/image';
 
 interface RobotInfoProps {
     robotData: ecobot_status_temp;
@@ -53,19 +54,89 @@ const ModeManual: React.FC<RobotInfoProps> = ({ robotData }) => {
             <div>
                 <h2>수동조작</h2>
                 <div>
-                    <button onClick={() => clickControl("left_turn")}> 좌회전</button>
-                    <button onClick={() => clickControl("forward")}>전진</button>
-                    <button onClick={() => clickControl("right_turn")}>우회전</button>
+                    <button onClick={() => clickControl("left_turn")}>
+                        <Image
+                            src="/rotate-left.png"
+                            width={20}
+                            height={20}
+                            alt="Arrow"
+                        />
+                    </button>
+                    <button onClick={() => clickControl("forward")}>
+                        <Image
+                            src="/arrow.png"
+                            width={20}
+                            height={20}
+                            alt="Arrow"
+                            className="-rotate-90"
+                        />
+                    </button>
+                    <button onClick={() => clickControl("right_turn")}>
+                        <Image
+                            src="/rotate-right.png"
+                            width={20}
+                            height={20}
+                            alt="Arrow"
+                        />
+                    </button>
                 </div>
                 <div>
-                    <button onClick={() => clickControl("left_shift")}>좌이동</button>
-                    <button onClick={() => clickControl("stop")}>정지</button>
-                    <button onClick={() => clickControl("right_shift")}>우이동</button>
+                    <button onClick={() => clickControl("left_shift")}>
+                        <Image
+                            src="/arrow.png"
+                            width={20}
+                            height={20}
+                            alt="Arrow"
+                            className="rotate-180"
+                        />
+                    </button>
+                    <button onClick={() => clickControl("stop")}>
+                        <Image
+                            src="/stop.png"
+                            width={20}
+                            height={20}
+                            alt="Arrow"
+                            className="-rotate-90"
+                        />
+                    </button>
+                    <button onClick={() => clickControl("right_shift")}>
+                        <Image
+                            src="/arrow.png"
+                            width={20}
+                            height={20}
+                            alt="Arrow"
+                        />
+                    </button>
                 </div>
                 <div>
-                    <button onClick={() => clickControl("left_turn")}>좌회전</button>
-                    <button onClick={() => clickControl("backward")}>후진</button>
-                    <button onClick={() => clickControl("right_turn")}>우회전</button>
+                    <button onClick={() => clickControl("left_turn")}>
+
+                        <Image
+                            src="/rotate-right.png"
+                            width={20}
+                            height={20}
+                            alt="Arrow"
+                            className="rotate-180"
+                        />
+                    </button>
+                    <button onClick={() => clickControl("backward")}>
+                        <Image
+                            src="/arrow.png"
+                            width={20}
+                            height={20}
+                            alt="Arrow"
+                            className="rotate-90"
+                        />
+                    </button>
+                    <button onClick={() => clickControl("right_turn")}>
+                        <Image
+                            src="/rotate-left.png"
+                            width={20}
+                            height={20}
+                            alt="Arrow"
+                            className="rotate-180"
+                        />
+                    </button>
                 </div>
             </div>
             <div>

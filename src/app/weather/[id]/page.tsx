@@ -74,13 +74,13 @@ const Weather: React.FC = () => {
     return (
         <section className="h-full w-full">
             <h1>{id}</h1>
-            <h2>시작 날짜</h2>
+            <h1>시작 날짜</h1>
             <input
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
             />
-            <h2>종료 날짜</h2>
+            <h1>종료 날짜</h1>
             <input
                 type="date"
                 value={endDate}

@@ -10,70 +10,70 @@ const Sidebar: React.FC = () => {
         <nav className="sidebar_box">
             <nav className="sidebar">
                 <Image
-                    src="/ecopeace_logo_big_white.png"
-                    width={100}
+                    src="/ecopeace_logo.png"
+                    width={150}
                     height={100}
                     alt="Robot Map Icon"
                 />
-                <Link href="/">
-                    <Image
+                <Link href="/" className={`pt-5 ${pathname.startsWith('/tracking_map') ? 'bg-blue-600' : ''}`}>
+                <Image
                         src="/icon_rm.png"
-                        width={35}
-                        height={35}
+                        width={30}
+                        height={30}
                         alt="Robot Map Icon"
                     />
                     <h5>Robot Map</h5>
                 </Link>
-                <Link href="/tracking_map/ecobot00006" className={`pt-3 ${pathname.startsWith('/tracking_map') ? 'bg-emerald-600' : ''}`}>
+                <Link href="/tracking_map/ecobot00006" className={`pt-5 ${pathname.startsWith('/tracking_map') ? 'bg-blue-600' : ''}`}>
                     <Image
                         src="/icon_tm.png"
-                        width={35}
-                        height={35}
+                        width={30}
+                        height={30}
                         alt="Tracking Map Icon"
                     />
                     <h5>Track Map</h5>
                 </Link>
-                <Link href="/control/ecobot00006" className={`pt-3 ${pathname.startsWith('/control') ? 'bg-emerald-600' : ''}`}>
+                <Link href="/control/ecobot00006" className={`pt-5 ${pathname.startsWith('/control') ? 'bg-blue-600' : ''}`}>
                     <Image
                         src="/icon_control.png"
-                        width={35}
-                        height={35}
+                        width={30}
+                        height={30}
                         alt="Control Icon"
                     />
                     <h5>Control</h5>
                 </Link>
-                <Link href="/cctv" className={`pt-3 ${pathname === '/cctv' ? 'bg-emerald-600' : ''}`}>
+                <Link href="/cctv" className={`pt-5 ${pathname === '/cctv' ? 'bg-blue-600' : ''}`}>
                     <Image
                         src="/icon_cctv.png"
-                        width={35}
-                        height={35}
+                        width={30}
+                        height={30}
                         alt="CCTV Icon"
                     />
                     <h5>CCTV</h5>
                 </Link>
-                <Link href="/water_quality" className={`pt-3 ${pathname === '/water_quality' ? 'bg-emerald-600' : ''}`}>
+                <Link href="/water_quality" className={`pt-5 ${pathname === '/water_quality' ? 'bg-blue-600' : ''}`}>
                     <Image
                         src="/icon_wq.png"
-                        width={35}
-                        height={35}
+                        width={30}
+                        height={30}
                         alt="Water Quality Icon"
                     />
                     <h5>Quality</h5>
                 </Link>
-                <Link href="/waterlevel/ecobot00006" className={`pt-3 ${pathname.startsWith('/waterlevel') ? 'bg-emerald-600' : ''}`}>
+                <Link href="/waterlevel/ecobot00006" className={`pt-5 ${pathname.startsWith('/waterlevel') ? 'bg-blue-600' : ''}`}>
                     <Image
                         src="/icon_wl.png"
-                        width={35}
-                        height={35}
+                        width={30}
+                        height={30}
                         alt="Water Level Icon"
                     />
                     <h5>Water Level</h5>
                 </Link>
-                <Link href="/han/ecobot00006" className={`pt-3 ${pathname.startsWith('/han') ? 'bg-emerald-600' : ''}`}>
+                <Link href="/han/ecobot00006" className={`pt-5 ${pathname.startsWith('/han') ? 'bg-blue-600' : ''}`}>
                     <Image
                         src="/icon_weather.png"
-                        width={35}
-                        height={35}
+                        width={30}
+                        height={30}
                         alt="Weather Icon"
                     />
                     <h5>Weather</h5>

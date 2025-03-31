@@ -53,7 +53,7 @@ const RobotList: React.FC = () => {
     };
 
     return (
-        <section className='w-1/6 overflow-y-scroll bg-emerald-50 scrollbar-thin scrollbar-thumb-green-400 scrollbar-track-green-200'>
+        <section className='w-1/6 overflow-y-scroll bg-blue-900 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-600'>
             {robotList.length > 0 ? (
                 <ul>
                     {robotList.map((data, index) => {
@@ -66,7 +66,7 @@ const RobotList: React.FC = () => {
                                 key={data.robot_id}
                                 onClick={() => handleRobotClick(data.robot_id)}
                                 className={`p-3 cursor-pointer border-solid border-slate-500 border-b transition-colors duration-500 ${selectedRobotId === data.robot_id ? 'bg-emerald-200' : ''}`}>
-                                <h2 className='text-slate-800'>로봇 아이디 : {data.robot_id}</h2>
+                                <h2>로봇 아이디 : {data.robot_id}</h2>
                                 <p className={`${isMotorOn ? "text-blue-500" : "text-red-500"}`}>
                                     ON / OFF : {firstValue !== null ? (isMotorOn ? "ON" : "OFF") : "NO DATA"}
                                 </p>
