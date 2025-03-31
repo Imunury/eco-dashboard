@@ -9,6 +9,12 @@ const Sidebar: React.FC = () => {
     return (
         <nav className="sidebar_box">
             <nav className="sidebar">
+                <Image
+                    src="/ecopeace_logo_big_white.png"
+                    width={100}
+                    height={100}
+                    alt="Robot Map Icon"
+                />
                 <Link href="/">
                     <Image
                         src="/icon_rm.png"
