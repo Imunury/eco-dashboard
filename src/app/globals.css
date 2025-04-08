@@ -67,7 +67,9 @@ button:hover {
 }
 
 .control>div>div {
-  @apply h-full bg-blue-950 mx-3 rounded-lg opacity-90 border-2 border-blue-400;
+  border: 1px solid;
+  @apply h-full p-3 mx-3 rounded-lg opacity-90 border-blue-400;
+  /* bg-gradient-to-b from-blue-950 to-blue-900 */
 }
 
 .control_container {
@@ -172,6 +174,6 @@ button:hover {
 }
 
 .sidebar_box {
-  @apply bg-blue-950 text-white flex flex-col;
+  @apply bg-gradient-radial from-blue-950 to-blue-900 text-white flex flex-col;
   width: 10%;
 }

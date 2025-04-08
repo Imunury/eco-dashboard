@@ -58,48 +58,48 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                         latitude = data.latitude + 0.3
                     }
 
-                    let marker1 = new window.naver.maps.Marker({
-                        position: new window.naver.maps.LatLng(latitude, longitude),
-                        map: map,
-                        icon: {
-                            content:
-                                `<div class="markerInfo">
-                                <p>${data.robot_id}</p>
-                                <p><span>클로로필 : </span><span class="${textChl}">${data.chl_ug_l}</span></p>
-                                <p><span>남조류 : </span><span class="${textBg}">${data.bg_ppb}</span></p>
-                                <p><span>모드 : </span><span>${robot_mode}</span></p>
-                                <p><span></span><span>${formattedTimestamp}</span></p>
-                            </div>`
-                        },
-                    });
+                    // let marker1 = new window.naver.maps.Marker({
+                    //     position: new window.naver.maps.LatLng(latitude, longitude),
+                    //     map: map,
+                    //     icon: {
+                    //         content:
+                    //             `<div class="markerInfo">
+                    //             <p>${data.robot_id}</p>
+                    //             <p><span>클로로필 : </span><span class="${textChl}">${data.chl_ug_l}</span></p>
+                    //             <p><span>남조류 : </span><span class="${textBg}">${data.bg_ppb}</span></p>
+                    //             <p><span>모드 : </span><span>${robot_mode}</span></p>
+                    //             <p><span></span><span>${formattedTimestamp}</span></p>
+                    //         </div>`
+                    //     },
+                    // });
 
-                    window.naver.maps.Event.addListener(map, 'zoom_changed', () => {
-                        if (data.robot_id === 'ecobot00008' || data.robot_id === 'ecobot00012') {
-                            marker1.setMap(null)
-                            let zoomMulti = 1;
-                            let zoom = (map.getZoom() - 5)
-                            for (let i = 0; i < zoom; i++) {
-                                zoomMulti = zoomMulti * 2
-                            }
-                            latitude = data.latitude + 2.4 / zoomMulti
+                    // window.naver.maps.Event.addListener(map, 'zoom_changed', () => {
+                    //     if (data.robot_id === 'ecobot00008' || data.robot_id === 'ecobot00012') {
+                    //         marker1.setMap(null)
+                    //         let zoomMulti = 1;
+                    //         let zoom = (map.getZoom() - 5)
+                    //         for (let i = 0; i < zoom; i++) {
+                    //             zoomMulti = zoomMulti * 2
+                    //         }
+                    //         latitude = data.latitude + 2.4 / zoomMulti
 
-                            marker1 = new window.naver.maps.Marker({
-                                position: new window.naver.maps.LatLng(latitude, longitude),
-                                map: map,
-                                icon: {
-                                    content:
-                                        `<div class="markerInfo">
-                                    <p>${data.robot_id}</p>
-                                    <p><span>클로로필 : </span><span class="${textChl}">${data.chl_ug_l}</span></p>
-                                    <p><span>남조류 : </span><span class="${textBg}">${data.bg_ppb}</span></p>
-                                    <p><span>모드 : </span><span>${robot_mode}</span></p>
-                                    <p><span></span><span>${formattedTimestamp}</span></p>
-                                </div>`
-                                },
-                            });
-                        }
+                    //         marker1 = new window.naver.maps.Marker({
+                    //             position: new window.naver.maps.LatLng(latitude, longitude),
+                    //             map: map,
+                    //             icon: {
+                    //                 content:
+                    //                     `<div class="markerInfo">
+                    //                 <p>${data.robot_id}</p>
+                    //                 <p><span>클로로필 : </span><span class="${textChl}">${data.chl_ug_l}</span></p>
+                    //                 <p><span>남조류 : </span><span class="${textBg}">${data.bg_ppb}</span></p>
+                    //                 <p><span>모드 : </span><span>${robot_mode}</span></p>
+                    //                 <p><span></span><span>${formattedTimestamp}</span></p>
+                    //             </div>`
+                    //             },
+                    //         });
+                    //     }
 
-                    })
+                    // })
 
 
                     const marker2 = new window.naver.maps.Marker({
@@ -108,7 +108,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                         icon: {
                             content: `
                               <svg width="12" height="12" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="10" fill="green" stroke="yellowgreen" stroke-width="2" />
+                                <circle cx="12" cy="12" r="10" fill="yellow" stroke="yellowgreen" stroke-width="2" />
                               </svg>
                             `,
                             anchor: new window.naver.maps.Point(12, 12) // 마커 중심 위치 조정

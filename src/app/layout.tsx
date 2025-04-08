@@ -20,7 +20,7 @@ export default function RootLayout({
         <div className="flex h-full">
           <Sidebar />
           <RobotList />
-          <main className='w-3/4 h-full overflow-x-hidden bg-blue-950 scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-blue-200'>
+          <main className='w-3/4 h-full overflow-x-hidden bg-gradient-radial from-blue-950 to-blue-900 scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-blue-200'>
             {children}
           </main>
         </div>

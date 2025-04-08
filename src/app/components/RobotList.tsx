@@ -53,7 +53,7 @@ const RobotList: React.FC = () => {
     };
 
     return (
-        <section className='w-1/6 overflow-y-scroll bg-blue-900 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-600'>
+        <section className='w-1/6 overflow-y-scroll bg-gradient-radial from-blue-800 to-blue-700 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-600'>
             {robotList.length > 0 ? (
                 <ul>
                     {robotList.map((data, index) => {
