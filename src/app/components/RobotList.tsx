@@ -65,7 +65,7 @@ const RobotList: React.FC = () => {
                             <li
                                 key={data.robot_id}
                                 onClick={() => handleRobotClick(data.robot_id)}
-                                className={`p-3 cursor-pointer border-solid border-slate-500 border-b transition-colors duration-500 ${selectedRobotId === data.robot_id ? 'bg-emerald-200' : ''}`}>
+                                className={`p-3 cursor-pointer border-solid border-slate-500 border-b transition-colors duration-500 ${selectedRobotId === data.robot_id ? 'bg-blue-950' : ''}`}>
                                 <h2>로봇 아이디 : {data.robot_id}</h2>
                                 <p className={`${isMotorOn ? "text-blue-500" : "text-red-500"}`}>
                                     ON / OFF : {firstValue !== null ? (isMotorOn ? "ON" : "OFF") : "NO DATA"}
