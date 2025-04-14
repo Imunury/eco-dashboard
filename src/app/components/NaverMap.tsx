@@ -101,9 +101,12 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                         map: map,
                         icon: {
                             content:
-                                `<div class="markerInfo">
-                                <p>${region}</p>
-                            </div>`
+                                `<a href="/control/${data.robot_id}">
+                                    <div class="markerInfo">
+                                        <p>${region}</p>
+                                    </div>
+                                </a>
+                                `
                         },
                     });
 
@@ -146,7 +149,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                                     },
                                 });
                             }
-                        }else if(data.robot_id === 'ecobot00016'){
+                        } else if (data.robot_id === 'ecobot00016') {
                             marker1.setMap(null)
                             let zoomMulti = 1;
                             let zoom = (map.getZoom() - 5)
