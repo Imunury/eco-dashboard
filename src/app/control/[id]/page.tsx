@@ -44,7 +44,7 @@ const Control: React.FC = () => {
     return (
         <section className='control'>
 
-            <div className='h-32'>
+            <div className='h-48'>
                 <div className='w-1/6 '>
                     <ONOFF robotData={robotData} />
                 </div>
@@ -53,7 +53,7 @@ const Control: React.FC = () => {
                 </div>
             </div>
 
-            <div className='h-32'>
+            <div className='h-48'>
                 <div className='w-1/3'>
                     <Pump robotData={robotData} />
                 </div>

@@ -54,7 +54,7 @@ const PumpONOFF: React.FC<RobotInfoProps> = ({ robotData }) => {
         }
     };
     return (
-        <div>
+        <div className="justify-center">
             <div>
                 <h3>PUMP1</h3>
                 <h3>PUMP2</h3>

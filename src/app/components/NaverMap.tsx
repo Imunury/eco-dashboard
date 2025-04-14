@@ -101,7 +101,7 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                         map: map,
                         icon: {
                             content:
-                                `<a href="/control/${data.robot_id}">
+                                `<a href="/tracking_map/${data.robot_id}">
                                     <div class="markerInfo">
                                         <p>${region}</p>
                                     </div>
@@ -143,9 +143,12 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                                     map: map,
                                     icon: {
                                         content:
-                                            `<div class="markerInfo">
-                                    <p>${region}</p>
-                                </div>`
+                                            `<a href="/tracking_map/${data.robot_id}">
+                                                <div class="markerInfo">
+                                                   <p>${region}</p>
+                                                </div>
+                                            </a>
+                                            `
                                     },
                                 });
                             }
@@ -166,9 +169,12 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                                     map: map,
                                     icon: {
                                         content:
-                                            `<div class="markerInfo">
-                                    <p>${region}</p>
-                                </div>`
+                                            `<a href="/tracking_map/${data.robot_id}">
+                                                <div class="markerInfo">
+                                                   <p>${region}</p>
+                                                </div>
+                                            </a>
+                                            `
                                     },
                                 });
                             }
