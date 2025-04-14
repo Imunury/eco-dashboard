@@ -22,29 +22,63 @@ const TrackingMap: React.FC<TrackingMapProps> = ({ robotData }) => {
             const map = new window.naver.maps.Map(container, options);
             mapRef.current = map;
 
-            markerRef.current = new window.naver.maps.Circle({
-                center: new window.naver.maps.LatLng(robotData.latitude, robotData.longitude),
+            // Create a marker with an arrow that can rotate
+            const markerContent = `
+                <div style="transform: rotate(${robotData.yaw}deg);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L6 10L12 8L18 10L12 2Z" fill="#ffff00" stroke="#000" stroke-width="1"/>
+                        <path d="M12 8L6 22L12 18L18 22L12 8Z" fill="#ffff00" stroke="#000" stroke-width="1"/>
+                    </svg>
+                </div>
+            `;
+
+            markerRef.current = new window.naver.maps.Marker({
+                position: new window.naver.maps.LatLng(robotData.latitude, robotData.longitude),
                 map: map,
-                radius: 2,
-                fillColor: '#ffff00',
-                fillOpacity: 0.6,
-                strokeColor: '#ffff00',
-                strokeWeight: 1
+                icon: {
+                    content: markerContent,
+                    anchor: new window.naver.maps.Point(12, 12)
+                }
             });
         } else if (mapRef.current) {
             const newCenter = new window.naver.maps.LatLng(robotData.latitude, robotData.longitude);
             mapRef.current.setCenter(newCenter);
+            
             if (markerRef.current) {
-                markerRef.current.setCenter(newCenter);
+                // Update marker position
+                markerRef.current.setPosition(newCenter);
+                
+                // Update marker rotation based on yaw
+                const markerContent = `
+                    <div style="transform: rotate(${robotData.yaw}deg);">
+                        <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 8L6 22L12 18L18 22L12 8Z" fill="#ffff00" stroke="#000" stroke-width="1"/>
+                        </svg>
+                    </div>
+                `;
+                
+                markerRef.current.setIcon({
+                    content: markerContent,
+                    anchor: new window.naver.maps.Point(12, 12)
+                });
             } else {
-                markerRef.current = new window.naver.maps.Circle({
-                    center: newCenter,
+                // Create a new marker if it doesn't exist
+                const markerContent = `
+                    <div style="transform: rotate(${robotData.yaw}deg);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L6 10L12 8L18 10L12 2Z" fill="#ffff00" stroke="#000" stroke-width="1"/>
+                            <path d="M12 8L6 22L12 18L18 22L12 8Z" fill="#ffff00" stroke="#000" stroke-width="1"/>
+                        </svg>
+                    </div>
+                `;
+                
+                markerRef.current = new window.naver.maps.Marker({
+                    position: newCenter,
                     map: mapRef.current,
-                    radius: 2,
-                    fillColor: '#ffff00',
-                    fillOpacity: 0.6,
-                    strokeColor: '#ffff00',
-                    strokeWeight: 1
+                    icon: {
+                        content: markerContent,
+                        anchor: new window.naver.maps.Point(12, 12)
+                    }
                 });
             }
         }

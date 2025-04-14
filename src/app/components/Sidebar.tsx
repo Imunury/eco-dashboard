@@ -14,8 +14,9 @@ const Sidebar: React.FC = () => {
                     width={150}
                     height={100}
                     alt="Robot Map Icon"
+                    className='pb-4'
                 />
-                <Link href="/" className={`pt-5`}>
+                <Link href="/">
                     <Image
                         src="/icon_rm.png"
                         width={30}

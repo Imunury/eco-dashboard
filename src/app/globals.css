@@ -130,7 +130,7 @@ button:hover {
 }
 
 .markerInfo {
-  @apply w-28 h-20 px-1 bg-blue-200;
+  @apply w-full h-full px-1 bg-blue-200;
 }
 
 .markerInfo>p {
@@ -150,11 +150,11 @@ button:hover {
 }
 
 .sidebar {
-  @apply flex flex-col items-center pt-5;
+  @apply flex flex-col items-center pt-8;
 }
 
 .sidebar>a {
-  @apply px-3 py-4 w-full flex items-center transition-colors duration-500;
+  @apply px-5 py-4 w-full flex items-center transition-colors duration-500;
 }
 
 .sidebar>a:hover {
@@ -175,7 +175,7 @@ button:hover {
 
 .sidebar_box {
   @apply bg-gradient-radial from-blue-950 to-blue-900 text-white flex flex-col;
-  width: 10%;
+  width: 12%;
 }
 
 /* Custom Scrollbar Styling */
@@ -185,7 +185,7 @@ button:hover {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #89b0ee;
   border-radius: 5px;
 }
 
