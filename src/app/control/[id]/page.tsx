@@ -54,20 +54,20 @@ const Control: React.FC = () => {
             </div>
 
             <div className='h-48'>
-                <div className='w-1/3'>
+                <div className='w-2/5'>
                     <Pump robotData={robotData} />
                 </div>
 
-                <div className='w-4/6'>
+                <div className='w-3/5'>
                     <SolarCharge robotData={robotData} />
                 </div>
             </div>
 
             <div className='h-96'>
-                <div className='w-1/3'>
+                <div className='w-2/5'>
                     <CCTV robotData={robotData} />
                 </div>
-                <div className='w-2/3'>
+                <div className='w-3/5'>
                     <ModeComponent robotData={robotData} />
                 </div>
             </div>
