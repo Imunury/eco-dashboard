@@ -189,19 +189,26 @@ button:hover {
 }
 
 ::-webkit-scrollbar-track {
-  background: #89b0ee;
-  border-radius: 5px;
+  background: #3984f5;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #3b82f6;
-  /* Blue color */
-  border-radius: 5px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: #95a3b8;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #2563eb;
   /* Darker blue on hover */
+}
+
+::-webkit-scrollbar-button {
+  background: #3984f5;
 }
 
 /* For Firefox */

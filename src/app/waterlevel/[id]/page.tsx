@@ -110,10 +110,15 @@ const WaterLevel: React.FC = () => {
                 {currentLevel}
             </h1>
             <motion.div
-                className="water_container bottom-0"
+                className="water_container"
                 animate={{ height: `${currentLevel * 5}px` }}
-                
+                style={{
+                    transform: `rotateX(30deg) translateZ(0)`,
+                    transformOrigin: 'bottom'
+                }}
             >
+                <div className="water_surface"></div>
+                <div className="water_ripples"></div>
             </motion.div>
 
         </section>
