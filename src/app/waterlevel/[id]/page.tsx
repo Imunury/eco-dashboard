@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "next/navigation";
 import stnMapping2 from "@/utils/stnMapping2"
 import wlMapping from "@/utils/wlMapping"
@@ -17,6 +17,7 @@ const WaterLevel: React.FC = () => {
     const [wl, setWl] = useState<string>("")
     const [currentLevel, setCurrentLevel] = useState<number>(0);
     const [rainIntensity, setRainIntensity] = useState<number>(0); // 비 강도 상태
+    const rainContainerRef = useRef<HTMLDivElement>(null);
 
     const params = useParams();
     const id = params?.id as string | undefined;
@@ -36,7 +37,11 @@ const WaterLevel: React.FC = () => {
 
     useEffect(() => {
         if (wlData.length > 0) {
-            setCurrentLevel((wlData[0].rn)); // 최신 수위 값 바로 반영
+            if (wlData[0].rn > 100) {
+                setCurrentLevel((wlData[0].rn)/10); // 최신 수위 값 바로 반영
+            } else {
+                setCurrentLevel((wlData[0].rn)); 
+            }
         }
     }, [wlData]);
 
@@ -95,8 +100,41 @@ const WaterLevel: React.FC = () => {
         }
     };
 
+    const getRainIntensityClass = (intensity: number) => {
+        if (intensity <= 1) return 'rain_none';
+        if (intensity <= 10) return 'rain_light';
+        if (intensity <= 30) return 'rain_moderate';
+        if (intensity <= 60) return 'rain_heavy';
+        return 'rain_very_heavy';
+    };
+
+    const createRainDrops = () => {
+        if (!rainContainerRef.current) return;
+
+        const container = rainContainerRef.current;
+        container.innerHTML = '';
+
+        const rainClass = getRainIntensityClass(rainIntensity);
+        container.className = `rain_container ${rainClass}`;
+
+        const dropCount = Math.min(100, Math.max(20, rainIntensity * 2));
+
+        for (let i = 0; i < dropCount; i++) {
+            const drop = document.createElement('div');
+            drop.className = 'rain_drop';
+            drop.style.left = `${Math.random() * 100}%`;
+            drop.style.animationDelay = `${Math.random() * 2}s`;
+            container.appendChild(drop);
+        }
+    };
+
+    useEffect(() => {
+        createRainDrops();
+    }, [rainIntensity]);
+
     return (
-        <section className="h-full w-full">
+        <section className="h-full w-full relative">
+            <div ref={rainContainerRef} className="rain_container"></div>
 
             <input
                 className="m-3"
@@ -107,11 +145,14 @@ const WaterLevel: React.FC = () => {
             <button onClick={handleSubmit}>Submit</button>
 
             <h1>
-                {currentLevel}
+                수위 : {currentLevel}m
+            </h1>
+            <h1>
+                강수량 : {rainIntensity}
             </h1>
             <motion.div
                 className="water_container"
-                animate={{ height: `${currentLevel * 5}px` }}
+                animate={{ height: `${currentLevel * 50}px` }}
                 style={{
                     transform: `rotateX(30deg) translateZ(0)`,
                     transformOrigin: 'bottom'
@@ -120,9 +161,7 @@ const WaterLevel: React.FC = () => {
                 <div className="water_surface"></div>
                 <div className="water_ripples"></div>
             </motion.div>
-
         </section>
-
     );
 
 };

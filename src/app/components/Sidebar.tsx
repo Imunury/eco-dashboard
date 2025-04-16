@@ -79,6 +79,15 @@ const Sidebar: React.FC = () => {
                     />
                     <h5>Weather</h5>
                 </Link>
+                <Link href="/waterdepth/ecobot00003" className={`pt-5 ${pathname.startsWith('/waterdepth') ? 'bg-blue-600' : ''}`}>
+                    <Image
+                        src="/icon_wd.png"
+                        width={30}
+                        height={30}
+                        alt="Weather Icon"
+                    />
+                    <h5>Water Depth</h5>
+                </Link>
 
             </nav>
         </nav>

@@ -55,3 +55,69 @@
         opacity: 0.5;
     }
 }
+
+.rain_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.rain_drop {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+    border-radius: 0 0 5px 5px;
+    animation: rain linear infinite;
+}
+
+.rain_none .rain_drop {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+}
+
+/* Light rain (0-10mm) */
+.rain_light .rain_drop {
+    width: 1px;
+    height: 15px;
+    opacity: 0.4;
+    animation-duration: 2s;
+}
+
+/* Moderate rain (10-30mm) */
+.rain_moderate .rain_drop {
+    width: 1.5px;
+    height: 18px;
+    opacity: 0.6;
+    animation-duration: 1.5s;
+}
+
+/* Heavy rain (30-60mm) */
+.rain_heavy .rain_drop {
+    width: 2px;
+    height: 20px;
+    opacity: 0.8;
+    animation-duration: 1s;
+}
+
+/* Very heavy rain (>60mm) */
+.rain_very_heavy .rain_drop {
+    width: 2.5px;
+    height: 25px;
+    opacity: 1;
+    animation-duration: 0.8s;
+}
+
+@keyframes rain {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
