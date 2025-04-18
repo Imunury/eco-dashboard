@@ -1,7 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../../lib/prisma";
-import prisma_jincheon1 from "../../../../lib/prisma_jincheon1";
-import prisma_jincheon2 from "../../../../lib/prisma_jincheon2";
 
 export default async function handler(
     req: NextApiRequest,
@@ -35,21 +33,15 @@ export default async function handler(
                 JOIN grouped g
                 ON r.grid_lat = g.grid_lat AND r.grid_lng = g.grid_lng;
             `;
-            // const depth_2 = await prisma.$queryRaw`
-            // SELECT *
-            // FROM water_quality
-            // WHERE robot_id = ${id}
-            //     AND (timestamp + interval '9 hours') >= ${depth_date}::date
-            //     AND (timestamp + interval '9 hours') < (${depth_date}::date + interval '1 day')
-            //     AND sample_depth / 100 > 1.8
-            // `;
+
 
             const depth_2 = await prisma.$queryRaw`
-            SELECT *
+            SELECT timestamp
             FROM water_quality
-            WHERE robot_id = ${id}
-            ORDER BY timestamp desc
-            LIMIT 1;
+            WHERE 
+                robot_id = ${id}
+                AND sample_depth / 100 > 1.8
+                ;
             `;
 
 

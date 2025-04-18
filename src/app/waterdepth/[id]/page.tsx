@@ -6,6 +6,9 @@ import { useParams } from 'next/navigation';
 import { water_quality } from '@prisma/client';
 import { start } from 'repl';
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 const NaverMap = dynamic(() => import('../components/NaverMap'), { ssr: false });
 
 const WaterDepth: React.FC = () => {
@@ -15,6 +18,18 @@ const WaterDepth: React.FC = () => {
 
     const params = useParams();
     const id = params?.id as string | undefined;
+
+    const [markedDates, setMarkedDates] = useState<Date[]>([]);
+
+    useEffect(() => {
+        const fetchMarkedDates = async () => {
+            const res = await fetch(`/api/depth_date/${id}`);
+            const data = await res.json();
+            const converted = data.map((item: { date: string }) => new Date(item.date));
+            setMarkedDates(converted);
+        };
+        fetchMarkedDates();
+    }, [id]);
 
     useEffect(() => {
         if (!isNaverMapLoaded) {
@@ -56,14 +71,31 @@ const WaterDepth: React.FC = () => {
 
     return (
         <section className='h-full w-full'>
-            <div className='absolute z-10'>
-                <input
-                    className="m-3 relative"
-                    type="date"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
+            <div className='absolute z-10 my-1 mx-3 '>
+
+                <DatePicker
+                    selected={startDate ? new Date(startDate) : null}
+                    onChange={(date: Date | null) => {
+                        if (date) {
+                            setStartDate(date.toISOString().split('T')[0])
+                        }
+                    }}
+                    dateFormat="yyyy-MM-dd"
+                    dayClassName={(date) =>
+                        markedDates.some((d) => d.toDateString() === date.toDateString())
+                            ? "marked-day"
+                            : ""
+                    }
                 />
+
+
                 <button onClick={handleSubmit}>Submit</button>
+                <div className='w-16 h-24 text-white'>
+                    <div className='bg-red-600'>2m</div>
+                    <div className='bg-red-600'>4m</div>
+                    <div className='bg-red-800'>6m</div>
+                    <div className='bg-red-900'>8m</div>
+                </div>
             </div>
             {isNaverMapLoaded && robotData && <NaverMap robotData={robotData} />}
         </section>
