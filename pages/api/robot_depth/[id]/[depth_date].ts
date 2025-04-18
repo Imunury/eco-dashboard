@@ -34,17 +34,6 @@ export default async function handler(
                 ON r.grid_lat = g.grid_lat AND r.grid_lng = g.grid_lng;
             `;
 
-
-            const depth_2 = await prisma.$queryRaw`
-            SELECT timestamp
-            FROM water_quality
-            WHERE 
-                robot_id = ${id}
-                AND sample_depth / 100 > 1.8
-                ;
-            `;
-
-
             // const combineData = [ecobot].filter(Boolean);
             const combineData = ecobot;
 

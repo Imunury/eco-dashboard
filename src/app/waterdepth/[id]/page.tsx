@@ -90,11 +90,17 @@ const WaterDepth: React.FC = () => {
 
 
                 <button onClick={handleSubmit}>Submit</button>
-                <div className='w-16 h-24 text-white'>
-                    <div className='bg-red-600'>2m</div>
-                    <div className='bg-red-600'>4m</div>
-                    <div className='bg-red-800'>6m</div>
-                    <div className='bg-red-900'>8m</div>
+                <div className='w-16 h-24 text-black'>
+                    <div style={{ backgroundColor: 'rgb(0, 255, 0)' }}>2m</div>
+                    <div style={{ backgroundColor: 'rgb(0, 180, 0)' }}>4m</div>
+                    <div style={{ backgroundColor: 'rgb(0, 110, 0)' }}>6m</div>
+                    <div style={{ backgroundColor: 'rgb(255, 255, 84)' }}>8m</div>
+                    <div style={{ backgroundColor: 'rgb(255, 255, 0)' }}>10m</div>
+                    <div style={{ backgroundColor: 'rgb(200, 200, 0)' }}>12m</div>
+                    <div style={{ backgroundColor: 'rgb(255, 130, 130)' }}>14m</div>
+                    <div style={{ backgroundColor: 'rgb(255, 50, 50)' }}>16m</div>
+                    <div style={{ backgroundColor: 'rgb(255, 0, 0)' }}>18m</div>
+                    <div style={{ backgroundColor: 'rgb(180, 0, 0)' }}>20m</div>
                 </div>
             </div>
             {isNaverMapLoaded && robotData && <NaverMap robotData={robotData} />}
