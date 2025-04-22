@@ -5,15 +5,18 @@ import dynamic from 'next/dynamic';
 import { useParams } from 'next/navigation';
 import { water_quality } from '@prisma/client';
 import { start } from 'repl';
+import { GroupedWaterQuality } from '../components/NaverMap';
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Script from 'next/script';
 
 const NaverMap = dynamic(() => import('../components/NaverMap'), { ssr: false });
 
 const WaterDepth: React.FC = () => {
     const [isNaverMapLoaded, setIsNaverMapLoaded] = useState(false);
     const [robotData, setRobotData] = useState<water_quality | null>(null);
+    const [robotDataGroup, setRobotDataGroup] = useState<GroupedWaterQuality[]>([]);
     const [startDate, setStartDate] = useState<string>("");
 
     const params = useParams();
@@ -51,13 +54,22 @@ const WaterDepth: React.FC = () => {
                 `/api/robot_depth/${id}/${startDate}`
             );
 
+            const depthGroupResponse = await fetch(
+                `/api/depth_array/${id}/${startDate}`
+            );
+
             if (!depthResponse.ok) {
                 throw new Error("데이터 요청 실패");
             }
 
+            if (!depthGroupResponse.ok) {
+                throw new Error("데이터 요청 실패");
+            }
+
             const data = await depthResponse.json();
-            console.log(data)
-            setRobotData(data); // Wrap single object in array
+            const dataGroup = await depthGroupResponse.json();
+            setRobotData(data);
+            setRobotDataGroup(dataGroup);
         } catch (error) {
             console.error("Error fetching weather data:", error);
         }
@@ -74,7 +86,8 @@ const WaterDepth: React.FC = () => {
             <div className='absolute z-10 my-1 mx-3 '>
 
                 <DatePicker
-                    selected={startDate ? new Date(startDate) : null}
+                    placeholderText="날짜 선택"
+                    selected={startDate ? new Date(startDate) : new Date("2024-12-04")}
                     onChange={(date: Date | null) => {
                         if (date) {
                             setStartDate(date.toISOString().split('T')[0])
@@ -103,7 +116,9 @@ const WaterDepth: React.FC = () => {
                     <div style={{ backgroundColor: 'rgb(180, 0, 0)' }}>20m</div>
                 </div>
             </div>
-            {isNaverMapLoaded && robotData && <NaverMap robotData={robotData} />}
+            {/* <Script src='/marker-clustering.js' strategy="beforeInteractive"> */}
+            {isNaverMapLoaded && robotData && robotDataGroup && <NaverMap robotData={robotData} robotDataGroup={robotDataGroup} />}
+            {/* </Script> */}
         </section>
     );
 }

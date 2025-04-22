@@ -11,10 +11,10 @@ export default async function handler(
         try {
 
             const dates = await prisma.$queryRaw`
-                SELECT DISTINCT DATE(timestamp + interval '9 hours') AS date
+                SELECT DISTINCT DATE(timestamp) AS date
                 FROM water_quality
                 WHERE robot_id = ${id}
-                AND sample_depth / 100 > 1.8
+                AND sample_depth / 100 > 1.0
             `;
 
             // const combineData = [ecobot].filter(Boolean);

@@ -1,44 +1,89 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../../lib/prisma";
 
+// BigInt를 JSON에 대응 가능한 값으로 변환하는 함수
+function convertBigIntToNumber(obj: any): any {
+    if (Array.isArray(obj)) {
+        return obj.map(convertBigIntToNumber);
+    } else if (obj && typeof obj === "object") {
+        // Date 객체는 그대로 반환
+        if (obj instanceof Date) {
+            return obj;
+        }
+
+        const newObj: any = {};
+        for (const key in obj) {
+            const value = obj[key];
+            newObj[key] =
+                typeof value === "bigint"
+                    ? Number(value)
+                    : convertBigIntToNumber(value);
+        }
+        return newObj;
+    }
+    return obj;
+}
+
+
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const { id } = req.query;
-    const { depth_date } = req.query;
+    const { id, depth_date } = req.query;
 
     if (req.method === "GET") {
         try {
-
             const ecobot = await prisma.$queryRaw`
-                    WITH rounded AS (
-                    SELECT *,
-                        ROUND(latitude::numeric, 3) AS grid_lat,
-                        ROUND(longitude::numeric, 3) AS grid_lng
-                    FROM water_quality
-                    WHERE robot_id = ${id}
-                    AND (timestamp + interval '9 hours') >= ${depth_date}::date
-                    AND (timestamp + interval '9 hours') < (${depth_date}::date + interval '1 day')
-                    AND sample_depth / 100 >= 1.8
-                ),
-                grouped AS (
-                    SELECT grid_lat, grid_lng, COUNT(*) AS cnt
-                    FROM rounded
-                    GROUP BY grid_lat, grid_lng
-                    HAVING COUNT(*) > 5
-                )
-                SELECT r.*
-                FROM rounded r
-                JOIN grouped g
-                ON r.grid_lat = g.grid_lat AND r.grid_lng = g.grid_lng;
-            `;
+        WITH clustered_points AS (
+          SELECT
+            latitude,
+            longitude,
+            timestamp,
+            temp_deg_c,
+            ph_units,
+            depth_m,
+            spcond_us_cm,
+            turb_ntu,
+            hdo_sat,
+            hdo_mg_l,
+            chl_ug_l,
+            bg_ppb,
+            ph_mv,
+            salinity_psu,
+            sample_depth,
+            ST_ClusterDBSCAN(ST_MakePoint(longitude, latitude), eps := 0.00005, minpoints := 10) OVER () AS cluster_id
+          FROM water_quality
+          WHERE robot_id = ${id}
+            AND timestamp >= ${depth_date}::date
+            AND timestamp < (${depth_date}::date + interval '1 day')
+            AND sample_depth / 100 > 1.0
+        )
+        SELECT
+          latitude,
+          longitude,
+          timestamp,
+          temp_deg_c,
+          ph_units,
+          depth_m,
+          spcond_us_cm,
+          turb_ntu,
+          hdo_sat,
+          hdo_mg_l,
+          chl_ug_l,
+          bg_ppb,
+          ph_mv,
+          salinity_psu,
+          sample_depth,
+          COALESCE(cluster_id, -ROW_NUMBER() OVER (ORDER BY latitude, longitude)) AS group_id,
+          COUNT(*) OVER (PARTITION BY cluster_id) AS total_count
+        FROM clustered_points
+        ORDER BY group_id, timestamp;
+      `;
 
-            // const combineData = [ecobot].filter(Boolean);
-            const combineData = ecobot;
-
-            res.status(200).json(combineData);
+            const formatted = convertBigIntToNumber(ecobot);
+            res.status(200).json(formatted);
         } catch (error) {
+            console.error("Error fetching robot data:", error);
             res.status(500).json({ error: "Failed to fetch robot data" });
         }
     } else {
