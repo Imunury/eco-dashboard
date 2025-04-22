@@ -2,12 +2,13 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { water_quality } from '@prisma/client';
-import { Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    BarElement,
+    PointElement,
+    LineElement,
     Title,
     Tooltip,
     Legend,
@@ -16,7 +17,8 @@ import {
 ChartJS.register(
     CategoryScale,
     LinearScale,
-    BarElement,
+    PointElement,
+    LineElement,
     Title,
     Tooltip,
     Legend
@@ -102,19 +104,40 @@ const Navermap: React.FC<TrackingMapProps> = ({ robotData, robotDataGroup }) => 
                 Math.pow(markerLng - clusterLng, 2)
             );
             
-            return distance < 0.0002; // 클러스터링 거리와 동일한 값 사용
+            return distance < 0.00005; // 클러스터링 거리와 동일한 값 사용
         });
 
         setDepthStats({
             total: cluster.total_count
         });
         setSelectedDepthData(matchingMarkers);
-        // 1-3m 범위의 데이터만 필터링
-        const filteredData = matchingMarkers.filter((d) => {
-            const depth = (d.sample_depth ?? 0) / 100;
-            return depth >= 1.0 && depth < 3.0;
+        setShowWaterQuality(true);
+    };
+
+    const handleRangeClick = (range: DepthRange) => {
+        if (!selectedCluster) return;
+
+        const dataArray = Array.isArray(robotData) ? robotData : [robotData];
+        const matchingMarkers = dataArray.filter((marker: any) => {
+            const markerLat = marker.latitude;
+            const markerLng = marker.longitude;
+            const clusterLat = parseFloat(selectedCluster.median_latitude || '0');
+            const clusterLng = parseFloat(selectedCluster.median_longitude || '0');
+            
+            const distance = Math.sqrt(
+                Math.pow(markerLat - clusterLat, 2) + 
+                Math.pow(markerLng - clusterLng, 2)
+            );
+            
+            return distance < 0.00005;
         });
-        setSelectedDepthData(filteredData);
+
+        const filtered = matchingMarkers.filter((d) => {
+            const depth = (d.sample_depth ?? 0) / 100;
+            return depth >= range.min && depth < range.max;
+        });
+
+        setSelectedDepthData(filtered);
         setShowWaterQuality(true);
     };
 
@@ -244,14 +267,33 @@ const Navermap: React.FC<TrackingMapProps> = ({ robotData, robotDataGroup }) => 
         }
     }, [robotData, robotDataGroup]);
 
-    const handleRangeClick = (range: DepthRange) => {
-        const dataArray = Array.isArray(robotData) ? robotData : [robotData];
-        const filtered = dataArray.filter((d) => {
-            const depth = (d.sample_depth ?? 0) / 100;
-            return depth >= range.min && depth < range.max;
-        });
-        setSelectedDepthData(filtered);
-        setShowWaterQuality(true);
+    const renderWaterQualityGraph = (data: water_quality[], title: string, dataKey: keyof water_quality, color: string) => {
+        return (
+            <div>
+                <h3 className="text-lg font-semibold mb-2">{title}</h3>
+                <Line
+                    data={{
+                        labels: data.map((d: any) => formatDate(d.timestamp)),
+                        datasets: [{
+                            label: title,
+                            data: data.map((d: any) => d[dataKey] ?? 0),
+                            borderColor: color,
+                            backgroundColor: color.replace('rgb', 'rgba').replace(')', ', 0.5)'),
+                            tension: 0.1
+                        }]
+                    }}
+                    options={{
+                        ...chartOptions,
+                        plugins: {
+                            ...chartOptions.plugins,
+                            title: {
+                                display: false
+                            }
+                        }
+                    }}
+                />
+            </div>
+        );
     };
 
     const chartData = {
@@ -264,14 +306,16 @@ const Navermap: React.FC<TrackingMapProps> = ({ robotData, robotDataGroup }) => 
                 data: showWaterQuality
                     ? selectedDepthData.map(d => d.chl_ug_l ?? 0)
                     : [depthStats?.total || 0],
-                backgroundColor: showWaterQuality
-                    ? 'rgba(54, 162, 235, 0.5)'
-                    : 'rgba(75, 192, 192, 0.5)',
+                borderColor: 'rgb(54, 162, 235)',
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                tension: 0.1
             },
             ...(showWaterQuality ? [{
                 label: '남조류 (ppb)',
                 data: selectedDepthData.map(d => d.bg_ppb ?? 0),
+                borderColor: 'rgb(255, 99, 132)',
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                tension: 0.1
             }] : [])
         ]
     };
@@ -326,119 +370,39 @@ const Navermap: React.FC<TrackingMapProps> = ({ robotData, robotDataGroup }) => 
                             </div>
                             {showWaterQuality ? (
                                 <div className="space-y-4">
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-2">클로로필 농도 (μg/L)</h3>
-                                        <Bar
-                                            data={{
-                                                labels: selectedDepthData.map((d: any) => formatDate(d.timestamp)),
-                                                datasets: [{
-                                                    label: '클로로필',
-                                                    data: selectedDepthData.map((d: any) => d.chl_ug_l ?? 0),
-                                                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                                                }]
-                                            }}
-                                            options={{
-                                                ...chartOptions,
-                                                plugins: {
-                                                    ...chartOptions.plugins,
-                                                    title: {
-                                                        display: false
-                                                    }
-                                                }
-                                            }}
-                                        />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-2">남조류 농도 (ppb)</h3>
-                                        <Bar
-                                            data={{
-                                                labels: selectedDepthData.map((d: any) => formatDate(d.timestamp)),
-                                                datasets: [{
-                                                    label: '남조류',
-                                                    data: selectedDepthData.map((d: any) => d.bg_ppb ?? 0),
-                                                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                                                }]
-                                            }}
-                                            options={{
-                                                ...chartOptions,
-                                                plugins: {
-                                                    ...chartOptions.plugins,
-                                                    title: {
-                                                        display: false
-                                                    }
-                                                }
-                                            }}
-                                        />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-2">pH</h3>
-                                        <Bar
-                                            data={{
-                                                labels: selectedDepthData.map((d: any) => formatDate(d.timestamp)),
-                                                datasets: [{
-                                                    label: 'pH',
-                                                    data: selectedDepthData.map((d: any) => d.ph_units ?? 0),
-                                                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                                                }]
-                                            }}
-                                            options={{
-                                                ...chartOptions,
-                                                plugins: {
-                                                    ...chartOptions.plugins,
-                                                    title: {
-                                                        display: false
-                                                    }
-                                                }
-                                            }}
-                                        />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-2">용존산소 (mg/L)</h3>
-                                        <Bar
-                                            data={{
-                                                labels: selectedDepthData.map((d: any) => formatDate(d.timestamp)),
-                                                datasets: [{
-                                                    label: 'DO',
-                                                    data: selectedDepthData.map((d: any) => d.hdo_mg_l ?? 0),
-                                                    backgroundColor: 'rgba(153, 102, 255, 0.5)',
-                                                }]
-                                            }}
-                                            options={{
-                                                ...chartOptions,
-                                                plugins: {
-                                                    ...chartOptions.plugins,
-                                                    title: {
-                                                        display: false
-                                                    }
-                                                }
-                                            }}
-                                        />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-lg font-semibold mb-2">탁도 (NTU)</h3>
-                                        <Bar
-                                            data={{
-                                                labels: selectedDepthData.map((d: any) => formatDate(d.timestamp)),
-                                                datasets: [{
-                                                    label: '탁도',
-                                                    data: selectedDepthData.map((d: any) => d.turb_ntu ?? 0),
-                                                    backgroundColor: 'rgba(255, 159, 64, 0.5)',
-                                                }]
-                                            }}
-                                            options={{
-                                                ...chartOptions,
-                                                plugins: {
-                                                    ...chartOptions.plugins,
-                                                    title: {
-                                                        display: false
-                                                    }
-                                                }
-                                            }}
-                                        />
-                                    </div>
+                                    {renderWaterQualityGraph(
+                                        selectedDepthData,
+                                        '클로로필 농도 (μg/L)',
+                                        'chl_ug_l',
+                                        'rgb(54, 162, 235)'
+                                    )}
+                                    {renderWaterQualityGraph(
+                                        selectedDepthData,
+                                        '남조류 농도 (ppb)',
+                                        'bg_ppb',
+                                        'rgb(255, 99, 132)'
+                                    )}
+                                    {renderWaterQualityGraph(
+                                        selectedDepthData,
+                                        'pH',
+                                        'ph_units',
+                                        'rgb(75, 192, 192)'
+                                    )}
+                                    {renderWaterQualityGraph(
+                                        selectedDepthData,
+                                        '용존산소 (mg/L)',
+                                        'hdo_mg_l',
+                                        'rgb(153, 102, 255)'
+                                    )}
+                                    {renderWaterQualityGraph(
+                                        selectedDepthData,
+                                        '탁도 (NTU)',
+                                        'turb_ntu',
+                                        'rgb(255, 159, 64)'
+                                    )}
                                 </div>
                             ) : (
-                                <Bar data={chartData} options={chartOptions} />
+                                <Line data={chartData} options={chartOptions} />
                             )}
 
                             {showWaterQuality && (
