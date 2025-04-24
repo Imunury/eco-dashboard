@@ -146,6 +146,12 @@ const TimeGraph: React.FC<TimeGraphProps> = ({
                         'turb_ntu',
                         'rgb(255, 159, 64)'
                     )}
+                    {renderWaterQualityGraph(
+                        selectedDepthData,
+                        '수온 (°C)',
+                        'temp_deg_c',
+                        'rgb(150, 100, 120)'
+                    )}
                 </div>
             )}
 
