@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { water_quality } from '@prisma/client';
-import { Line } from 'react-chartjs-2';
+import TimeGraph from './timeGraph';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -13,6 +13,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import DepthGraph from './depthGraph';
 
 ChartJS.register(
     CategoryScale,
@@ -38,7 +39,7 @@ interface DepthRange {
     label: string;
 }
 
-interface TrackingMapProps {
+interface NaverMapProps {
     robotData: water_quality | water_quality[];
     robotDataGroup: GroupedWaterQuality[];
 }
@@ -56,13 +57,14 @@ const depthRanges: DepthRange[] = [
     { min: 19.0, max: 21.0, color: 'rgb(180, 0, 0)', label: '19-21sm' }
 ];
 
-const Navermap: React.FC<TrackingMapProps> = ({ robotData, robotDataGroup }) => {
+const Navermap: React.FC<NaverMapProps> = ({ robotData, robotDataGroup }) => {
     const mapRef = useRef<any>(null);
     const markerRef = useRef<any>(null);
     const clusterRef = useRef<any>(null);
     const [selectedCluster, setSelectedCluster] = useState<any>(null);
     const [depthStats, setDepthStats] = useState<any>(null);
     const [showGraph, setShowGraph] = useState(true);
+    const [showDepthGraph, setShowDepthGraph] = useState(false);
 
     const [selectedDepthData, setSelectedDepthData] = useState<water_quality[]>([]);
     const [showWaterQuality, setShowWaterQuality] = useState(false);
@@ -97,13 +99,13 @@ const Navermap: React.FC<TrackingMapProps> = ({ robotData, robotDataGroup }) => 
             const markerLng = marker.longitude;
             const clusterLat = parseFloat(cluster.median_latitude || '0');
             const clusterLng = parseFloat(cluster.median_longitude || '0');
-            
+
             // 좌표가 클러스터 중심점 근처에 있는지 확인
             const distance = Math.sqrt(
-                Math.pow(markerLat - clusterLat, 2) + 
+                Math.pow(markerLat - clusterLat, 2) +
                 Math.pow(markerLng - clusterLng, 2)
             );
-            
+
             return distance < 0.00005; // 클러스터링 거리와 동일한 값 사용
         });
 
@@ -123,12 +125,12 @@ const Navermap: React.FC<TrackingMapProps> = ({ robotData, robotDataGroup }) => 
             const markerLng = marker.longitude;
             const clusterLat = parseFloat(selectedCluster.median_latitude || '0');
             const clusterLng = parseFloat(selectedCluster.median_longitude || '0');
-            
+
             const distance = Math.sqrt(
-                Math.pow(markerLat - clusterLat, 2) + 
+                Math.pow(markerLat - clusterLat, 2) +
                 Math.pow(markerLng - clusterLng, 2)
             );
-            
+
             return distance < 0.00005;
         });
 
@@ -139,6 +141,11 @@ const Navermap: React.FC<TrackingMapProps> = ({ robotData, robotDataGroup }) => 
 
         setSelectedDepthData(filtered);
         setShowWaterQuality(true);
+    };
+
+    const handleReset = () => {
+        setShowWaterQuality(false);
+        setSelectedDepthData([]);
     };
 
     useEffect(() => {
@@ -267,156 +274,41 @@ const Navermap: React.FC<TrackingMapProps> = ({ robotData, robotDataGroup }) => 
         }
     }, [robotData, robotDataGroup]);
 
-    const renderWaterQualityGraph = (data: water_quality[], title: string, dataKey: keyof water_quality, color: string) => {
-        return (
-            <div>
-                <h3 className="text-lg font-semibold mb-2">{title}</h3>
-                <Line
-                    data={{
-                        labels: data.map((d: any) => formatDate(d.timestamp)),
-                        datasets: [{
-                            label: title,
-                            data: data.map((d: any) => d[dataKey] ?? 0),
-                            borderColor: color,
-                            backgroundColor: color.replace('rgb', 'rgba').replace(')', ', 0.5)'),
-                            tension: 0.1
-                        }]
-                    }}
-                    options={{
-                        ...chartOptions,
-                        plugins: {
-                            ...chartOptions.plugins,
-                            title: {
-                                display: false
-                            }
-                        }
-                    }}
-                />
-            </div>
-        );
-    };
-
-    const chartData = {
-        labels: showWaterQuality
-            ? selectedDepthData.map(d => formatDate(d.timestamp))
-            : [depthStats?.total ? `총 ${depthStats.total}개` : ''],
-        datasets: [
-            {
-                label: showWaterQuality ? '클로로필 (μg/L)' : '총 마커 수',
-                data: showWaterQuality
-                    ? selectedDepthData.map(d => d.chl_ug_l ?? 0)
-                    : [depthStats?.total || 0],
-                borderColor: 'rgb(54, 162, 235)',
-                backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                tension: 0.1
-            },
-            ...(showWaterQuality ? [{
-                label: '남조류 (ppb)',
-                data: selectedDepthData.map(d => d.bg_ppb ?? 0),
-                borderColor: 'rgb(255, 99, 132)',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                tension: 0.1
-            }] : [])
-        ]
-    };
-
-    const chartOptions = {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top' as const,
-            },
-            title: {
-                display: true,
-                text: showWaterQuality ? '수질 데이터' : '수심별 평균 통계',
-            },
-        },
-    };
-
     return (
         <div className="w-full h-full relative">
             <div id="map" className="w-full h-full"></div>
 
-            {selectedCluster && depthStats && showGraph &&(
+            {selectedCluster && depthStats && showGraph && (
                 <div className="absolute top-4 right-4 bg-white p-4 rounded-lg shadow-lg z-10 max-h-[90vh] overflow-y-auto w-[500px]">
                     <div className="flex justify-between items-center mb-4">
-                        <h3 className="text-lg font-semibold">클러스터 통계</h3>
                         <button
                             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                             onClick={() => setShowGraph(!showGraph)}
                         >
                             {showGraph ? '그래프 닫기' : '그래프 보기'}
                         </button>
+                        <button
+                            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                            onClick={() => setShowDepthGraph(!showDepthGraph)}
+                        >
+                            {showDepthGraph ? '시계열 그래프' : '수심 그래프'}
+                        </button>
                     </div>
 
-                    { (
-                        <>
-                            <div className="mt-4">
-                                <ul className="grid grid-cols-5 gap-2 text-sm">
-                                    {depthRanges.map((range, idx) => (
-                                        <li
-                                            key={idx}
-                                            className="flex items-center space-x-1 cursor-pointer hover:bg-gray-100 p-1 rounded"
-                                            onClick={() => handleRangeClick(range)}
-                                        >
-                                            <span
-                                                className="inline-block w-4 h-4 rounded-sm border"
-                                                style={{ backgroundColor: range.color }}
-                                            ></span>
-                                            <span>{range.label}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            {showWaterQuality ? (
-                                <div className="space-y-4">
-                                    {renderWaterQualityGraph(
-                                        selectedDepthData,
-                                        '클로로필 농도 (μg/L)',
-                                        'chl_ug_l',
-                                        'rgb(54, 162, 235)'
-                                    )}
-                                    {renderWaterQualityGraph(
-                                        selectedDepthData,
-                                        '남조류 농도 (ppb)',
-                                        'bg_ppb',
-                                        'rgb(255, 99, 132)'
-                                    )}
-                                    {renderWaterQualityGraph(
-                                        selectedDepthData,
-                                        'pH',
-                                        'ph_units',
-                                        'rgb(75, 192, 192)'
-                                    )}
-                                    {renderWaterQualityGraph(
-                                        selectedDepthData,
-                                        '용존산소 (mg/L)',
-                                        'hdo_mg_l',
-                                        'rgb(153, 102, 255)'
-                                    )}
-                                    {renderWaterQualityGraph(
-                                        selectedDepthData,
-                                        '탁도 (NTU)',
-                                        'turb_ntu',
-                                        'rgb(255, 159, 64)'
-                                    )}
-                                </div>
-                            ) : (
-                                <Line data={chartData} options={chartOptions} />
-                            )}
+                    {!showDepthGraph && (
+                        <TimeGraph
+                            selectedDepthData={selectedDepthData}
+                            onRangeClick={handleRangeClick}
+                            onReset={handleReset}
+                        />
+                    )}
 
-                            {showWaterQuality && (
-                                <button
-                                    className="mt-4 px-4 py-2 bg-gray-500 text-white rounded"
-                                    onClick={() => {
-                                        setShowWaterQuality(false);
-                                        setSelectedDepthData([]);
-                                    }}
-                                >
-                                    수심 통계로 돌아가기
-                                </button>
-                            )}
-                        </>
+                    {showDepthGraph && (
+                        <DepthGraph
+                            onRangeClick={handleRangeClick}
+                            selectedDepthData={selectedDepthData}
+                            onReset={handleReset}
+                        />
                     )}
                 </div>
             )}
