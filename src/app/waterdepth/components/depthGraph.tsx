@@ -38,11 +38,11 @@ const timeRanges = [
     { min: 9, max: 10, color: 'rgb(0 ,255, 0)', label: '09-10시' },
     { min: 10, max: 11, color: 'rgb(0, 180, 0)', label: '10-11시' },
     { min: 11, max: 12, color: 'rgb(0, 110, 0)', label: '11-12시' },
-    { min: 12, max: 13, color: 'rgb(255, 255, 100)', label: '12-13시' },
+    { min: 12, max: 13, color: 'rgb(230, 230, 50)', label: '12-13시' },
     { min: 13, max: 14, color: 'rgb(220, 220, 0)', label: '13-14시' },
     { min: 14, max: 15, color: 'rgb(180, 180, 0)', label: '14-15시' },
-    { min: 15, max: 16, color: 'rgb(255, 130, 130)', label: '15-16시' },
-    { min: 16, max: 17, color: 'rgb(255, 50, 50)', label: '16-17시' },
+    { min: 15, max: 16, color: 'rgb(255, 150, 150)', label: '15-16시' },
+    { min: 16, max: 17, color: 'rgb(255, 100, 100)', label: '16-17시' },
     { min: 17, max: 18, color: 'rgb(255, 0, 0)', label: '17-18시' },
 ]
 
