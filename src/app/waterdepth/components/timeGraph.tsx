@@ -36,16 +36,16 @@ interface TimeGraphProps {
 }
 
 const depthRanges: DepthRange[] = [
-    { min: 1.0, max: 3.0, color: 'rgb(0 ,255, 0)', label: '1-3m' },
-    { min: 3.0, max: 5.0, color: 'rgb(0, 180, 0)', label: '3-5m' },
-    { min: 5.0, max: 7.0, color: 'rgb(0, 110, 0)', label: '5-7m' },
-    { min: 7.0, max: 9.0, color: 'rgb(255, 255, 100)', label: '7-9m' },
-    { min: 9.0, max: 11.0, color: 'rgb(220, 220, 0)', label: '9-11m' },
-    { min: 11.0, max: 13.0, color: 'rgb(180, 180, 0)', label: '11-13m' },
-    { min: 13.0, max: 15.0, color: 'rgb(255, 130, 130)', label: '13-15m' },
-    { min: 15.0, max: 17.0, color: 'rgb(255, 50, 50)', label: '15-17m' },
-    { min: 17.0, max: 19.0, color: 'rgb(255, 0, 0)', label: '17-19m' },
-    { min: 19.0, max: 21.0, color: 'rgb(180, 0, 0)', label: '19-21sm' }
+    { min: 1.0, max: 3.0, color: 'rgb(0 ,255, 0)', label: '2m' },
+    { min: 3.0, max: 5.0, color: 'rgb(0, 180, 0)', label: '4m' },
+    { min: 5.0, max: 7.0, color: 'rgb(0, 110, 0)', label: '6m' },
+    { min: 7.0, max: 9.0, color: 'rgb(255, 255, 100)', label: '8m' },
+    { min: 9.0, max: 11.0, color: 'rgb(220, 220, 0)', label: '10m' },
+    { min: 11.0, max: 13.0, color: 'rgb(180, 180, 0)', label: '12m' },
+    { min: 13.0, max: 15.0, color: 'rgb(255, 130, 130)', label: '14m' },
+    { min: 15.0, max: 17.0, color: 'rgb(255, 50, 50)', label: '16m' },
+    { min: 17.0, max: 19.0, color: 'rgb(255, 0, 0)', label: '18m' },
+    { min: 19.0, max: 21.0, color: 'rgb(180, 0, 0)', label: '20m' }
 ];
 
 const TimeGraph: React.FC<TimeGraphProps> = ({
