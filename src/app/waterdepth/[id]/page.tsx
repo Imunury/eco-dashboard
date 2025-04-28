@@ -17,7 +17,7 @@ const WaterDepth: React.FC = () => {
     const [isNaverMapLoaded, setIsNaverMapLoaded] = useState(false);
     const [robotData, setRobotData] = useState<water_quality | null>(null);
     const [robotDataGroup, setRobotDataGroup] = useState<GroupedWaterQuality[]>([]);
-    const [startDate, setStartDate] = useState<string>("");
+    const [startDate, setStartDate] = useState<string>("2024-12-04");
 
     const params = useParams();
     const id = params?.id as string | undefined;
@@ -47,7 +47,7 @@ const WaterDepth: React.FC = () => {
             document.head.appendChild(naverMapScript);
         }
     }, [isNaverMapLoaded]);
-
+    
     const fetchData = async (startDate: string) => {
         try {
             const depthResponse = await fetch(

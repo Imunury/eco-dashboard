@@ -305,7 +305,6 @@ const Navermap: React.FC<NaverMapProps> = ({ robotData, robotDataGroup }) => {
 
                     {showDepthGraph && (
                         <DepthGraph
-                            onRangeClick={handleRangeClick}
                             selectedDepthData={selectedDepthData}
                             onReset={handleReset}
                         />

@@ -31,7 +31,6 @@ interface TimeRange {
 
 interface TimeGraphProps {
     selectedDepthData: water_quality[];
-    onRangeClick: (range: TimeRange) => void;
     onReset: () => void;
 }
 
@@ -62,7 +61,6 @@ const depthRanges = [
 
 const DepthGraph: React.FC<TimeGraphProps> = ({
     selectedDepthData,
-    onRangeClick,
     onReset
 }) => {
     const formatDate = (timestamp: Date) => {

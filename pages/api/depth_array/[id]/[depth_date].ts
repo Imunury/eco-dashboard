@@ -60,15 +60,11 @@ export default async function handler(
 //       const ecobot = await prisma.$queryRaw`
 //               WITH filtered_water_quality AS (
 //   SELECT
-//     wq.*
-//   FROM water_quality wq
-//   JOIN ecobot_status es
-//     ON wq.robot_id = es.robot_id
-//    AND wq.timestamp = es.timestamp
-//   WHERE wq.robot_id = ${id}
-//     AND wq.timestamp >= ${depth_date}::date
-//     AND wq.timestamp < (${depth_date}::date + interval '1 day')
-//     AND es.pump_values[4] = 1
+//     *
+//   FROM water_quality
+//   WHERE robot_id = ${id}
+//     AND timestamp >= ${depth_date}::date
+//     AND timestamp < (${depth_date}::date + interval '1 day')
 // ),
 // depth_variation AS (
 //   SELECT
@@ -105,6 +101,7 @@ export default async function handler(
 // FROM grouped_points
 // GROUP BY group_id
 // ORDER BY group_id;
+
 //             `;
 
 
