@@ -67,7 +67,7 @@ const TimeGraph: React.FC<TimeGraphProps> = ({
     const renderWaterQualityGraph = (data: water_quality[], title: string, dataKey: keyof water_quality, color: string) => {
         return (
             <div>
-                <h3 className="text-lg font-semibold mb-2">{title}</h3>
+                <h3 className="text-black text-lg font-semibold mb-2">{title}</h3>
                 <Line
                     data={{
                         labels: data.map((d: any) => formatDate(d.timestamp)),

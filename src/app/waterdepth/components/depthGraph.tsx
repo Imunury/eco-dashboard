@@ -22,13 +22,6 @@ ChartJS.register(
     Legend
 );
 
-interface TimeRange {
-    min: number;
-    max: number;
-    color: string;
-    label: string;
-}
-
 interface TimeGraphProps {
     selectedDepthData: water_quality[];
     onReset: () => void;
@@ -122,7 +115,7 @@ const DepthGraph: React.FC<TimeGraphProps> = ({
 
         return (
             <div>
-                <h3 className="text-lg font-semibold mb-2">{title}</h3>
+                <h3 className="text-black text-lg font-semibold mb-2">{title}</h3>
                 <Line
                     data={{
                         labels: depthData.map(item => item.depth),

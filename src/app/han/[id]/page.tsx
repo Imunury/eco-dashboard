@@ -135,7 +135,7 @@ const Weather: React.FC = () => {
                 data: sortedWlData.map((item) => item.rn),
                 borderColor: "rgba(75, 192, 192, 1)",
                 backgroundColor: "rgba(75, 192, 192, 1)",
-                tension: 0.3,
+                tension: 0.1,
                 fill: true,
                 pointRadius: 1,
             },
