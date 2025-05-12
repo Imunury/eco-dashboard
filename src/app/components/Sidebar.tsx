@@ -1,96 +1,79 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
+
 
 const Sidebar: React.FC = () => {
-    const pathname = usePathname() || '';  // 현재 URL을 가져오는 useRouter 훅
+    const pathname = usePathname() || '';
+    const [isOpen, setIsOpen] = useState(false);
+
+    const menuItems = [
+        { href: '/all_map', icon: '/icon_rm.png', label: 'Robot Map', match: '/all_map' },
+        { href: '/tracking_map/ecobot00006', icon: '/icon_tm.png', label: 'Track Map', match: '/tracking_map' },
+        { href: '/control/ecobot00006', icon: '/icon_control.png', label: 'Control', match: '/control' },
+        { href: '/cctv', icon: '/icon_cctv.png', label: 'CCTV', match: '/cctv' },
+        { href: '/water_quality', icon: '/icon_wq.png', label: 'Quality', match: '/water_quality' },
+        { href: '/waterlevel/ecobot00006', icon: '/icon_wl.png', label: 'Water Level', match: '/waterlevel' },
+        { href: '/han/ecobot00006', icon: '/icon_weather.png', label: 'Weather', match: '/han' },
+        { href: '/waterdepth/ecobot00003', icon: '/icon_wd.png', label: 'Water Depth', match: '/waterdepth' },
+    ];
 
     return (
-        <nav className="sidebar_box">
-            <nav className="sidebar">
-                <Image
-                    src="/ecopeace_logo.png"
-                    width={150}
-                    height={100}
-                    alt="Robot Map Icon"
-                    className='pb-4'
-                />
-                <Link href="/">
-                    <Image
-                        src="/icon_rm.png"
-                        width={30}
-                        height={30}
-                        alt="Robot Map Icon"
-                    />
-                    <h5>Robot Map</h5>
-                </Link>
-                <Link href="/tracking_map/ecobot00006" className={`pt-5 ${pathname.startsWith('/tracking_map') ? 'bg-blue-600' : ''}`}>
-                    <Image
-                        src="/icon_tm.png"
-                        width={30}
-                        height={30}
-                        alt="Tracking Map Icon"
-                    />
-                    <h5>Track Map</h5>
-                </Link>
-                <Link href="/control/ecobot00006" className={`pt-5 ${pathname.startsWith('/control') ? 'bg-blue-600' : ''}`}>
-                    <Image
-                        src="/icon_control.png"
-                        width={30}
-                        height={30}
-                        alt="Control Icon"
-                    />
-                    <h5>Control</h5>
-                </Link>
-                <Link href="/cctv" className={`pt-5 ${pathname === '/cctv' ? 'bg-blue-600' : ''}`}>
-                    <Image
-                        src="/icon_cctv.png"
-                        width={30}
-                        height={30}
-                        alt="CCTV Icon"
-                    />
-                    <h5>CCTV</h5>
-                </Link>
-                <Link href="/water_quality" className={`pt-5 ${pathname === '/water_quality' ? 'bg-blue-600' : ''}`}>
-                    <Image
-                        src="/icon_wq.png"
-                        width={30}
-                        height={30}
-                        alt="Water Quality Icon"
-                    />
-                    <h5>Quality</h5>
-                </Link>
-                <Link href="/waterlevel/ecobot00006" className={`pt-5 ${pathname.startsWith('/waterlevel') ? 'bg-blue-600' : ''}`}>
-                    <Image
-                        src="/icon_wl.png"
-                        width={30}
-                        height={30}
-                        alt="Water Level Icon"
-                    />
-                    <h5>Water Level</h5>
-                </Link>
-                <Link href="/han/ecobot00006" className={`pt-5 ${pathname.startsWith('/han') ? 'bg-blue-600' : ''}`}>
-                    <Image
-                        src="/icon_weather.png"
-                        width={30}
-                        height={30}
-                        alt="Weather Icon"
-                    />
-                    <h5>Weather</h5>
-                </Link>
-                <Link href="/waterdepth/ecobot00003" className={`pt-5 ${pathname.startsWith('/waterdepth') ? 'bg-blue-600' : ''}`}>
-                    <Image
-                        src="/icon_wd.png"
-                        width={30}
-                        height={30}
-                        alt="Weather Icon"
-                    />
-                    <h5>Water Depth</h5>
-                </Link>
-
+        <>
+            {/* ✅ 데스크탑 사이드바 */}
+            <nav className="sidebar_box ">
+                <nav className="sidebar">
+                    <Image src="/ecopeace_logo.png" width={150} height={100} alt="Logo" className="pb-4" />
+                    {menuItems.map(({ href, icon, label, match }) => (
+                        <Link
+                            key={href}
+                            href={href}
+                            className={`pt-5 flex items-center gap-2 px-2 ${pathname.startsWith(match || href) ? 'bg-blue-600' : ''}`}
+                        >
+                            <Image src={icon} width={30} height={30} alt={label} />
+                            <h5>{label}</h5>
+                        </Link>
+                    ))}
+                </nav>
             </nav>
-        </nav>
+
+            {/* ✅ 모바일 메뉴 토글 버튼 */}
+            <div className="xl:hidden p-2 flex justify-between items-center bg-emerald-600 text-white">
+                <Image src="/ecopeace_logo.png" width={120} height={80} alt="Logo" />
+                <button onClick={() => setIsOpen(!isOpen)} className="text-white text-xl px-2">
+                    ☰
+                </button>
+            </div>
+
+            {/* ✅ 모바일 드롭다운 메뉴 with Framer Motion */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        key="dropdown"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className="xl:hidden bg-emerald-700 text-white flex flex-col px-4 py-2 space-y-3 absolute top-[75px] left-0 right-0 z-50 shadow-lg">
+                        {menuItems.map(({ href, icon, label, match }) => (
+                            <Link
+                                key={href}
+                                href={href}
+                                onClick={() => setIsOpen(false)}
+                                className={`flex items-center gap-3 ${pathname.startsWith(match || href) ? 'bg-blue-600' : ''} p-2 rounded`}
+                            >
+                                <Image src={icon} width={25} height={25} alt={label} />
+                                <span>{label}</span>
+                            </Link>
+                        ))}
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
     );
 };
 

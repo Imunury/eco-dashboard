@@ -47,7 +47,6 @@ p {
 }
 
 a {
-  font-size: calc(1vw);
 }
 
 button {
@@ -178,7 +177,7 @@ button:hover {
 }
 
 .sidebar_box {
-  @apply bg-gradient-radial from-blue-950 to-blue-900 text-white flex flex-col;
+  @apply xl:flex flex-col w-1/12 bg-gradient-radial from-blue-950 to-blue-900 hidden text-white;
   width: 12%;
 }
 

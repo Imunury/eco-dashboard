@@ -51,9 +51,9 @@ const RobotList: React.FC = () => {
     };
 
     return (
-        <section className='w-1/6 overflow-y-scroll bg-gradient-radial from-blue-800 to-blue-700 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-600'>
+        <section className='xl:w-1/6 w-full xl:overflow-y-scroll overflow-y-hidden xl:overflow-x-hidden overflow-x-scroll bg-gradient-radial from-blue-800 to-blue-700'>
             {robotList.length > 0 ? (
-                <ul>
+                <ul className='flex flex-row xl:flex-col'>
                     {robotList.map((data, index) => {
                         const firstValue = data.motor_values && data.motor_values.length > 0 ? data.motor_values[0] : null;
                         const isMotorOn = firstValue === 1;
@@ -63,12 +63,12 @@ const RobotList: React.FC = () => {
                             <li
                                 key={data.robot_id}
                                 onClick={() => handleRobotClick(data.robot_id)}
-                                className={`p-3 cursor-pointer border-solid border-slate-500 border-b transition-colors duration-500 ${selectedRobotId === data.robot_id ? 'bg-blue-950' : ''}`}>
+                                className={`xl:p-3 p-4 cursor-pointer border-solid border-slate-500 border-b transition-colors duration-500 ${selectedRobotId === data.robot_id ? 'bg-blue-950' : ''}`}>
                                 <h2>로봇 아이디 : {data.robot_id}</h2>
-                                <p className={`${isMotorOn ? "text-blue-500" : "text-red-500"}`}>
+                                <p className={`${isMotorOn ? "text-blue-500" : "text-red-500"} xl:block hidden`}>
                                     ON / OFF : {firstValue !== null ? (isMotorOn ? "ON" : "OFF") : "NO DATA"}
                                 </p>
-                                <p className={`${batteryPercentage !== null && batteryPercentage > 80 ? "text-blue-500" : batteryPercentage !== null ? "text-red-500" : "text-gray-500"}`}>
+                                <p className={`xl:block hidden ${batteryPercentage !== null && batteryPercentage > 80 ? "text-blue-500" : batteryPercentage !== null ? "text-red-500" : "text-gray-500"}`}>
                                     배터리(%) : {batteryPercentage !== null ? batteryPercentage : "NO DATA"}
                                 </p>
                             </li>

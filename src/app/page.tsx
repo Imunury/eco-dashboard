@@ -1,57 +1,49 @@
-"use client"
+'use client';
 
-import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-const NaverMap = dynamic(() => import('./components/NaverMap'), { ssr: false });
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
-import type { RobotAll } from './index';
+export default function LoginPage() {
+  const router = useRouter();
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
+  const [error, setError] = useState('');
 
-const RobotMap: React.FC = () => {
-
-  const [robotAll, setRobotall] = useState<RobotAll[]>([]);
-
-  const fetchData = async () => {
-    try {
-      const [allResponse] = await Promise.all([
-        // fetch('/api/ecobot_list'),
-        // fetch('/api/water_quality'),
-        fetch('/api/robot_all')
-      ]);
-      // const robot_status = await robotResponse.json();
-      // const water_quality = await waterResponse.json();
-      const robot_all = await allResponse.json();
-      setRobotall(robot_all);
-    } catch (error) {
-      console.error('Failed to fetch data', error);
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (id === 'admin' && pw === 'ecopeace123') {
+      router.push('/all_map');
+    } else {
+      setError('아이디 또는 비밀번호가 올바르지 않습니다.');
     }
   };
 
-  useEffect(() => {
-    fetchData(); // 처음 로딩 시 데이터 가져오기
-
-    const interval = setInterval(() => {
-      fetchData();
-    }, 60000);
-
-    return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 정리
-  }, []);
-
-  useEffect(() => {
-    const naverMapScript = document.createElement('script');
-    naverMapScript.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NAVER_MAP_API_KEY}`;
-    naverMapScript.onload = () => {
-      if (window.naver && window.naver.maps) {
-        console.log('Naver Map API loaded');
-      }
-    };
-    document.head.appendChild(naverMapScript);
-  }, [])
-
   return (
-    <section className='h-full w-full'>
-      <NaverMap robotAll={robotAll} />
-    </section>
-  )
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-600 to-blue-700">
+      <form onSubmit={handleLogin} className="bg-white rounded-2xl p-8 shadow-xl w-80 space-y-4">
+        <h2 className="text-xl font-semibold text-center">로그인</h2>
+        <input
+          type="text"
+          placeholder="아이디"
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+          className="w-full border border-gray-300 rounded px-3 py-2"
+        />
+        <input
+          type="password"
+          placeholder="비밀번호"
+          value={pw}
+          onChange={(e) => setPw(e.target.value)}
+          className="w-full border border-gray-300 rounded px-3 py-2"
+        />
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+        <button
+          type="submit"
+          className="w-full bg-emerald-600 hover:bg-emerald-700 text-white rounded px-4 py-2 transition"
+        >
+          로그인
+        </button>
+      </form>
+    </div>
+  );
 }
-
-export default RobotMap
