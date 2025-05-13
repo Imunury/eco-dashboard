@@ -9,19 +9,14 @@ import { useEffect, useState } from 'react'
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const router = useRouter()
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const isLoginPage = pathname === '/'
 
   useEffect(() => {
-    const loggedIn = localStorage.getItem('loggedIn') === 'true'
-    setIsLoggedIn(loggedIn)
-
-    // 로그인 안 된 상태인데 로그인 페이지가 아닌 경우 로그인 페이지로 이동
-    if (!loggedIn && pathname !== '/') {
+    const permit = localStorage.getItem('loggedIn') === 'ecopeace_permit'
+    if (!permit && !isLoginPage) {
       router.replace('/')
     }
   }, [pathname])
-
-  const isLoginPage = pathname === '/'
 
   return (
     <html lang="en" className="light">

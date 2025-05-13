@@ -9,18 +9,16 @@ export default function LoginPage() {
   const [pw, setPw] = useState('');
   const [error, setError] = useState('');
 
-
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('loggedIn');
-    if (isLoggedIn === 'true') {
-      router.replace('/all_map'); // 이미 로그인된 상태이면 리다이렉트
+    if (localStorage.getItem('loggedIn') === 'ecopeace_permit') {
+      router.replace('/all_map');
     }
   }, []);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (id === 'admin' && pw === 'ecopeace123') {
-      localStorage.setItem('loggedIn', 'true'); // 로그인 상태 저장
+      localStorage.setItem('loggedIn', 'ecopeace_permit');
       router.push('/all_map');
     } else {
       setError('아이디 또는 비밀번호가 올바르지 않습니다.');
