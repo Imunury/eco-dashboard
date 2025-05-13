@@ -279,7 +279,7 @@ const Navermap: React.FC<NaverMapProps> = ({ robotData, robotDataGroup }) => {
             <div id="map" className="w-full h-full"></div>
 
             {selectedCluster && depthStats && showGraph && (
-                <div className="absolute top-4 right-4 bg-white p-4 rounded-lg shadow-lg z-10 max-h-[90vh] overflow-y-auto w-[500px]">
+                <div className="absolute top-4 right-4 bg-white p-4 rounded-lg shadow-lg z-10 max-h-[70vh] wl:max-h-[90vh] overflow-y-auto w-[400px] xl:w-[500px]">
                     <div className="flex justify-between items-center mb-4">
                         <button
                             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"

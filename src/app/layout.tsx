@@ -3,15 +3,25 @@
 import './globals.css'
 import Sidebar from './components/Sidebar'
 import RobotList from './components/RobotList'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
-  const isLoginPage = pathname === '/' // 🔍 경로를 '/' 로 변경
+  const router = useRouter()
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('loggedIn') === 'true'
+    setIsLoggedIn(loggedIn)
+
+    // 로그인 안 된 상태인데 로그인 페이지가 아닌 경우 로그인 페이지로 이동
+    if (!loggedIn && pathname !== '/') {
+      router.replace('/')
+    }
+  }, [pathname])
+
+  const isLoginPage = pathname === '/'
 
   return (
     <html lang="en" className="light">
@@ -31,3 +41,4 @@ export default function RootLayout({
     </html>
   )
 }
+

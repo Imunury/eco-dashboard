@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -9,9 +9,18 @@ export default function LoginPage() {
   const [pw, setPw] = useState('');
   const [error, setError] = useState('');
 
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('loggedIn');
+    if (isLoggedIn === 'true') {
+      router.replace('/all_map'); // 이미 로그인된 상태이면 리다이렉트
+    }
+  }, []);
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (id === 'admin' && pw === 'ecopeace123') {
+      localStorage.setItem('loggedIn', 'true'); // 로그인 상태 저장
       router.push('/all_map');
     } else {
       setError('아이디 또는 비밀번호가 올바르지 않습니다.');
