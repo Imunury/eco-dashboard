@@ -30,7 +30,6 @@ const ModePosition: React.FC<RobotInfoProps> = ({ robotData }) => {
         } catch (error) {
             console.error('Error sending data:', error);
         }
-
     }
 
     return (

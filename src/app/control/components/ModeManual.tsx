@@ -57,26 +57,31 @@ const ModeManual: React.FC<RobotInfoProps> = ({ robotData }) => {
                     <button onClick={() => clickControl("left_turn")}>
                         <Image
                             src="/rotate-left.png"
-                            width={20}
-                            height={20}
                             alt="Arrow"
+                            width={0}
+                            height={0}
+                            sizes="(min-width: 1280px) 40px, 20px"
+                            className="w-2 xl:w-5 h-auto"
                         />
                     </button>
                     <button onClick={() => clickControl("forward")}>
                         <Image
                             src="/arrow.png"
-                            width={20}
-                            height={20}
                             alt="Arrow"
-                            className="-rotate-90"
+                            width={0}
+                            height={0}
+                            sizes="(min-width: 1280px) 40px, 20px"
+                            className="w-2 xl:w-5 h-auto -rotate-90"
                         />
                     </button>
                     <button onClick={() => clickControl("right_turn")}>
                         <Image
                             src="/rotate-right.png"
-                            width={20}
-                            height={20}
                             alt="Arrow"
+                            width={0}
+                            height={0}
+                            sizes="(min-width: 1280px) 40px, 20px"
+                            className="w-2 xl:w-5 h-auto"
                         />
                     </button>
                 </div>
@@ -84,27 +89,31 @@ const ModeManual: React.FC<RobotInfoProps> = ({ robotData }) => {
                     <button onClick={() => clickControl("left_shift")}>
                         <Image
                             src="/arrow.png"
-                            width={20}
-                            height={20}
                             alt="Arrow"
-                            className="rotate-180"
+                            width={0}
+                            height={0}
+                            sizes="(min-width: 1280px) 40px, 20px"
+                            className="w-2 xl:w-5 h-auto rotate-180"
                         />
                     </button>
                     <button onClick={() => clickControl("stop")}>
                         <Image
                             src="/stop.png"
-                            width={20}
-                            height={20}
                             alt="Arrow"
-                            className="-rotate-90"
+                            width={0}
+                            height={0}
+                            sizes="(min-width: 1280px) 40px, 20px"
+                            className="w-2 xl:w-5 h-auto"
                         />
                     </button>
                     <button onClick={() => clickControl("right_shift")}>
                         <Image
                             src="/arrow.png"
-                            width={20}
-                            height={20}
                             alt="Arrow"
+                            width={0}
+                            height={0}
+                            sizes="(min-width: 1280px) 40px, 20px"
+                            className="w-2 xl:w-5 h-auto"
                         />
                     </button>
                 </div>
@@ -113,28 +122,31 @@ const ModeManual: React.FC<RobotInfoProps> = ({ robotData }) => {
 
                         <Image
                             src="/rotate-right.png"
-                            width={20}
-                            height={20}
                             alt="Arrow"
-                            className="rotate-180"
+                            width={0}
+                            height={0}
+                            sizes="(min-width: 1280px) 40px, 20px"
+                            className="w-2 xl:w-5 h-auto rotate-180"
                         />
                     </button>
                     <button onClick={() => clickControl("backward")}>
                         <Image
                             src="/arrow.png"
-                            width={20}
-                            height={20}
                             alt="Arrow"
-                            className="rotate-90"
+                            width={0}
+                            height={0}
+                            sizes="(min-width: 1280px) 40px, 20px"
+                            className="w-2 xl:w-5 h-auto rotate-90"
                         />
                     </button>
                     <button onClick={() => clickControl("right_turn")}>
                         <Image
                             src="/rotate-left.png"
-                            width={20}
-                            height={20}
                             alt="Arrow"
-                            className="rotate-180"
+                            width={0}
+                            height={0}
+                            sizes="(min-width: 1280px) 40px, 20px"
+                            className="w-2 xl:w-5 h-auto rotate-180"
                         />
                     </button>
                 </div>

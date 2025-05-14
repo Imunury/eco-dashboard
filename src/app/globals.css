@@ -56,12 +56,12 @@ button:hover {
 }
 
 .control>div {
-  @apply flex xl:flex-row flex-col w-full my-3;
+  @apply flex xl:flex-row flex-col w-full xl:my-3;
 }
 
 .control>div>div {
   border: 1px solid;
-  @apply h-full p-3 mx-3 rounded-lg opacity-90 border-blue-400;
+  @apply h-full p-3 mx-3 my-3 rounded-lg opacity-90 border-blue-400;
   /* bg-gradient-to-b from-blue-950 to-blue-900 */
 }
 
@@ -78,7 +78,11 @@ button:hover {
 }
 
 .control_items h3 {
-  @apply text-white
+  @apply text-white;
+}
+
+.control button {
+  @apply xl:text-sm text-[9px];
 }
 
 .pump {

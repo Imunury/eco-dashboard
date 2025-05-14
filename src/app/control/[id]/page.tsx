@@ -64,10 +64,10 @@ const Control: React.FC = () => {
             </div>
 
             <div className='xl:h-96 h-full'>
-                <div className='xl:w-2/5 w-full'>
+                <div className='xl:w-2/5 w-full h-full'>
                     <CCTV robotData={robotData} />
                 </div>
-                <div className='xl:w-3/5 w-full'>
+                <div className='xl:w-3/5 w-full h-full'>
                     <ModeComponent robotData={robotData} />
                 </div>
             </div>

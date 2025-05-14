@@ -42,7 +42,7 @@ const Sidebar: React.FC = () => {
             </nav>
 
             {/* ✅ 모바일 메뉴 토글 버튼 */}
-            <div className="xl:hidden p-2 flex justify-between items-center bg-emerald-600 text-white">
+            <div className="xl:hidden p-2 flex justify-between items-center bg-gradient-radial from-blue-950 to-blue-900 text-white">
                 <Image src="/ecopeace_logo.png" width={120} height={80} alt="Logo" />
                 <button onClick={() => setIsOpen(!isOpen)} className="text-white text-xl px-2">
                     ☰
