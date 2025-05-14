@@ -44,30 +44,30 @@ const Control: React.FC = () => {
     return (
         <section className='control'>
 
-            <div className='h-48'>
-                <div className='w-1/6 '>
+            <div className='xl:h-48 h-full'>
+                <div className='xl:w-1/6 w-full'>
                     <ONOFF robotData={robotData} />
                 </div>
-                <div className='w-5/6'>
+                <div className='xl:w-5/6 w-full'>
                     <RobotInfo robotData={robotData} />
                 </div>
             </div>
 
-            <div className='h-48'>
-                <div className='w-2/5'>
+            <div className='xl:h-48 h-full'>
+                <div className='xl:w-2/5 w-full'>
                     <Pump robotData={robotData} />
                 </div>
 
-                <div className='w-3/5'>
+                <div className='xl:w-3/5 w-full'>
                     <SolarCharge robotData={robotData} />
                 </div>
             </div>
 
-            <div className='h-96'>
-                <div className='w-2/5'>
+            <div className='xl:h-96 h-full'>
+                <div className='xl:w-2/5 w-full'>
                     <CCTV robotData={robotData} />
                 </div>
-                <div className='w-3/5'>
+                <div className='xl:w-3/5 w-full'>
                     <ModeComponent robotData={robotData} />
                 </div>
             </div>
