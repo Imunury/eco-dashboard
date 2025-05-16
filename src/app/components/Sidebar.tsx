@@ -58,7 +58,7 @@ const Sidebar: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
-                        className="xl:hidden bg-emerald-700 text-white flex flex-col px-4 py-2 space-y-3 absolute top-[75px] left-0 right-0 z-50 shadow-lg">
+                        className="xl:hidden bg-blue-600 text-white flex flex-col px-4 py-2 space-y-3 absolute top-[75px] left-0 right-0 z-50 shadow-lg">
                         {menuItems.map(({ href, icon, label, match }) => (
                             <Link
                                 key={href}
