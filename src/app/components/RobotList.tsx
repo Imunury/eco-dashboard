@@ -47,6 +47,8 @@ const RobotList: React.FC = () => {
             router.push(`/han/${robotId}`);
         } else if (pathname.startsWith('/waterlevel')) {
             router.push(`/waterlevel/${robotId}`);
+        } else if (pathname.startsWith('/waterdepth')) {
+            router.push(`/waterdepth/${robotId}`);
         }
     };
 
