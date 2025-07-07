@@ -17,7 +17,7 @@ const WaterDepth: React.FC = () => {
     const [isNaverMapLoaded, setIsNaverMapLoaded] = useState(false);
     const [robotData, setRobotData] = useState<water_quality | null>(null);
     const [robotDataGroup, setRobotDataGroup] = useState<GroupedWaterQuality[]>([]);
-    const [startDate, setStartDate] = useState<string>("2024-12-04");
+    const [startDate, setStartDate] = useState<string>("2025-07-01");
 
     const params = useParams();
     const id = params?.id as string | undefined;
@@ -87,7 +87,7 @@ const WaterDepth: React.FC = () => {
 
                 <DatePicker
                     placeholderText="날짜 선택"
-                    selected={startDate ? new Date(startDate) : new Date("2024-12-04")}
+                    selected={startDate ? new Date(startDate) : new Date("2025-07-01")}
                     onChange={(date: Date | null) => {
                         if (date) {
                             setStartDate(date.toISOString().split('T')[0])
