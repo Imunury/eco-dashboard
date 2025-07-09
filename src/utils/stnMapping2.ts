@@ -1,6 +1,6 @@
 const stnMapping: Record<string, string> = {
     "ecobot00001": "",
-    "ecobot00002": "10184030",
+    "ecobot00002": "11014060",
     "ecobot00003": "50044020",
     "ecobot00004": "20144020",
     "ecobot00005": "20014030",

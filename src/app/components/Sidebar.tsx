@@ -19,7 +19,7 @@ const Sidebar: React.FC = () => {
         { href: '/water_quality', icon: '/icon_wq.png', label: 'Quality', match: '/water_quality' },
         { href: '/waterlevel/ecobot00006', icon: '/icon_wl.png', label: 'Water Level', match: '/waterlevel' },
         { href: '/han/ecobot00006', icon: '/icon_weather.png', label: 'Weather', match: '/han' },
-        { href: '/waterdepth/ecobot00003', icon: '/icon_wd.png', label: 'Water Depth', match: '/waterdepth' },
+        { href: '/waterdepth/ecobot00004', icon: '/icon_wd.png', label: 'Water Depth', match: '/waterdepth' },
     ];
 
     return (
@@ -27,7 +27,7 @@ const Sidebar: React.FC = () => {
             {/* ✅ 데스크탑 사이드바 */}
             <nav className="sidebar_box ">
                 <nav className="sidebar">
-                    <Image src="/ecopeace_logo.png" width={150} height={100} alt="Logo" className="pb-4" />
+                    <Image src="/logo1.png" width={150} height={100} alt="Logo" className="pb-4" />
                     {menuItems.map(({ href, icon, label, match }) => (
                         <Link
                             key={href}

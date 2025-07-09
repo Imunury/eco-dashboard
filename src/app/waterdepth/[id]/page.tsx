@@ -49,29 +49,32 @@ const WaterDepth: React.FC = () => {
     }, [isNaverMapLoaded]);
     
     const fetchData = async (startDate: string) => {
+        setRobotData(null);
+        setRobotDataGroup([]);
         try {
-            const depthResponse = await fetch(
-                `/api/robot_depth/${id}/${startDate}`
-            );
+            const [depthResponse, depthGroupResponse] = await Promise.all([
+                fetch(`/api/robot_depth/${id}/${startDate}`),
+                fetch(`/api/depth_array/${id}/${startDate}`)
+            ]);
 
-            const depthGroupResponse = await fetch(
-                `/api/depth_array/${id}/${startDate}`
-            );
-
-            if (!depthResponse.ok) {
-                throw new Error("데이터 요청 실패");
-            }
-
-            if (!depthGroupResponse.ok) {
-                throw new Error("데이터 요청 실패");
+            if (!depthResponse.ok || !depthGroupResponse.ok) {
+                alert('해당 날짜에 대한 수심 데이터가 없습니다.');
+                return;
             }
 
             const data = await depthResponse.json();
             const dataGroup = await depthGroupResponse.json();
+
+            if (!data || (Array.isArray(dataGroup) && dataGroup.length === 0)) {
+                alert('해당 날짜에 대한 수심 데이터가 없습니다.');
+                return;
+            }
+
             setRobotData(data);
             setRobotDataGroup(dataGroup);
         } catch (error) {
-            console.error("Error fetching weather data:", error);
+            console.error("Error fetching water depth data:", error);
+            alert('데이터를 불러오는 중 오류가 발생했습니다.');
         }
     };
 

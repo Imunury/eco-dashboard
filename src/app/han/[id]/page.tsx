@@ -137,7 +137,7 @@ const Weather: React.FC = () => {
                 backgroundColor: "rgba(75, 192, 192, 1)",
                 tension: 0.1,
                 fill: true,
-                pointRadius: 1,
+                pointRadius: 0,
             },
         ],
 
