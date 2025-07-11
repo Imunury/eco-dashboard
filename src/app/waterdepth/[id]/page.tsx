@@ -4,12 +4,10 @@ import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useParams } from 'next/navigation';
 import { water_quality } from '@prisma/client';
-import { start } from 'repl';
 import { GroupedWaterQuality } from '../components/NaverMap';
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Script from 'next/script';
 
 const NaverMap = dynamic(() => import('../components/NaverMap'), { ssr: false });
 
@@ -17,7 +15,7 @@ const WaterDepth: React.FC = () => {
     const [isNaverMapLoaded, setIsNaverMapLoaded] = useState(false);
     const [robotData, setRobotData] = useState<water_quality | null>(null);
     const [robotDataGroup, setRobotDataGroup] = useState<GroupedWaterQuality[]>([]);
-    const [startDate, setStartDate] = useState<string>("2025-07-01");
+    const [startDate, setStartDate] = useState<string | null>(null);
 
     const params = useParams();
     const id = params?.id as string | undefined;
@@ -26,10 +24,23 @@ const WaterDepth: React.FC = () => {
 
     useEffect(() => {
         const fetchMarkedDates = async () => {
-            const res = await fetch(`/api/depth_date/${id}`);
-            const data = await res.json();
-            const converted = data.map((item: { date: string }) => new Date(item.date));
-            setMarkedDates(converted);
+            if (id) {
+                try {
+                    const res = await fetch(`/api/depth_date/${id}`);
+                    const data = await res.json();
+                    const sortedDates = data
+                        .map((item: { date: string }) => new Date(item.date))
+                        .sort((a: Date, b: Date) => b.getTime() - a.getTime());
+                    
+                    setMarkedDates(sortedDates);
+
+                    if (sortedDates.length > 0) {
+                        setStartDate(sortedDates[0].toISOString().split('T')[0]);
+                    }
+                } catch (error) {
+                    console.error("Failed to fetch marked dates:", error);
+                }
+            }
         };
         fetchMarkedDates();
     }, [id]);
@@ -47,18 +58,20 @@ const WaterDepth: React.FC = () => {
             document.head.appendChild(naverMapScript);
         }
     }, [isNaverMapLoaded]);
-    
-    const fetchData = async (startDate: string) => {
+
+    const fetchData = async (date: string) => {
         setRobotData(null);
         setRobotDataGroup([]);
         try {
             const [depthResponse, depthGroupResponse] = await Promise.all([
-                fetch(`/api/robot_depth/${id}/${startDate}`),
-                fetch(`/api/depth_array/${id}/${startDate}`)
+                fetch(`/api/robot_depth/${id}/${date}`),
+                fetch(`/api/depth_array/${id}/${date}`)
             ]);
 
             if (!depthResponse.ok || !depthGroupResponse.ok) {
-                alert('해당 날짜에 대한 수심 데이터가 없습니다.');
+                setRobotData(null);
+                setRobotDataGroup([]);
+                console.log('해당 날짜에 대한 수심 데이터가 없습니다.');
                 return;
             }
 
@@ -66,7 +79,9 @@ const WaterDepth: React.FC = () => {
             const dataGroup = await depthGroupResponse.json();
 
             if (!data || (Array.isArray(dataGroup) && dataGroup.length === 0)) {
-                alert('해당 날짜에 대한 수심 데이터가 없습니다.');
+                setRobotData(null);
+                setRobotDataGroup([]);
+                console.log('해당 날짜에 대한 수심 데이터가 없습니다.');
                 return;
             }
 
@@ -78,22 +93,21 @@ const WaterDepth: React.FC = () => {
         }
     };
 
-    const handleSubmit = () => {
+    useEffect(() => {
         if (startDate) {
-            fetchData(startDate)
+            fetchData(startDate);
         }
-    };
+    }, [startDate]);
 
     return (
         <section className='h-full w-full'>
-            <div className='absolute z-10 my-1 mx-3 '>
-
+            <div className='absolute z-10 my-3 mx-3 flex-col items-center space-x-4'>
                 <DatePicker
                     placeholderText="날짜 선택"
-                    selected={startDate ? new Date(startDate) : new Date("2025-07-01")}
+                    selected={startDate ? new Date(startDate) : null}
                     onChange={(date: Date | null) => {
                         if (date) {
-                            setStartDate(date.toISOString().split('T')[0])
+                            setStartDate(date.toISOString().split('T')[0]);
                         }
                     }}
                     dateFormat="yyyy-MM-dd"
@@ -103,10 +117,7 @@ const WaterDepth: React.FC = () => {
                             : ""
                     }
                 />
-
-
-                <button onClick={handleSubmit}>Submit</button>
-                <div className='w-16 h-24 text-black'>
+                <div className='mt-5 w-16 h-24 text-black'>
                     <div style={{ backgroundColor: 'rgb(0, 255, 0)' }}>2m</div>
                     <div style={{ backgroundColor: 'rgb(0, 180, 0)' }}>4m</div>
                     <div style={{ backgroundColor: 'rgb(0, 110, 0)' }}>6m</div>
@@ -119,9 +130,7 @@ const WaterDepth: React.FC = () => {
                     <div style={{ backgroundColor: 'rgb(180, 0, 0)' }}>20m</div>
                 </div>
             </div>
-            {/* <Script src='/marker-clustering.js' strategy="beforeInteractive"> */}
-            {isNaverMapLoaded && robotData && robotDataGroup && <NaverMap robotData={robotData} robotDataGroup={robotDataGroup} />}
-            {/* </Script> */}
+            {isNaverMapLoaded && robotData && robotDataGroup.length > 0 && <NaverMap robotData={robotData} robotDataGroup={robotDataGroup} />}
         </section>
     );
 }
