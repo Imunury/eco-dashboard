@@ -101,7 +101,7 @@ const WaterDepth: React.FC = () => {
 
     return (
         <section className='h-full w-full'>
-            <div className='absolute z-10 my-3 mx-3 flex-col items-center space-x-4'>
+            <div className='absolute z-10 my-3 mx-3 flex-col items-center'>
                 <DatePicker
                     placeholderText="날짜 선택"
                     selected={startDate ? new Date(startDate) : null}
