@@ -12,6 +12,28 @@ ChartJS.register(Filler, CategoryScale, LinearScale, PointElement, LineElement, 
 const Weather: React.FC = () => {
     const [startDate, setStartDate] = useState<string>("");
     const [endDate, setEndDate] = useState<string>("");
+
+    const params = useParams();
+    const id = params?.id as string | undefined;
+
+    useEffect(() => {
+        const today = new Date();
+        const yesterday = new Date(today);
+        yesterday.setDate(today.getDate() - 1);
+
+        const formatDate = (date: Date) => date.toISOString().split('T')[0];
+
+        const initialStartDate = formatDate(yesterday);
+        const initialEndDate = formatDate(today);
+
+        setStartDate(initialStartDate);
+        setEndDate(initialEndDate);
+
+        if (id && stnMapping2[id] !== undefined && wlMapping[id] !== undefined) {
+            fetchData(initialStartDate.replace(/-/g, "") + "0000", initialEndDate.replace(/-/g, "") + "0000");
+        }
+    }, [id]);
+
     const [weatherData, setWeatherData] = useState<{ time: string; rn: string }[]>([]);
     const [wlData, setWlData] = useState<{ time: string; rn: string }[]>([]);
     const [stn, setStn] = useState<string>("")
@@ -20,8 +42,7 @@ const Weather: React.FC = () => {
     const [weatherLabel, setWeatherLabel] = useState<string[]>([]);
     const [wlLabel, setWlLabel] = useState<string[]>([]);
 
-    const params = useParams();
-    const id = params?.id as string | undefined;
+
 
     useEffect(() => {
         if (id && stnMapping2[id] !== undefined) {
@@ -77,14 +98,14 @@ const Weather: React.FC = () => {
         }
     };
 
-    const handleSubmit = () => {
-        if (startDate && endDate) {
+    useEffect(() => {
+        if (startDate && endDate && id && stnMapping2[id] !== undefined && wlMapping[id] !== undefined) {
             fetchData(
                 startDate.replace(/-/g, "") + "0000",
                 endDate.replace(/-/g, "") + "0000"
             );
         }
-    };
+    }, [startDate, endDate, id]);
 
     // 차트 데이터 설정
     // time 기준 오름차순 정렬
@@ -109,7 +130,7 @@ const Weather: React.FC = () => {
                 fill: true,
                 borderColor: 'rgb(75, 192, 192)',
                 backgroundColor: 'rgba(75, 192, 192, 0.1)',
-                tension: 0.3,
+                tension: 0.1,
                 pointRadius: 3
             },
         ],
@@ -162,9 +183,7 @@ const Weather: React.FC = () => {
                         onChange={(e) => setEndDate(e.target.value)}
                     />
                 </div>
-                <div>
-                    <button onClick={handleSubmit}>Submit</button>
-                </div>
+                
             </div>
 
             <div>
