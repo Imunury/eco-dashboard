@@ -135,7 +135,7 @@ const Navermap: React.FC<NaverMapProps> = ({ robotData, robotDataGroup }) => {
         });
 
         const filtered = matchingMarkers.filter((d) => {
-            const depth = (d.sample_depth ?? 0) / 100;
+            const depth = (d.sample_depth ?? 0);
             return depth >= range.min && depth < range.max;
         });
 
@@ -225,7 +225,7 @@ const Navermap: React.FC<NaverMapProps> = ({ robotData, robotDataGroup }) => {
 
             // 개별 마커 표시
             const markers = dataArray.map((data) => {
-                const color = getMarkerColor((data.sample_depth ?? 0) / 100);
+                const color = getMarkerColor((data.sample_depth ?? 0));
                 const position = new window.naver.maps.LatLng(data.latitude, data.longitude);
                 const marker = new window.naver.maps.Marker({
                     position,
@@ -251,7 +251,7 @@ const Navermap: React.FC<NaverMapProps> = ({ robotData, robotDataGroup }) => {
                     content: `
                         <div style="padding:5px; font-size:12px;">
                             <b>시간:</b> ${formatDate(data.timestamp)}<br/> 
-                            <b>채수수심</b> ${data.sample_depth ? (data.sample_depth / 100).toFixed(2) : '-'}m<br/> 
+                            <b>채수수심</b> ${data.sample_depth ? (data.sample_depth).toFixed(2) : '-'}m<br/> 
                             <b>남조류</b> ${data.bg_ppb ?? '-'}<br/> 
                             <b>클로로필</b> ${data.chl_ug_l ?? '-'}<br/>
                             <b>탁도</b> ${data.turb_ntu ?? '-'}<br/>

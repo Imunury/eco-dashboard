@@ -76,7 +76,7 @@ const DepthGraph: React.FC<TimeGraphProps> = ({
             // 각 시간대별로 데이터 필터링
             const timeRangeData = timeRanges.map(timeRange => {
                 const filteredData = data.filter(d => {
-                    const depth = (d.sample_depth ?? 0) / 100;
+                    const depth = (d.sample_depth ?? 0);
                     const hour = new Date(d.timestamp).getHours();
                     return depth >= minDepth && depth < maxDepth && 
                            hour >= timeRange.min && hour < timeRange.max;

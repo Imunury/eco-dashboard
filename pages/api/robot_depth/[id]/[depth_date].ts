@@ -158,7 +158,7 @@ const ecobot = await prisma.$queryRaw`
   WHERE robot_id = ${id}
     AND timestamp >= ${depth_date}::date
     AND timestamp < (${depth_date}::date + interval '1 day')
-    AND sample_depth / 100 > 1.0
+    AND sample_depth > 1.0
 ),
 depth_variation AS (
   SELECT
