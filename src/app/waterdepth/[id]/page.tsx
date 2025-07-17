@@ -18,6 +18,7 @@ const WaterDepth: React.FC = () => {
     const [robotData, setRobotData] = useState<water_quality | null>(null);
     const [robotDataGroup, setRobotDataGroup] = useState<GroupedWaterQuality[]>([]);
     const [startDate, setStartDate] = useState<string>('');
+    const [errorMessage, setErrorMessage] = useState<string>('');
 
     const params = useParams();
     const id = params?.id as string | undefined;
@@ -26,18 +27,24 @@ const WaterDepth: React.FC = () => {
 
     useEffect(() => {
         const fetchMarkedDates = async () => {
+            setErrorMessage(''); // Clear previous errors
             const res = await fetch(`/api/depth_date/${id}`);
             const data = await res.json();
             const converted = data.map((item: { date: string }) => new Date(item.date));
             setMarkedDates(converted);
 
-            // Set startDate to the latest marked date if available
-            if (converted.length > 0) {
-                const latestDate = new Date(Math.max(...converted.map((date: Date) => date.getTime())));
-                const formattedDate = latestDate.toISOString().split('T')[0];
-                setStartDate(formattedDate);
-                fetchData(formattedDate); // Fetch data for the latest date
+            if (converted.length === 0) {
+                setErrorMessage('해당 로봇 ID에 대한 수심 데이터가 존재하지 않습니다.');
+                setRobotData(null);
+                setRobotDataGroup([]);
+                return;
             }
+
+            // Set startDate to the latest marked date if available
+            const latestDate = new Date(Math.max(...converted.map((date: Date) => date.getTime())));
+            const formattedDate = latestDate.toISOString().split('T')[0];
+            setStartDate(formattedDate);
+            fetchData(formattedDate); // Fetch data for the latest date
         };
         fetchMarkedDates();
     }, [id]);
@@ -59,6 +66,7 @@ const WaterDepth: React.FC = () => {
     const fetchData = async (startDate: string) => {
         setRobotData(null);
         setRobotDataGroup([]);
+        setErrorMessage(''); // Clear previous errors
         try {
             const [depthResponse, depthGroupResponse] = await Promise.all([
                 fetch(`/api/robot_depth/${id}/${startDate}`),
@@ -66,7 +74,7 @@ const WaterDepth: React.FC = () => {
             ]);
 
             if (!depthResponse.ok || !depthGroupResponse.ok) {
-                alert('해당 날짜에 대한 수심 데이터가 없습니다.');
+                setErrorMessage('해당 날짜에 대한 수심 데이터가 없습니다.');
                 return;
             }
 
@@ -74,7 +82,7 @@ const WaterDepth: React.FC = () => {
             const dataGroup = await depthGroupResponse.json();
 
             if (!data || (Array.isArray(dataGroup) && dataGroup.length === 0)) {
-                alert('해당 날짜에 대한 수심 데이터가 없습니다.');
+                setErrorMessage('해당 날짜에 대한 수심 데이터가 없습니다.');
                 return;
             }
 
@@ -82,7 +90,7 @@ const WaterDepth: React.FC = () => {
             setRobotDataGroup(dataGroup);
         } catch (error) {
             console.error("Error fetching water depth data:", error);
-            alert('데이터를 불러오는 중 오류가 발생했습니다.');
+            setErrorMessage('데이터를 불러오는 중 오류가 발생했습니다.');
         }
     };
 
@@ -143,6 +151,11 @@ const WaterDepth: React.FC = () => {
                 </div>
             </div>
             {/* <Script src='/marker-clustering.js' strategy="beforeInteractive"> */}
+            {errorMessage && (
+                <div className="text-red-500 text-center mt-4">
+                    {errorMessage}
+                </div>
+            )}
             {isNaverMapLoaded && robotData && robotDataGroup && <NaverMap robotData={robotData} robotDataGroup={robotDataGroup} />}
             {/* </Script> */}
         </section>
