@@ -158,7 +158,8 @@ export default async function handler(
   WHERE robot_id = ${id}
     AND timestamp >= ${depth_date}::date
     AND timestamp < (${depth_date}::date + interval '1 day')
-    AND sample_depth > 1.0
+    AND sample_depth > 0.5
+    AND measurement_status = 2
 ),
 depth_variation AS (
   SELECT

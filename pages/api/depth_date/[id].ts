@@ -14,7 +14,8 @@ export default async function handler(
                 SELECT DISTINCT DATE(timestamp) AS date
                 FROM water_quality
                 WHERE robot_id = ${id}
-                AND sample_depth > 1.0
+                AND sample_depth > 0.5
+                AND measurement_status = 2
             `;
 
             // const combineData = [ecobot].filter(Boolean);

@@ -149,8 +149,8 @@ const Navermap: React.FC<NaverMapProps> = ({ robotData, robotDataGroup }) => {
     };
 
     useEffect(() => {
-        const dataArray = Array.isArray(robotData) ? robotData : [robotData];
-        const dataArrayGroup = Array.isArray(robotDataGroup) ? robotDataGroup : [robotDataGroup];
+        const dataArray = (Array.isArray(robotData) ? robotData : [robotData]).filter(d => d && d.latitude && d.longitude);
+        const dataArrayGroup = (Array.isArray(robotDataGroup) ? robotDataGroup : [robotDataGroup]).filter(g => g && g.median_latitude && g.median_longitude);
 
         // 기존 마커 제거
         if (markerRef.current) {
@@ -164,12 +164,30 @@ const Navermap: React.FC<NaverMapProps> = ({ robotData, robotDataGroup }) => {
 
         if (window.naver && window.naver.maps) {
             const container = document.getElementById('map');
+            if (!container) return;
+
+            // 데이터가 없을 경우 기본 지도를 표시
+            if (dataArray.length === 0 && dataArrayGroup.length === 0) {
+                if (!mapRef.current) {
+                    const options = {
+                        center: new window.naver.maps.LatLng(37.5665, 126.9780), // 기본 위치: 서울 시청
+                        zoom: 14,
+                        mapTypeId: 'satellite'
+                    };
+                    mapRef.current = new window.naver.maps.Map(container, options);
+                }
+                return;
+            }
 
             // 첫 번째 데이터의 좌표로 맵 초기화
             if (!mapRef.current) {
+                const firstCoord = dataArray.length > 0 
+                    ? { latitude: dataArray[0].latitude, longitude: dataArray[0].longitude }
+                    : { latitude: parseFloat(dataArrayGroup[0].median_latitude!), longitude: parseFloat(dataArrayGroup[0].median_longitude!) };
+                
                 const options = {
-                    center: new window.naver.maps.LatLng(dataArray[0].latitude, dataArray[0].longitude),
-                    zoom: 19,
+                    center: new window.naver.maps.LatLng(firstCoord.latitude, firstCoord.longitude),
+                    zoom: 18,
                     mapTypeId: 'satellite'
                 };
                 const map = new window.naver.maps.Map(container, options);
@@ -181,8 +199,8 @@ const Navermap: React.FC<NaverMapProps> = ({ robotData, robotDataGroup }) => {
             // 클러스터 생성
             const clusters = dataArrayGroup.map((group) => {
                 const position = new window.naver.maps.LatLng(
-                    parseFloat(group.median_latitude || '0'),
-                    parseFloat(group.median_longitude || '0')
+                    parseFloat(group.median_latitude!),
+                    parseFloat(group.median_longitude!)
                 );
 
                 const cluster = new window.naver.maps.Marker({
