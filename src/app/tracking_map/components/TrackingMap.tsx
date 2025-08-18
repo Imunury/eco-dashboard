@@ -66,7 +66,6 @@ const TrackingMap: React.FC<TrackingMapProps> = ({ robotData }) => {
             const markerContent = `
                 <div style="transform: rotate(${robotData.yaw ?? 0}deg);">
                     <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L6 10L12 8L18 10L12 2Z" fill="#ffff00" stroke="#000" stroke-width="1"/>
                         <path d="M12 8L6 22L12 18L18 22L12 8Z" fill="#ffff00" stroke="#000" stroke-width="1"/>
                     </svg>
                 </div>
