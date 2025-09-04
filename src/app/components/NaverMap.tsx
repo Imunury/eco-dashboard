@@ -52,20 +52,21 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
                     let region = "";
                     switch (data.robot_id) {
                         case 'ecobot00002': region = "수원광교"; break;
-                        case 'ecobot00003': region = "보령호"; break;
-                        case 'ecobot00004': region = "강정고령보"; break;
-                        case 'ecobot00005': region = "안동댐"; break;
+                        case 'ecobot00003': region = "임하댐1"; break;
+                        case 'ecobot00004': region = "임하댐2"; break;
+                        case 'ecobot00005': region = "임하댐3"; break;
                         case 'ecobot00006': region = "추소리"; break;
                         case 'ecobot00007': region = "서낙동강1"; break;
                         case 'ecobot00008': region = "서낙동강2"; break;
                         case 'ecobot00009': region = "인천"; break;
                         case 'ecobot00012': region = "진천1"; break;
                         case 'ecobot00013': region = "진천2"; break;
-                        case 'ecobot00014': region = "신창제"; break;
-                        case 'ecobot00016': region = "EDC"; break;
-                        case 'ecobot00017': region = "쌍암제"; break;
-                        case 'ecobot00018': region = "창녕보"; break;
-                        case 'ecobot00020': region = "울산"; break;
+                        case 'ecobot00014': region = "북서울"; break;
+                        case 'ecobot00018': region = "임하댐4"; break;
+                        case 'ecobot00020': region = "거품제거봇"; break;
+                        case 'ecobot00023': region = "송도"; break;
+                        case 'ecobot00024': region = "금강"; break;
+                        case 'ecobot00025': region = "달성보"; break;
                     }
 
                     let latitude = data.latitude

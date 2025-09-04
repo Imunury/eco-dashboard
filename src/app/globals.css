@@ -155,7 +155,7 @@ button:hover {
 }
 
 .sidebar>a {
-  @apply px-5 py-4 w-full flex items-center transition-colors duration-500;
+  @apply px-3 py-4 w-full flex items-center transition-colors duration-500;
 }
 
 .sidebar>a:hover {
