@@ -181,10 +181,10 @@ const Navermap: React.FC<NaverMapProps> = ({ robotData, robotDataGroup }) => {
 
             // 첫 번째 데이터의 좌표로 맵 초기화
             if (!mapRef.current) {
-                const firstCoord = dataArray.length > 0 
+                const firstCoord = dataArray.length > 0
                     ? { latitude: dataArray[0].latitude, longitude: dataArray[0].longitude }
                     : { latitude: parseFloat(dataArrayGroup[0].median_latitude!), longitude: parseFloat(dataArrayGroup[0].median_longitude!) };
-                
+
                 const options = {
                     center: new window.naver.maps.LatLng(firstCoord.latitude, firstCoord.longitude),
                     zoom: 18,
@@ -301,13 +301,19 @@ const Navermap: React.FC<NaverMapProps> = ({ robotData, robotDataGroup }) => {
                     <div className="flex justify-between items-center mb-4">
                         <button
                             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                            onClick={() => setShowGraph(!showGraph)}
+                            onClick={() => {
+                                setShowGraph(!showGraph);
+                                setShowDepthGraph(false);
+
+                            }}
                         >
                             {showGraph ? '그래프 닫기' : '그래프 보기'}
                         </button>
                         <button
                             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                            onClick={() => setShowDepthGraph(!showDepthGraph)}
+                            onClick={() => {
+                                setShowDepthGraph(!showDepthGraph);
+                            }}
                         >
                             {showDepthGraph ? '시계열 그래프' : '수심 그래프'}
                         </button>
