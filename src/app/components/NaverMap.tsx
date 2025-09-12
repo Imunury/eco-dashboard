@@ -22,19 +22,6 @@ const NaverMap: React.FC<NaverMapProps> = ({ robotAll }) => {
 
                 robotAll.forEach(data => {
 
-                    let robot_mode = ""
-                    const current_state = data.current_state
-                    switch (current_state) {
-                        case 0: robot_mode = "정지"
-                            break;
-                        case 1: robot_mode = "정지"
-                            break;
-                        case 2: robot_mode = "코스주행"
-                            break;
-                        case 3: robot_mode = "위치사수"
-                            break;
-                    }
-
                     let textChl = 'textBlue'
                     if (data.chl_ug_l > 60) {
                         textChl = 'textRed'
