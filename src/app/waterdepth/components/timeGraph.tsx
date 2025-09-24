@@ -61,7 +61,7 @@ const TimeGraph: React.FC<TimeGraphProps> = ({
         const hh = String(date.getHours()).padStart(2, '0');
         const mi = String(date.getMinutes()).padStart(2, '0');
         const ss = String(date.getSeconds()).padStart(2, '0');
-        return `${yyyy}-${mm}-${dd} ${hh}:${mi}:${ss}`;
+        return `${hh}:${mi}:${ss}`;
     };
 
     const renderWaterQualityGraph = (data: water_quality[], title: string, dataKey: keyof water_quality, color: string) => {

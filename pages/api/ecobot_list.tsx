@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'GET') {
     try {
       const ecobot = await prisma.$queryRaw<RobotAll[]>`
-        SELECT * FROM ecobot_status_temp
+        SELECT robot_id, motor_values, ctr_bat_soc FROM ecobot_status_temp
         WHERE (robot_id, timestamp) IN (
           SELECT robot_id, MAX(timestamp)
           FROM ecobot_status_temp
@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       `;
 
       const jincheon1 = await prisma_jincheon1.$queryRaw<RobotAll[]>`
-        SELECT * FROM ecobot_status_temp
+        SELECT robot_id, motor_values, ctr_bat_soc FROM ecobot_status_temp
         WHERE (robot_id, timestamp) IN (
           SELECT robot_id, MAX(timestamp)
           FROM ecobot_status_temp
@@ -32,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       `;
 
       const jincheon2 = await prisma_jincheon2.$queryRaw<RobotAll[]>`
-        SELECT * FROM ecobot_status_temp
+        SELECT robot_id, motor_values, ctr_bat_soc FROM ecobot_status_temp
         WHERE (robot_id, timestamp) IN (
           SELECT robot_id, MAX(timestamp)
           FROM ecobot_status_temp

@@ -223,3 +223,25 @@ button:hover {
   border-radius: 50%;
   margin: 2px auto 0;
 }
+
+.control h1 {
+  font-size: 21px;
+}
+
+.control h2 {
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .control h1 {
+    font-size: 12px;
+  }
+
+  .control h2 {
+    font-size: 12px;
+  }
+
+  .control h3 {
+    font-size: 12px;
+  }
+}
