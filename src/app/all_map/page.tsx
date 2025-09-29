@@ -13,12 +13,10 @@ const RobotMap: React.FC = () => {
   const fetchData = async () => {
     try {
       const [allResponse] = await Promise.all([
-        // fetch('/api/ecobot_list'),
-        // fetch('/api/water_quality'),
+        fetch('/api/ecobot_list'),
+        fetch('/api/water_quality'),
         fetch('/api/robot_all')
       ]);
-      // const robot_status = await robotResponse.json();
-      // const water_quality = await waterResponse.json();
       const robot_all = await allResponse.json();
       setRobotall(robot_all);
     } catch (error) {
