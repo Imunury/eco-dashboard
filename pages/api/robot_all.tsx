@@ -16,51 +16,51 @@ export interface RobotAll {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'GET') {
         try {
-            // const ecobotAll = await prisma.$queryRaw<RobotAll[]>`
-            //     SELECT 
-            //         es.robot_id,
-            //         es.timestamp as timestamp,
-            //         COALESCE(wq.chl_ug_l, '9999') AS chl_ug_l,  -- 기본값 0
-            //         COALESCE(wq.bg_ppb, '9999') AS bg_ppb,      -- 기본값 0
-            //         es.latitude,
-            //         es.longitude,
-            //         es.current_state
-            //     FROM 
-            //         (SELECT * 
-            //         FROM water_quality_temp
-            //         WHERE (robot_id, timestamp) IN (
-            //             SELECT robot_id, MAX(timestamp)
-            //             FROM water_quality_temp
-            //             GROUP BY robot_id
-            //         )) AS wq
-            //     FULL OUTER JOIN 
-            //         (SELECT * 
-            //         FROM ecobot_status
-            //         WHERE (robot_id, timestamp) IN (
-            //             SELECT robot_id, MAX(timestamp)
-            //             FROM ecobot_status
-            //             GROUP BY robot_id
-            //         )) AS es
-            //     ON 
-            //         wq.robot_id = es.robot_id
-            //     ORDER BY 
-            //         wq.robot_id;
-            // `;
-
             const ecobotAll = await prisma.$queryRaw<RobotAll[]>`
-                SELECT DISTINCT ON (robot_id) 
-                    robot_id,
-                    timestamp,
-                    COALESCE(chl_ug_l, '9999') AS chl_ug_l,
-                    COALESCE(bg_ppb, '9999') AS bg_ppb,
-                    latitude,
-                    longitude
+                SELECT 
+                    es.robot_id,
+                    es.timestamp as timestamp,
+                    COALESCE(wq.chl_ug_l, '9999') AS chl_ug_l,  -- 기본값 0
+                    COALESCE(wq.bg_ppb, '9999') AS bg_ppb,      -- 기본값 0
+                    es.latitude,
+                    es.longitude,
+                    es.current_state
                 FROM 
-                    water_quality_temp
+                    (SELECT * 
+                    FROM water_quality_temp
+                    WHERE (robot_id, timestamp) IN (
+                        SELECT robot_id, MAX(timestamp)
+                        FROM water_quality_temp
+                        GROUP BY robot_id
+                    )) AS wq
+                FULL OUTER JOIN 
+                    (SELECT * 
+                    FROM ecobot_status
+                    WHERE (robot_id, timestamp) IN (
+                        SELECT robot_id, MAX(timestamp)
+                        FROM ecobot_status
+                        GROUP BY robot_id
+                    )) AS es
+                ON 
+                    wq.robot_id = es.robot_id
                 ORDER BY 
-                    robot_id, timestamp DESC
-                LIMIT 30;
+                    wq.robot_id;
             `;
+
+            // const ecobotAll = await prisma.$queryRaw<RobotAll[]>`
+            //     SELECT DISTINCT ON (robot_id) 
+            //         robot_id,
+            //         timestamp,
+            //         COALESCE(chl_ug_l, '9999') AS chl_ug_l,
+            //         COALESCE(bg_ppb, '9999') AS bg_ppb,
+            //         latitude,
+            //         longitude
+            //     FROM 
+            //         water_quality_temp
+            //     ORDER BY 
+            //         robot_id, timestamp DESC
+            //     LIMIT 30;
+            // `;
 
             const jincheon1 = await prisma_jincheon1.$queryRaw<RobotAll[]>`
                 SELECT 
