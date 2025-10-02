@@ -47,19 +47,43 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             //         wq.robot_id;
             // `;
 
+            // const ecobotAll = await prisma.$queryRaw<RobotAll[]>`
+            //     SELECT DISTINCT ON (robot_id) 
+            //         robot_id,
+            //         timestamp,
+            //         COALESCE(chl_ug_l, '9999') AS chl_ug_l,
+            //         COALESCE(bg_ppb, '9999') AS bg_ppb,
+            //         latitude,
+            //         longitude
+            //     FROM 
+            //         water_quality_temp
+            //     ORDER BY 
+            //         robot_id, timestamp DESC
+            //     LIMIT 30;
+            // `;
+
             const ecobotAll = await prisma.$queryRaw<RobotAll[]>`
-                SELECT DISTINCT ON (robot_id) 
-                    robot_id,
-                    timestamp,
-                    COALESCE(chl_ug_l, '9999') AS chl_ug_l,
-                    COALESCE(bg_ppb, '9999') AS bg_ppb,
-                    latitude,
-                    longitude
-                FROM 
-                    water_quality_temp
+                SELECT
+                    t.robot_id,
+                    t.timestamp,
+                    COALESCE(t.chl_ug_l, '9999') AS chl_ug_l,
+                    COALESCE(t.bg_ppb, '9999') AS bg_ppb,
+                    t.latitude,
+                    t.longitude
+                FROM (
+                    SELECT DISTINCT robot_id 
+                    FROM water_quality_temp
+                    LIMIT 30
+                ) AS robots
+                CROSS JOIN LATERAL (
+                    SELECT *
+                    FROM water_quality_temp AS wqt
+                    WHERE wqt.robot_id = robots.robot_id
+                    ORDER BY wqt.timestamp DESC
+                    LIMIT 1
+                ) AS t
                 ORDER BY 
-                    robot_id, timestamp DESC
-                LIMIT 30;
+                    t.robot_id, t.timestamp DESC;
             `;
 
             const jincheon1 = await prisma_jincheon1.$queryRaw<RobotAll[]>`

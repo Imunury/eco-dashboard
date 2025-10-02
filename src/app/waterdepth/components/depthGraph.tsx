@@ -31,8 +31,8 @@ const timeRanges = [
     { min: 9, max: 10, color: 'rgb(0 ,255, 0)', label: '09-10시' },
     { min: 10, max: 11, color: 'rgb(0, 180, 0)', label: '10-11시' },
     { min: 11, max: 12, color: 'rgb(0, 110, 0)', label: '11-12시' },
-    { min: 12, max: 13, color: 'rgb(230, 230, 50)', label: '12-13시' },
-    { min: 13, max: 14, color: 'rgb(220, 220, 0)', label: '13-14시' },
+    { min: 12, max: 13, color: 'rgb(230, 230, 150)', label: '12-13시' },
+    { min: 13, max: 14, color: 'rgb(240, 240, 0)', label: '13-14시' },
     { min: 14, max: 15, color: 'rgb(180, 180, 0)', label: '14-15시' },
     { min: 15, max: 16, color: 'rgb(255, 150, 150)', label: '15-16시' },
     { min: 16, max: 17, color: 'rgb(255, 100, 100)', label: '16-17시' },
@@ -56,16 +56,16 @@ const DepthGraph: React.FC<TimeGraphProps> = ({
     selectedDepthData,
     onReset
 }) => {
-    const formatDate = (timestamp: Date) => {
-        const date = new Date(timestamp);
-        const yyyy = date.getFullYear();
-        const mm = String(date.getMonth() + 1).padStart(2, '0');
-        const dd = String(date.getDate()).padStart(2, '0');
-        const hh = String(date.getHours()).padStart(2, '0');
-        const mi = String(date.getMinutes()).padStart(2, '0');
-        const ss = String(date.getSeconds()).padStart(2, '0');
-        return `${yyyy}-${mm}-${dd} ${hh}:${mi}:${ss}`;
-    };
+    // const formatDate = (timestamp: Date) => {
+    //     const date = new Date(timestamp);
+    //     const yyyy = date.getFullYear();
+    //     const mm = String(date.getMonth() + 1).padStart(2, '0');
+    //     const dd = String(date.getDate()).padStart(2, '0');
+    //     const hh = String(date.getHours()).padStart(2, '0');
+    //     const mi = String(date.getMinutes()).padStart(2, '0');
+    //     const ss = String(date.getSeconds()).padStart(2, '0');
+    //     return `${yyyy}-${mm}-${dd} ${hh}:${mi}:${ss}`;
+    // };
 
     const renderWaterQualityGraph = (data: water_quality[], title: string, dataKey: keyof water_quality) => {
         // 데이터를 수심별로 그룹화하고 시간대별로 분리
