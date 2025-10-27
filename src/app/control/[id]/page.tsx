@@ -19,11 +19,21 @@ const Control: React.FC = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            if (id) {
+                        if (id) {
                 try {
                     const response = await fetch(`/api/robot_status/${id}`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
                     const data = await response.json();
-                    setRobotData(data[0]);
+                    // 데이터가 배열이고, 비어있지 않은지 확인합니다.
+                    if (Array.isArray(data) && data.length > 0) {
+                        setRobotData(data[0]);
+                    } else {
+                        // 로봇을 찾지 못한 경우 또는 데이터가 없는 경우
+                        setRobotData(null);
+                        console.warn("Robot data not found or empty for id:", id);
+                    }
                 } catch (error) {
                     console.error("Failed to fetch data:", error);
                 }

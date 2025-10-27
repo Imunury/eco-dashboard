@@ -21,27 +21,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         ORDER BY robot_id
       `;
 
-      const jincheon1 = await prisma_jincheon1.$queryRaw<RobotAll[]>`
-        SELECT robot_id, motor_values, ctr_bat_soc FROM ecobot_status_temp
-        WHERE (robot_id, timestamp) IN (
-          SELECT robot_id, MAX(timestamp)
-          FROM ecobot_status_temp
-          GROUP BY robot_id
-        )
-        ORDER BY robot_id
-      `;
+      // const jincheon1 = await prisma_jincheon1.$queryRaw<RobotAll[]>`
+      //   SELECT robot_id, motor_values, ctr_bat_soc FROM ecobot_status_temp
+      //   WHERE (robot_id, timestamp) IN (
+      //     SELECT robot_id, MAX(timestamp)
+      //     FROM ecobot_status_temp
+      //     GROUP BY robot_id
+      //   )
+      //   ORDER BY robot_id
+      // `;
 
-      const jincheon2 = await prisma_jincheon2.$queryRaw<RobotAll[]>`
-        SELECT robot_id, motor_values, ctr_bat_soc FROM ecobot_status_temp
-        WHERE (robot_id, timestamp) IN (
-          SELECT robot_id, MAX(timestamp)
-          FROM ecobot_status_temp
-          GROUP BY robot_id
-        )
-        ORDER BY robot_id
-      `;
+      // const jincheon2 = await prisma_jincheon2.$queryRaw<RobotAll[]>`
+      //   SELECT robot_id, motor_values, ctr_bat_soc FROM ecobot_status_temp
+      //   WHERE (robot_id, timestamp) IN (
+      //     SELECT robot_id, MAX(timestamp)
+      //     FROM ecobot_status_temp
+      //     GROUP BY robot_id
+      //   )
+      //   ORDER BY robot_id
+      // `;
 
-      const combineData = [...ecobot, ...jincheon1, ...jincheon2]
+      const combineData = [...ecobot]
+      // const combineData = [...ecobot, ...jincheon1, ...jincheon2]
       res.status(200).json(combineData);
     } catch (error) {
       res.status(500).json({ error: 'Failed to fetch ecobot status' });

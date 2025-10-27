@@ -19,8 +19,16 @@ const RobotMap: React.FC = () => {
             if (id) {
                 try {
                     const response = await fetch(`/api/robot_status/${id}`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
                     const data = await response.json();
-                    setRobotData(data[0]);
+                    if (Array.isArray(data) && data.length > 0) {
+                        setRobotData(data[0]);
+                    } else {
+                        setRobotData(null);
+                        console.warn("Robot data not found or empty for id:", id);
+                    }
                 } catch (error) {
                     console.error("Failed to fetch data:", error);
                 }
